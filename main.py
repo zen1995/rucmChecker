@@ -1,6 +1,7 @@
 import argparse
 from rucmLoader import RucmLoader
 from rule import RuleLoader
+import json
 
 if __name__== "__main__":
     '''
@@ -19,7 +20,10 @@ if __name__== "__main__":
     # load rule
     if args.rule_path:
         print ('Loading rule file: %s' % (args.rule_path))
-        rule_load = RuleLoader(args.rule_path)
+        try:
+            rule_load = RuleLoader(args.rule_path)
+        except (FileNotFoundError, json.JSONDecodeError) as err:
+            print (err)
     else:
         print ('No rule file is specified. Default rules are loaded only.')
 

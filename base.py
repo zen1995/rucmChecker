@@ -2,6 +2,8 @@ from abc import abstractclassmethod,ABCMeta,abstractmethod
 import enum
 import os
 import typing
+import errno
+import json
 
 
 class Loader():
@@ -10,15 +12,8 @@ class Loader():
         self.filepath = filepath
 
     @abstractmethod
-    def load(self)->bool:
-        pass
-
-    def fileExist(self)->bool:
-        return os.path.exists(self.filepath)
-
-    @abstractmethod
-    def checkFileFormat(self)->bool:
-        pass
+    def load(self):
+        self.dict_content = json.loads(self.filepath)
 
 
 class RuleSubject(enum.Enum):
