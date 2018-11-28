@@ -2,14 +2,6 @@ import base
 import typing
 import abc
 import rucmElement
-class SampleRule:
-    def __init__(self,subject:base.RuleSubject,op:str,val:list):
-        self.subject=None
-        self.op = None
-        self.val = []
-
-    def check(self)->bool:
-        pass
 
 
 class RuleLoader(base.Loader):
@@ -77,12 +69,15 @@ class ComplexRule(Rule):
         super(ComplexRule,self).__init__()
         self.applyScope:base.ApplyScope=None
         self.op:typing.List[base.LogicOp]=None
-        self.sampleRule:typing.List[SampleRule]=None
+        self.sampleRule:typing.List[SimpleRule]=None
 
     def check(self)->typing.List[ErrorInfo]:
         #
         pass
 
+    def dynamicFill(self,s:str):
+        #fill list with $actor
+        pass
 
 class RuleDB():
     defaultRules:typing.List[Rule]=[]
