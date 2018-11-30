@@ -2,8 +2,16 @@ import base
 import typing
 import json
 
-class Word():
-    def __init__(self,val:str):
+
+class RUCMBase():
+    def __init__(self,useCaseName:str,parent):
+        self.useCaseName:str=useCaseName
+        self.parent=parent
+
+
+class Word(RUCMBase):
+    def __init__(self,val:str,useCaseName:str,parent,):
+        super(Word,self).__init__(useCaseName,parent)
         self.val:str = val
         self.type:base.WordType =None
         self.tense :base.WordTense=None
@@ -12,15 +20,15 @@ class Word():
     def parseWord(self):
         pass
 
-class Sentence():
-    def __init__(self,sentense:str,useCaseName:str):
+class Sentence(RUCMBase):
+    def __init__(self,sentense:str,useCaseName:str,parent):
+        super(Sentence,self).__init__(useCaseName,parent)
         self.val = sentense
         self.subjects:typing.List[Word] =[]
         self.objects:typing.List[Word] = []
         self.verbs:typing.List[Word] = []
         self.tense:base.WordTense = None
         self.words:typing.List[Word] = []
-        self.useCaseName = useCaseName
 
 
 
@@ -28,8 +36,10 @@ class Sentence():
         pass
 
 
-class Step():
-    def __init__(self,index:int,step:dict):
+class Step(RUCMBase):
+    def __init__(self,index:int,step:dict,useCaseName:str,parent):
+        super(Step,self).__init__(useCaseName,parent)
+
         self.index = index
         self.val:str = None
         self.sentences:typing.List[Sentence] = []
@@ -39,12 +49,13 @@ class Step():
     def parseStep(self)->bool:
         pass
 
-class Flow():
-    def __init__(self,flow:dict,usecaseNmae:str):
+class Flow(RUCMBase):
+    def __init__(self,flow:dict,useCaseName:str,parent):
+        super(Flow,self).__init__(useCaseName,parent)
+
         self.type:str=None
         self.title:str = None
         self.postCondition:Sentence = None#
-        self.useCaseName:str = usecaseNmae
         self.introduction:str = None
         self.steps:typing.List[Step] =  None
         self.include:typing.List[str] = None
@@ -123,4 +134,6 @@ class RUCMRRoot:
     def getUsecase(usecaseName:str)->Usecase:
         pass
 
-
+    @staticmethod
+    def getAllSentence()->typing.List[Sentence]:
+        pass

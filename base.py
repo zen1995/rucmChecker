@@ -22,7 +22,7 @@ class RuleSubject(enum.Enum):
     object_Val='object_Val'
     verb_count='verb_count'
     verb_tense='verb_tense'
-    str_="str_"
+    #str_="str_"
     strs='strs'
     subject_count='subject_count'
     object_count='object_count'
