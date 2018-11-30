@@ -58,8 +58,25 @@ class SimpleRule():
         self.val:typing.List[str]=[]
         self.description:str=""
 
-    def check(self,sentece:rucmElement.Sentence)->bool:
-        pass
+    def check(self,sentence:rucmElement.Sentence)->bool:
+        if self.target == base.RuleSubject.subject_Val:
+            target= sentence.subjects
+        elif self.target == base.RuleSubject.object_Val:
+            target = sentence.objects
+        elif self.target == base.RuleSubject.verb_count:
+            target = len(sentence.verbs)
+        elif self.target == base.RuleSubject.verb_tense:
+            target = sentence.tense
+        elif self.target == base.RuleSubject.strs:
+            target = [word.val for word in sentence.words]
+        elif self.target == base.RuleSubject.subject_count:
+            target = len(sentence.subjects)
+        elif self.target == base.RuleSubject.object_count:
+            target = len(sentence.objects)
+        if self.op == base.SimpleOp.in_:
+            return all(x in self.val for x in target)
+        else:
+            return  all(x not in self.val for x in target)
 
 
 class ComplexRule(Rule):
