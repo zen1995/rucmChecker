@@ -240,9 +240,6 @@ class Usecase(RUCMBase):
                         return True
                 return False
         return False
-
-            basic_flow: Flow = self.parent.basicFlow
-            basic_steps = basic_flow.getAllSteps()
             # basic_steps:
             #     if('VALIDATES THAT' in step.keywords):
             #         return True
