@@ -20,7 +20,6 @@ class Sentence():
         self.verbs:typing.List[Word] = []
         self.tense:base.WordTense = None
         self.words:typing.List[Word] = []
-        self.useCaseName = useCaseName
 
 
 
@@ -35,7 +34,7 @@ class Step():
         self.sentences:typing.List[Sentence] = []
         self.natureType:base.NatureType = None
         self.natureContent = []#啥玩意？？？
-
+        self.useCaseName = useCaseName
     def parseStep(self)->bool:
         pass
 
@@ -113,6 +112,10 @@ class RUCMRRoot:
 
     @staticmethod
     def getAllSteps()->typing.List[Step]:
+        pass
+    
+    @staticmethod
+    def getAllSentences()->typing.List[Sentence]:
         pass
 
     @staticmethod

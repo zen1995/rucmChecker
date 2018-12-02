@@ -28,11 +28,10 @@ class RuleLoader(base.Loader):
 
 
 class ErrorInfo:
-    def __init__(self):
-        self.rulename:str=None
-        self.usecasename:str=None
-        self.sentence:str=None
-
+    def __init__(self, rulename, usecasename, sentence):
+        self.rulename:str=rulename
+        self.usecasename:str=usecasename
+        self.sentence:str=sentence
 class Reporter():
     errors:typing.List[ErrorInfo]=[]
     @staticmethod
@@ -81,6 +80,9 @@ class SimpleRule():
 
 class ComplexRule(Rule):
 
+
+    
+
     def __init__(self,ruleDict:dict):
         super(ComplexRule,self).__init__()
         self.applyScope:base.ApplyScope=None
@@ -88,8 +90,44 @@ class ComplexRule(Rule):
         self.sampleRule:typing.List[SimpleRule]=None
 
     def check(self)->typing.List[ErrorInfo]:
-        #
-        pass
+        errors = []
+        if self.applyScope == base.ApplyScope.actionStep:
+            steps = rucmElement.RUCMRRoot.getAllSteps()
+            for step in steps:
+                sentences = step.sentences
+                for sentence in sentences:
+                    checkResult = []
+                    result = True
+                    for rule in self.sampleRule:
+                        checkResult.append(rule.check(sentence))
+                    for i in range(len(checkResult)):
+                        op = self.op[i+1]
+                        assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
+                        if op == base.LogicOp.and_:
+                            result = result and checkResult[i]
+                        elif op == base.LogicOp.or_:
+                            result = result and checkResult[i]
+                    op = self.op[0]
+                    assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
+                    if op == base.LogicOp.not_:
+                        result = not result
+                    if not result:
+                        errors.append(ErrorInfo(self.description,\
+                        sentence.usecase, sentence))
+                    
+        elif self.applyScope == base.ApplyScope.allSentence:
+
+                    
+
+                    
+                    
+
+                    
+                    
+
+
+
+
 
 
 class RuleDB():
