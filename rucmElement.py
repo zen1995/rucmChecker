@@ -3,6 +3,7 @@ import typing
 import json
 import re
 from enum import Enum, unique
+from nlputils import parse_sentense
 
 @unique
 class NatureType(Enum):
@@ -49,7 +50,13 @@ class Sentence(RUCMBase):
         self.__parse_sentense()
         self.nature: str = nature
     def __parse_sentense(self):
-        pass
+        self.subjects, self.verbs, self.objects = list(map(
+            lambda x: list(map(
+                lambda y: Word(y, self.useCaseName, self),
+                x
+            )),
+            parse_sentense(self.val)
+        ))
 
 # 使用loaction描述错误语句的位置
 class  Step(RUCMBase):
