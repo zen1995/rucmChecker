@@ -36,7 +36,7 @@ def parse_vp(vp):
             objects += o
         if i.label() == 'NP':
             objects += parse_np(i)
-        if i.label() in ['VBP', 'VBD']:
+        if i.label().startswith('VB'):
                 verbs.append(i[0])
     return verbs, objects
     
@@ -46,7 +46,8 @@ if __name__ == "__main__":
         'A girl shot an elephant.',
         'You and I are a couple.',
         'You and I have and see money',
-        'I shot an girl'
+        'I shot an girl',
+        'You and I will have a baby!'
     ]
 
     for t in test:
