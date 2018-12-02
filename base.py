@@ -12,7 +12,8 @@ class Loader():
         self.filepath = filepath
 
     @abstractmethod
-    def load(self):
+    def load(self)->bool:
+        #所有的load结果均存到静态类中，返回值是是否解析成功
         self.dict_content = json.loads(self.filepath)
 
 
@@ -25,7 +26,11 @@ class RuleSubject(enum.Enum):
     verb_count='verb_count'
     # 判断句子动词时态
     verb_tense='verb_tense'
+<<<<<<< HEAD
     # 判断所有的词
+=======
+    # 判断所有的词
+>>>>>>> master
     strs='strs'
     # 判断主语数量
     subject_count='subject_count'

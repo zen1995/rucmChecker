@@ -7,7 +7,7 @@ class RucmLoader(base.Loader):
         super(RucmLoader,self).__init__(filepath)
         self.rucm_root = self.load()
 
-    def load(self):
+    def load(self)->bool:
         super(RucmLoader,self).load()
         return RUCMRRoot(self.dict_content)
 

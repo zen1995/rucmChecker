@@ -1,0 +1,657 @@
+{
+  "root": {
+    "content": {
+      "modelElements": [
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "ACTOR",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "extend": [{
+              "content": {
+                "extension": "&4",
+                "extendedCase": "&5",
+                "condition": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "Extend"
+            }],
+            "name": {
+              "content": "AAA",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "BASIC DONE MEANWHILE MEANDONE",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "BB",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "IF This is condition THEN",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {"ifCondition": {
+                                "content": "This is condition",
+                                "type": "<string>"
+                              }},
+                              "type": "IfThenNature"
+                            },
+                            {
+                              "content": {
+                                "compositeSentences": [
+                                  "&0",
+                                  "&1"
+                                ],
+                                "endIfSentence": "&1",
+                                "ifSentence": "&0"
+                              },
+                              "type": "IfComposite"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "DONE A MEANWHILE DONE",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "action2": {
+                                "content": "DONE",
+                                "type": "<string>"
+                              },
+                              "action1": {
+                                "content": "DONE A",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "MeanwhileNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ENDIF",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "EndIfNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&0",
+                                "referenceNature": "&2"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "V VALIDATES THAT this is validate condition",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "subject": {
+                                "content": "V",
+                                "type": "<string>"
+                              },
+                              "object": {
+                                "content": "this is validate condition",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "ValidateThatNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "V validates that B",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "DDDDDDDDDDDDD",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "This is PreCondition, PPPP2",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "This is Brief Description",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [{
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "SPEC DONE",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "rfsSentence": {
+                      "content": {
+                        "content": {
+                          "content": "RFS BB 4",
+                          "type": "<string>"
+                        },
+                        "natures": [{
+                          "content": {
+                            "segments": [{
+                              "content": {
+                                "toStep": {
+                                  "content": 4,
+                                  "type": "<int>"
+                                },
+                                "fromStep": {
+                                  "content": 4,
+                                  "type": "<int>"
+                                }
+                              },
+                              "type": "RFSNatureSegment"
+                            }],
+                            "flowName": {
+                              "content": "BB",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "RFSNature"
+                        }],
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "This is Specific Al FLOW  ",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "SpecificAlternative"
+                }],
+                "primaryActor": "&3"
+              },
+              "type": "UseCaseSpecification"
+            },
+            "include": [{
+              "content": {
+                "includingCase": "&4",
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "addition": "&6"
+              },
+              "type": "Include"
+            }]
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "useCase": "&4",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&3"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "bbb",
+              "type": "<string>"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "ccc",
+              "type": "<string>"
+            }
+          },
+          "type": "UseCase"
+        }
+      ],
+      "description": {
+        "content": "",
+        "type": "<string>"
+      },
+      "name": {
+        "content": "",
+        "type": "<string>"
+      },
+      "diagrams": [{
+        "content": {
+          "height": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "nodes": [
+            {
+              "content": {
+                "height": {
+                  "content": 90,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 59,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 489,
+                  "type": "<int>"
+                },
+                "actor": "&3",
+                "top": {
+                  "content": 305,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDActorNode"
+            },
+            {
+              "content": {
+                "useCase": "&4",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 849,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 325,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&6",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 740,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 544,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&5",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 919,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 194,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            }
+          ],
+          "width": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "name": {
+            "content": "",
+            "type": "<string>"
+          },
+          "left": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "links": [
+            {
+              "content": {
+                "relationship": "&7",
+                "node1": "&8",
+                "node2": "&9"
+              },
+              "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "node1": "&9",
+                "node2": "&10",
+                "include": "&11"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&9",
+                "extend": "&12",
+                "node2": "&13"
+              },
+              "type": "UCDExtendLink"
+            }
+          ],
+          "ucModel": "&14",
+          "top": {
+            "content": 0,
+            "type": "<int>"
+          }
+        },
+        "type": "UCDiagram"
+      }]
+    },
+    "type": "UCModel"
+  },
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[1].specification.basicFlow.steps[0]"},
+    {"path": "<root>.modelElements[1].specification.basicFlow.steps[2]"},
+    {"path": "<root>.modelElements[1].specification.basicFlow.steps[0].natures[1]"},
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[1]"},
+    {"path": "<root>.modelElements[4]"},
+    {"path": "<root>.modelElements[3]"},
+    {"path": "<root>.modelElements[2]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>.diagrams[0].nodes[2]"},
+    {"path": "<root>.modelElements[1].include[0]"},
+    {"path": "<root>.modelElements[1].extend[0]"},
+    {"path": "<root>.diagrams[0].nodes[3]"},
+    {"path": "<root>"}
+  ]
+}

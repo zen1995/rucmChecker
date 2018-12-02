@@ -2,6 +2,9 @@ import base
 import typing
 import abc
 import rucmElement
+<<<<<<< HEAD
+=======
+>>>>>>> master
 
 class RuleLoader(base.Loader):
 
@@ -129,6 +132,9 @@ class ComplexRule(Rule):
 
 
 
+    def dynamicFill(self,s:str):
+        #fill list with $actor
+        pass
 
 class RuleDB():
     defaultRules:typing.List[Rule]=[]
