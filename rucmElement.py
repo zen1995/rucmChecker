@@ -38,6 +38,12 @@ class Word(RUCMBase):
     def __parse_word(self):
         pass
 
+    def __repr__(self):
+        return self.val
+
+    def __str__(self):
+        return self.val
+
 class Sentence(RUCMBase):
     def __init__(self, sentence: str, nature, use_case_name, parent):
         RUCMBase.__init__(self, use_case_name, parent)
@@ -57,6 +63,13 @@ class Sentence(RUCMBase):
             )),
             parse_sentense(self.val)
         ))
+
+    def __str__(self):
+        return str({
+            'subjects': self.subjects,
+            'verbs': self.verbs,
+            'objects': self.objects
+        })
 
 # 使用loaction描述错误语句的位置
 class  Step(RUCMBase):
@@ -314,3 +327,16 @@ s0 = RUCMRoot.getAllSentences(r)
 s1 = RUCMRoot.getAllSteps(r)
 u1 = r.useCases[0]
 print(u1.findRFS('BB', 4))
+
+if __name__ == "__main__":
+    ## test cases
+    test = [
+        'I want a girl.',
+        'A girl shot an elephant.',
+        'You and I are a couple.',
+        'You and I have and see money',
+        'I shot an girl'
+    ]
+
+    for t in test:
+        print(t, Sentence(t, None, None, None))
