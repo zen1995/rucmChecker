@@ -1,0 +1,45 @@
+context: Loader
+inv: self.filepath <> None
+
+context:RucmLoader::load()
+postCondition: RUCMRooot.usecases.size() >0 and RUCMRooot.actors.size() >0 
+
+context: Word
+inv: self.val <> None and self.type <> None and self.tense <> None
+
+context: Sentence
+inv: self.val <> None and self.subjects <> None and self.objects <> None and self.vervs <> None and self.tense <> None and self.words <> None
+
+context: Step
+inv: self.index >= 0 and self.val <> None and self.sentences <> None and self.sentences.size() >0
+
+context: Flow
+inv: collection("basic","sepcific").includes(self.type) and self.title <> None and self.postCondition <> None and self.introduction <> None
+    and self.steps <> None and self.steps.size() >0 and self.include <> None and self.extend <> None and self.generalization <> None and self.rfsSentence <> None
+
+context: UseCase
+inv: self.name <> None and self.briefDescription <> None and self.postCondition <> None and self.include <> None and self.extend <> None and self.generalization <> None
+    and self.basicFlow <> None and self.specificFlows <> None and self.id >= 0
+
+context: RUCMRooot
+inv: self.usecases <> None  and self.actors <> None
+
+context: RuleLoader::load()
+postCondition: RuleDB.defaultRules.size() >0
+
+context: RuleDB
+inv: self.defaultRules <> None and self.userRules <> None
+
+context: Rule
+inv: self.id >= 0 and self.description <> None and collection("user","system").includes(self.rtype)
+
+context: ComplexRule
+inv: self.op <> None self.op.size() >0 and self.simpleRule.size() >0
+
+context: SimpleRule
+inv: self.val <> None and self.description <> None
+context: SimpleRule::dynamicFill()
+postCondition:self.val.size() >0 
+
+context: ErrorInfo
+inv: self.rulename <> None and self.usecasename <> None and self.sentence <> None
