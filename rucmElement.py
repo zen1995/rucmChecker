@@ -364,4 +364,4 @@ if __name__ == "__main__":
         'I shot an girl'
     ]
     for t in test:
-            print(t, Sentence(t, None, None, None))
+        print(t, Sentence(t, None, None, None))

@@ -2,12 +2,12 @@ import base
 from rucmElement import RUCMRoot
 import typing
 
+
 class RucmLoader(base.Loader):
-    def __init__(self,filepath:str):
-        super(RucmLoader,self).__init__(filepath)
+    def __init__(self, filepath: str):
+        super(RucmLoader, self).__init__(filepath)
         self.rucm_root = self.load()
 
     def load(self)->bool:
-        super(RucmLoader,self).load()
+        super(RucmLoader, self).load()
         return RUCMRoot(self.dict_content)
-
