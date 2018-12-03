@@ -14,7 +14,11 @@ class Loader():
     @abstractmethod
     def load(self)->bool:
         #所有的load结果均存到静态类中，返回值是是否解析成功
-        self.dict_content = json.loads(self.filepath)
+        try:
+            self.dict_content = json.loads(self.filepath)
+        except Exception as e:
+            return False
+        return True
 
 
 class RuleSubject(enum.Enum):
