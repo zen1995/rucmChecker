@@ -60,8 +60,7 @@ class DefaultRule19(rule.Rule):
         rule.Reporter.errors += errors
 
 class DefaultRule20(rule.Rule):
-    def check(self, flows):
-        pass
+    pass
 
 class DefaultRule21(rule.Rule):
     def check(self, steps):
@@ -95,7 +94,35 @@ class DefaultRule22(rule.Rule):
         rule.Reporter.errors += errors 
 
 class DefaultRule23(rule.Rule):
-    pass
+    def check(self, flows):
+        errors = []
+        for flow in flows:
+            doInd = -1
+            untilInd = -1
+            for stepInd, step in enumerate(flow.steps):
+                # 找do
+                doI = -1
+                untilI = -1
+                for i in range(len(step.sentences)):
+                    if step.sentences[i].NatureType == base.NatureType.do_:
+                        doInd = stepInd
+                        doI = i
+                    if step.sentences[i].NatureType == base.NatureType.until_:
+                        untilInd = stepInd
+                        untilI = i
+                # 找到do
+                if doI >= 0:
+                    # do占一个step
+                    if len(step.sentences) != 1:
+                        errors.append(rule.ErrorInfo(self.description, flow.usecasename, step.val))
+                if untilI >= 0:
+                    # until必须在开头，until后面必须有东西, until前必须已触发do
+                    if untilI != 0 or len(step.sentences) == 1 or doInd < 0:
+                        errors.append(rule.ErrorInfo(self.description, flow.usecasename, step.val))
+            if doInd >= 0 and untilInd < 0:
+                # 出现do，没有出现until
+                errors.append(rule.ErrorInfo(self.description, flow.usecasename, step.val))
+        rule.Reporter.errors += errors
    
 
 class DefaultRule24(rule.Rule):
