@@ -60,8 +60,86 @@ class DefaultRule19(rule.Rule):
         rule.Reporter.errors += errors
 
 class DefaultRule20(rule.Rule):
-    pass
-
+    def check(self, flows):
+        errors = []
+        valid_pre = []
+        valid = []
+        for flow in flows:
+            # 在每个flow范围内进行规则检测
+            for step in flow.steps:
+                natureI = {}
+                natureI['if'] = -1
+                natureI['else'] = -1
+                natureI['elseif'] = -1
+                natureI['then'] = -1
+                natureI['endif'] = -1
+                for i in range(len(step.sentences)):
+                    if step.sentences[i].NatureType == base.NatureType.if_:
+                        # 向状态转移栈添加一个元素
+                        # 状态转移：接受THEN
+                        natureI['if'] = i
+                        stackIfNum += 1
+                        stackThenNum += 1
+                        valid_pre.append(['IF'])
+                        valid.append(['THEN'])
+                    elif step.sentences[i].NatureType == base.NatureType.else_:
+                        # 状态转移：接受END IF
+                        natureI['else'] = i
+                        if not 'ELSE' in valid[len(valid_pre)-1] :
+                            errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                            continue
+                        valid_pre.append(valid.pop())
+                        valid.append(['END IF'])
+                    elif step.sentences[i].NatureType == base.NatureType.elseif_:
+                        # 状态转移：接受THEN
+                        natureI['elseif'] = i
+                        if not 'ELSE IF' in valid[len(valid_pre)-1] :
+                            errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                            continue
+                        valid_pre.append(valid.pop())
+                        valid.append(['THEN'])
+                    elif step.sentences[i].NatureType == base.NatureType.then_:
+                        # 状态转移：如果THEN对应IF，接受ELSE/ELSE IF/END IF
+                        # 如果THEN对应ELSE IF，接受END IF
+                        # 否则……蜜汁转移出错？
+                        natureI['then'] = i
+                        if not 'THEN' in valid[len(valid_pre)-1] :
+                            errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                            continue
+                        if 'IF' in valid_pre.pop():
+                            valid_pre.append(valid.pop())
+                            valid.append(['ELSE', 'ELSE IF', 'END IF'])
+                        elif 'ELSE IF' in valid_pre.pop():
+                            valid_pre.append(valid.pop())
+                            valid.append(['END IF'])
+                        else:
+                            errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                            continue
+                    elif step.sentences[i].NatureType == base.NatureType.endif_:
+                        # 无状态转移，从状态转移栈移除一个元素
+                        natureI['endif'] = i
+                        if not 'END IF' in valid[len(valid_pre)-1] :
+                            errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                            continue
+                        valid_pre.pop()
+                        valid.pop()
+                    # IF必须开头
+                    if natureI['if'] > 0 or natureI['elseif'] > 0 or natureI['else'] > 0:
+                        errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                        continue
+                    # THEN必须结尾
+                    if natureI['then'] >= 0 and natureI['then'] != len(step.sentences)-1:
+                        errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                        continue
+                    if natureI['endif'] >= 0 and len(step.sentences) != 1:
+                        # 独占一行
+                        errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                        continue
+                    
+            # 正常的话，valid为空
+        if valid:
+            errors.append(rule.ErrorInfo(self.description, flow.usecasename, flow.title))
+                    
 class DefaultRule21(rule.Rule):
     def check(self, steps):
         errors = []
@@ -73,7 +151,8 @@ class DefaultRule21(rule.Rule):
                     return
             if i < 0:
                 continue
-            if i == 0 or i == len(step.sentences):
+            # 前后必须有东西
+            if i == 0 or i == len(step.sentences)-1:
                 errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val)) 
         rule.Reporter.errors += errors 
 
@@ -97,30 +176,33 @@ class DefaultRule23(rule.Rule):
     def check(self, flows):
         errors = []
         for flow in flows:
-            doInd = -1
-            untilInd = -1
+            # doNum:维护的栈的数量，遇到do++,遇到until--
+            doNum = 0
             for stepInd, step in enumerate(flow.steps):
                 # 找do
                 doI = -1
                 untilI = -1
                 for i in range(len(step.sentences)):
                     if step.sentences[i].NatureType == base.NatureType.do_:
-                        doInd = stepInd
                         doI = i
                     if step.sentences[i].NatureType == base.NatureType.until_:
-                        untilInd = stepInd
                         untilI = i
                 # 找到do
                 if doI >= 0:
                     # do占一个step
+                    doNum+=1
                     if len(step.sentences) != 1:
                         errors.append(rule.ErrorInfo(self.description, flow.usecasename, step.val))
+                        continue
+                    
                 if untilI >= 0:
                     # until必须在开头，until后面必须有东西, until前必须已触发do
-                    if untilI != 0 or len(step.sentences) == 1 or doInd < 0:
+                    doNum -= 1
+                    if untilI != 0 or len(step.sentences) == 1 or doNum == 0:
                         errors.append(rule.ErrorInfo(self.description, flow.usecasename, step.val))
-            if doInd >= 0 and untilInd < 0:
-                # 出现do，没有出现until
+                        continue
+            if doNum != 0:
+                # do和until的数量不匹配
                 errors.append(rule.ErrorInfo(self.description, flow.usecasename, step.val))
         rule.Reporter.errors += errors
    
@@ -137,6 +219,7 @@ class DefaultRule24(rule.Rule):
                 # 没有
                 continue
             if len(step.sentences) != 1:
+                # 独占一行
                 errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val)) 
         rule.Reporter.errors += errors 
 

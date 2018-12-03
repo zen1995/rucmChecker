@@ -74,15 +74,15 @@ class SimpleRule():
         elif self.target == base.RuleSubject.object_count:
             target = len(sentence.objects)
         if self.op == base.SimpleOp.in_:
-            return all(x in self.val for x in target)
+            return all(x in value for x in target)
         else:
-            return all(x not in self.val for x in target)
+            return all(x not in value for x in target)
 
     def dynamicFill(self,useCaseName:str):
         #fill list with $actor
         value = []
         if '$actor' in self.val:
-            value = [x for x in self.val and x != '$actor']
+            value = [x for x in self.val if x != '$actor']
             value += rucmElement.RUCMRoot.getUseCase(useCaseName)
         return value
 
@@ -101,6 +101,8 @@ class ComplexRule(Rule):
             for step in steps:
                 sentences = step.sentences
                 for sentence in sentences:
+                    if sentence.nature:
+                        continue
                     checkResult = []
                     result = True
                     for rule in self.simpleRule:
@@ -125,6 +127,8 @@ class ComplexRule(Rule):
             for sentence in sentences:
                 checkResult = []
                 result = True
+                if sentence.nature:
+                    continue
                 for rule in self.simpleRule:
                     checkResult.append(rule.check(sentence))
                     for i in range(len(checkResult)-1):
