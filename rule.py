@@ -91,8 +91,8 @@ class ComplexRule(Rule):
     def __init__(self,ruleDict:dict):
         super(ComplexRule,self).__init__()
         self.applyScope:base.ApplyScope=None
-        self.op:typing.List[base.LogicOp]=None
-        self.simpleRule:typing.List[SimpleRule]=None
+        self.op:typing.List[base.LogicOp]=[None]
+        self.simpleRule:typing.List[SimpleRule]=[None]
 
     def check(self)->None:
         errors = []
