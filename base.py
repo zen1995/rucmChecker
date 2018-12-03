@@ -49,6 +49,16 @@ class WordTense(enum.Enum):
     future="future"
     none="none"
 
+    @staticmethod
+    def factory(string):
+        if string == "past":
+            return WordTense.past
+        if string == "present":
+            return WordTense.present
+        if string == "future":
+            return WordTense.future
+        return WordTense.none
+
 class WordType(enum.Enum):
     noun="noun"
     adj="adj"
