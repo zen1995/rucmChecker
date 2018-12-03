@@ -277,45 +277,47 @@ class RUCMRoot:
     useCases: typing.List[Usecase] = []
     actors: typing.List[str] = []
 
-    def __init__(self, rucm_dict: dict):
+    @staticmethod
+    def init(rucm_dict: dict):
         model_elements = rucm_dict['root']['content']['modelElements']
         index = 0
         for me in model_elements:
             if me['type'] == 'UseCase':
-                self.useCases.append(Usecase(me, index, self))
+                RUCMRoot.useCases.append(Usecase(me, index, None))
                 index = index + 1
             elif me['type'] == 'Actor':
-                self.actors.append(me['content']['name']['content'])
+                RUCMRoot.actors.append(me['content']['name']['content'])
             elif me['type'] == 'Relationship':
                 pass
             else:
                 raise json.JSONDecodeError
 
     @staticmethod
-    def getAllSentences(self)->typing.List[Sentence]:
+    def getAllSentences()->typing.List[Sentence]:
         sentences = []
-        for uc in self.useCases:
+        for uc in RUCMRoot.useCases:
             sentences.extend(uc._get_all_sentences())
         return sentences
 
     @staticmethod
-    def getAllSteps(self)->typing.List[Step]:
+    def getAllSteps()->typing.List[Step]:
         steps = []
-        for uc in self.useCases:
+        for uc in RUCMRoot.useCases:
             steps.extend(uc._get_all_steps())
         return steps
 
     @staticmethod
-    def getActors(self)->typing.List[str]:
-        return self.actors
+    def getActors()->typing.List[str]:
+        return RUCMRoot.actors
 
     #根据usecaseName获得UseCase
     @staticmethod
-    def getUseCase(self, usecaseName:str)->Usecase:
-        for uc in self.useCases:
+    def getUseCase(usecaseName:str)->Usecase:
+        for uc in RUCMRoot.useCases:
             if uc.name == usecaseName:
                 return uc
         return None
+
 
 #########################测试用代码
 load_dict = {}
