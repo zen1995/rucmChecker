@@ -1,6 +1,6 @@
 import argparse
 from rucmLoader import RucmLoader
-from rule import RuleLoader
+from rule import RuleLoader, Reporter
 import json
 
 if __name__== "__main__":
@@ -34,3 +34,5 @@ if __name__== "__main__":
     else:
         print ('No rucm file is given. Check rule file only.')
     
+    for e in Reporter.errors:
+        Reporter.reporter.write(f"Sentence ({e.sentence}) in use case({e.usecasename}) violates the rule({e.rulename}).\n")

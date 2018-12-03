@@ -1,5 +1,5 @@
 import base
-from rucmElement import RUCMRRoot
+from rucmElement import RUCMRoot
 import typing
 
 class RucmLoader(base.Loader):
@@ -9,5 +9,5 @@ class RucmLoader(base.Loader):
 
     def load(self)->bool:
         super(RucmLoader,self).load()
-        return RUCMRRoot(self.dict_content)
+        return RUCMRoot(self.dict_content)
 

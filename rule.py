@@ -2,6 +2,7 @@ import base
 import typing
 import abc
 import rucmElement
+import sys
 
 
 class RuleLoader(base.Loader):
@@ -28,17 +29,22 @@ class RuleLoader(base.Loader):
         pass
 
 
-class ErrorInfo:
-    def __init__(self):
-        self.rulename:str=None
-        self.usecasename:str=None
-        self.sentence:str=None
+class ErrorInfo():
+    def __init__(self, rulename='', usecasename='', sentence=''):
+        self.rulename:str=rulename
+        self.usecasename:str=usecasename
+        self.sentence:str=sentence
 
 class Reporter():
     errors:typing.List[ErrorInfo]=[]
+    reporter = sys.stdout
     @staticmethod
     def generateReport(filePath:str)->None:
-        pass
+        Reporter.reporter = open(filePath, "w", encoding="utf-8")
+    
+    @staticmethod
+    def reportError(rulename='', usecasename='', sentence=''):
+        Reporter.errors.append(ErrorInfo(rulename, usecasename, sentence))
 
 class Rule():
 
@@ -82,3 +88,14 @@ class ComplexRule(Rule):
 class RuleDB():
     defaultRules:typing.List[Rule]=[]
     userRules:typing.List[Rule]=[]
+
+if __name__ == "__main__":
+    print('-' * 20, 'test Report', '-' * 20)
+    Reporter.generateReport('report.txt')
+    Reporter.reportError('rule1', 'usecase1', 'I am kind')
+    Reporter.reportError('rule2', 'usecase2', 'I am dog')
+    Reporter.reportError('rule3', 'usecase3', 'I am cat')
+    Reporter.reportError('rule4', 'usecase4', 'I am monkey')
+    for e in Reporter.errors:
+        Reporter.reporter.write(f"Sentence ({e.sentence}) in use case({e.usecasename}) violates the rule({e.rulename}).\n")
+    print('-' * 60)
