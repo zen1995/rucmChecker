@@ -71,13 +71,12 @@ class Sentence(RUCMBase):
             'objects': self.objects
         })
 
-# 使用loaction描述错误语句的位置
 class  Step(RUCMBase):
     def __init__(self, step: dict, index:int, use_case_name, parent):
         RUCMBase.__init__(self, use_case_name, parent)
-        self.index = index                                         # step的序号
-        self.val: str = step['content']['content']['content']   # step中的字符串，包括关键字如VALIDATES THAT等
-        self.sentences: typing.List[Sentence] = []              # step中出现的句子集，剔除了关键字，并进行了划分
+        self.index = index                                      # step的序号
+        self.val: str = step['content']['content']['content']   # step中的字符串，未划分之前的字符串
+        self.sentences: typing.List[Sentence] = []              # step中出现的句子集，包含了关键字，划分之后的结果
         # 分割step，形成sentences, keywords
         self.__parse_step()
 
