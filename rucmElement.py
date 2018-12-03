@@ -3,7 +3,6 @@ import typing
 import json
 import re
 from enum import Enum, unique
-from nlputils import parse_sentense
 
 @unique
 class NatureType(Enum):
@@ -56,6 +55,7 @@ class Sentence(RUCMBase):
         self.__parse_sentense()
         self.nature: str = nature
     def __parse_sentense(self):
+        pass
         self.subjects, self.verbs, self.objects = list(map(
             lambda x: list(map(
                 lambda y: Word(y, self.useCaseName, self),
@@ -81,6 +81,10 @@ class  Step(RUCMBase):
         # 分割step，形成sentences, keywords
         self.__parse_step()
 
+    #分割step成sentences，按照关键字进行划分，关键字也作为sentence存入其中，按照顺序排列
+    #例如：IF this is if THEN，   划分为['IF', 'this is if', 'THEN']
+    #对于这种情况： IFFFF AAA THEn IFB，该方法会将其划分为['IFFFF AAA THEn IFB']，
+    # 只有确实是关键字以独立的方式出现的时候，才会进行划分。
     def __parse_step(self):
         keywords = []
         # 生成keywords
@@ -149,21 +153,25 @@ class Flow(RUCMBase):
         RUCMBase.__init__(self, use_case_name, parent)
         self.title = None
         self.introduction = None
-        self.type: str=flow['type']        # 是'BasicFlow'、Specific Flow、等
+        self.type = 'BasicFlow'                             # 类型是'BasicFlow'或者'Specific Flow'
+        if flow['type'] != 'BasicFlow':
+            self.type: str = 'Specific Flow'
         if flow['content']['name']['content'] != '':
-            self.name = flow['content']['name']['content']
+            self.name = flow['content']['name']['content']  # 名字如果存在，则取原本的名字，如果不存在，则取type作为名字
         else:
             self.name = self.type
         flow_content = flow['content']
-        #后置条件
+        #后置条件，是一个sentence
         self.postCondition: Sentence = Sentence(flow_content['postCondition']['content']\
                                                 ['sentences'][0]['content']['content']['content']
                                                 , None, self.useCaseName, self)
-
         self.steps: typing.List[Step] = []
+        #建立steps
         for i in range(len(flow_content['steps'])):
             self.steps.append(Step(flow_content['steps'][i], i,self.useCaseName, self))
         self.RfsSentence = None
+        #如果flow是分支流的话，那么它可能有RfsSentence属性，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
+        #在这里作为句子而存在
         if self.type!='BasicFlow':
             self.RfsSentence = Sentence(flow_content['rfsSentence']['content']['content']['content']
                                         , None, self.useCaseName, self)
@@ -173,6 +181,7 @@ class Flow(RUCMBase):
         self.extend = None
         self.generalization = None
 
+    # 获得flow中所有包含MEANWHILE关键字的step的sentences 和 不包含关键字的step的sentences
     def _get_all_sentences(self)->typing.List[Sentence]:
         sentences = []
         for step in self.steps:
@@ -190,13 +199,12 @@ class Usecase(RUCMBase):
         use_case_content = use_case['content']
         self.name: str = use_case_content['name']['content']   #名字
         RUCMBase.__init__(self, self.name, parent)
-        # 设置Use Case的ID
-        self.id = index
+        self.id = index                                        # 设置Use Case的ID
         # 设置Use Case下的流，流的类型只分为Basic Flow和Alternative Flow。以及前置条件、简述
-        self.basicFlow: Flow = None
-        self.specificFlows: typing.List[Flow] = []
-        self.precondition = None
-        self.briefDescription = None
+        self.basicFlow: Flow = None                            #Basic Flow，可能为None
+        self.specificFlows: typing.List[Flow] = []             #分支流，可能为[],实际上这里指的是alternative flow，但是由于历史原因不更改了
+        self.precondition = None                               #前置条件，可能为None
+        self.briefDescription = None                           #简要描述，可能为None
         # specification'有可能不出现
         if 'specification' in use_case_content :
             specification_content = use_case_content['specification']['content']
@@ -223,7 +231,7 @@ class Usecase(RUCMBase):
         #     self.generalization += f.getGeneralization()
         # 这一部分没有完成#########################################
 
-    # 句子中尚未包含precondition和briefDescription
+    # 句子中不包含precondition和briefDescription
     def _get_all_sentences(self)->typing.List[Sentence]:
         sentences = []
         if self.basicFlow != None:
@@ -318,27 +326,11 @@ class RUCMRoot:
                 return uc
         return None
 
-
 #########################测试用代码
 load_dict = {}
-with open("C://Python Projects//test1.rucm",'r') as load_f:
+with open("D://java for RUCM//TEST FOR RUCM CHECKER//test1.rucm",'r') as load_f:
     load_dict = json.load(load_f)
-
-r = RUCMRoot(load_dict)
-s0 = RUCMRoot.getAllSentences(r)
-s1 = RUCMRoot.getAllSteps(r)
-u1 = r.useCases[0]
-print(u1.findRFS('BB', 4))
-
-if __name__ == "__main__":
-    ## test cases
-    test = [
-        'I want a girl.',
-        'A girl shot an elephant.',
-        'You and I are a couple.',
-        'You and I have and see money',
-        'I shot an girl'
-    ]
-
-    for t in test:
-        print(t, Sentence(t, None, None, None))
+RUCMRoot.init(load_dict)
+a = RUCMRoot.useCases
+s0 = RUCMRoot.getAllSentences()
+s1 = RUCMRoot.getAllSteps()
