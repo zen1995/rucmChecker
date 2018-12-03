@@ -39,7 +39,35 @@ def parse_vp(vp):
         if i.label().startswith('VB'):
                 verbs.append(i[0])
     return verbs, objects
+
+def parse_sentense_tense(sentence):
+    parser = CoreNLPParser()
+    parse = next(parser.raw_parse(sentence))
+    vb_tense_map = {
+        'VB': 'present',
+        'VBD': 'past',
+        'VBG': 'none', #'ing',
+        'VBN': 'past',
+        'VBP': 'present',
+        'VBZ': 'present'
+    }
+    quene = [parse[0]]
+    while len(quene) > 0:
+        s = quene.pop(0)
+        for i in s:
+            if not isinstance(i, str):
+                quene.append(i)
+        tag = s.label()
     
+        if tag in ('VBD', 'VBN'):
+            return vb_tense_map[tag]
+        if tag == 'MD':
+            return 'future'
+        if tag.startswith('VB'):
+            return vb_tense_map[tag]
+
+    return 'none'
+
 if __name__ == "__main__":
     test = [
         'I want a girl.',
@@ -51,4 +79,4 @@ if __name__ == "__main__":
     ]
 
     for t in test:
-        print(t, parse_sentense(t))
+        print(t, parse_sentense(t), 'tense: %s' % parse_sentense_tense(t))
