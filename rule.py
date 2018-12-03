@@ -2,9 +2,6 @@ import base
 import typing
 import abc
 import rucmElement
-<<<<<<< HEAD
-=======
->>>>>>> master
 
 class RuleLoader(base.Loader):
 
@@ -61,6 +58,7 @@ class SimpleRule():
         self.description:str=""
 
     def check(self,sentence:rucmElement.Sentence)->bool:
+        value = self.dynamicFill(sentence.useCaseName)
         if self.target == base.RuleSubject.subject_Val:
             target= sentence.subjects
         elif self.target == base.RuleSubject.object_Val:
@@ -78,63 +76,73 @@ class SimpleRule():
         if self.op == base.SimpleOp.in_:
             return all(x in self.val for x in target)
         else:
-            return  all(x not in self.val for x in target)
+            return all(x not in self.val for x in target)
 
+    def dynamicFill(self,useCaseName:str):
+        #fill list with $actor
+        value = []
+        if '$actor' in self.val:
+            value = [x for x in self.val and x != '$actor']
+            value += rucmElement.RUCMRoot.getUseCase(useCaseName)
+        return value
 
 class ComplexRule(Rule):
-
-
-    
 
     def __init__(self,ruleDict:dict):
         super(ComplexRule,self).__init__()
         self.applyScope:base.ApplyScope=None
         self.op:typing.List[base.LogicOp]=None
-        self.sampleRule:typing.List[SimpleRule]=None
+        self.simpleRule:typing.List[SimpleRule]=None
 
-    def check(self)->typing.List[ErrorInfo]:
+    def check(self)->None:
         errors = []
         if self.applyScope == base.ApplyScope.actionStep:
-            steps = rucmElement.RUCMRRoot.getAllSteps()
+            steps = rucmElement.RUCMRoot.getAllSteps()
             for step in steps:
                 sentences = step.sentences
                 for sentence in sentences:
                     checkResult = []
                     result = True
-                    for rule in self.sampleRule:
+                    for rule in self.simpleRule:
                         checkResult.append(rule.check(sentence))
-                    for i in range(len(checkResult)):
+                    for i in range(len(checkResult)-1):
                         op = self.op[i+1]
                         assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
                         if op == base.LogicOp.and_:
                             result = result and checkResult[i]
                         elif op == base.LogicOp.or_:
-                            result = result and checkResult[i]
+                            result = result or checkResult[i]
                     op = self.op[0]
                     assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
                     if op == base.LogicOp.not_:
                         result = not result
                     if not result:
                         errors.append(ErrorInfo(self.description,\
-                        sentence.usecase, sentence))
+                        sentence.useCaseName, sentence))
                     
         elif self.applyScope == base.ApplyScope.allSentence:
+            sentences = rucmElement.RUCMRoot.getAllSentences()
+            for sentence in sentences:
+                checkResult = []
+                result = True
+                for rule in self.simpleRule:
+                    checkResult.append(rule.check(sentence))
+                    for i in range(len(checkResult)-1):
+                        op = self.op[i+1]
+                        assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
+                        if op == base.LogicOp.and_:
+                            result = result and checkResult[i]
+                        elif op == base.LogicOp.or_:
+                            result = result or checkResult[i]
+                    op = self.op[0]
+                    assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
+                    if op == base.LogicOp.not_:
+                        result = not result
+                    if not result:
+                        errors.append(ErrorInfo(self.description,\
+                        sentence.useCaseName, sentence))
+        Reporter.errors += errors
 
-                    
-
-                    
-                    
-
-                    
-                    
-
-
-
-
-
-    def dynamicFill(self,s:str):
-        #fill list with $actor
-        pass
 
 class RuleDB():
     defaultRules:typing.List[Rule]=[]

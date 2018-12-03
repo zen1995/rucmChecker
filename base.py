@@ -26,11 +26,7 @@ class RuleSubject(enum.Enum):
     verb_count='verb_count'
     # 判断句子动词时态
     verb_tense='verb_tense'
-<<<<<<< HEAD
     # 判断所有的词
-=======
-    # 判断所有的词
->>>>>>> master
     strs='strs'
     # 判断主语数量
     subject_count='subject_count'
