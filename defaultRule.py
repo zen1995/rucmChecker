@@ -136,14 +136,41 @@ class DefaultRule24(rule.Rule):
             if i == len(step.sentences):
                 # 没有
                 continue
-            if len(step.sentences) != 0:
+            if len(step.sentences) != 1:
                 errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val)) 
         rule.Reporter.errors += errors 
 
 class DefaultRule25(rule.Rule):
-    pass
-
+    def check(self, steps):
+        errors = []
+        for step in steps:
+            # 得到RESUME的index
+            for i in range(len(step.sentences)):
+                if step.sentences[i].NatureType == base.NatureType.resume_step_:
+                    break
+            if i == len(step.sentences):
+                # 没有
+                continue
+            if len(step.sentences) != 2 or i != 0:
+                # 找到了，判断RESUME在不在开头，后面是不是只跟了一个序号
+                errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                continue
+            try:
+                # 判断第二个数是不是序号
+                num = int(step.sentences[1])
+            except:
+                errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+                continue
+            if not step.parent.type == 'Specific Flow' or \
+            not rucmElement.RUCMRoot.getUseCase(step.usecaseName).findRFS(rucmElement.RUCMRoot.getUseCase(step.usecaseName).basicFlow.title, num):
+                # 对应的flow是不是alternative，对应的step在不在basic flow中
+                errors.append(rule.ErrorInfo(self.description, step.usecasename, step.val))
+        rule.Reporter.errors += errors 
 class DefaultRule26(rule.Rule):
-    pass
-
+    def check(self, flows):
+        errors = []
+        for flow in flows:
+            if not flow.postcondition:
+                errors.append(rule.ErrorInfo(self.description, flow.usecasename, flow.title))
+        rule.Reporter.errors += errors 
 
