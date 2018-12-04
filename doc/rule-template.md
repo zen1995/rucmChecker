@@ -8,7 +8,7 @@
 
   * `id`: 用户规则id，不能重复
 
-  * `applyScope`: 规则作用域，取值包括"action"(flow中的句子)，"allSentence"(RUCM中所有句子)
+  * `applyScope`: 规则作用域，取值包括"actionStep"(flow中的句子)，"allSentence"(RUCM中所有句子)
 
   * `simpleRules`: 一个用户规则可以被看做多个简单规则的聚合，简单规则字典信息包括：
 
