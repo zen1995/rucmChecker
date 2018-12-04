@@ -21,7 +21,7 @@
             {"subject":"object_count","operation":"in","val":[1]}
         ],"operation":"-&"},
         {"id":8,"status":true,"applyScope":"allSentence","simpleRules":[
-            {"subject":"strs","operation":"notIn","val":['?']}
+            {"subject":"strs","operation":"notIn","val":["?"]}
         ],"operation":"-"},
         {"id":10,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"strs","operation":"notIn","val":["MODAL_VERB"]}
@@ -54,7 +54,7 @@
         {"id":26,"status":true}
     ],
     "user-def":[
-        {"id":0,"applyScope":"action","simpleRules":[{
+        {"id":0,"applyScope":"actionStep","simpleRules":[{
             "subject":"subject_Val",
             "operation":"in",
             "val":["system"]
