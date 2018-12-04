@@ -3,7 +3,7 @@ import typing
 import json
 import re
 from enum import Enum, unique
-from nlputils import parse_sentense, parse_sentense_tense
+from nlputils import parse_sentense, parse_sentense_tense, parse_word_tense, parse_word_type
 
 
 @unique
@@ -38,7 +38,8 @@ class Word(RUCMBase):
         self.__parse_word()
 
     def __parse_word(self):
-        pass
+        self.type = base.WordTense(parse_word_tense(self.val))
+        self.tense = base.WordType(parse_word_type(self.val))
 
     def __repr__(self):
         return self.val
@@ -68,6 +69,8 @@ class Sentence(RUCMBase):
             parse_sentense(self.val)
         ))
         self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
+        self.words = map(lambda x: Word(
+            x, self.useCaseName, self), self.val.split())
 
     def __str__(self):
         return str({

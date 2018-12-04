@@ -1,4 +1,5 @@
 from nltk.parse.corenlp import CoreNLPParser
+import functools
 
 
 def parse_sentense(sentence):
@@ -40,17 +41,19 @@ def parse_vp(vp):
                 verbs.append(i[0])
     return verbs, objects
 
+vb_tense_map = {
+    'VB': 'present',
+    'VBD': 'past',
+    'VBG': 'none', #'ing',
+    'VBN': 'past',
+    'VBP': 'present',
+    'VBZ': 'present'
+}
+
 def parse_sentense_tense(sentence):
     parser = CoreNLPParser()
     parse = next(parser.raw_parse(sentence))
-    vb_tense_map = {
-        'VB': 'present',
-        'VBD': 'past',
-        'VBG': 'none', #'ing',
-        'VBN': 'past',
-        'VBP': 'present',
-        'VBZ': 'present'
-    }
+
     quene = [parse[0]]
     while len(quene) > 0:
         s = quene.pop(0)
@@ -68,6 +71,34 @@ def parse_sentense_tense(sentence):
 
     return 'none'
 
+def parse_word_tense(word):
+    parser = CoreNLPParser()
+    parse = next(parser.raw_parse(word))
+
+    while not isinstance(parse, str):
+        pre = parse.label()
+        parse = parse[0]
+
+    if pre.startswith('VB') and pre in vb_tense_map:
+        return vb_tense_map[pre]
+
+    return 'none'
+
+def parse_word_type(word):
+    parser = CoreNLPParser()
+    parse = next(parser.raw_parse(word))
+
+    while not isinstance(parse, str):
+        if parse.label().startswith('VB'):
+            return 'verb'
+        if parse.label().startswith('NN'):
+            return 'noun'
+        if parse.label().startswith('JJ'):
+            return 'adj'
+        parse = parse[0]
+
+    return 'none'
+
 if __name__ == "__main__":
     test = [
         'I want a girl.',
@@ -80,3 +111,15 @@ if __name__ == "__main__":
 
     for t in test:
         print(t, parse_sentense(t), 'tense: %s' % parse_sentense_tense(t))
+
+    test_words = functools.reduce(lambda x, y: x + y, map(lambda x: x.split(), [
+        'I want a girl.',
+        'A girl shot an elephant.',
+        'You and I are a couple.',
+        'You and I have and see money',
+        'I shot an girl',
+        'You and I will have a baby!'
+    ]))
+
+    for t in test_words:
+        print(t, f"type: {parse_word_type(t)}", 'tense: %s' % parse_word_tense(t))

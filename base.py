@@ -67,6 +67,7 @@ class WordType(enum.Enum):
     noun="noun"
     adj="adj"
     verb="verb"
+    none="none" # other type
     #add more?
 
 class NatureType(enum.Enum):
