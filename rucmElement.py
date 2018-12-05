@@ -170,7 +170,7 @@ class Flow(RUCMBase):
         RUCMBase.__init__(self, use_case_name, parent)
         self.title = None
         self.introduction = None
-        # 类型是'BasicFlow'或者'Specific Flow'
+        # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型
         self.type = 'BasicFlow'
         if flow['type'] != 'BasicFlow':
             self.type: str = 'Specific Flow'
@@ -190,10 +190,10 @@ class Flow(RUCMBase):
         for i in range(len(flow_content['steps'])):
             self.steps.append(
                 Step(flow_content['steps'][i], i, self.useCaseName, self))
-        self.RfsSentence = None
-        # 如果flow是分支流的话，那么它可能有RfsSentence属性，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
-        # 在这里作为句子而存在
-        if self.type != 'BasicFlow':
+        self.RfsSentence = None                 # RFS句子
+        # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
+        # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
+        if self.type != 'BasicFlow' and 'rfsSentence' in flow_content:
             self.RfsSentence = Sentence(flow_content['rfsSentence']['content']['content']['content'], None, self.useCaseName, self)
         self.id = index
         # 未实现的部分
@@ -218,15 +218,15 @@ class Flow(RUCMBase):
 class Usecase(RUCMBase):
     def __init__(self, use_case: dict, index: int, parent):
         use_case_content = use_case['content']
-        self.name: str = use_case_content['name']['content']  # 名字
+        self.name: str = use_case_content['name']['content']    # 名字
         RUCMBase.__init__(self, self.name, parent)
-        self.id = index                                        # 设置Use Case的ID
+        self.id = index                                         # 设置Use Case的ID
         # 设置Use Case下的流，流的类型只分为Basic Flow和Alternative Flow。以及前置条件、简述
-        self.basicFlow: Flow = None  # Basic Flow，可能为None
+        self.basicFlow: Flow = None                             # Basic Flow，可能为None
         # 分支流，可能为[],实际上这里指的是alternative flow，但是由于历史原因不更改了
-        self.specificFlows: typing.List[Flow] = []
-        self.precondition = None  # 前置条件，可能为None
-        self.briefDescription = None  # 简要描述，可能为None
+        self.specificFlows: typing.List[Flow] = []              # 分支流，可能为[]
+        self.precondition = None                                # 前置条件，可能为None
+        self.briefDescription = None                            # 简要描述，可能为None
         # specification'有可能不出现
         if 'specification' in use_case_content:
             specification_content = use_case_content['specification']['content']
@@ -245,7 +245,7 @@ class Usecase(RUCMBase):
                 self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
                                                  ['content']['content'], None, self.name, self)
 
-        #use case在初始化的时候会将下面这些初始化，之后，由上一级的root将这些提取出的id替换为usecase对应的name
+        # use case在初始化的时候会将下面这些初始化，之后，由上一级的root将这些提取出的id替换为usecase对应的name
         self.include = []
         self.extend = []
         self.generalization = None
@@ -363,6 +363,7 @@ class RUCMRoot:
             sentences.extend(uc._get_all_sentences())
         return sentences
 
+    #返回所有出现的流中的step
     @staticmethod
     def getAllSteps()->typing.List[Step]:
         steps = []
@@ -381,6 +382,7 @@ class RUCMRoot:
             if uc.name == usecaseName:
                 return uc
         return None
+    # 根据模型元素中的id通过在 rucm['reference']中寻找，找到其对应的引用ID，用于判断include等
     @staticmethod
     def __get_reference_id(rucm:dict, model_element_id):
         pattern = '<root>\.modelElements\[\d\]'
@@ -420,11 +422,13 @@ if __name__ == "__main__":
     # ]
     # for t in test:
     #     print(t, Sentence(t, None, None, None))
+    import json
     load_dict = {}
-    with open("C://JAVA for RUCM TEST//INCLUDE EXTEND TEST//test1.rucm",'r') as load_f:
+    #with open('D:\\java for RUCM\\TEST FOR RUCM CHECKER\\test1.rucm', 'rb') as load_f:
+    with open('.//sample.rucm', 'rb') as load_f:
         load_dict = json.load(load_f)
     #print(RUCMRoot.get_reference_id(load_dict, 3))
     RUCMRoot.init(load_dict)
     a = RUCMRoot.useCases
     s0 = RUCMRoot.getAllSentences()
-    # s1 = RUCMRoot.getAllSteps()
+    s1 = RUCMRoot.getAllSteps()
