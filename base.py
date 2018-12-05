@@ -23,14 +23,21 @@ class Loader():
 
 
 class RuleSubject(enum.Enum):
+    # 判断句子主语
     subject_Val='subject_Val'
+    # 判断句子宾语
     object_Val='object_Val'
+    # 判断句子动词数量
     verb_count='verb_count'
+    # 判断句子动词时态
     verb_tense='verb_tense'
-    #str_="str_"
+    # 判断所有的词
     strs='strs'
+    # 判断主语数量
     subject_count='subject_count'
+    # 判断宾语数量
     object_count='object_count'
+    # 判断分词短语的数量
     participlePhrases_count='participlePhrases_count'
 
 class SimpleOp(enum.Enum):
@@ -71,8 +78,5 @@ class WordType(enum.Enum):
     none="none" # other type
     #add more?
 
-class NatureType(enum.Enum):
-    pass
-    #to add
-    #!!
+from rucmElement import NatureType as NatureType
 

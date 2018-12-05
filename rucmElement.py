@@ -3,7 +3,7 @@ import typing
 import json
 import re
 from enum import Enum, unique
-#from nlputils import parse_sentense, parse_sentense_tense, parse_word_tense, parse_word_type
+from nlputils import parse_sentense, parse_sentense_tense, parse_word_tense, parse_word_type
 
 
 @unique
@@ -30,62 +30,62 @@ class RUCMBase:
 
 
 class Word(RUCMBase):
-    pass
-    # def __init__(self, val: str, use_case_name, parent):
-    #     RUCMBase.__init__(self, use_case_name, parent)
-    #     self.val: str = val
-    #     self.type: base.WordType = None
-    #     self.tense: base.WordTense = None
-    #     self.__parse_word()
-    #
-    # def __parse_word(self):
-    #     self.type = base.WordTense(parse_word_tense(self.val))
-    #     self.tense = base.WordType(parse_word_type(self.val))
-    #
-    # def __repr__(self):
-    #     return self.val
-    #
-    # def __str__(self):
-    #     return self.val
+    def __init__(self, val: str, use_case_name, parent):
+        super(Word,self).__init__(use_case_name, parent)
+        self.val: str = val
+        self.type: base.WordType = None
+        self.tense: base.WordTense = None
+        self.__parse_word()
+    
+    def __parse_word(self):
+        self.type = base.WordTense(parse_word_tense(self.val))
+        self.tense = base.WordType(parse_word_type(self.val))
+    
+    def __repr__(self):
+        return self.val
+    
+    def __str__(self):
+        return self.val
 
 
 class Sentence(RUCMBase):
 
     def __init__(self, sentence: str, nature, use_case_name, parent):
-        RUCMBase.__init__(self, use_case_name, parent)
+        super(Sentence,self).__init__(use_case_name, parent)
         self.val = sentence
         self.subjects: typing.List[Word] = []
         self.objects: typing.List[Word] = []
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        #self.__parse_sentense()
+        self.__parse_sentense()
         self.nature: str = nature
-    #
-    # def __parse_sentense(self):
-    #     self.subjects, self.verbs, self.objects = list(map(
-    #         lambda x: list(map(
-    #             lambda y: Word(y, self.useCaseName, self),
-    #             x
-    #         )),
-    #         parse_sentense(self.val)
-    #     ))
-    #     self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
-    #     self.words = map(lambda x: Word(
-    #         x, self.useCaseName, self), self.val.split())
-    #
-    # def __str__(self):
-    #     return str({
-    #         'subjects': self.subjects,
-    #         'verbs': self.verbs,
-    #         'objects': self.objects,
-    #         'tense': self.tense
-    #     })
+    
+    def __parse_sentense(self):
+        assert isinstance(self.val, str)
+        self.subjects, self.verbs, self.objects = list(map(
+            lambda x: list(map(
+                lambda y: Word(y, self.useCaseName, self),
+                x
+            )),
+            parse_sentense(self.val)
+        ))
+        self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
+        self.words = map(lambda x: Word(
+            x, self.useCaseName, self), self.val.split())
+    
+    def __str__(self):
+        return str({
+            'subjects': self.subjects,
+            'verbs': self.verbs,
+            'objects': self.objects,
+            'tense': self.tense
+        })
 
 
 class Step(RUCMBase):
     def __init__(self, step: dict, index: int, use_case_name, parent):
-        RUCMBase.__init__(self, use_case_name, parent)
+        super(Step,self).__init__(use_case_name, parent)
         self.index = index                                      # step的序号
         # step中的字符串，未划分之前的字符串
         self.val: str = step['content']['content']['content']
@@ -124,6 +124,7 @@ class Step(RUCMBase):
             start = split_point[i]
             end = split_point[i + 1]
             sentence = self.val[start: end]
+            assert isinstance(sentence, str)
             a = keywords_dict.keys()
             if start in keywords_dict.keys():
                 self.sentences.append(
@@ -167,7 +168,7 @@ class Step(RUCMBase):
 
 class Flow(RUCMBase):
     def __init__(self, flow: dict, index: int, use_case_name, parent):
-        RUCMBase.__init__(self, use_case_name, parent)
+        super(Flow,self).__init__(use_case_name,parent)
         self.title = None
         self.introduction = None
         # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型
@@ -219,7 +220,7 @@ class Usecase(RUCMBase):
     def __init__(self, use_case: dict, index: int, parent):
         use_case_content = use_case['content']
         self.name: str = use_case_content['name']['content']    # 名字
-        RUCMBase.__init__(self, self.name, parent)
+        super(Usecase,self).__init__(self.name, parent)
         self.id = index                                         # 设置Use Case的ID
         # 设置Use Case下的流，流的类型只分为Basic Flow和Alternative Flow。以及前置条件、简述
         self.basicFlow: Flow = None                             # Basic Flow，可能为None
@@ -240,10 +241,10 @@ class Usecase(RUCMBase):
             # 设置precondition和briefDescription
             if 'preCondition' in specification_content:
                 self.preCondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
-                                             ['content']['content'], None, self.name, self)
+                                             ['content']['content']['content'], None, self.name, self)
             if 'briefDescription' in specification_content:
                 self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
-                                                 ['content']['content'], None, self.name, self)
+                                                 ['content']['content']['content'], None, self.name, self)
 
         # use case在初始化的时候会将下面这些初始化，之后，由上一级的root将这些提取出的id替换为usecase对应的name
         self.include = []
@@ -357,6 +358,11 @@ class RUCMRoot:
             use_case.extend = extended_use_cases
 
     @staticmethod
+    def getAllFlows():
+        flow = []
+        return flow
+
+    @staticmethod
     def getAllSentences()->typing.List[Sentence]:
         sentences = []
         for uc in RUCMRoot.useCases:
@@ -372,7 +378,7 @@ class RUCMRoot:
         return steps
 
     @staticmethod
-    def getActors()->typing.List[str]:
+    def getActors(Usecasename = None)->typing.List[str]:
         return RUCMRoot.actors
 
     # 根据usecaseName获得UseCase
@@ -412,23 +418,13 @@ class RUCMRoot:
 
 
 if __name__ == "__main__":
-    # # test cases
-    # test = [
-    #     'I want a girl.',
-    #     'A girl shot an elephant.',
-    #     'You and I are a couple.',
-    #     'You and I have and see money',
-    #     'I shot an girl'
-    # ]
-    # for t in test:
-    #     print(t, Sentence(t, None, None, None))
-    import json
-    load_dict = {}
-    #with open('D:\\java for RUCM\\TEST FOR RUCM CHECKER\\test1.rucm', 'rb') as load_f:
-    with open('.//sample.rucm', 'rb') as load_f:
-        load_dict = json.load(load_f)
-    #print(RUCMRoot.get_reference_id(load_dict, 3))
-    RUCMRoot.init(load_dict)
-    a = RUCMRoot.useCases
-    s0 = RUCMRoot.getAllSentences()
-    s1 = RUCMRoot.getAllSteps()
+    # test cases
+    test = [
+        'I want a girl.',
+        'A girl shot an elephant.',
+        'You and I are a couple.',
+        'You and I have and see money',
+        'I shot an girl'
+    ]
+    for t in test:
+        print(t, Sentence(t, None, None, None))

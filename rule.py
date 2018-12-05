@@ -50,7 +50,12 @@ class SimpleRule():
             target = len(sentence.subjects)
         elif self.target == base.RuleSubject.object_count:
             target = len(sentence.objects)
+        else:
+            assert False,self.target
+        if not isinstance(target,list):target = [target]
+
         if self.op == base.SimpleOp.in_:
+            print(target,self.op,self.target,self.val,sentence.val,value)
             return all(x in value for x in target)
         else:
             return all(x not in value for x in target)
@@ -60,7 +65,7 @@ class SimpleRule():
         value = []
         if '$actor' in self.val:
             value = [x for x in self.val if x != '$actor']
-            value += rucmElement.RUCMRoot.getUseCase(useCaseName)
+            value += rucmElement.RUCMRoot.getActors(useCaseName)#to do 
         return value
 
 
@@ -69,8 +74,8 @@ class ComplexRule(Rule):
     def __init__(self, ruleDict: dict):
         super(ComplexRule, self).__init__()
         self.applyScope: base.ApplyScope = None
-        self.op: typing.List[base.LogicOp] = [None]
-        self.simpleRule: typing.List[SimpleRule] = [None]
+        self.op: typing.List[base.LogicOp] = []
+        self.simpleRule: typing.List[SimpleRule] = []
 
     def check(self) -> None:
         errors = []
@@ -83,6 +88,7 @@ class ComplexRule(Rule):
                         continue
                     checkResult = []
                     result = True
+                    
                     for rule in self.simpleRule:
                         checkResult.append(rule.check(sentence))
                     for i in range(len(checkResult) - 1):
@@ -125,3 +131,6 @@ class ComplexRule(Rule):
                                                 sentence.useCaseName, sentence))
         Reporter.errors += errors
 
+class RuleDB():
+    defaultRules:typing.List[Rule]=[]
+    userRules:typing.List[Rule]=[]

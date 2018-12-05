@@ -2,6 +2,7 @@ import argparse
 from rucmLoader import RucmLoader
 from reporter import Reporter
 from RuleLoader import RuleLoader
+import rule
 import json
 
 if __name__ == "__main__":
@@ -40,7 +41,18 @@ if __name__ == "__main__":
     else:
         print('No rucm file is given. Check rule file only.')
 
+    print (rule_load)
+
+    print ('---'*65)
     if rucm_loader and rule_load:
         print('check processing')
+        print (rule.RuleDB.userRules)
+        print (rule.RuleDB.defaultRules)
+        for i in rule.RuleDB.userRules:
+            print('---', i.check)
+            i.check()
+        for i in rule.RuleDB.defaultRules:
+            print('---', i.check)
+            i.check()
 
     Reporter.report()

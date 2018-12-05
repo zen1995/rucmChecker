@@ -2,8 +2,7 @@ import base
 import typing
 import abc
 import defaultRule
-from rule import *
-
+from rule import RuleDB, ComplexRule, SimpleRule
 
 class RuleLoader(base.Loader):
 
@@ -21,7 +20,8 @@ class RuleLoader(base.Loader):
             self.parseDefaultRule(self._json['default'])  # 加载默认规则
             if 'user-def' in self._json:  # 加载用户规则
                 for rule in self._json['user-def']:
-                    RuleDB.userRules.append(self.parseComplexRule(rule))
+                    if rule['status']:
+                        RuleDB.userRules.append(self.parseComplexRule(rule))
             return True
         else:
             print('load Fall')
@@ -65,7 +65,7 @@ class RuleLoader(base.Loader):
     def parseDefaultRule(self, default_rules) -> bool:
         for rule in default_rules:
             # 添加默认规则。如果规则id < 16，则它是以复杂规则表示的，否则是其他种类的规则，
-            if rule['id'] <= 16:
+            if rule['id'] <= 16 and rule['status'] == True:
                 RuleDB.defaultRules.append(self.parseComplexRule(rule))
             else:
                 if rule['id'] == 17 and rule['status'] == True:
@@ -88,6 +88,10 @@ class RuleLoader(base.Loader):
                     RuleDB.defaultRules.append(defaultRule.DefaultRule25())
                 elif rule['id'] == 26 and rule['status'] == True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule26())
+                else:
+                    continue
+            RuleDB.defaultRules[-1].id = rule['id']
+            RuleDB.defaultRules[-1].description = "default-"+str(rule['id'])
 
     # 提取复杂规则，返回复杂规则
     def parseComplexRule(self, rule: dict):
@@ -208,9 +212,11 @@ class RuleLoader(base.Loader):
         })
 
 
-class RuleDB():
-    defaultRules: typing.List[Rule] = []
-    userRules: typing.List[Rule] = []
+def getDB():
+    return RuleDB.defaultRules
+#class RuleDB():
+#    defaultRules: typing.List[Rule] = []
+#    userRules: typing.List[Rule] = []
 
 
 # import json
