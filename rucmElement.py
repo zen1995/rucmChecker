@@ -35,7 +35,7 @@ class Word(RUCMBase):
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-        self.__parse_word()
+       # self.__parse_word()
     
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
@@ -58,7 +58,7 @@ class Sentence(RUCMBase):
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        self.__parse_sentense()
+        #self.__parse_sentense()
         self.nature: str = nature
     
     def __parse_sentense(self):
@@ -290,6 +290,15 @@ class Usecase(RUCMBase):
             steps.extend(self.specificFlows[i]._get_all_steps())
         return steps
 
+    def _get_all_flows(self)->typing.List[Flow]:
+        flows = []
+        if self.basicFlow != None:
+            flows.append(self.basicFlow)
+        for flow in self.specificFlows:
+            flows.append(flow)
+        return flows
+
+
     # 寻找名字为flowname的Flow中是否存在第index的step，这个可能用于RFS相关的规则
     def findRFS(self, flow_name: str, index: int)->bool:
         steps = []
@@ -358,11 +367,6 @@ class RUCMRoot:
             use_case.extend = extended_use_cases
 
     @staticmethod
-    def getAllFlows():
-        flow = []
-        return flow
-
-    @staticmethod
     def getAllSentences()->typing.List[Sentence]:
         sentences = []
         for uc in RUCMRoot.useCases:
@@ -388,6 +392,15 @@ class RUCMRoot:
             if uc.name == usecaseName:
                 return uc
         return None
+
+    # 根据usecaseName获得UseCase
+    @staticmethod
+    def getAllFlow()->typing.List[Flow]:
+        flows = []
+        for uc in RUCMRoot.useCases:
+            flows.extend(uc._get_all_flows())
+        return flows
+
     # 根据模型元素中的id通过在 rucm['reference']中寻找，找到其对应的引用ID，用于判断include等
     @staticmethod
     def __get_reference_id(rucm:dict, model_element_id):
@@ -419,12 +432,22 @@ class RUCMRoot:
 
 if __name__ == "__main__":
     # test cases
-    test = [
-        'I want a girl.',
-        'A girl shot an elephant.',
-        'You and I are a couple.',
-        'You and I have and see money',
-        'I shot an girl'
-    ]
-    for t in test:
-        print(t, Sentence(t, None, None, None))
+    # test = [
+    #     'I want a girl.',
+    #     'A girl shot an elephant.',
+    #     'You and I are a couple.',
+    #     'You and I have and see money',
+    #     'I shot an girl'
+    # ]
+    # for t in test:
+    #     print(t, Sentence(t, None, None, None))
+    #########################测试用代码
+    load_dict = {}
+    with open(".//test1.rucm",'r') as load_f:
+        load_dict = json.load(load_f)
+    RUCMRoot.init(load_dict)
+    a = RUCMRoot.useCases
+    s0 = RUCMRoot.getAllSentences()
+    s1 = RUCMRoot.getAllSteps()
+    s3 = RUCMRoot.getAllFlow()
+    s4 = a
