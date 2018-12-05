@@ -10,6 +10,7 @@ class Loader():
 
     def __init__(self,filepath:str):
         self.filepath = filepath
+        self.dict_content = json.load(open(self.filepath, 'r'))
 
     @abstractmethod
     def load(self)->bool:

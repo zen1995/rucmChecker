@@ -3,20 +3,7 @@ import typing
 import abc
 import rucmElement
 import defaultRule
-
-class ErrorInfo:
-    def __init__(self, rulename, usecasename, sentence):
-        self.rulename: str = rulename
-        self.usecasename: str = usecasename
-        self.sentence: str = sentence
-
-
-class Reporter():
-    errors: typing.List[ErrorInfo] = []
-
-    @staticmethod
-    def generateReport(filePath: str) -> None:
-        pass
+from reporter import ErrorInfo, Reporter
 
 
 class Rule():
@@ -30,6 +17,13 @@ class Rule():
     @abc.abstractmethod
     def check(self) -> typing.List[ErrorInfo]:
         pass
+
+    def __repr__(self):
+        return str({
+            'id': self.id,
+            'description': self.description,
+            'status': self.status
+        })
 
 
 class SimpleRule():
@@ -130,5 +124,4 @@ class ComplexRule(Rule):
                         errors.append(ErrorInfo(self.description, \
                                                 sentence.useCaseName, sentence))
         Reporter.errors += errors
-
 

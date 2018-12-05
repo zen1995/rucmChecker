@@ -269,6 +269,9 @@ class Usecase(RUCMBase):
         #     self.generalization += f.getGeneralization()
         # 这一部分没有完成#########################################
 
+    def __repr__(self):
+        return self.name
+
     # 句子中不包含precondition和briefDescription
     def _get_all_sentences(self)->typing.List[Sentence]:
         sentences = []
@@ -389,6 +392,13 @@ class RUCMRoot:
                 if find_id == model_element_id:
                     return ref_id
         return None
+
+    @staticmethod
+    def __repr__():
+        return str({
+            'UserCases': RUCMRoot.useCases,
+            'Actors': RUCMRoot.actors
+        })
 # #########################测试用代码
 # load_dict = {}
 # with open("D://java for RUCM//TEST FOR RUCM CHECKER//test1.rucm",'r') as load_f:
