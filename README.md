@@ -12,3 +12,10 @@ python start_nlp_server.py
 # 测试nlputil是否正常工作
 python nlputils.py
 ```
+
+## ToDoList
+- [ ] 代码开发
+- [ ] Demo结果
+- [x] newest design of model
+- [x] OCl  
+--by shifaqiang
