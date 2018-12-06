@@ -86,6 +86,13 @@ class Sentence(RUCMBase):
 class Step(RUCMBase):
     def __init__(self, step: dict, index: int, use_case_name, parent):
         super(Step, self).__init__(use_case_name, parent)
+        #保持边界条件，当step为空的时候，建立一个空的Step
+        if step:
+            self.val = ''
+            self.sentences = [Sentence('',None,self.useCaseName)]
+            self.index = 0
+        if index < 0:
+            raise Exception('RUCM index < 0')
         self.index = index                                      # step的序号
         # step中的字符串，未划分之前的字符串
         self.val: str = step['content']['content']['content']
@@ -168,7 +175,20 @@ class Step(RUCMBase):
 class Flow(RUCMBase):
     def __init__(self, flow: dict, id: int, use_case_name, parent):
         super(Flow, self).__init__(use_case_name,parent)
-        self.introduction = None
+        #保持边界条件，当step为空的时候，建立一个空的Step
+        if flow:
+            self.type = 'basic'
+            self.title = 'BasicFlow'
+            self.postCondition = Sentence('',None,self.useCaseName)
+            self.introduction = 'introduction'
+            self.steps = []
+            self.include = []
+            self.extend = []
+            self.generalization = []
+            self.RfsSentence = Sentence('', None, self.useCaseName)
+            return
+
+        self.introduction = 'introduction'
         # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型
         self.type = 'BasicFlow'
         if flow['type'] != 'BasicFlow':
@@ -181,7 +201,7 @@ class Flow(RUCMBase):
         self.title = self.name
         flow_content = flow['content']
         # 后置条件，是一个sentence
-        self.postCondition = None
+        self.postCondition = Sentence('', None, self.useCaseName)
         if 'postCondition' in flow_content:
             self.postCondition: Sentence = Sentence(flow_content['postCondition']['content']
                                                 ['sentences'][0]['content']['content']['content'], None, self.useCaseName, self)
@@ -190,7 +210,7 @@ class Flow(RUCMBase):
         for i in range(len(flow_content['steps'])):
             self.steps.append(
                 Step(flow_content['steps'][i], i, self.useCaseName, self))
-        self.RfsSentence = None                 # RFS句子
+        self.RfsSentence = Sentence('', None, self.useCaseName)        # RFS句子
         # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
         # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
         if self.type != 'BasicFlow' and 'rfsSentence' in flow_content:
@@ -218,15 +238,28 @@ class Flow(RUCMBase):
 class Usecase(RUCMBase):
     def __init__(self, use_case: dict, index: int, parent):
         use_case_content = use_case['content']
+        #边界条件处理
+        if use_case:
+            self.name = ''
+            self.precondition = Sentence('',None, self.name)
+            self.briefDescription = Sentence('',None, self.name)
+            self.include = []
+            self.extend = []
+            self.generalization = []
+            self.basicFlow = Flow({}, 0, self.useCaseName, self)
+            self.specificFlows = []
+            self.id = 0
+            return
+
         self.name: str = use_case_content['name']['content']    # 名字
         super(Usecase,self).__init__(self.name, parent)
         self.id = index                                         # 设置Use Case的ID
         # 设置Use Case下的流，流的类型只分为Basic Flow和Alternative Flow。以及前置条件、简述
-        self.basicFlow: Flow = None                             # Basic Flow，可能为None
+        self.basicFlow: Flow = Flow({}, 0, self.useCaseName, self)                             # Basic Flow，可能为None
         # 分支流，可能为[],实际上这里指的是alternative flow，但是由于历史原因不更改了
         self.specificFlows: typing.List[Flow] = []              # 分支流，可能为[]
-        self.precondition = None                                # 前置条件，可能为None
-        self.briefDescription = None                            # 简要描述，可能为None
+        self.precondition = Sentence('',None, self.name)                                # 前置条件，可能为None
+        self.briefDescription = Sentence('',None, self.name)                            # 简要描述，可能为None
         # specification'有可能不出现
         if 'specification' in use_case_content:
             specification_content = use_case_content['specification']['content']
@@ -239,7 +272,7 @@ class Usecase(RUCMBase):
                         self.specificFlows.append(Flow(f, i, self.name, self))
             # 设置precondition和briefDescription
             if 'preCondition' in specification_content:
-                self.preCondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
+                self.precondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
                                              ['content']['content']['content'], None, self.name, self)
             if 'briefDescription' in specification_content:
                 self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
@@ -249,7 +282,7 @@ class Usecase(RUCMBase):
         # root将这些提取出的id替换为usecase对应的name
         self.include = []               # include的usecase的name集合
         self.extend = []
-        self.generalization = None
+        self.generalization = []
         if 'extend' in use_case_content:
             for i, extend in enumerate(use_case_content['extend']):
                 extend_use_case_id = int(re.findall('\d', extend['content']['extendedCase'])[i])
