@@ -21,7 +21,8 @@ class NatureType(Enum):
     extened_by_usecase_ = 'EXTENDED BY USE CASE'
     abort_ = 'ABORT'
     elseif_ = 'ELSEIF'
-    else_="ELSE"
+    else_ = "ELSE"
+
 
 class RUCMBase:
     def __init__(self, use_case_name, parent):
@@ -31,19 +32,19 @@ class RUCMBase:
 
 class Word(RUCMBase):
     def __init__(self, val: str, use_case_name, parent):
-        super(Word,self).__init__(use_case_name, parent)
+        super(Word, self).__init__(use_case_name, parent)
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-        self.__parse_word()
-    
+        #self.__parse_word()
+
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
         self.tense = base.WordType(parse_word_type(self.val))
-    
+
     def __repr__(self):
         return self.val
-    
+
     def __str__(self):
         return self.val
 
@@ -58,9 +59,9 @@ class Sentence(RUCMBase):
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        self.__parse_sentense()
+        #self.__parse_sentense()
         self.nature: str = nature
-    
+
     def __parse_sentense(self):
         assert isinstance(self.val, str)
         self.subjects, self.verbs, self.objects = list(map(
@@ -73,10 +74,10 @@ class Sentence(RUCMBase):
         self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
         self.words = map(lambda x: Word(
             x, self.useCaseName, self), self.val.split())
-    
+
     def __str__(self):
         return str({
-            'str':self.val,
+            'str': self.val,
             'subjects': self.subjects,
             'verbs': self.verbs,
             'objects': self.objects,
@@ -87,7 +88,7 @@ class Sentence(RUCMBase):
 class Step(RUCMBase):
     def __init__(self, step: dict, index: int, use_case_name, parent):
         super(Step, self).__init__(use_case_name, parent)
-        #保持边界条件，当step为空的时候，建立一个空的Step
+        # 保持边界条件，当step为空的时候，建立一个空的Step
         if step == {}:
             self.val = ''
             self.sentences = []
@@ -96,7 +97,7 @@ class Step(RUCMBase):
 
         if index < 0:
             raise Exception('RUCM index < 0')
-        self.index = index                                      # step的序号
+        self.index = index  # step的序号
         # step中的字符串，未划分之前的字符串
         self.val: str = step['content']['content']['content']
         # step中出现的句子集，包含了关键字，划分之后的结果
@@ -142,6 +143,7 @@ class Step(RUCMBase):
             else:
                 self.sentences.append(
                     Sentence(sentence, None, self.useCaseName, self))
+
     # 判断是否存在关键字并返回其头部位置
 
     def __find_key(self, key) -> (bool, int):
@@ -177,18 +179,18 @@ class Step(RUCMBase):
 
 class Flow(RUCMBase):
     def __init__(self, flow: dict, id: int, use_case_name, parent):
-        super(Flow, self).__init__(use_case_name,parent)
-        #保持边界条件，当step为空的时候，建立一个空的Step
+        super(Flow, self).__init__(use_case_name, parent)
+        # 保持边界条件，当step为空的时候，建立一个空的Step
         if flow == {}:
             self.type = 'basic'
             self.title = 'BasicFlow'
-            self.postCondition =  Sentence('',None, self.useCaseName, self)
+            self.postCondition = Sentence('', None, self.useCaseName, self)
             self.introduction = 'introduction'
             self.steps = []
             self.include = []
             self.extend = []
             self.generalization = []
-            self.RfsSentence =  ''
+            self.RfsSentence = ''
             return
 
         self.introduction = 'introduction'
@@ -204,16 +206,17 @@ class Flow(RUCMBase):
         self.title = self.name
         flow_content = flow['content']
         # 后置条件，是一个sentence
-        self.postCondition =  Sentence('',None, self.useCaseName, self)
+        self.postCondition = Sentence('', None, self.useCaseName, self)
         if 'postCondition' in flow_content:
             self.postCondition: Sentence = Sentence(flow_content['postCondition']['content']
-                                                ['sentences'][0]['content']['content']['content'], None, self.useCaseName, self)
+                                                    ['sentences'][0]['content']['content']['content'], None,
+                                                    self.useCaseName, self)
         self.steps: typing.List[Step] = []
         # 建立steps
         for i in range(len(flow_content['steps'])):
             self.steps.append(
                 Step(flow_content['steps'][i], i, self.useCaseName, self))
-        self.RfsSentence = ''       # RFS句子
+        self.RfsSentence = ''  # RFS句子
         # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
         # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
         if self.type != 'BasicFlow' and 'rfsSentence' in flow_content:
@@ -225,7 +228,7 @@ class Flow(RUCMBase):
         self.generalization = []
 
     # 获得flow中所有包含MEANWHILE关键字的step的sentences 和 不包含关键字的step的sentences
-    def _get_all_sentences(self)->typing.List[Sentence]:
+    def _get_all_sentences(self) -> typing.List[Sentence]:
         sentences = []
         for step in self.steps:
             for sentence in step.sentences:
@@ -234,18 +237,18 @@ class Flow(RUCMBase):
         # sentences.append(self.postCondition)
         return sentences
 
-    def _get_all_steps(self)->typing.List[Step]:
+    def _get_all_steps(self) -> typing.List[Step]:
         return self.steps
 
 
 class Usecase(RUCMBase):
     def __init__(self, use_case: dict, index: int, parent):
         use_case_content = use_case['content']
-        #边界条件处理
+        # 边界条件处理
         if use_case == {}:
             self.name = ''
-            self.precondition = Sentence('',None, self.name, self)
-            self.briefDescription = Sentence('',None, self.name, self)
+            self.precondition = Sentence('', None, self.name, self)
+            self.briefDescription = Sentence('', None, self.name, self)
             self.include = []
             self.extend = []
             self.generalization = []
@@ -254,15 +257,15 @@ class Usecase(RUCMBase):
             self.id = 0
             return
 
-        self.name: str = use_case_content['name']['content']    # 名字
-        super(Usecase,self).__init__(self.name, parent)
-        self.id = index                                         # 设置Use Case的ID
+        self.name: str = use_case_content['name']['content']  # 名字
+        super(Usecase, self).__init__(self.name, parent)
+        self.id = index  # 设置Use Case的ID
         # 设置Use Case下的流，流的类型只分为Basic Flow和Alternative Flow。以及前置条件、简述
-        self.basicFlow: Flow = Flow({}, 0, self.useCaseName, self)                             # Basic Flow，可能为None
+        self.basicFlow: Flow = Flow({}, 0, self.useCaseName, self)  # Basic Flow，可能为None
         # 分支流，可能为[],实际上这里指的是alternative flow，但是由于历史原因不更改了
-        self.specificFlows: typing.List[Flow] = []              # 分支流，可能为[]
-        self.precondition =  Sentence('',None, self.name, self)                                # 前置条件，可能为None
-        self.briefDescription =  Sentence('',None, self.name, self)                           # 简要描述，可能为None
+        self.specificFlows: typing.List[Flow] = []  # 分支流，可能为[]
+        self.precondition = Sentence('', None, self.name, self)  # 前置条件，可能为None
+        self.briefDescription = Sentence('', None, self.name, self)  # 简要描述，可能为None
         # specification'有可能不出现
         if 'specification' in use_case_content:
             specification_content = use_case_content['specification']['content']
@@ -283,7 +286,7 @@ class Usecase(RUCMBase):
 
         # use case在初始化的时候会将下面这些初始化，之后，由上一级的
         # root将这些提取出的id替换为usecase对应的name
-        self.include = []               # include的usecase的name集合
+        self.include = []  # include的usecase的name集合
         self.extend = []
         self.generalization = []
         if 'extend' in use_case_content:
@@ -299,7 +302,7 @@ class Usecase(RUCMBase):
         return self.name
 
     # _get_all_sentences获得的句子中不包含precondition和briefDescription
-    def _get_all_sentences(self)->typing.List[Sentence]:
+    def _get_all_sentences(self) -> typing.List[Sentence]:
         sentences = []
         if self.basicFlow != None:
             sentences = self.basicFlow._get_all_sentences()
@@ -307,15 +310,15 @@ class Usecase(RUCMBase):
             sentences.extend(self.specificFlows[i]._get_all_sentences())
         return sentences
 
-    def _get_all_steps(self)->typing.List[Step]:
+    def _get_all_steps(self) -> typing.List[Step]:
         steps = []
         if self.basicFlow != None:
-            steps = self.basicFlow._get_all_steps()
+            steps.append(self.basicFlow._get_all_steps())
         for i in range(len(self.specificFlows)):
             steps.extend(self.specificFlows[i]._get_all_steps())
         return steps
 
-    def _get_all_flows(self)->typing.List[Flow]:
+    def _get_all_flows(self) -> typing.List[Flow]:
         flows = []
         if self.basicFlow != None:
             flows.append(self.basicFlow)
@@ -323,9 +326,8 @@ class Usecase(RUCMBase):
             flows.append(flow)
         return flows
 
-
     # 寻找名字为flowname的Flow中是否存在第index的step，这个可能用于RFS相关的规则
-    def findRFS(self, flow_name: str, index: int)->bool:
+    def findRFS(self, flow_name: str, index: int) -> bool:
         steps = []
         flow: Flow = None
         if self.basicFlow != None:
@@ -344,15 +346,16 @@ class Usecase(RUCMBase):
                 return False
         return False
 
+
 ##########################
-    # def getInclude(self)->typing.List[str]:
-    #     return self.include
-    #
-    # def getExtend(self)->typing.List[str]:
-    #     return self.extend
-    #
-    # def getGeneralization(self)->typing.List[str]:
-    #     return self.generalization
+# def getInclude(self)->typing.List[str]:
+#     return self.include
+#
+# def getExtend(self)->typing.List[str]:
+#     return self.extend
+#
+# def getGeneralization(self)->typing.List[str]:
+#     return self.generalization
 
 
 class RUCMRoot:
@@ -365,7 +368,7 @@ class RUCMRoot:
         model_elements = rucm_dict['root']['content']['modelElements']
         for me in model_elements:
             if me['type'] == 'UseCase':
-                #将index替换为reference中的id,为了之后寻找relationship做基础
+                # 将index替换为reference中的id,为了之后寻找relationship做基础
                 ref_id = RUCMRoot.__get_reference_id(rucm_dict, index)
                 RUCMRoot.useCases.append(Usecase(me, ref_id, None))
             elif me['type'] == 'Actor':
@@ -375,7 +378,7 @@ class RUCMRoot:
             else:
                 pass
             index = index + 1
-        #设置include关系, extend关系
+        # 设置include关系, extend关系
         for use_case in RUCMRoot.useCases:
             included_use_cases = []
             extended_use_cases = []
@@ -387,32 +390,32 @@ class RUCMRoot:
                 for u in RUCMRoot.useCases:
                     if u.id == extende_id:
                         extended_use_cases.append(u.name)
-            #设置use_case的include、extend
+            # 设置use_case的include、extend
             use_case.include = included_use_cases
             use_case.extend = extended_use_cases
 
     @staticmethod
-    def getAllSentences()->typing.List[Sentence]:
+    def getAllSentences() -> typing.List[Sentence]:
         sentences = []
         for uc in RUCMRoot.useCases:
             sentences.extend(uc._get_all_sentences())
         return sentences
 
-    #返回所有出现的流中的step
+    # 返回所有出现的流中的step
     @staticmethod
-    def getAllSteps()->typing.List[Step]:
+    def getAllSteps() -> typing.List[Step]:
         steps = []
         for uc in RUCMRoot.useCases:
             steps.extend(uc._get_all_steps())
         return steps
 
     @staticmethod
-    def getActors(Usecasename = None)->typing.List[str]:
+    def getActors(Usecasename=None) -> typing.List[str]:
         return RUCMRoot.actors
 
     # 根据usecaseName获得UseCase
     @staticmethod
-    def getUseCase(usecaseName: str)->Usecase:
+    def getUseCase(usecaseName: str) -> Usecase:
         for uc in RUCMRoot.useCases:
             if uc.name == usecaseName:
                 return uc
@@ -420,7 +423,7 @@ class RUCMRoot:
 
     # 根据usecaseName获得UseCase
     @staticmethod
-    def getAllFlows()->typing.List[Flow]:
+    def getAllFlows() -> typing.List[Flow]:
         flows = []
         for uc in RUCMRoot.useCases:
             flows.extend(uc._get_all_flows())
@@ -428,9 +431,9 @@ class RUCMRoot:
 
     # 根据模型元素中的id通过在 rucm['reference']中寻找，找到其对应的引用ID，用于判断include等
     @staticmethod
-    def __get_reference_id(rucm:dict, model_element_id):
+    def __get_reference_id(rucm: dict, model_element_id):
         pattern = '<root>\.modelElements\[\d\]'
-        refs : dict = rucm['reference']
+        refs: dict = rucm['reference']
         for ref_id in range(len(refs)):
             ref_str = refs[ref_id]['path']
             if re.fullmatch(pattern, ref_str) != None:
@@ -445,6 +448,8 @@ class RUCMRoot:
             'UserCases': RUCMRoot.useCases,
             'Actors': RUCMRoot.actors
         })
+
+
 # #########################测试用代码
 # load_dict = {}
 # with open("D://java for RUCM//TEST FOR RUCM CHECKER//test1.rucm",'r') as load_f:
@@ -468,7 +473,7 @@ if __name__ == "__main__":
     #     print(t, Sentence(t, None, None, None))
     #########################测试用代码
     load_dict = {}
-    with open(".//test1.rucm",'r') as load_f:
+    with open(".//test1.rucm", 'r') as load_f:
         load_dict = json.load(load_f)
     RUCMRoot.init(load_dict)
     a = RUCMRoot.useCases
