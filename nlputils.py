@@ -30,7 +30,7 @@ def parse_sentense(sentence):
 def parse_np(np):
     ret = []
     for i in np:
-        if i.label() in ['PRP', 'NN']:
+        if i.label() in ['PRP', 'EX', 'DT'] or i.label().startswith('NN'):
             ret.append(i[0])
 
     return ret
