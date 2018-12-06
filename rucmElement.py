@@ -21,7 +21,7 @@ class NatureType(Enum):
     extened_by_usecase_ = 'EXTENDED BY USE CASE'
     abort_ = 'ABORT'
     elseif_ = 'ELSEIF'
-
+    else_="ELSE"
 
 class RUCMBase:
     def __init__(self, use_case_name, parent):
@@ -76,6 +76,7 @@ class Sentence(RUCMBase):
     
     def __str__(self):
         return str({
+            'str':self.val,
             'subjects': self.subjects,
             'verbs': self.verbs,
             'objects': self.objects,
