@@ -85,8 +85,8 @@ class DefaultRule20(rule.Rule):
                         # 向状态转移栈添加一个元素
                         # 状态转移：接受THEN
                         natureI['if'] = i
-                        stackIfNum += 1
-                        stackThenNum += 1
+                        #stackIfNum += 1
+                        #stackThenNum += 1
                         valid_pre.append(['IF'])
                         valid.append(['THEN'])
                     elif step.sentences[i].nature == base.NatureType.else_:
@@ -266,7 +266,7 @@ class DefaultRule26(rule.Rule):
         flows = rucmElement.RUCMRoot.getAllFlows()
         errors = []
         for flow in flows:
-            if not flow.postcondition:
+            if not flow.postCondition:
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, flow.title))
         rule.Reporter.errors += errors 
 
