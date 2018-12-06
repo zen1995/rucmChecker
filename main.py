@@ -4,16 +4,19 @@ from reporter import Reporter
 from RuleLoader import RuleLoader
 import rule
 import json
+import nlputils
 
 if __name__ == "__main__":
     '''
-    $ python3 main.py --rule=rule-template.txt test1.rucm
+    $ python3 main.py --rule=rule-template.txt --url=localhost:9000 test1.rucm
     parse args->load rule->load rucm -> foreach rule.check ->generate report
     '''
     # construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser(description='RUCM文件检查工具')
     ap.add_argument("-r", "--rule", dest='rule_path',
                     required=False, help="path to rule.json")
+    ap.add_argument("-u", "--url", dest='nlp_server', default='http://10.133.6.180:9000/',
+                    required=False, help="url to nlp server")
     ap.add_argument('rucm_path', nargs='?', default=None,
                     type=str, help='path to whatYouNeedToCheck.rucm')
 
@@ -21,6 +24,10 @@ if __name__ == "__main__":
 
     print(args.rule_path)
     print(args.rucm_path)
+    print(args.nlp_server)
+
+    if args.nlp_server:
+        nlputils.url = args.nlp_server
 
     # load rule
     if args.rule_path:
@@ -41,13 +48,13 @@ if __name__ == "__main__":
     else:
         print('No rucm file is given. Check rule file only.')
 
-    print (rule_load)
+    print(rule_load)
 
-    print ('---'*65)
+    print('---'*65)
     if rucm_loader and rule_load:
         print('check processing')
-        print (rule.RuleDB.userRules)
-        print (rule.RuleDB.defaultRules)
+        print(rule.RuleDB.userRules)
+        print(rule.RuleDB.defaultRules)
         for i in rule.RuleDB.userRules:
             print('---', i.check)
             i.check()

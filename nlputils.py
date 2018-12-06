@@ -1,13 +1,16 @@
 from nltk.parse.corenlp import CoreNLPParser
 import functools
 
+# https://stanfordnlp.github.io/CoreNLP/corenlp-server.html
+url = 'http://10.133.6.180:9000/'
+
 
 def parse_sentense(sentence):
     sentence = sentence.strip()
     if not sentence:
         return [], [], []
-        
-    parser = CoreNLPParser()
+
+    parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(sentence))
     S = parse[0]
     subjects = []
@@ -23,6 +26,7 @@ def parse_sentense(sentence):
 
     return subjects, verbs, objects
 
+
 def parse_np(np):
     ret = []
     for i in np:
@@ -30,6 +34,7 @@ def parse_np(np):
             ret.append(i[0])
 
     return ret
+
 
 def parse_vp(vp):
     verbs = []
@@ -42,24 +47,26 @@ def parse_vp(vp):
         if i.label() == 'NP':
             objects += parse_np(i)
         if i.label().startswith('VB'):
-                verbs.append(i[0])
+            verbs.append(i[0])
     return verbs, objects
+
 
 vb_tense_map = {
     'VB': 'present',
     'VBD': 'past',
-    'VBG': 'none', #'ing',
+    'VBG': 'none',  # 'ing',
     'VBN': 'past',
     'VBP': 'present',
     'VBZ': 'present'
 }
+
 
 def parse_sentense_tense(sentence):
     sentence = sentence.strip()
     if not sentence:
         return 'none'
 
-    parser = CoreNLPParser()
+    parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(sentence))
 
     quene = [parse[0]]
@@ -69,7 +76,7 @@ def parse_sentense_tense(sentence):
             if not isinstance(i, str):
                 quene.append(i)
         tag = s.label()
-    
+
         if tag in ('VBD', 'VBN'):
             return vb_tense_map[tag]
         if tag == 'MD':
@@ -79,8 +86,9 @@ def parse_sentense_tense(sentence):
 
     return 'none'
 
+
 def parse_word_tense(word):
-    parser = CoreNLPParser()
+    parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(word))
 
     while not isinstance(parse, str):
@@ -92,8 +100,9 @@ def parse_word_tense(word):
 
     return 'none'
 
+
 def parse_word_type(word):
-    parser = CoreNLPParser()
+    parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(word))
 
     while not isinstance(parse, str):
@@ -106,6 +115,7 @@ def parse_word_type(word):
         parse = parse[0]
 
     return 'none'
+
 
 if __name__ == "__main__":
     test = [
@@ -130,4 +140,5 @@ if __name__ == "__main__":
     ]))
 
     for t in test_words:
-        print(t, f"type: {parse_word_type(t)}", 'tense: %s' % parse_word_tense(t))
+        print(t, f"type: {parse_word_type(t)}",
+              'tense: %s' % parse_word_tense(t))
