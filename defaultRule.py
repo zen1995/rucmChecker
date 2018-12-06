@@ -31,13 +31,13 @@ class DefaultRule19(rule.Rule):
         flows = rucmElement.RUCMRoot.getAllFlows()
         errors = []
         for flow in flows:
-            rfs = flow.RfsSemtence
+            rfs = flow.RfsSentence
             res = re.search('(RFS )(\D+ )(\d.*)', rfs)
             if not res:
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                 continue
             flowName = res.group(2)
-            _str = res.group(3).remove(' ')
+            _str = res.group(3).replace(' ', '')
             stepNums = _str.split(',')
             nums = []
             for stepNum in stepNums:
@@ -46,10 +46,13 @@ class DefaultRule19(rule.Rule):
                     # 规则格式不正确
                     errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                     continue
+                startNum = resNum.group(1)
+                endNum = resNum.group(2)
                 if endNum:
                     # 有横杠
-                    startNum = int(resNum.group(1))
-                    endNum = int(resNum.group(2)[1:])
+                    endNum = endNum[1:]
+                    startNum = int(startNum)
+                    endNum = int(endNum)
                     if startNum < endNum:
                         errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                         continue
@@ -58,7 +61,7 @@ class DefaultRule19(rule.Rule):
                     # 没横杠
                     nums.append(int(resNum.group(1)))
             for num in nums:
-                if not flow.parent.findRfs(flowName, num):
+                if not flow.parent.findRFS(flowName, num):
                     errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))                
         rule.Reporter.errors += errors
 

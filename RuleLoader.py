@@ -167,7 +167,7 @@ class RuleLoader(base.Loader):
             simple_rule.op = base.SimpleOp.notin_
         else:
             print('Simple Rule operation Error')
-        simple_rule.description = "default-"+str(rule['id'])
+        simple_rule.description = f"{rule['subject']}-{rule['operation']}-{'-'.join(map(str, rule['val']))}"
         # 设置取值范围
         simple_rule.val = rule['val']
         return simple_rule

@@ -3,6 +3,10 @@ import functools
 
 
 def parse_sentense(sentence):
+    sentence = sentence.strip()
+    if not sentence:
+        return [], [], []
+        
     parser = CoreNLPParser()
     parse = next(parser.raw_parse(sentence))
     S = parse[0]
@@ -51,6 +55,10 @@ vb_tense_map = {
 }
 
 def parse_sentense_tense(sentence):
+    sentence = sentence.strip()
+    if not sentence:
+        return 'none'
+
     parser = CoreNLPParser()
     parse = next(parser.raw_parse(sentence))
 

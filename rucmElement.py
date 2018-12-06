@@ -35,7 +35,7 @@ class Word(RUCMBase):
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-        #self.__parse_word()
+        self.__parse_word()
     
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
@@ -58,7 +58,7 @@ class Sentence(RUCMBase):
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        #self.__parse_sentense()
+        self.__parse_sentense()
         self.nature: str = nature
     
     def __parse_sentense(self):
@@ -187,7 +187,7 @@ class Flow(RUCMBase):
             self.include = []
             self.extend = []
             self.generalization = []
-            self.RfsSentence =  Sentence('',None, self.useCaseName, self)
+            self.RfsSentence =  ''
             return
 
         self.introduction = 'introduction'
@@ -212,11 +212,11 @@ class Flow(RUCMBase):
         for i in range(len(flow_content['steps'])):
             self.steps.append(
                 Step(flow_content['steps'][i], i, self.useCaseName, self))
-        self.RfsSentence =  Sentence('',None, self.useCaseName, self)        # RFS句子
+        self.RfsSentence = ''       # RFS句子
         # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
         # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
         if self.type != 'BasicFlow' and 'rfsSentence' in flow_content:
-            self.RfsSentence = Sentence(flow_content['rfsSentence']['content']['content']['content'], None, self.useCaseName, self)
+            self.RfsSentence = flow_content['rfsSentence']['content']['content']['content']
         self.id = id
         self.include = []
         self.extend = []
@@ -419,7 +419,7 @@ class RUCMRoot:
 
     # 根据usecaseName获得UseCase
     @staticmethod
-    def getAllFlow()->typing.List[Flow]:
+    def getAllFlows()->typing.List[Flow]:
         flows = []
         for uc in RUCMRoot.useCases:
             flows.extend(uc._get_all_flows())
@@ -473,5 +473,5 @@ if __name__ == "__main__":
     a = RUCMRoot.useCases
     s0 = RUCMRoot.getAllSentences()
     s1 = RUCMRoot.getAllSteps()
-    s3 = RUCMRoot.getAllFlow()
+    s3 = RUCMRoot.getAllFlows()
     s4 = a
