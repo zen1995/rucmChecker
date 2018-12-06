@@ -15,7 +15,6 @@ class RuleLoader(base.Loader):
     # 加载字典元素到RuleDB中去
     def load(self) -> bool:
         # load to ruleDB
-
         if self.checkFileFormat():  # 检查格式正确性
             self.parseDefaultRule(self._json['default'])  # 加载默认规则
             if 'user-def' in self._json:  # 加载用户规则
@@ -29,24 +28,31 @@ class RuleLoader(base.Loader):
 
     def checkFileFormat(self) -> bool:
         # 检查默认规则格式
+        checked_id = []
         if 'default' in self._json:
             default_rules = self._json['default']
             for rule in default_rules:
-                # id存在性检查
-                if 'id' not in rule:
-                    print('Default Rule id lost')
+                # 所有默认规则 id存在性检查，以及是否重复
+                if 'id' not in rule and 'id' not in checked_id:
+                    print('Default Rule id Error')
                     return False
-                # id 范围检查
+                else:
+                    checked_id.append(rule['id'])
+                # 所有默认规则 id 范围检查
                 if rule['id'] not in range(27):
-                    print('Default Rule id lost')
+                    print('Default Rule id out of range')
                     return False
                 # 具体检查每一条默认规则
                 if rule['id'] <= 16:
                     if not self.__checkComplexRule(rule):
                         return False
+                # 对于后面16条，只对statues进行检查
                 elif rule['id'] > 16:
                     if not self.__checkAttribute(rule, 'status', [True, False]):
+                        print('Default Rule(>16) status attribute wrong')
                         return False
+        else:
+            return False
         # 检查用户规则格式
         checked_id = []
         if 'user-def' in self._json:
@@ -55,43 +61,49 @@ class RuleLoader(base.Loader):
                 if not self.__checkComplexRule(rule):
                     return False
                 # 检查id是否重复
-                a = rule['id']
                 if rule['id'] in checked_id:
+                    print('Duplicate User Rule id')
                     return False
                 checked_id.append(rule['id'])
+        else:
+            pass
         return True
 
     # 提取默认规则到规则库，返回处理结果
     def parseDefaultRule(self, default_rules) -> bool:
         for rule in default_rules:
             # 添加默认规则。如果规则id < 16，则它是以复杂规则表示的，否则是其他种类的规则，
-            if rule['id'] <= 16 and rule['status'] == True:
+            if rule['id'] <= 16 and rule['status'] is True:
                 RuleDB.defaultRules.append(self.parseComplexRule(rule))
             else:
-                if rule['id'] == 17 and rule['status'] == True:
+                if rule['id'] == 17 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule17())
-                elif rule['id'] == 18 and rule['status'] == True:
+                elif rule['id'] == 18 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule18())
-                elif rule['id'] == 19 and rule['status'] == True:
+                elif rule['id'] == 19 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule19())
-                elif rule['id'] == 20 and rule['status'] == True:
+                elif rule['id'] == 20 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule20())
-                elif rule['id'] == 21 and rule['status'] == True:
+                elif rule['id'] == 21 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule21())
-                elif rule['id'] == 22 and rule['status'] == True:
+                elif rule['id'] == 22 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule22())
-                elif rule['id'] == 23 and rule['status'] == True:
+                elif rule['id'] == 23 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule23())
-                elif rule['id'] == 24 and rule['status'] == True:
+                elif rule['id'] == 24 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule24())
-                elif rule['id'] == 25 and rule['status'] == True:
+                elif rule['id'] == 25 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule25())
-                elif rule['id'] == 26 and rule['status'] == True:
+                elif rule['id'] == 26 and rule['status'] is True:
                     RuleDB.defaultRules.append(defaultRule.DefaultRule26())
                 else:
                     continue
+                # 设置rtype
+            # 对所有的规则设置一些其他必要的属性
             RuleDB.defaultRules[-1].id = rule['id']
+            RuleDB.defaultRules[-1].status = rule['id']
             RuleDB.defaultRules[-1].description = "default-"+str(rule['id'])
+            RuleDB.defaultRules[-1].rtype = 'user'
 
     # 提取复杂规则，返回复杂规则
     def parseComplexRule(self, rule: dict):
@@ -103,6 +115,8 @@ class RuleLoader(base.Loader):
             complex_rule.applyScope = base.ApplyScope.actionStep
         elif rule['applyScope'] == 'allSentence':
             complex_rule.applyScope = base.ApplyScope.allSentence
+        else:
+            print('ComplexRule ApplyScope Wrong')
         # 添加simple_rule
         for simple_rule in rule['simpleRules']:
             complex_rule.simpleRule.append(self.parseSimpleRule(simple_rule))
@@ -117,6 +131,8 @@ class RuleLoader(base.Loader):
                 op = base.LogicOp.and_
             elif op == '|':
                 op = base.LogicOp.or_
+            else:
+                print('ComplexRule operation Wrong')
             complex_rule.op.append(op)
         return complex_rule
 
@@ -142,13 +158,16 @@ class RuleLoader(base.Loader):
             simple_rule.target = base.RuleSubject.object_count
         elif rule['subject'] == 'participlePhrases_count':
             simple_rule.target = base.RuleSubject.participlePhrases_count
-
+        else:
+            print('Simple Rule subject Error')
         # 设置operation
         if rule['operation'] == 'in':
             simple_rule.op = base.SimpleOp.in_
         elif rule['operation'] == 'notIn':
             simple_rule.op = base.SimpleOp.notin_
-        simple_rule.description = None
+        else:
+            print('Simple Rule operation Error')
+        simple_rule.description = "default-"+str(rule['id'])
         # 设置取值范围
         simple_rule.val = rule['val']
         return simple_rule
@@ -156,46 +175,70 @@ class RuleLoader(base.Loader):
     # 检查复杂规则正确性
     def __checkComplexRule(self, rule: dict) -> bool:
         # id存在
-        if(not self.__checkAttribute(rule, 'id', [])):
+        if not self.__checkAttribute(rule, 'id', []):
             print('ComplexRule id Wrong')
             return False
         # status存在，且status在[True, False]内
-        if(not self.__checkAttribute(rule, 'status', [True, False])):
+        if not self.__checkAttribute(rule, 'status', [True, False]):
             print('ComplexRule id %d: status Wrong' % rule['id'])
             return False
         # applyScope存在，且applyScope在ApplyScope规定的取值内
-        if (not self.__checkAttribute(rule, 'applyScope', base.ApplyScope.__members__.keys())):
+        if not self.__checkAttribute(rule, 'applyScope', base.ApplyScope.__members__.keys()):
             print('ComplexRule id %d: applyScope Wrong' % rule['id'])
             return False
         # operation存在，且operation为['|', '-', '&', '!']四种之一
-        if ('operation' not in rule):
-            print('ComplexRule id %d: don not habe operation' % rule['id'])
+        if 'operation' not in rule:
+            print('ComplexRule id %d: don not have operation attribute' % rule['id'])
             return False
         else:
-            for op in rule['operation']:
+            # 检查第一个字符是否在值域中
+            op_start = rule['operation'][0]
+            if op_start not in ['-', '!']:
+                print('ComplexRule id %d: The first operation should be - or !' % rule['id'])
+                return False
+            # 检查后续字符是否在值域中
+            for op in rule['operation'][1:]:
                 if op not in ['|', '-', '&', '!']:
-                    print('ComplexRule id %d: operation Wrong' % rule['id'])
+                    print('ComplexRule id %d: operation %s not valid' % (rule['id'], op))
                     return False
+            # 检查simpleRules是否满足规则
+            if 'simpleRules' not in rule:
+                print('ComplexRule id %d: missing simpleRules attribute' % rule['id'])
+                return False
+            # 检查后续字符的数量是否与simple rule数量匹配
+            if len(rule['operation']) != len(rule['simpleRules']):
+                print('ComplexRule id %d: Number of sentence does not match Number of operation' % rule['id'])
+                return False
 
         # 检查每条simpleRule是否符合规范
         for i, simple_rule in enumerate(rule['simpleRules']):
-            if(not self.__checkSimpleRule(simple_rule)):
-                print('ComplexRule id %d SimpleRule id %d: operation Wrong' %
+            if not self.__checkSimpleRule(simple_rule):
+                print('ComplexRule id %d SimpleRule id %d Error' %
                       (rule['id'], i))
                 return False
         return True
 
     def __checkSimpleRule(self, rule: dict) -> bool:
+        #判断val是否存在
+        if 'val' not in rule:
+            print('SimpleRule missing val attribute')
+            return False
+        else:
+            # 判断val是否为空
+            if len(rule['val']) == 0:
+                print('SimpleRule val attribute should have at least one value')
+                return False
         # subject存在，且subject在RuleSubject规定的取值内
-        if(not self.__checkAttribute(rule, 'subject', base.RuleSubject.__members__.keys())):
+        if not self.__checkAttribute(rule, 'subject', base.RuleSubject.__members__.keys()):
             print('SimpleRule subject Wrong')
             return False
         # operation存在，operation取值范围为 ['in', 'notIn']
-        if (not self.__checkAttribute(rule, 'operation', ['in', 'notIn'])):
+        if not self.__checkAttribute(rule, 'operation', ['in', 'notIn']):
             print('SimpleRule operation Wrong')
             return False
         return True
 
+    # 检查属性是否存在，是否在scope中
     def __checkAttribute(self, rule, attribute: str, scope) -> bool:
         if attribute not in rule:
             return False

@@ -35,7 +35,7 @@ class Word(RUCMBase):
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-       # self.__parse_word()
+        self.__parse_word()
     
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
@@ -51,14 +51,14 @@ class Word(RUCMBase):
 class Sentence(RUCMBase):
 
     def __init__(self, sentence: str, nature, use_case_name, parent):
-        super(Sentence,self).__init__(use_case_name, parent)
+        super(Sentence, self).__init__(use_case_name, parent)
         self.val = sentence
         self.subjects: typing.List[Word] = []
         self.objects: typing.List[Word] = []
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        #self.__parse_sentense()
+        self.__parse_sentense()
         self.nature: str = nature
     
     def __parse_sentense(self):
@@ -85,7 +85,7 @@ class Sentence(RUCMBase):
 
 class Step(RUCMBase):
     def __init__(self, step: dict, index: int, use_case_name, parent):
-        super(Step,self).__init__(use_case_name, parent)
+        super(Step, self).__init__(use_case_name, parent)
         self.index = index                                      # step的序号
         # step中的字符串，未划分之前的字符串
         self.val: str = step['content']['content']['content']
@@ -132,7 +132,6 @@ class Step(RUCMBase):
             else:
                 self.sentences.append(
                     Sentence(sentence, None, self.useCaseName, self))
-        a = 1
     # 判断是否存在关键字并返回其头部位置
 
     def __find_key(self, key) -> (bool, int):
@@ -167,9 +166,8 @@ class Step(RUCMBase):
 
 
 class Flow(RUCMBase):
-    def __init__(self, flow: dict, index: int, use_case_name, parent):
-        super(Flow,self).__init__(use_case_name,parent)
-        self.title = None
+    def __init__(self, flow: dict, id: int, use_case_name, parent):
+        super(Flow, self).__init__(use_case_name,parent)
         self.introduction = None
         # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型
         self.type = 'BasicFlow'
@@ -180,6 +178,7 @@ class Flow(RUCMBase):
             self.name = flow['content']['name']['content']
         else:
             self.name = self.type
+        self.title = self.name
         flow_content = flow['content']
         # 后置条件，是一个sentence
         self.postCondition = None
@@ -196,10 +195,10 @@ class Flow(RUCMBase):
         # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
         if self.type != 'BasicFlow' and 'rfsSentence' in flow_content:
             self.RfsSentence = Sentence(flow_content['rfsSentence']['content']['content']['content'], None, self.useCaseName, self)
-        self.id = index
-        # 未实现的部分
+        self.id = id
         self.include = []
         self.extend = []
+        # 未实现的部分
         self.generalization = []
 
     # 获得flow中所有包含MEANWHILE关键字的step的sentences 和 不包含关键字的step的sentences
@@ -246,8 +245,9 @@ class Usecase(RUCMBase):
                 self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
                                                  ['content']['content']['content'], None, self.name, self)
 
-        # use case在初始化的时候会将下面这些初始化，之后，由上一级的root将这些提取出的id替换为usecase对应的name
-        self.include = []
+        # use case在初始化的时候会将下面这些初始化，之后，由上一级的
+        # root将这些提取出的id替换为usecase对应的name
+        self.include = []               # include的usecase的name集合
         self.extend = []
         self.generalization = None
         if 'extend' in use_case_content:
@@ -258,22 +258,11 @@ class Usecase(RUCMBase):
             for i, include in enumerate(use_case_content['include']):
                 include_use_case_id = int(re.findall('\d', include['content']['addition'])[i])
                 self.include.append(include_use_case_id)
-        a = 1
-        # 这一部分没有完成#########################################
-        # self.include:typing.List[str] = self.basicFlow.getInclude()
-        # self.extend:typing.List[str] = self.basicFlow.getExtend()
-        # self.generalization:typing.List[str] = self.basicFlow.getGeneralization()
-        # 这一部分没有完成#########################################
-        # for f in self.specificFlows:
-        #     self.include += f.getInclude()
-        #     self.extend += f.getExtend()
-        #     self.generalization += f.getGeneralization()
-        # 这一部分没有完成#########################################
 
     def __repr__(self):
         return self.name
 
-    # 句子中不包含precondition和briefDescription
+    # _get_all_sentences获得的句子中不包含precondition和briefDescription
     def _get_all_sentences(self)->typing.List[Sentence]:
         sentences = []
         if self.basicFlow != None:
