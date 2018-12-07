@@ -8,18 +8,19 @@ class DefaultRule17(rule.Rule):
         errors = []
         for step in steps:
             # 得到INCLUDE USE CASE的index
-            i = -1
-            for i in range(len(step.sentences)):
+            for i in range(len(step.sentences)+1):
+                if i == len(step.sentences):
+                    break
                 if step.sentences[i].nature == base.NatureType.include_use_case_:
-                    return
-            if i < 0:
+                    break
+            if i == len(step.sentences):
                 continue
             # 必须开头，后有且仅有一个USE CASE
             if i != 0 or len(step.sentences) != 2:
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                 continue
-            if step.sentences[1] not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).include:
-                    errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
+            if step.sentences[1].val not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).include:
+                errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
 class DefaultRule18(rule.Rule):
@@ -29,16 +30,18 @@ class DefaultRule18(rule.Rule):
         for step in steps:
             # 得到EXTENDED USE CASE的index
             i = -1
-            for i in range(len(step.sentences)):
+            for i in range(len(step.sentences)+1):
+                if i == len(step.sentences):
+                    break
                 if step.sentences[i].nature == base.NatureType.extened_by_usecase_:
-                    return
-            if i < 0:
+                    break
+            if i == len(step.sentences):
                 continue
             # 必须开头，后有且仅有一个USE CASE
             if i != 0 or len(step.sentences) != 2:
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                 continue
-            if step.sentences[1] not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).extend:
+            if step.sentences[1].val not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).extend:
                     errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors
 
@@ -59,7 +62,7 @@ class DefaultRule19(rule.Rule):
             stepNums = _str.split(',')
             nums = []
             for stepNum in stepNums:
-                resNum = re.fullmatch(r'(\d+)(-\d+)?', stepNum)
+                resNum = re.fullmatch(r'(\d+)(-\d+)?( )?', stepNum)
                 if not resNum:
                     # 规则格式不正确
                     errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
@@ -71,7 +74,7 @@ class DefaultRule19(rule.Rule):
                     endNum = endNum[1:]
                     startNum = int(startNum)
                     endNum = int(endNum)
-                    if startNum < endNum:
+                    if startNum >= endNum:
                         errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                         continue
                     nums += range(startNum, endNum+1)
@@ -98,9 +101,6 @@ class DefaultRule20(rule.Rule):
                 natureI['elseif'] = -1
                 natureI['then'] = -1
                 natureI['endif'] = -1
-                for st in step.sentences:
-                    print(st.val)
-                    print(st.nature)
                 for i in range(len(step.sentences)):
                     if step.sentences[i].nature == base.NatureType.if_:
                         # 向状态转移栈添加一个元素
@@ -192,13 +192,15 @@ class DefaultRule21(rule.Rule):
         for step in steps:
             # 得到MEANWHILE的index
             i = -1
-            for i in range(len(step.sentences)):
+            for i in range(len(step.sentences)+1):
+                if i == len(step.sentences):
+                    break
                 if step.sentences[i].nature == base.NatureType.mean_while_:
                     return
             if i < 0:
                 continue
             # 前后必须有东西
-            if i == 0 or i == len(step.sentences)-1:
+            if i == 0 or i == len(step.sentences):
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
@@ -208,7 +210,9 @@ class DefaultRule22(rule.Rule):
         errors = []
         for step in steps:
             # 得到VALIDATES THAT的index
-            for i in range(len(step.sentences)):
+            for i in range(len(step.sentences)+1):
+                if i == len(step.sentences):
+                    break
                 if step.sentences[i].nature == base.NatureType.validates_that_:
                     break
             if i == len(step.sentences):
@@ -261,8 +265,10 @@ class DefaultRule24(rule.Rule):
         errors = []
         for step in steps:
             # 得到ABORT的index
-            for i in range(len(step.sentences)):
-                if step.sentences[i].nature == base.NatureType.validates_that_:
+            for i in range(len(step.sentences)+1):
+                if i == len(step.sentences):
+                    break
+                if step.sentences[i].nature == base.NatureType.abort_:
                     break
             if i == len(step.sentences):
                 # 没有
@@ -278,7 +284,9 @@ class DefaultRule25(rule.Rule):
         errors = []
         for step in steps:
             # 得到RESUME的index
-            for i in range(len(step.sentences)):
+            for i in range(len(step.sentences)+1):
+                if i == len(step.sentences):
+                    break
                 if step.sentences[i].nature == base.NatureType.resume_step_:
                     break
             if i == len(step.sentences):

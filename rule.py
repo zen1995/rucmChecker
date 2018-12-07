@@ -83,6 +83,12 @@ class ComplexRule(Rule):
         if self.applyScope == base.ApplyScope.actionStep:
             steps = rucmElement.RUCMRoot.getAllSteps()
             for step in steps:
+                nature = 0
+                for sentence in step.sentences:
+                    if sentence.nature:
+                        nature = 1
+                if nature:
+                    continue
                 sentences = step.sentences
                 for sentence in sentences:
                     if sentence.nature:

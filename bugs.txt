@@ -1,2 +1,5 @@
 1. 不指定文件直接崩溃
 2. Global Alternative Flow 的Rfs对应为Condition，没有相应字段，暂时放入Sentence
+3. 句子中的主语，宾语等需要的是短语，现在分词出来的是词语
+4. Sentence中前后有多余的空格
+
