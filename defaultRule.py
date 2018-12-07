@@ -32,7 +32,7 @@ class DefaultRule19(rule.Rule):
         errors = []
         for flow in flows:
             rfs = flow.RfsSentence
-            res = re.search('(RFS )(\D+ )(\d.*)', rfs)
+            res = re.search(r'(RFS )(\D+ )(\d.*)', rfs)
             if not res:
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                 continue
@@ -41,7 +41,7 @@ class DefaultRule19(rule.Rule):
             stepNums = _str.split(',')
             nums = []
             for stepNum in stepNums:
-                resNum = re.fullmatch('(\d+)(-\d+)?', stepNum)
+                resNum = re.fullmatch(r'(\d+)(-\d+)?', stepNum)
                 if not resNum:
                     # 规则格式不正确
                     errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
