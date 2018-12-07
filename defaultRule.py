@@ -7,23 +7,39 @@ class DefaultRule17(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            sentences = step.sentences
-            if sentences[0].nature == base.NatureType.include_use_case_:
-                #判断后续语句是否在UseCase的Include字段
-                if sentences[1] not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).include:
-                    errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))                     
-        rule.Reporter.errors += errors
+            # 得到INCLUDE USE CASE的index
+            i = -1
+            for i in range(len(step.sentences)):
+                if step.sentences[i].nature == base.NatureType.include_use_case_:
+                    return
+            if i < 0:
+                continue
+            # 必须开头，后有且仅有一个USE CASE
+            if i != 0 or len(step.sentences) != 2:
+                errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                continue
+            if step.sentences[1] not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).include:
+                    errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
+        rule.Reporter.errors += errors 
 
 class DefaultRule18(rule.Rule):
     def check(self):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            sentences = step.sentences
-            if sentences[0].nature == base.NatureType.extened_by_usecase_:
-                #判断后续语句是否在UseCase的Extend字段
-                if sentences[1] not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).extend:
-                    errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+            # 得到EXTENDED USE CASE的index
+            i = -1
+            for i in range(len(step.sentences)):
+                if step.sentences[i].nature == base.NatureType.extened_by_usecase_:
+                    return
+            if i < 0:
+                continue
+            # 必须开头，后有且仅有一个USE CASE
+            if i != 0 or len(step.sentences) != 2:
+                errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                continue
+            if step.sentences[1] not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).extend:
+                    errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors
 
 class DefaultRule19(rule.Rule):
@@ -31,8 +47,10 @@ class DefaultRule19(rule.Rule):
         flows = rucmElement.RUCMRoot.getAllFlows()
         errors = []
         for flow in flows:
+            if flow.type == 'BasicFlow':
+                continue
             rfs = flow.RfsSentence
-            res = re.search('(RFS )(\D+ )(\d.*)', rfs)
+            res = re.search(r'(RFS )(\D+ )(\d.*)', rfs)
             if not res:
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                 continue
@@ -41,7 +59,7 @@ class DefaultRule19(rule.Rule):
             stepNums = _str.split(',')
             nums = []
             for stepNum in stepNums:
-                resNum = re.fullmatch('(\d+)(-\d+)?', stepNum)
+                resNum = re.fullmatch(r'(\d+)(-\d+)?', stepNum)
                 if not resNum:
                     # 规则格式不正确
                     errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
@@ -80,6 +98,9 @@ class DefaultRule20(rule.Rule):
                 natureI['elseif'] = -1
                 natureI['then'] = -1
                 natureI['endif'] = -1
+                for st in step.sentences:
+                    print(st.val)
+                    print(st.nature)
                 for i in range(len(step.sentences)):
                     if step.sentences[i].nature == base.NatureType.if_:
                         # 向状态转移栈添加一个元素
@@ -91,6 +112,10 @@ class DefaultRule20(rule.Rule):
                         valid.append(['THEN'])
                     elif step.sentences[i].nature == base.NatureType.else_:
                         # 状态转移：接受END IF
+                        # 没进入状态
+                        if not valid:
+                            errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                            continue
                         natureI['else'] = i
                         if not 'ELSE' in valid[len(valid_pre)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
@@ -100,6 +125,10 @@ class DefaultRule20(rule.Rule):
                     elif step.sentences[i].nature == base.NatureType.elseif_:
                         # 状态转移：接受THEN
                         natureI['elseif'] = i
+                        # 没进入状态
+                        if not valid:
+                            errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                            continue
                         if not 'ELSE IF' in valid[len(valid_pre)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
@@ -110,7 +139,11 @@ class DefaultRule20(rule.Rule):
                         # 如果THEN对应ELSE IF，接受END IF
                         # 否则……蜜汁转移出错？
                         natureI['then'] = i
-                        if not 'THEN' in valid[len(valid_pre)-1] :
+                        # 没进入状态
+                        if not valid:
+                            errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                            continue
+                        if not 'THEN' in valid[len(valid)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
                         if 'IF' in valid_pre.pop():
@@ -122,10 +155,15 @@ class DefaultRule20(rule.Rule):
                         else:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
+                        
                     elif step.sentences[i].nature == base.NatureType.endif_:
                         # 无状态转移，从状态转移栈移除一个元素
+                        # 没进入状态
+                        if not valid:
+                            errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                            continue
                         natureI['endif'] = i
-                        if not 'END IF' in valid[len(valid_pre)-1] :
+                        if not 'END IF' in valid[len(valid)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
                         valid_pre.pop()

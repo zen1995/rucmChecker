@@ -22,9 +22,9 @@ if __name__ == "__main__":
 
     args = ap.parse_args()
 
-    print(args.rule_path)
-    print(args.rucm_path)
-    print(args.nlp_server)
+    # print(args.rule_path)
+    # print(args.rucm_path)
+    # print(args.nlp_server)
 
     if args.nlp_server:
         nlputils.url = args.nlp_server
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         print('Loading rule file: %s' % (args.rule_path))
         try:
             rule_load = RuleLoader(args.rule_path)
-            print(f'Load successfully! Result: \n{rule_load}')
+            # print(f'Load successfully! Result: \n{rule_load}')
         except (FileNotFoundError, json.JSONDecodeError) as err:
             print(err)
     else:
@@ -48,11 +48,11 @@ if __name__ == "__main__":
     else:
         print('No rucm file is given. Check rule file only.')
 
-    print(rule_load)
+    # print(rule_load)
 
     print('---'*65)
     if rucm_loader and rule_load:
-        print('check processing')
+        print('--------------check processing-------------')
         print(rule.RuleDB.userRules)
         print(rule.RuleDB.defaultRules)
         for i in rule.RuleDB.userRules:

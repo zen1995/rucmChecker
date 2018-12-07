@@ -55,13 +55,14 @@ class SimpleRule():
         if not isinstance(target,list):target = [target]
 
         if self.op == base.SimpleOp.in_:
-            print(target,self.op,self.target,self.val,sentence.val,value)
+            # print(target,self.op,self.target,self.val,sentence.val,value)
             return all(x in value for x in target)
         else:
             return all(x not in value for x in target)
 
     def dynamicFill(self, useCaseName: str):
         # fill list with $actor
+        # checked right
         value = []
         if '$actor' in self.val:
             value = [x for x in self.val if x != '$actor']

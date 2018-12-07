@@ -90,13 +90,13 @@
                       {
                         "content": {
                           "content": {
-                            "content": "IF This is condition THEN",
+                            "content": "IF apple is condition THEN",
                             "type": "<string>"
                           },
                           "natures": [
                             {
                               "content": {"ifCondition": {
-                                "content": "This is condition",
+                                "content": "apple is condition",
                                 "type": "<string>"
                               }},
                               "type": "IfThenNature"
