@@ -36,7 +36,7 @@ class Word(RUCMBase):
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-        #self.__parse_word()
+        self.__parse_word()
 
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
@@ -59,7 +59,7 @@ class Sentence(RUCMBase):
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        #self.__parse_sentense()
+        self.__parse_sentense()
         self.nature: str = nature
 
     def __parse_sentense(self):
@@ -195,12 +195,14 @@ class Flow(RUCMBase):
             return
 
         self.introduction = 'introduction'
-        # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型
+        # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型，后期添加了 'Global Alternative Flow'
         self.type = 'BasicFlow'
         if flow['type'] != 'BasicFlow':
-            self.type: str = 'Specific Flow'
+            self.type = 'Specific Flow'
+            if flow['type'] == 'GlobalAlternative':
+                self.type = 'Global Alternative Flow'
         else:
-            a = 1
+            a = flow['type']
         if flow['content']['name']['content'] != '':
             # 名字如果存在，则取原本的名字，如果不存在，则取type作为名字
             self.name = flow['content']['name']['content'].strip()
