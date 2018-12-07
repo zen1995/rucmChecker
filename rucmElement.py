@@ -98,8 +98,8 @@ class Step(RUCMBase):
         if index < 0:
             raise Exception('RUCM index < 0')
         self.index = index  # step的序号
-        # step中的字符串，未划分之前的字符串
-        self.val: str = step['content']['content']['content']
+        # step中的字符串，未划分之前的字符串，去掉头尾空格
+        self.val: str = step['content']['content']['content'].strip()
         # step中出现的句子集，包含了关键字，划分之后的结果
         self.sentences: typing.List[Sentence] = []
         # 分割step，形成sentences, keywords
@@ -110,6 +110,7 @@ class Step(RUCMBase):
     # 对于这种情况： IFFFF AAA THEn IFB，该方法会将其划分为['IFFFF AAA THEn IFB']，
     # 只有确实是关键字以独立的方式出现的时候，才会进行划分。
     def __parse_step(self):
+
         keywords = []
         # 生成keywords
         for keyword in NatureType:
@@ -134,8 +135,8 @@ class Step(RUCMBase):
         for i in range(len(split_point) - 1):
             start = split_point[i]
             end = split_point[i + 1]
-            sentence = self.val[start: end]
-            assert isinstance(sentence, str)
+            sentence = self.val[start: end].strip()#去掉头和尾的空格
+            #assert isinstance(sentence, str)
             a = keywords_dict.keys()
             if start in keywords_dict.keys():
                 self.sentences.append(
@@ -198,6 +199,8 @@ class Flow(RUCMBase):
         self.type = 'BasicFlow'
         if flow['type'] != 'BasicFlow':
             self.type: str = 'Specific Flow'
+        else:
+            a = 1
         if flow['content']['name']['content'] != '':
             # 名字如果存在，则取原本的名字，如果不存在，则取type作为名字
             self.name = flow['content']['name']['content']
@@ -220,8 +223,10 @@ class Flow(RUCMBase):
             i = i + 1
             # self.steps
         while i < len(flow_content['steps']):
-            self.steps.append(
-                Step(flow_content['steps'][i], i, self.useCaseName, self))
+            # 额外判断空语句
+            if flow_content['steps'][i]['content']['content']['content'] != '':
+                self.steps.append(
+                    Step(flow_content['steps'][i], i, self.useCaseName, self))
             i = i + 1
         self.RfsSentence = ''  # RFS句子
         # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
@@ -289,8 +294,8 @@ class Usecase(RUCMBase):
             if 'alternativeFlows' in specification_content:
                 alt_content = specification_content['alternativeFlows']
                 for i in range(len(alt_content)):
-                    for f in specification_content['alternativeFlows']:
-                        self.specificFlows.append(Flow(f, i, self.name, self))
+                    f = specification_content['alternativeFlows'][i]
+                    self.specificFlows.append(Flow(f, i, self.name, self))
             # 设置precondition和briefDescription
             if 'preCondition' in specification_content:
                 self.precondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
@@ -306,11 +311,11 @@ class Usecase(RUCMBase):
         self.generalization = []
         if 'extend' in use_case_content:
             for i, extend in enumerate(use_case_content['extend']):
-                extend_use_case_id = int(re.findall(r'\d', extend['content']['extendedCase'])[i])
+                extend_use_case_id = int(re.findall('\d', extend['content']['extendedCase'])[i])
                 self.extend.append(extend_use_case_id)
         if 'include' in use_case_content:
             for i, include in enumerate(use_case_content['include']):
-                include_use_case_id = int(re.findall(r'\d', include['content']['addition'])[i])
+                include_use_case_id = int(re.findall('\d', include['content']['addition'])[i])
                 self.include.append(include_use_case_id)
 
     def __repr__(self):
@@ -447,12 +452,12 @@ class RUCMRoot:
     # 根据模型元素中的id通过在 rucm['reference']中寻找，找到其对应的引用ID，用于判断include等
     @staticmethod
     def __get_reference_id(rucm: dict, model_element_id):
-        pattern = r'<root>\.modelElements\[\d\]'
+        pattern = '<root>\.modelElements\[\d\]'
         refs: dict = rucm['reference']
         for ref_id in range(len(refs)):
             ref_str = refs[ref_id]['path']
             if re.fullmatch(pattern, ref_str) != None:
-                find_id = int(re.findall(r'\d+', ref_str)[0])
+                find_id = int(re.findall('\d+', ref_str)[0])
                 if find_id == model_element_id:
                     return ref_id
         return None
