@@ -291,11 +291,11 @@ class Usecase(RUCMBase):
         self.generalization = []
         if 'extend' in use_case_content:
             for i, extend in enumerate(use_case_content['extend']):
-                extend_use_case_id = int(re.findall('\d', extend['content']['extendedCase'])[i])
+                extend_use_case_id = int(re.findall(r'\d', extend['content']['extendedCase'])[i])
                 self.extend.append(extend_use_case_id)
         if 'include' in use_case_content:
             for i, include in enumerate(use_case_content['include']):
-                include_use_case_id = int(re.findall('\d', include['content']['addition'])[i])
+                include_use_case_id = int(re.findall(r'\d', include['content']['addition'])[i])
                 self.include.append(include_use_case_id)
 
     def __repr__(self):
@@ -313,7 +313,7 @@ class Usecase(RUCMBase):
     def _get_all_steps(self) -> typing.List[Step]:
         steps = []
         if self.basicFlow != None:
-            steps.append(self.basicFlow._get_all_steps())
+            steps.extend(self.basicFlow._get_all_steps())
         for i in range(len(self.specificFlows)):
             steps.extend(self.specificFlows[i]._get_all_steps())
         return steps
@@ -432,12 +432,12 @@ class RUCMRoot:
     # 根据模型元素中的id通过在 rucm['reference']中寻找，找到其对应的引用ID，用于判断include等
     @staticmethod
     def __get_reference_id(rucm: dict, model_element_id):
-        pattern = '<root>\.modelElements\[\d\]'
+        pattern = r'<root>\.modelElements\[\d\]'
         refs: dict = rucm['reference']
         for ref_id in range(len(refs)):
             ref_str = refs[ref_id]['path']
             if re.fullmatch(pattern, ref_str) != None:
-                find_id = int(re.findall('\d+', ref_str)[0])
+                find_id = int(re.findall(r'\d+', ref_str)[0])
                 if find_id == model_element_id:
                     return ref_id
         return None

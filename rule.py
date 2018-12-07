@@ -35,7 +35,13 @@ class SimpleRule():
         self.description: str = ""
 
     def check(self, sentence: rucmElement.Sentence) -> bool:
+        if '$actor' in self.val:
+            print('DEBUG-------Sentence: ')
+            print(self.val)
         value = self.dynamicFill(sentence.useCaseName)
+        if '$actor' in self.val:
+            print('DEBUG-------Fill:')
+            print(value)
         if self.target == base.RuleSubject.subject_Val:
             target = sentence.subjects
         elif self.target == base.RuleSubject.object_Val:
@@ -55,7 +61,7 @@ class SimpleRule():
         if not isinstance(target,list):target = [target]
 
         if self.op == base.SimpleOp.in_:
-            print(target,self.op,self.target,self.val,sentence.val,value)
+            # print(target,self.op,self.target,self.val,sentence.val,value)
             return all(x in value for x in target)
         else:
             return all(x not in value for x in target)
