@@ -36,7 +36,7 @@ class Word(RUCMBase):
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-        #self.__parse_word()
+        self.__parse_word()
 
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
@@ -59,7 +59,7 @@ class Sentence(RUCMBase):
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        #self.__parse_sentense()
+        self.__parse_sentense()
         self.nature: str = nature
 
     def __parse_sentense(self):
@@ -213,14 +213,22 @@ class Flow(RUCMBase):
                                                     self.useCaseName, self)
         self.steps: typing.List[Step] = []
         # 建立steps
-        for i in range(len(flow_content['steps'])):
+        #如果是Global的话，就把conditionSentence放到
+        i = 0
+        if self.type != 'BasicFlow' and 'conditionSentence' in flow_content:
+            self.steps.append(Step(flow_content['conditionSentence'], i, self.useCaseName, self))
+            i = i + 1
+            # self.steps
+        while i < len(flow_content['steps']):
             self.steps.append(
                 Step(flow_content['steps'][i], i, self.useCaseName, self))
+            i = i + 1
         self.RfsSentence = ''  # RFS句子
         # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
         # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
         if self.type != 'BasicFlow' and 'rfsSentence' in flow_content:
             self.RfsSentence = flow_content['rfsSentence']['content']['content']['content']
+
         self.id = id
         self.include = []
         self.extend = []
@@ -231,13 +239,20 @@ class Flow(RUCMBase):
     def _get_all_sentences(self) -> typing.List[Sentence]:
         sentences = []
         for step in self.steps:
+            flag = True
+            #检查是否含有Meanwhile以外的关键字
             for sentence in step.sentences:
-                if sentence.nature == None or sentence.nature == NatureType.mean_while_.value:
+                if sentence.nature != None and sentence.nature != NatureType.mean_while_.value:
+                   flag = False
+                   break
+            if flag:
+                for sentence in step.sentences:
                     sentences.append(sentence)
         # sentences.append(self.postCondition)
         return sentences
 
     def _get_all_steps(self) -> typing.List[Step]:
+
         return self.steps
 
 
@@ -473,7 +488,7 @@ if __name__ == "__main__":
     #     print(t, Sentence(t, None, None, None))
     #########################测试用代码
     load_dict = {}
-    with open(".//test1.rucm", 'r') as load_f:
+    with open(".//test file//test normal.rucm", 'r') as load_f:
         load_dict = json.load(load_f)
     RUCMRoot.init(load_dict)
     a = RUCMRoot.useCases
