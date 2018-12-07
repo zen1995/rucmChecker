@@ -195,15 +195,17 @@ class Flow(RUCMBase):
             return
 
         self.introduction = 'introduction'
-        # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型
+        # 类型是'BasicFlow'或者'Specific Flow', 'Specific Flow'包含了另外三种分支流的类型，后期添加了 'Global Alternative Flow'
         self.type = 'BasicFlow'
         if flow['type'] != 'BasicFlow':
-            self.type: str = 'Specific Flow'
+            self.type = 'Specific Flow'
+            if flow['type'] == 'GlobalAlternative':
+                self.type = 'Global Alternative Flow'
         else:
-            a = 1
+            a = flow['type']
         if flow['content']['name']['content'] != '':
             # 名字如果存在，则取原本的名字，如果不存在，则取type作为名字
-            self.name = flow['content']['name']['content']
+            self.name = flow['content']['name']['content'].strip()
         else:
             self.name = self.type
         self.title = self.name
@@ -212,7 +214,7 @@ class Flow(RUCMBase):
         self.postCondition = Sentence('', None, self.useCaseName, self)
         if 'postCondition' in flow_content:
             self.postCondition: Sentence = Sentence(flow_content['postCondition']['content']
-                                                    ['sentences'][0]['content']['content']['content'], None,
+                                                    ['sentences'][0]['content']['content']['content'].strip(), None,
                                                     self.useCaseName, self)
         self.steps: typing.List[Step] = []
         # 建立steps
@@ -277,7 +279,7 @@ class Usecase(RUCMBase):
             self.id = 0
             return
 
-        self.name: str = use_case_content['name']['content']  # 名字
+        self.name: str = use_case_content['name']['content'].strip() # 名字
         super(Usecase, self).__init__(self.name, parent)
         self.id = index  # 设置Use Case的ID
         # 设置Use Case下的流，流的类型只分为Basic Flow和Alternative Flow。以及前置条件、简述
@@ -299,10 +301,10 @@ class Usecase(RUCMBase):
             # 设置precondition和briefDescription
             if 'preCondition' in specification_content:
                 self.precondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
-                                             ['content']['content']['content'], None, self.name, self)
+                                             ['content']['content']['content'].strip(), None, self.name, self)
             if 'briefDescription' in specification_content:
                 self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
-                                                 ['content']['content']['content'], None, self.name, self)
+                                                 ['content']['content']['content'].strip(), None, self.name, self)
 
         # use case在初始化的时候会将下面这些初始化，之后，由上一级的
         # root将这些提取出的id替换为usecase对应的name
@@ -392,7 +394,7 @@ class RUCMRoot:
                 ref_id = RUCMRoot.__get_reference_id(rucm_dict, index)
                 RUCMRoot.useCases.append(Usecase(me, ref_id, None))
             elif me['type'] == 'Actor':
-                RUCMRoot.actors.append(me['content']['name']['content'])
+                RUCMRoot.actors.append(me['content']['name']['content'].strip())
             elif me['type'] == 'Relationship':
                 pass
             else:
