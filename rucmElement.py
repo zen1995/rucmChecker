@@ -36,7 +36,7 @@ class Word(RUCMBase):
         self.val: str = val
         self.type: base.WordType = None
         self.tense: base.WordTense = None
-        self.__parse_word()
+        #self.__parse_word()
 
     def __parse_word(self):
         self.type = base.WordTense(parse_word_tense(self.val))
@@ -59,7 +59,7 @@ class Sentence(RUCMBase):
         self.verbs: typing.List[Word] = []
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
-        self.__parse_sentense()
+        #self.__parse_sentense()
         self.nature: str = nature
 
     def __parse_sentense(self):

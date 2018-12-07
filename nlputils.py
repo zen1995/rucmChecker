@@ -29,9 +29,14 @@ def parse_sentense(sentence):
 
 def parse_np(np):
     ret = []
+    last_label = ''
     for i in np:
         if i.label() in ['PRP', 'EX', 'DT'] or i.label().startswith('NN'):
-            ret.append(i[0])
+            if i.label().startswith('NN') and (last_label == 'DT' or last_label.startswith('NN')):
+                ret[-1] += ' ' + i[0]
+            else:
+                ret.append(i[0])
+        last_label = i.label()
 
     return ret
 
@@ -124,7 +129,9 @@ if __name__ == "__main__":
         'You and I are a couple.',
         'You and I have and see money',
         'I shot an girl',
-        'You and I will have a baby!'
+        'You and I will have a baby!',
+        'This system ejects the ATM card',
+        'This is a boy'
     ]
 
     for t in test:
