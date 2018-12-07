@@ -55,7 +55,6 @@ class SimpleRule():
         if not isinstance(target,list):target = [target]
 
         if self.op == base.SimpleOp.in_:
-            # print(target,self.op,self.target,self.val,sentence.val,value)
             return all(x in value for x in target)
         else:
             return all(x not in value for x in target)
@@ -66,7 +65,9 @@ class SimpleRule():
         value = []
         if '$actor' in self.val:
             value = [x for x in self.val if x != '$actor']
-            value += rucmElement.RUCMRoot.getActors(useCaseName)#to do 
+            value += rucmElement.RUCMRoot.getActors(useCaseName)
+        else:
+            value = self.val
         return value
 
 
