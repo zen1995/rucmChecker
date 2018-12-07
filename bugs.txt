@@ -1,1 +1,2 @@
 1. 不指定文件直接崩溃
+2. Global Alternative Flow 的Rfs对应为Condition，没有相应字段，暂时放入Sentence
