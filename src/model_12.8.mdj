@@ -2887,23 +2887,6 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAFnZ7QXlbncrbY=",
-											"_parent": {
-												"$ref": "AAAAAAFmyGnOv0MKGXI="
-											},
-											"model": {
-												"$ref": "AAAAAAFnZ7QXVbnQdhs="
-											},
-											"font": "Arial;13;0",
-											"left": 1141,
-											"top": 1566,
-											"width": 194.04150390625,
-											"height": 13,
-											"text": "-parseFlow()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAFnZ7UOZ8ypDh8=",
 											"_parent": {
 												"$ref": "AAAAAAFmyGnOv0MKGXI="
@@ -2913,7 +2896,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1141,
-											"top": 1581,
+											"top": 1566,
 											"width": 194.04150390625,
 											"height": 13,
 											"text": "-get_sentences(): list<Sentence>",
@@ -2930,10 +2913,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1141,
-											"top": 1596,
+											"top": 1581,
 											"width": 194.04150390625,
 											"height": 13,
-											"text": "-get_all_steos(): list<Step>",
+											"text": "-get_all_steps(): list<Step>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2941,7 +2924,7 @@
 									"left": 1136,
 									"top": 1561,
 									"width": 204.04150390625,
-									"height": 53
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -18537,15 +18520,6 @@
 					"operations": [
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAFnZ7QXVbnQdhs=",
-							"_parent": {
-								"$ref": "AAAAAAFmyGnOvkMBfds="
-							},
-							"name": "parseFlow",
-							"visibility": "private"
-						},
-						{
-							"_type": "UMLOperation",
 							"_id": "AAAAAAFnZ7UOLMydNQE=",
 							"_parent": {
 								"$ref": "AAAAAAFmyGnOvkMBfds="
@@ -18570,7 +18544,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFmyGnOvkMBfds="
 							},
-							"name": "get_all_steos",
+							"name": "get_all_steps",
 							"visibility": "private",
 							"parameters": [
 								{
