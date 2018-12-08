@@ -14,7 +14,7 @@ context: Step
 inv: self.index >= 0 and self.val <> None and self.sentences <> None and self.sentences.size() >0
 
 context: Flow
-inv: collection("basic","sepcific").includes(self.type) and self.title <> None and self.postCondition <> None and self.introduction <> None
+inv: collection("BasicFlow","Specific Flow","Global Alternative Flow").includes(self.type) and self.title <> None and self.postCondition <> None and self.introduction <> None
     and self.steps <> None and self.steps.size() >0 and self.include <> None and self.extend <> None and self.generalization <> None and self.rfsSentence <> None
 context: Flow::_get_all_sentences=flow.steps.forAll(s:steps|s.sentence)
 

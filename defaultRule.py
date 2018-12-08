@@ -17,10 +17,10 @@ class DefaultRule17(rule.Rule):
                 continue
             # 必须开头，后有且仅有一个USE CASE
             if i != 0 or len(step.sentences) != 2:
-                errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
+                errors.append(rule.ErrorInfo(self.description+'aaaaaaaaaa', step.useCaseName, step.val))
                 continue
             if step.sentences[1].val not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).include:
-                errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
+                errors.append(rule.ErrorInfo(self.description+'bbbbbbbb', step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
 class DefaultRule18(rule.Rule):
@@ -50,14 +50,14 @@ class DefaultRule19(rule.Rule):
         flows = rucmElement.RUCMRoot.getAllFlows()
         errors = []
         for flow in flows:
-            if flow.type == 'BasicFlow':
+            if flow.type == 'BasicFlow' or flow.type == 'Global Alternative Flow':
                 continue
             rfs = flow.RfsSentence
             res = re.search(r'(RFS )(\D+ )(\d.*)', rfs)
             if not res:
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                 continue
-            flowName = res.group(2)
+            flowName = res.group(2).rstrip(' ')
             _str = res.group(3).replace(' ', '')
             stepNums = _str.split(',')
             nums = []
@@ -83,7 +83,7 @@ class DefaultRule19(rule.Rule):
                     nums.append(int(resNum.group(1)))
             for num in nums:
                 if not flow.parent.findRFS(flowName, num):
-                    errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))                
+                    errors.append(rule.ErrorInfo(self.description+'ddddddd', flow.useCaseName, rfs))                
         rule.Reporter.errors += errors
 
 class DefaultRule20(rule.Rule):
