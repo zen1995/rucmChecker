@@ -36,27 +36,36 @@ class SimpleRule():
 
     def check(self, sentence: rucmElement.Sentence) -> bool:
         value = self.dynamicFill(sentence.useCaseName)
+        target = []
         if self.target == base.RuleSubject.subject_Val:
-            target = sentence.subjects
+            wds = sentence.subjects
+            for word in wds:
+                target.append(word.val)
         elif self.target == base.RuleSubject.object_Val:
-            target = sentence.objects
+            wds = sentence.objects
+            for word in wds:
+                target.append(word.val)
         elif self.target == base.RuleSubject.verb_count:
-            target = len(sentence.verbs)
+            target.append(len(sentence.verbs))
         elif self.target == base.RuleSubject.verb_tense:
-            target = sentence.tense
+            target.append(sentence.tense.value)
         elif self.target == base.RuleSubject.strs:
+            print(sentence.words)
             target = [word.val for word in sentence.words]
         elif self.target == base.RuleSubject.subject_count:
-            target = len(sentence.subjects)
+            target.append(len(sentence.subjects))
         elif self.target == base.RuleSubject.object_count:
-            target = len(sentence.objects)
+            target.append(len(sentence.objects))
         else:
             assert False,self.target
-        if not isinstance(target,list):target = [target]
-
+        print(target, value, self.target)
         if self.op == base.SimpleOp.in_:
+            if not target:
+                return False
             return all(x in value for x in target)
         else:
+            if not target:
+                return False
             return all(x not in value for x in target)
 
     def dynamicFill(self, useCaseName: str):
@@ -95,17 +104,17 @@ class ComplexRule(Rule):
                     if sentence.nature:
                         continue
                     checkResult = []
-                    result = True
                     
                     for rule in self.simpleRule:
                         checkResult.append(rule.check(sentence))
+                    result = checkResult[0]
                     for i in range(len(checkResult) - 1):
                         op = self.op[i + 1]
                         assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
                         if op == base.LogicOp.and_:
-                            result = result and checkResult[i]
+                            result = result and checkResult[i+1]
                         elif op == base.LogicOp.or_:
-                            result = result or checkResult[i]
+                            result = result or checkResult[i+1]
                     op = self.op[0]
                     assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
                     if op == base.LogicOp.not_:
@@ -118,24 +127,25 @@ class ComplexRule(Rule):
             sentences = rucmElement.RUCMRoot.getAllSentences()
             for sentence in sentences:
                 checkResult = []
-                result = True
                 if sentence.nature:
                     continue
                 for rule in self.simpleRule:
                     checkResult.append(rule.check(sentence))
-                    for i in range(len(checkResult) - 1):
-                        op = self.op[i + 1]
-                        assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
-                        if op == base.LogicOp.and_:
-                            result = result and checkResult[i]
-                        elif op == base.LogicOp.or_:
-                            result = result or checkResult[i]
-                    op = self.op[0]
-                    assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
-                    if op == base.LogicOp.not_:
-                        result = not result
-                    if not result:
-                        errors.append(ErrorInfo(self.description, \
+                result = checkResult[0]
+                print(result)
+                for i in range(len(checkResult) - 1):
+                    op = self.op[i + 1]
+                    assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
+                    if op == base.LogicOp.and_:
+                        result = result and checkResult[i]
+                    elif op == base.LogicOp.or_:
+                        result = result or checkResult[i]
+                op = self.op[0]
+                assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
+                if op == base.LogicOp.not_:
+                    result = not result
+                if not result:
+                    errors.append(ErrorInfo(self.description, \
                                                 sentence.useCaseName, sentence))
         Reporter.errors += errors
 

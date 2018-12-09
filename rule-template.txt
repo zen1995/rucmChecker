@@ -1,7 +1,7 @@
 {
     "default":[
         {"id":1,"status":true,"applyScope":"actionStep","simpleRules":[
-            {"subject":"subject_Val","operation":"in","val":["system","$actor"]}
+            {"subject":"subject_Val","operation":"in","val":["The system","$actor"]}
         ],"operation":"-"},
         {"id":3,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_Val","operation":"in","val":["$actor"]},
@@ -31,7 +31,7 @@
         ],"operation":"-"},
         {"id":12,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"subject_count","operation":"in","val":[1]},
-            {"subject":"object_count","operation":"in","val":[1]}
+            {"subject":"object_count","operation":"in","val":[0,1]}
         ],"operation":"-&"},
         {"id":13,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"strs","operation":"notIn","val":["NEGATIVE_ADVERB","ADJ"]}
@@ -39,7 +39,7 @@
         {"id":14,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"strs","operation":"notIn","val":["PRONOUNS"]}
         ],"operation":"-"},
-        {"id":15,"status":false,"applyScope":"allSentence","simpleRules":[
+        {"id":15,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"participlePhrases_count","operation":"in","val":[0]}
         ],"operation":"-"},
         {"id":17,"status":true},
@@ -57,10 +57,10 @@
         {"id":0,"applyScope":"actionStep","simpleRules":[{
             "subject":"subject_Val",
             "operation":"in",
-            "val":["system"]
+            "val":["The system"]
             }],
             "operation":"-",
-            "status":true
+            "status":false
             }
     ]
 }
