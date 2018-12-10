@@ -259,9 +259,10 @@ class Flow(RUCMBase):
             flag = True
             #检查是否含有Meanwhile以外的关键字
             for sentence in step.sentences:
-                if sentence.nature != None and sentence.nature != NatureType.mean_while_.value:
-                   flag = False
-                   break
+                if sentence.nature != None:
+                    if sentence.nature != NatureType.mean_while_.value:
+                        flag = False
+                        break
             if flag:
                 for sentence in step.sentences:
                     sentences.append(sentence)
