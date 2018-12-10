@@ -116,6 +116,57 @@
                       {
                         "content": {
                           "content": {
+                            "content": "The system reads the card number.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "DO ",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "DoNature"
+                            },
+                            {
+                              "content": {
+                                "compositeSentences": [
+                                  "&0",
+                                  "&1"
+                                ],
+                                "untilSentence": "&1",
+                                "doSentence": "&0"
+                              },
+                              "type": "DoComposite"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
                             "content": "ATM customer selects the account number through the system. ",
                             "type": "<string>"
                           },
@@ -133,7 +184,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system VALIDATES THAT the account number is valid. ",
+                            "content": "The system VALIDATES THAT the account number is valid. UNTIL The system displays Welcome message. ",
                             "type": "<string>"
                           },
                           "natures": [{
@@ -149,6 +200,23 @@
                             },
                             "type": "ValidateThatNature"
                           }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "UNTIL The system displays Welcome message. ",
+                            "type": "<string>"
+                          },
                           "description": {
                             "content": "",
                             "type": "<string>"
@@ -287,7 +355,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -304,9 +372,55 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system displays Welcome message. ",
+                            "content": "UNTIL The system displays Welcome message. ",
                             "type": "<string>"
                           },
+                          "natures": [
+                            {
+                              "content": {"untilCondition": {
+                                "content": "The system displays Welcome message",
+                                "type": "<string>"
+                              }},
+                              "type": "UntilNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&0",
+                                "referenceNature": "&2"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "DO ",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "DoNature"
+                            },
+                            {
+                              "content": {
+                                "compositeSentences": ["&3"],
+                                "doSentence": "&3"
+                              },
+                              "type": "DoComposite"
+                            }
+                          ],
                           "description": {
                             "content": "",
                             "type": "<string>"
@@ -830,7 +944,7 @@
                       "rfsSentence": {
                         "content": {
                           "content": {
-                            "content": "RFS Basic Flow 8 ",
+                            "content": "RFS Basic Flow 8",
                             "type": "<string>"
                           },
                           "natures": [{
@@ -870,9 +984,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"
@@ -915,7 +1042,7 @@
             },
             "include": [{
               "content": {
-                "includingCase": "&0",
+                "includingCase": "&4",
                 "description": {
                   "content": "",
                   "type": "<string>"
@@ -924,7 +1051,7 @@
                   "content": "",
                   "type": "<string>"
                 },
-                "addition": "&1"
+                "addition": "&5"
               },
               "type": "Include"
             }]
@@ -1002,7 +1129,7 @@
         },
         {
           "content": {
-            "useCase": "&0",
+            "useCase": "&4",
             "description": {
               "content": "",
               "type": "<string>"
@@ -1011,7 +1138,7 @@
               "content": "",
               "type": "<string>"
             },
-            "actor": "&2"
+            "actor": "&6"
           },
           "type": "Relationship"
         }
@@ -1033,7 +1160,7 @@
           "nodes": [
             {
               "content": {
-                "useCase": "&0",
+                "useCase": "&4",
                 "height": {
                   "content": 70,
                   "type": "<int>"
@@ -1067,7 +1194,7 @@
                   "content": 373,
                   "type": "<int>"
                 },
-                "actor": "&2",
+                "actor": "&6",
                 "top": {
                   "content": 139,
                   "type": "<int>"
@@ -1077,7 +1204,7 @@
             },
             {
               "content": {
-                "useCase": "&1",
+                "useCase": "&5",
                 "height": {
                   "content": 70,
                   "type": "<int>"
@@ -1113,22 +1240,22 @@
           "links": [
             {
               "content": {
-                "node1": "&3",
-                "node2": "&4",
-                "include": "&5"
+                "node1": "&7",
+                "node2": "&8",
+                "include": "&9"
               },
               "type": "UCDIncludeLink"
             },
             {
               "content": {
-                "relationship": "&6",
-                "node1": "&7",
-                "node2": "&3"
+                "relationship": "&10",
+                "node1": "&11",
+                "node2": "&7"
               },
               "type": "UCDRelationshipLink"
             }
           ],
-          "ucModel": "&8",
+          "ucModel": "&12",
           "top": {
             "content": 0,
             "type": "<int>"
@@ -1141,6 +1268,10 @@
   },
   "lmf.version": "1.1",
   "reference": [
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[4]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[14]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[4].natures[1]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[15]"},
     {"path": "<root>.modelElements[0]"},
     {"path": "<root>.modelElements[2]"},
     {"path": "<root>.modelElements[1]"},

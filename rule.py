@@ -50,23 +50,25 @@ class SimpleRule():
         elif self.target == base.RuleSubject.verb_tense:
             target.append(sentence.tense.value)
         elif self.target == base.RuleSubject.strs:
-            print(sentence.words)
+            # print(sentence.words)
             target = [word.val for word in sentence.words]
         elif self.target == base.RuleSubject.subject_count:
             target.append(len(sentence.subjects))
         elif self.target == base.RuleSubject.object_count:
             target.append(len(sentence.objects))
         elif self.target == base.RuleSubject.participlePhrases_count:
-            target.append((len(sentence.participle_count)))
+            target.append(sentence.participle_count)
         elif self.target == base.RuleSubject.adverb_count:
-            target.append((len(sentence.adverb_count)))
+            target.append(sentence.adverb_count)
         elif self.target == base.RuleSubject.modal_verb_count:
-            target.append((len(sentence.modal_verb_count))) 
+            target.append(sentence.modal_verb_count)
         elif self.target == base.RuleSubject.pronoun_count:
-            target.append((len(sentence.pronoun_count)))    
+            target.append(sentence.pronoun_count)
+        elif self.target == base.RuleSubject.sentence_tense:
+            target.append(sentence.tense.value)
         else:
             assert False,self.target
-        print(sentence.val, target, value, self.target)
+        # print(sentence.val, target, value, self.target)
         if self.op == base.SimpleOp.in_:
             if not target:
                 return False
@@ -101,11 +103,12 @@ class ComplexRule(Rule):
         if self.applyScope == base.ApplyScope.actionStep:
             steps = rucmElement.RUCMRoot.getAllSteps()
             for step in steps:
-                nature = 0
+                nature = None
                 for sentence in step.sentences:
-                    print('to be checked', sentence)
+                    # print('to be checked', sentence)
+                    # print(sentence.nature)
                     if sentence.nature:
-                        nature = 1
+                        nature = sentence.nature
                 if nature and nature != base.NatureType.mean_while_:
                     continue
                 sentences = step.sentences
@@ -141,14 +144,14 @@ class ComplexRule(Rule):
                 for rule in self.simpleRule:
                     checkResult.append(rule.check(sentence))
                 result = checkResult[0]
-                print(result)
+                # print(result)
                 for i in range(len(checkResult) - 1):
                     op = self.op[i + 1]
                     assert (op == base.LogicOp.and_ or op == base.LogicOp.or_)
                     if op == base.LogicOp.and_:
-                        result = result and checkResult[i]
+                        result = result and checkResult[i+1]
                     elif op == base.LogicOp.or_:
-                        result = result or checkResult[i]
+                        result = result or checkResult[i+1]
                 op = self.op[0]
                 assert (op == base.LogicOp.not_ or op == base.LogicOp.skip_)
                 if op == base.LogicOp.not_:

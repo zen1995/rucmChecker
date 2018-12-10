@@ -116,6 +116,92 @@
                       {
                         "content": {
                           "content": {
+                            "content": "IF the system recognizes the card THEN",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {"ifCondition": {
+                                "content": "the system recognizes the card",
+                                "type": "<string>"
+                              }},
+                              "type": "IfThenNature"
+                            },
+                            {
+                              "content": {
+                                "compositeSentences": [
+                                  "&0",
+                                  "&1",
+                                  "&2"
+                                ],
+                                "endIfSentence": "&2",
+                                "elseSentence": "&1",
+                                "ifSentence": "&0"
+                              },
+                              "type": "IfElseComposite"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system reads the card number.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ELSE",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "ElseNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&0",
+                                "referenceNature": "&3"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
                             "content": "ATM customer selects the account number through the system. ",
                             "type": "<string>"
                           },
@@ -163,6 +249,36 @@
                       {
                         "content": {
                           "content": {
+                            "content": "ENDIF",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "EndIfNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&0",
+                                "referenceNature": "&3"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
                             "content": "The system VALIDATES THAT ATM customer has enough funds in the account. ",
                             "type": "<string>"
                           },
@@ -179,6 +295,179 @@
                             },
                             "type": "ValidateThatNature"
                           }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "IF the system recognizes the card THEN ",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {"ifCondition": {
+                                "content": "the system recognizes the card",
+                                "type": "<string>"
+                              }},
+                              "type": "IfThenNature"
+                            },
+                            {
+                              "content": {
+                                "compositeSentences": [
+                                  "&4",
+                                  "&5",
+                                  "&6"
+                                ],
+                                "endIfSentence": "&6",
+                                "ifSentence": "&4",
+                                "elseIfSentence": "&5"
+                              },
+                              "type": "IfElseIfComposite"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system reads the card number.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "IF the system breaks down THEN",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {"ifCondition": {
+                                "content": "the system breaks down",
+                                "type": "<string>"
+                              }},
+                              "type": "IfThenNature"
+                            },
+                            {
+                              "content": {
+                                "compositeSentences": [
+                                  "&7",
+                                  "&8"
+                                ],
+                                "endIfSentence": "&8",
+                                "ifSentence": "&7"
+                              },
+                              "type": "IfComposite"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system echos 'ahahahahhaha'.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ENDIF ",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "EndIfNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&7",
+                                "referenceNature": "&9"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ELSEIF the system recognizes the what THEN",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {"elseIfCondition": {
+                                "content": "the system recognizes the what",
+                                "type": "<string>"
+                              }},
+                              "type": "ElseIfThenNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&4",
+                                "referenceNature": "&10"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
                           "description": {
                             "content": "",
                             "type": "<string>"
@@ -270,6 +559,36 @@
                       {
                         "content": {
                           "content": {
+                            "content": "ENDIF ",
+                            "type": "<string>"
+                          },
+                          "natures": [
+                            {
+                              "content": {},
+                              "type": "EndIfNature"
+                            },
+                            {
+                              "content": {
+                                "referenceSentence": "&4",
+                                "referenceNature": "&10"
+                              },
+                              "type": "ReferenceNature"
+                            }
+                          ],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
                             "content": "The system prints a receipt showing transaction number, transaction type, amount withdrawn, and account balance. ",
                             "type": "<string>"
                           },
@@ -287,7 +606,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -830,7 +1149,7 @@
                       "rfsSentence": {
                         "content": {
                           "content": {
-                            "content": "RFS Basic Flow 8 ",
+                            "content": "RFS Basic Flow 13 ",
                             "type": "<string>"
                           },
                           "natures": [{
@@ -838,11 +1157,11 @@
                               "segments": [{
                                 "content": {
                                   "toStep": {
-                                    "content": 8,
+                                    "content": 13,
                                     "type": "<int>"
                                   },
                                   "fromStep": {
-                                    "content": 8,
+                                    "content": 13,
                                     "type": "<int>"
                                   }
                                 },
@@ -870,9 +1189,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"
@@ -915,7 +1247,7 @@
             },
             "include": [{
               "content": {
-                "includingCase": "&0",
+                "includingCase": "&11",
                 "description": {
                   "content": "",
                   "type": "<string>"
@@ -924,7 +1256,7 @@
                   "content": "",
                   "type": "<string>"
                 },
-                "addition": "&1"
+                "addition": "&12"
               },
               "type": "Include"
             }]
@@ -1002,7 +1334,7 @@
         },
         {
           "content": {
-            "useCase": "&0",
+            "useCase": "&11",
             "description": {
               "content": "",
               "type": "<string>"
@@ -1011,7 +1343,7 @@
               "content": "",
               "type": "<string>"
             },
-            "actor": "&2"
+            "actor": "&13"
           },
           "type": "Relationship"
         }
@@ -1033,7 +1365,7 @@
           "nodes": [
             {
               "content": {
-                "useCase": "&0",
+                "useCase": "&11",
                 "height": {
                   "content": 70,
                   "type": "<int>"
@@ -1067,7 +1399,7 @@
                   "content": 373,
                   "type": "<int>"
                 },
-                "actor": "&2",
+                "actor": "&13",
                 "top": {
                   "content": 139,
                   "type": "<int>"
@@ -1077,7 +1409,7 @@
             },
             {
               "content": {
-                "useCase": "&1",
+                "useCase": "&12",
                 "height": {
                   "content": 70,
                   "type": "<int>"
@@ -1113,22 +1445,22 @@
           "links": [
             {
               "content": {
-                "node1": "&3",
-                "node2": "&4",
-                "include": "&5"
+                "node1": "&14",
+                "node2": "&15",
+                "include": "&16"
               },
               "type": "UCDIncludeLink"
             },
             {
               "content": {
-                "relationship": "&6",
-                "node1": "&7",
-                "node2": "&3"
+                "relationship": "&17",
+                "node1": "&18",
+                "node2": "&14"
               },
               "type": "UCDRelationshipLink"
             }
           ],
-          "ucModel": "&8",
+          "ucModel": "&19",
           "top": {
             "content": 0,
             "type": "<int>"
@@ -1141,6 +1473,17 @@
   },
   "lmf.version": "1.1",
   "reference": [
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[3]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[5]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[8]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[3].natures[1]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[10]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[15]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[19]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[12]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[14]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[12].natures[1]"},
+    {"path": "<root>.modelElements[0].specification.basicFlow.steps[10].natures[1]"},
     {"path": "<root>.modelElements[0]"},
     {"path": "<root>.modelElements[2]"},
     {"path": "<root>.modelElements[1]"},

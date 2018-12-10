@@ -8,6 +8,25 @@
               "content": "",
               "type": "<string>"
             },
+            "extend": [{
+              "content": {
+                "extension": "&0",
+                "extendedCase": "&1",
+                "condition": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "Extend"
+            }],
             "name": {
               "content": "Withdraw Fund",
               "type": "<string>"
@@ -287,7 +306,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -543,6 +562,71 @@
                           "content": {
                             "content": {
                               "content": "The system shuts down. ",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "EXTENDED BY USE CASE Extend Test Positive",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {"useCaseName": {
+                                "content": "Extend Test Positive",
+                                "type": "<string>"
+                              }},
+                              "type": "ExtendedByUCNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "EXTENDED BY USE CASE Extend Test Negative",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {"useCaseName": {
+                                "content": "Extend Test Negative",
+                                "type": "<string>"
+                              }},
+                              "type": "ExtendedByUCNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "EXTENDED BY USE CASE",
                               "type": "<string>"
                             },
                             "description": {
@@ -870,9 +954,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"
@@ -924,7 +1021,7 @@
                   "content": "",
                   "type": "<string>"
                 },
-                "addition": "&1"
+                "addition": "&2"
               },
               "type": "Include"
             }]
@@ -1011,9 +1108,65 @@
               "content": "",
               "type": "<string>"
             },
-            "actor": "&2"
+            "actor": "&3"
           },
           "type": "Relationship"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "Extend Test Positive",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BasicFlow"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
         }
       ],
       "description": {
@@ -1067,7 +1220,7 @@
                   "content": 373,
                   "type": "<int>"
                 },
-                "actor": "&2",
+                "actor": "&3",
                 "top": {
                   "content": 139,
                   "type": "<int>"
@@ -1077,7 +1230,7 @@
             },
             {
               "content": {
-                "useCase": "&1",
+                "useCase": "&2",
                 "height": {
                   "content": 70,
                   "type": "<int>"
@@ -1092,6 +1245,28 @@
                 },
                 "top": {
                   "content": 360,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&1",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 462,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 244,
                   "type": "<int>"
                 }
               },
@@ -1113,22 +1288,30 @@
           "links": [
             {
               "content": {
-                "node1": "&3",
-                "node2": "&4",
-                "include": "&5"
+                "node1": "&4",
+                "node2": "&5",
+                "include": "&6"
               },
               "type": "UCDIncludeLink"
             },
             {
               "content": {
-                "relationship": "&6",
-                "node1": "&7",
-                "node2": "&3"
+                "relationship": "&7",
+                "node1": "&8",
+                "node2": "&4"
               },
               "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "node1": "&4",
+                "extend": "&9",
+                "node2": "&10"
+              },
+              "type": "UCDExtendLink"
             }
           ],
-          "ucModel": "&8",
+          "ucModel": "&11",
           "top": {
             "content": 0,
             "type": "<int>"
@@ -1142,6 +1325,7 @@
   "lmf.version": "1.1",
   "reference": [
     {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[4]"},
     {"path": "<root>.modelElements[2]"},
     {"path": "<root>.modelElements[1]"},
     {"path": "<root>.diagrams[0].nodes[0]"},
@@ -1149,6 +1333,8 @@
     {"path": "<root>.modelElements[0].include[0]"},
     {"path": "<root>.modelElements[3]"},
     {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>.modelElements[0].extend[0]"},
+    {"path": "<root>.diagrams[0].nodes[3]"},
     {"path": "<root>"}
   ]
 }

@@ -164,6 +164,8 @@ class RuleLoader(base.Loader):
             simple_rule.target = base.RuleSubject.adverb_count
         elif rule['subject'] == 'modal_verb_count':
             simple_rule.target = base.RuleSubject.modal_verb_count
+        elif rule['subject'] == 'sentence_tense':
+            simple_rule.target = base.RuleSubject.sentence_tense
         else:
             print('Simple Rule subject Error')
         # 设置operation

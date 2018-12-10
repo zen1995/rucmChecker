@@ -58,12 +58,12 @@
                       {
                         "content": {
                           "content": {
-                            "content": "INCLUDE USE CASE Validate PIN",
+                            "content": "INCLUDE USE CASE Validate PI",
                             "type": "<string>"
                           },
                           "natures": [{
                             "content": {"useCaseName": {
-                              "content": "Validate PIN",
+                              "content": "Validate PI",
                               "type": "<string>"
                             }},
                             "type": "IncludeUCNature"
@@ -287,7 +287,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -870,9 +870,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"

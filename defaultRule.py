@@ -17,10 +17,11 @@ class DefaultRule17(rule.Rule):
                 continue
             # 必须开头，后有且仅有一个USE CASE
             if i != 0 or len(step.sentences) != 2:
-                errors.append(rule.ErrorInfo(self.description+'aaaaaaaaaa', step.useCaseName, step.val))
+                errors.append(rule.ErrorInfo(self.description+'AAA', step.useCaseName, step.val))
                 continue
             if step.sentences[1].val not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).include:
-                errors.append(rule.ErrorInfo(self.description+'bbbbbbbb', step.useCaseName, step.val)) 
+                print(rucmElement.RUCMRoot.getUseCase(step.useCaseName).include)
+                errors.append(rule.ErrorInfo(self.description+'BBB', step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
 class DefaultRule18(rule.Rule):
@@ -29,7 +30,6 @@ class DefaultRule18(rule.Rule):
         errors = []
         for step in steps:
             # 得到EXTENDED USE CASE的index
-            i = -1
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
@@ -42,7 +42,8 @@ class DefaultRule18(rule.Rule):
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                 continue
             if step.sentences[1].val not in rucmElement.RUCMRoot.getUseCase(step.useCaseName).extend:
-                    errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
+                print(rucmElement.RUCMRoot.getUseCase(step.useCaseName).extend)
+                errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors
 
 class DefaultRule19(rule.Rule):
@@ -55,7 +56,7 @@ class DefaultRule19(rule.Rule):
             rfs = flow.RfsSentence
             res = re.search(r'(RFS )(\D+ )(\d.*)', rfs)
             if not res:
-                errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                errors.append(rule.ErrorInfo(self.description+'aaa', flow.useCaseName, rfs))
                 continue
             flowName = res.group(2).rstrip(' ')
             _str = res.group(3).replace(' ', '')
@@ -65,7 +66,7 @@ class DefaultRule19(rule.Rule):
                 resNum = re.fullmatch(r'(\d+)(-\d+)?( )?', stepNum)
                 if not resNum:
                     # 规则格式不正确
-                    errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                    errors.append(rule.ErrorInfo(self.description+'bbb', flow.useCaseName, rfs))
                     continue
                 startNum = resNum.group(1)
                 endNum = resNum.group(2)
@@ -75,7 +76,7 @@ class DefaultRule19(rule.Rule):
                     startNum = int(startNum)
                     endNum = int(endNum)
                     if startNum >= endNum:
-                        errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                        errors.append(rule.ErrorInfo(self.description+'ccc', flow.useCaseName, rfs))
                         continue
                     nums += range(startNum, endNum+1)
                 else:
@@ -83,7 +84,8 @@ class DefaultRule19(rule.Rule):
                     nums.append(int(resNum.group(1)))
             for num in nums:
                 if not flow.parent.findRFS(flowName, num):
-                    errors.append(rule.ErrorInfo(self.description+'ddddddd', flow.useCaseName, rfs))                
+                    errors.append(rule.ErrorInfo(self.description+'ddd', flow.useCaseName, rfs))
+                    break                
         rule.Reporter.errors += errors
 
 class DefaultRule20(rule.Rule):
@@ -113,6 +115,7 @@ class DefaultRule20(rule.Rule):
                     elif step.sentences[i].nature == base.NatureType.else_:
                         # 状态转移：接受END IF
                         # 没进入状态
+
                         if not valid:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
@@ -120,6 +123,7 @@ class DefaultRule20(rule.Rule):
                         if not 'ELSE' in valid[len(valid_pre)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
+                        valid_pre.pop()
                         valid_pre.append(valid.pop())
                         valid.append(['END IF'])
                     elif step.sentences[i].nature == base.NatureType.elseif_:
@@ -129,9 +133,10 @@ class DefaultRule20(rule.Rule):
                         if not valid:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
-                        if not 'ELSE IF' in valid[len(valid_pre)-1] :
+                        if not 'ELSE IF' in valid[len(valid)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
+                        valid_pre.pop()
                         valid_pre.append(valid.pop())
                         valid.append(['THEN'])
                     elif step.sentences[i].nature == base.NatureType.then_:
@@ -146,10 +151,11 @@ class DefaultRule20(rule.Rule):
                         if not 'THEN' in valid[len(valid)-1] :
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
-                        if 'IF' in valid_pre.pop():
+                        v_pre = valid_pre.pop()
+                        if 'IF' in v_pre:
                             valid_pre.append(valid.pop())
                             valid.append(['ELSE', 'ELSE IF', 'END IF'])
-                        elif 'ELSE IF' in valid_pre.pop():
+                        elif 'ELSE IF' in v_pre:
                             valid_pre.append(valid.pop())
                             valid.append(['END IF'])
                         else:
@@ -168,6 +174,7 @@ class DefaultRule20(rule.Rule):
                             continue
                         valid_pre.pop()
                         valid.pop()
+                        
                     # IF必须开头
                     if natureI['if'] > 0 or natureI['elseif'] > 0 or natureI['else'] > 0:
                         errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
@@ -180,10 +187,12 @@ class DefaultRule20(rule.Rule):
                         # 独占一行
                         errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                         continue
-                    
+                
             # 正常的话，valid为空
-        if valid:
+        if len(valid):
             errors.append(rule.ErrorInfo(self.description, flow.useCaseName, flow.title))
+        rule.Reporter.errors += errors
+
                     
 class DefaultRule21(rule.Rule):
     def check(self):
@@ -191,16 +200,15 @@ class DefaultRule21(rule.Rule):
         errors = []
         for step in steps:
             # 得到MEANWHILE的index
-            i = -1
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
                 if step.sentences[i].nature == base.NatureType.mean_while_:
-                    return
-            if i < 0:
+                    break
+            if i == len(step.sentences):
                 continue
             # 前后必须有东西
-            if i == 0 or i == len(step.sentences):
+            if i == 0 or i == len(step.sentences)-1:
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
@@ -249,10 +257,10 @@ class DefaultRule23(rule.Rule):
                     
                 if untilI >= 0:
                     # until必须在开头，until后面必须有东西, until前必须已触发do
-                    doNum -= 1
                     if untilI != 0 or len(step.sentences) == 1 or doNum == 0:
                         errors.append(rule.ErrorInfo(self.description, flow.useCaseName, step.val))
                         continue
+                    doNum -= 1
             if doNum != 0:
                 # do和until的数量不匹配
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, step.val))
@@ -298,12 +306,13 @@ class DefaultRule25(rule.Rule):
                 continue
             try:
                 # 判断第二个数是不是序号
-                num = int(step.sentences[1])
-            except:
+                num = int(step.sentences[1].val)
+            except Exception as e:
+                print(e)
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                 continue
             if not step.parent.type == 'Specific Flow' or \
-            not rucmElement.RUCMRoot.getUseCase(step.usecaseName).findRFS(rucmElement.RUCMRoot.getUseCase(step.usecaseName).basicFlow.title, num):
+            not rucmElement.RUCMRoot.getUseCase(step.useCaseName).findRFS(rucmElement.RUCMRoot.getUseCase(step.useCaseName).basicFlow.title, num):
                 # 对应的flow是不是alternative，对应的step在不在basic flow中
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
         rule.Reporter.errors += errors 

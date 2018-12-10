@@ -287,7 +287,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -472,7 +472,7 @@
                       "rfsSentence": {
                         "content": {
                           "content": {
-                            "content": "RFS Basic Flow 5-7 ",
+                            "content": "RFS Basic 5-7 ",
                             "type": "<string>"
                           },
                           "natures": [{
@@ -491,7 +491,7 @@
                                 "type": "RFSNatureSegment"
                               }],
                               "flowName": {
-                                "content": "Basic Flow",
+                                "content": "Basic",
                                 "type": "<string>"
                               }
                             },
@@ -830,7 +830,7 @@
                       "rfsSentence": {
                         "content": {
                           "content": {
-                            "content": "RFS Basic Flow 8 ",
+                            "content": "RFS",
                             "type": "<string>"
                           },
                           "natures": [{
@@ -838,7 +838,7 @@
                               "segments": [{
                                 "content": {
                                   "toStep": {
-                                    "content": 8,
+                                    "content": 13,
                                     "type": "<int>"
                                   },
                                   "fromStep": {
@@ -870,9 +870,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"

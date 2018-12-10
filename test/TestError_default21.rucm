@@ -287,7 +287,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -512,7 +512,7 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
+                              "content": "MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
                             "natures": [{
@@ -522,7 +522,7 @@
                                   "type": "<string>"
                                 },
                                 "action1": {
-                                  "content": "The system displays an apology message",
+                                  "content": "The system smiles",
                                   "type": "<string>"
                                 }
                               },
@@ -678,7 +678,7 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system cancels the transaction MEANWHILE the system ejects the ATM card. ",
+                              "content": "The system cancels the transaction MEANWHILE",
                               "type": "<string>"
                             },
                             "natures": [{
@@ -870,9 +870,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"

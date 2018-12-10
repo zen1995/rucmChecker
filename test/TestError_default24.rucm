@@ -116,6 +116,23 @@
                       {
                         "content": {
                           "content": {
+                            "content": "The system reads the card number.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
                             "content": "ATM customer selects the account number through the system. ",
                             "type": "<string>"
                           },
@@ -287,7 +304,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejects the ATM card. ",
                             "type": "<string>"
                           },
                           "description": {
@@ -559,7 +576,7 @@
                         {
                           "content": {
                             "content": {
-                              "content": "ABORT",
+                              "content": "dsafdasfasdf ABORT",
                               "type": "<string>"
                             },
                             "natures": [{
@@ -708,7 +725,7 @@
                         {
                           "content": {
                             "content": {
-                              "content": "ABORT",
+                              "content": "ABORT dsafadsfdadf",
                               "type": "<string>"
                             },
                             "natures": [{
@@ -830,7 +847,7 @@
                       "rfsSentence": {
                         "content": {
                           "content": {
-                            "content": "RFS Basic Flow 8 ",
+                            "content": "RFS Basic Flow 8",
                             "type": "<string>"
                           },
                           "natures": [{
@@ -870,9 +887,22 @@
                         {
                           "content": {
                             "content": {
-                              "content": "The system displays an apology message and ejects the ATM card. ",
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ABORT",
                               "type": "<string>"
                             },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
                             "description": {
                               "content": "",
                               "type": "<string>"

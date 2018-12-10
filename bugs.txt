@@ -2,10 +2,16 @@
 2. Global Alternative Flow 的Rfs对应为Condition，没有相应字段，暂时放入Sentence
 3. 句子中的主语，宾语等需要的是短语，现在分词出来的是词语               解决
 4. Sentence中前后有多余的空格              解决
-5. 设计里面第7，12条规则：没有宾语的情况？
-6. 设计里面第8，10，11，13，14条规则：没有副词=判断句子中有没有'ADVERB'?没有情态动词=判断句子中有没有'情态动词'？
+5. 设计里面第7，12条规则：没有宾语的情况？   解决
+6. 设计里面第8，10，11，13，14条规则：没有副词=判断句子中有没有'ADVERB'?没有情态动词=判断句子中有没有'情态动词'？   解决
 7. 从sentence.words里面取出来的是map，而且只能取一次，取第二次就都取不出来了      解决
 8. 第三条规则从设计上检测不出错误用例
-9. 1-7条规则检查只传入了Basic Flow，没有传入Alternative Flow
+9. 1-7条规则检查只传入了Basic Flow，没有传入Alternative Flow    解决
+10. 现在分词无法辨析是用来做状语还是定语，下面两句话无法区分
+	The system prints a receipt showing transaction number, transaction type, amount withdrawn, and account balance.  无错
+	ATM is idle, displaying a Welcome message. 有错
+11. 传进来的getAllSentence不包括PostCondition, PreCondition, Brief Desciption, Condition等
+12. defaultrule20产生的错误没有被输出   解决
+13. 加入嵌套IF-THEN语句后，INCLUDE USE CASE取出来空列表
 
 

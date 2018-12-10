@@ -287,7 +287,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card.",
+                            "content": "The system ejectd the ATM card.",
                             "type": "<string>"
                           },
                           "description": {
@@ -305,23 +305,6 @@
                         "content": {
                           "content": {
                             "content": "The system displays Welcome message. ",
-                            "type": "<string>"
-                          },
-                          "description": {
-                            "content": "",
-                            "type": "<string>"
-                          },
-                          "name": {
-                            "content": "",
-                            "type": "<string>"
-                          }
-                        },
-                        "type": "Sentence"
-                      },
-                      {
-                        "content": {
-                          "content": {
-                            "content": "The system display an apology message and ejects the ATM card.",
                             "type": "<string>"
                           },
                           "description": {
