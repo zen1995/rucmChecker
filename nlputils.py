@@ -34,9 +34,10 @@ def get_verbs_count_of_sentense(sentence):
     pronoun = []
     adverb = []
     modal_verb = []
+    participle = []
     sentence = sentence.strip()
     if not sentence:
-        return [], [], []
+        return [], [], [], []
 
     parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(sentence))
@@ -54,8 +55,10 @@ def get_verbs_count_of_sentense(sentence):
             adverb.append(s[0])
         if s.label() in ['MD']:
             modal_verb.append(s[0])
+        if s.label() in ['VBG', 'VBN']:
+            participle.append(s[0])
 
-    return pronoun, adverb, modal_verb
+    return pronoun, adverb, modal_verb, participle
 
 
 def parse_np(np):
@@ -195,7 +198,9 @@ if __name__ == "__main__":
         'Happily, I have an A finally.',
         'This gril is not that girl.',
         'To be or not to be, it is question.',
-        'I would like to swimming rather than running.'
+        'I would like to swimming rather than running.',
+        'ATM is idle, displaying a Welcome message',
+        'I wanted to sleep!'
     ]
     for t in test_count:
         print(t, get_verbs_count_of_sentense(t))
