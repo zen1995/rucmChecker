@@ -11,10 +11,10 @@
             {"subject":"verb_count","operation":"in","val":[1]}
         ],"operation":"-"},
         {"id":5,"status":true,"applyScope":"actionStep","simpleRules":[
-            {"subject":"verb_tense","operation":"in","val":["present"]}
+            {"subject":"snetence_tense","operation":"in","val":["present"]}
         ],"operation":"-"},
         {"id":6,"status":true,"applyScope":"actionStep","simpleRules":[
-            {"subject":"verb_tense","operation":"notIn","val":["past"]}
+            {"subject":"snetence_tense","operation":"notIn","val":["past"]}
         ],"operation":"-"},
         {"id":7,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_count","operation":"in","val":[1]},
