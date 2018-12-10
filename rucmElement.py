@@ -72,8 +72,8 @@ class Sentence(RUCMBase):
             parse_sentense(self.val)
         ))
         self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
-        self.words = map(lambda x: Word(
-            x, self.useCaseName, self), self.val.split())
+        self.words = list(map(lambda x: Word(
+            x, self.useCaseName, self), self.val.split()))
 
     def __str__(self):
         return str({
