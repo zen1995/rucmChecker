@@ -221,9 +221,10 @@ class Flow(RUCMBase):
         self.title = self.name
         flow_content = flow['content']
         # 后置条件，是一个sentence
-        self.postCondition = Sentence('', None, self.useCaseName, self)
+        self.postCondition:Sentence = Sentence('', None, self.useCaseName, self)
         if 'postCondition' in flow_content:
-            self.postCondition: Sentence = Sentence(flow_content['postCondition']['content']
+            if 'sentences' in flow_content['postCondition']['content']:
+                self.postCondition: Sentence = Sentence(flow_content['postCondition']['content']
                                                     ['sentences'][0]['content']['content']['content'].strip(), None,
                                                     self.useCaseName, self)
         self.steps: typing.List[Step] = []
@@ -271,6 +272,9 @@ class Flow(RUCMBase):
                 for sentence in step.sentences:
                     if sentence.nature != NatureType.mean_while_:
                         sentences.append(sentence)
+            # 如果有postCondition，则加上去
+            if self.postCondition.val != '':
+                sentences.append(self.postCondition)
         # sentences.append(self.postCondition)
         return sentences
 
@@ -301,8 +305,8 @@ class Usecase(RUCMBase):
         self.basicFlow: Flow = Flow({}, 0, self.useCaseName, self)  # Basic Flow，可能为None
         # 分支流，可能为[],实际上这里指的是alternative flow，但是由于历史原因不更改了
         self.specificFlows: typing.List[Flow] = []  # 分支流，可能为[]
-        self.precondition = Sentence('', None, self.name, self)  # 前置条件，可能为None
-        self.briefDescription = Sentence('', None, self.name, self)  # 简要描述，可能为None
+        self.precondition : Sentence = Sentence('', None, self.name, self)  # 前置条件，可能为None
+        self.briefDescription :Sentence = Sentence('', None, self.name, self)  # 简要描述，可能为None
         # specification'有可能不出现
         if 'specification' in use_case_content:
             specification_content = use_case_content['specification']['content']
@@ -315,10 +319,12 @@ class Usecase(RUCMBase):
                     self.specificFlows.append(Flow(f, i, self.name, self))
             # 设置precondition和briefDescription
             if 'preCondition' in specification_content:
-                self.precondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
+                if 'sentences' in specification_content['preCondition']['content']:
+                    self.precondition = Sentence(specification_content['preCondition']['content']['sentences'][0]
                                              ['content']['content']['content'].strip(), None, self.name, self)
             if 'briefDescription' in specification_content:
-                self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
+                if 'sentences' in specification_content['briefDescription']['content']:
+                    self.briefDescription = Sentence(specification_content['briefDescription']['content']['sentences'][0]
                                                  ['content']['content']['content'].strip(), None, self.name, self)
 
         # use case在初始化的时候会将下面这些初始化，之后，由上一级的
@@ -328,11 +334,11 @@ class Usecase(RUCMBase):
         self.generalization = []
         if 'extend' in use_case_content:
             for i, extend in enumerate(use_case_content['extend']):
-                extend_use_case_id = int(re.findall('\d', extend['content']['extendedCase'])[i])
+                extend_use_case_id = int(re.findall('\d+', extend['content']['extendedCase'])[i])
                 self.extend.append(extend_use_case_id)
         if 'include' in use_case_content:
             for i, include in enumerate(use_case_content['include']):
-                include_use_case_id = int(re.findall('\d', include['content']['addition'])[i])
+                include_use_case_id = int(re.findall('\d+', include['content']['addition'])[i])
                 self.include.append(include_use_case_id)
 
     def __repr__(self):
@@ -345,6 +351,9 @@ class Usecase(RUCMBase):
             sentences = self.basicFlow._get_all_sentences()
         for i in range(len(self.specificFlows)):
             sentences.extend(self.specificFlows[i]._get_all_sentences())
+            # 如果有precondition，则加上去
+        if self.precondition.val != '':
+            sentences.append(self.precondition)
         return sentences
 
     def _get_all_steps(self) -> typing.List[Step]:
@@ -518,7 +527,7 @@ if __name__ == "__main__":
     #     print(t, Sentence(t, None, None, None))
     #########################测试用代码
     load_dict = {}
-    with open(".//test file//test normal.rucm", 'r') as load_f:
+    with open(".//test//TestError_default23.rucm", 'r') as load_f:
         load_dict = json.load(load_f)
     RUCMRoot.init(load_dict)
     a = RUCMRoot.useCases
