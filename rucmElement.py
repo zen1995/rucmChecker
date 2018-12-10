@@ -228,18 +228,22 @@ class Flow(RUCMBase):
                                                     self.useCaseName, self)
         self.steps: typing.List[Step] = []
         # 建立steps
-        #如果是Global的话，就把conditionSentence放到
+        #如果是Global的话，就把conditionSentence放到step中
         i = 0
+        j = 0
+        flag = False
         if self.type != 'BasicFlow' and 'conditionSentence' in flow_content:
             self.steps.append(Step(flow_content['conditionSentence'], i, self.useCaseName, self))
             i = i + 1
+            flag = True
             # self.steps
-        while i < len(flow_content['steps']):
+        while j < len(flow_content['steps']):
             # 额外判断空语句
-            if flow_content['steps'][i]['content']['content']['content'] != '':
+            if flow_content['steps'][j]['content']['content']['content'] != '':
                 self.steps.append(
-                    Step(flow_content['steps'][i], i, self.useCaseName, self))
+                    Step(flow_content['steps'][j], i, self.useCaseName, self))
             i = i + 1
+            j = j + 1
         self.RfsSentence = ''  # RFS句子
         # 如果flow是分支流的话，如果flow是specifix，代表他是来自哪个流的那个steps。例如：RFS Basic 4。
         # 在这里作为句子而存在。如果flow是 基本流 或者是 全局分支流 ，那么这一项为None。
@@ -259,17 +263,18 @@ class Flow(RUCMBase):
             flag = True
             #检查是否含有Meanwhile以外的关键字
             for sentence in step.sentences:
-                if sentence.nature != None and sentence.nature != NatureType.mean_while_.value:
-                   flag = False
-                   break
+                if sentence.nature != None:
+                    if sentence.nature != NatureType.mean_while_:
+                        flag = False
+                        break
             if flag:
                 for sentence in step.sentences:
-                    sentences.append(sentence)
+                    if sentence.nature != NatureType.mean_while_:
+                        sentences.append(sentence)
         # sentences.append(self.postCondition)
         return sentences
 
     def _get_all_steps(self) -> typing.List[Step]:
-
         return self.steps
 
 

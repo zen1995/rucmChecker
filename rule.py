@@ -56,9 +56,17 @@ class SimpleRule():
             target.append(len(sentence.subjects))
         elif self.target == base.RuleSubject.object_count:
             target.append(len(sentence.objects))
+        elif self.target == base.RuleSubject.participlePhrases_count:
+            target.append((len(sentence.participle_count)))
+        elif self.target == base.RuleSubject.adverb_count:
+            target.append((len(sentence.adverb_count)))
+        elif self.target == base.RuleSubject.modal_verb_count:
+            target.append((len(sentence.modal_verb_count))) 
+        elif self.target == base.RuleSubject.pronoun_count:
+            target.append((len(sentence.pronoun_count)))    
         else:
             assert False,self.target
-        print(target, value, self.target)
+        print(sentence.val, target, value, self.target)
         if self.op == base.SimpleOp.in_:
             if not target:
                 return False
@@ -95,9 +103,10 @@ class ComplexRule(Rule):
             for step in steps:
                 nature = 0
                 for sentence in step.sentences:
+                    print('to be checked', sentence)
                     if sentence.nature:
                         nature = 1
-                if nature:
+                if nature and nature != base.NatureType.mean_while_:
                     continue
                 sentences = step.sentences
                 for sentence in sentences:

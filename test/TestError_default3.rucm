@@ -58,7 +58,31 @@
                       {
                         "content": {
                           "content": {
-                            "content": "Include Validate PIN abstract use case.",
+                            "content": "INCLUDE USE CASE Validate PIN",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {"useCaseName": {
+                              "content": "Validate PIN",
+                              "type": "<string>"
+                            }},
+                            "type": "IncludeUCNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ATM customer selects Withdrawal through the system ",
                             "type": "<string>"
                           },
                           "description": {
@@ -75,7 +99,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "ATM customer selects Withdrawal through the system ",
+                            "content": "ATM customer gives the teller the ATM card.",
                             "type": "<string>"
                           },
                           "description": {
@@ -280,7 +304,7 @@
                       {
                         "content": {
                           "content": {
-                            "content": "The system ejects the ATM card. ",
+                            "content": "The system ejects the ATM card.",
                             "type": "<string>"
                           },
                           "description": {
