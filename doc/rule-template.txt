@@ -1,7 +1,7 @@
 {
     "default":[
         {"id":1,"status":true,"applyScope":"actionStep","simpleRules":[
-            {"subject":"subject_Val","operation":"in","val":["system","$actor"]}
+            {"subject":"subject_Val","operation":"in","val":["the system","$actor"]}
         ],"operation":"-"},
         {"id":3,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_Val","operation":"in","val":["$actor"]},
@@ -21,8 +21,9 @@
             {"subject":"object_count","operation":"in","val":[1]}
         ],"operation":"-&"},
         {"id":8,"status":true,"applyScope":"allSentence","simpleRules":[
-            {"subject":"strs","operation":"notIn","val":["?"]}
-        ],"operation":"-"},
+            {"subject":"strs","operation":"notIn","val":["?","!"]},
+            {"subject":"subject_count","operation":"in","val":[1]}
+        ],"operation":"-&"},
         {"id":10,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"modal_verb_count","operation":"in","val":[0]}
         ],"operation":"-"},
@@ -54,7 +55,7 @@
         {"id":0,"applyScope":"actionStep","simpleRules":[{
             "subject":"subject_Val",
             "operation":"in",
-            "val":["system"]
+            "val":["the system"]
             }],
             "operation":"-",
             "status":true
