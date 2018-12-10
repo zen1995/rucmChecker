@@ -158,6 +158,12 @@ class RuleLoader(base.Loader):
             simple_rule.target = base.RuleSubject.object_count
         elif rule['subject'] == 'participlePhrases_count':
             simple_rule.target = base.RuleSubject.participlePhrases_count
+        elif rule['subject'] == 'pronoun_count':
+            simple_rule.target = base.RuleSubject.pronoun_count
+        elif rule['subject'] == 'adverb_count':
+            simple_rule.target = base.RuleSubject.adverb_count
+        elif rule['subject'] == 'modal_verb_count':
+            simple_rule.target = base.RuleSubject.modal_verb_count
         else:
             print('Simple Rule subject Error')
         # 设置operation

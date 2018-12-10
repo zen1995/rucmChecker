@@ -39,6 +39,9 @@ class RuleSubject(enum.Enum):
     object_count='object_count'
     # 判断分词短语的数量
     participlePhrases_count='participlePhrases_count'
+    pronoun_count = 'pronoun_count'
+    adverb_count = 'adverb_count'
+    modal_verb_count = 'modal_verb_count'
 
 class SimpleOp(enum.Enum):
     in_="in"
