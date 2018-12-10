@@ -60,6 +60,7 @@ class Sentence(RUCMBase):
         self.pronoun_count = 0
         self.adverb_count = 0
         self.modal_verb_count = 0
+        self.participle_count = 0
         self.tense: base.WordTense = None
         self.words: typing.List[Word] = []
         self.nature: str = nature
@@ -78,7 +79,7 @@ class Sentence(RUCMBase):
         self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
         self.words = list(map(lambda x: Word(
             x, self.useCaseName, self), self.val.split()))
-        self.pronoun_count, self.adverb_count, self.modal_verb_count = list(map(lambda x: len(x), get_verbs_count_of_sentense(self.val)))
+        self.pronoun_count, self.adverb_count, self.modal_verb_count, self.participle_count = list(map(lambda x: len(x), get_verbs_count_of_sentense(self.val)))
 
     def __str__(self):
         return str({
@@ -89,6 +90,7 @@ class Sentence(RUCMBase):
             'pronoun_count': self.pronoun_count,
             'adverb_count': self.adverb_count,
             'modal_verb_count': self.modal_verb_count,
+            'participle_count': self.participle_count,
             'tense': self.tense
         })
 
@@ -503,7 +505,9 @@ if __name__ == "__main__":
     #     'Happily, I have an A finally.',
     #     'This gril is not that girl.',
     #     'To be or not to be, it is question.',
-    #     'I would like to swimming rather than running.'
+    #     'I would like to swimming rather than running.',
+    #     'ATM is idle, displaying a Welcome message',
+    #     'I wanted to sleep!'
     # ]
     # for t in test:
     #     print(t, Sentence(t, None, None, None))

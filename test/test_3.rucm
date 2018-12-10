@@ -1,0 +1,794 @@
+{
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[0].specification.alternativeFlows[0].steps[0]"},
+    {"path": "<root>.modelElements[0].specification.alternativeFlows[0].steps[3]"},
+    {"path": "<root>.modelElements[0].specification.alternativeFlows[0].steps[0].natures[1]"},
+    {"path": "<root>.modelElements[1]"},
+    {"path": "<root>"},
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.diagrams[0].nodes[1]"}
+  ],
+  "root": {
+    "type": "UCModel",
+    "content": {
+      "name": {
+        "type": "<string>",
+        "content": ""
+      },
+      "description": {
+        "type": "<string>",
+        "content": "Input description for this model here."
+      },
+      "modelElements": [
+        {
+          "type": "UseCase",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "领域背景导入"
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "alternativeFlows": [
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [
+                            {
+                              "type": "Sentence",
+                              "content": {
+                                "name": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "description": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "content": {
+                                  "type": "<string>",
+                                  "content": "需求提出方已经完成产品领域背景输入。"
+                                }
+                              }
+                            },
+                            {
+                              "type": "Sentence",
+                              "content": {
+                                "name": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "description": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "content": {
+                                  "type": "<string>",
+                                  "content": "系统处于忙碌状态。"
+                                }
+                              }
+                            }
+                          ],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": "Basic Flow"
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 2
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 2
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS Basic Flow 2"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [
+                              {
+                                "type": "DoNature",
+                                "content": {}
+                              },
+                              {
+                                "type": "DoComposite",
+                                "content": {
+                                  "doSentence": "&0",
+                                  "untilSentence": "&1",
+                                  "compositeSentences": [
+                                    "&0",
+                                    "&1"
+                                  ]
+                                }
+                              }
+                            ],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "DO"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "系统提示输入背景信息不足。"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "需求提出方补充领域背景信息。"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [
+                              {
+                                "type": "UntilNature",
+                                "content": {"untilCondition": {
+                                  "type": "<string>",
+                                  "content": "系统确认输入领域背景信息充足"
+                                }}
+                              },
+                              {
+                                "type": "ReferenceNature",
+                                "content": {
+                                  "referenceNature": "&2",
+                                  "referenceSentence": "&0"
+                                }
+                              }
+                            ],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "UNTIL 系统确认输入领域背景信息充足。"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [{
+                              "type": "ResumeStepNature",
+                              "content": {
+                                "step": {
+                                  "type": "<int>",
+                                  "content": 3
+                                },
+                                "flowName": {
+                                  "type": "<string>",
+                                  "content": ""
+                                }
+                              }
+                            }],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "RESUME STEP RFS Basic Flow 3"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "GlobalAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [
+                            {
+                              "type": "Sentence",
+                              "content": {
+                                "name": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "description": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "content": {
+                                  "type": "<string>",
+                                  "content": "系统处于空闲状态。"
+                                }
+                              }
+                            },
+                            {
+                              "type": "Sentence",
+                              "content": {
+                                "name": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "description": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "content": {
+                                  "type": "<string>",
+                                  "content": "系统显示可以输入GWT文档。"
+                                }
+                              }
+                            },
+                            {
+                              "type": "Sentence",
+                              "content": {
+                                "name": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "description": {
+                                  "type": "<string>",
+                                  "content": ""
+                                },
+                                "content": {
+                                  "type": "<string>",
+                                  "content": "系统显示系统可导入领域背景。"
+                                }
+                              }
+                            }
+                          ],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "conditionSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "IF 需求提出方强制确认领域背景信息输入完毕。"
+                          }
+                        }
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "系统设置产品领域背景。"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [{
+                              "type": "AbortNature",
+                              "content": {}
+                            }],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "ABORT"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [{
+                              "type": "EndIfNature",
+                              "content": {}
+                            }],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "ENDIF"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "primaryActor": "&3",
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统处于空闲状态。"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统显示系统可导入领域背景。"
+                          }
+                        }
+                      }
+                    ],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "需求提出方根据产品需求为系统导入产品领域背景信息"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [
+                          {
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "系统处于空闲状态。"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "系统显示可以输入GWT文档。"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "系统显示系统可导入领域背景。"
+                              }
+                            }
+                          }
+                        ],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "需求提出方输入领域背景信息到系统。"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "系统"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "输入领域背景信息充足"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统 VALIDATES THAT 输入领域背景信息充足。"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统通过领域背景信息生成领域术语关系图。"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统设置输入信息为产品领域背景。"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "Actor",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "需求提出方"
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Actor",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        }
+      ],
+      "diagrams": [{
+        "type": "UCDiagram",
+        "content": {
+          "ucModel": "&4",
+          "nodes": [
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&5",
+                "top": {
+                  "type": "<int>",
+                  "content": 60
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 300
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 60
+                }
+              }
+            },
+            {
+              "type": "UCDActorNode",
+              "content": {
+                "actor": "&3",
+                "top": {
+                  "type": "<int>",
+                  "content": 92
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 45
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 100
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 100
+                }
+              }
+            }
+          ],
+          "top": {
+            "type": "<int>",
+            "content": 0
+          },
+          "left": {
+            "type": "<int>",
+            "content": 0
+          },
+          "width": {
+            "type": "<int>",
+            "content": 0
+          },
+          "name": {
+            "type": "<string>",
+            "content": ""
+          },
+          "links": [{
+            "type": "UCDRelationshipLink",
+            "content": {
+              "node2": "&7",
+              "node1": "&6"
+            }
+          }],
+          "height": {
+            "type": "<int>",
+            "content": 0
+          }
+        }
+      }]
+    }
+  }
+}
