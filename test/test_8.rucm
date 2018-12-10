@@ -1,0 +1,3582 @@
+{
+  "root": {
+    "content": {
+      "modelElements": [
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "调度员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "信号接收",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "线路根据情况运行",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "线路正在正常运行",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "有信号输入",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "来自控制系统",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员联系列车驾驶员",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员得到调度员信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员确认",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员调整列车运行情况",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "控制系统有信息反馈、来自司机故障信号",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "接收来自控制系统的信号",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [{
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "开始通知后车区段停止",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "rfsSentence": {
+                      "content": {
+                        "content": {
+                          "content": "RFS 2",
+                          "type": "<string>"
+                        },
+                        "natures": [{
+                          "content": {
+                            "segments": [{
+                              "content": {
+                                "toStep": {
+                                  "content": 2,
+                                  "type": "<int>"
+                                },
+                                "fromStep": {
+                                  "content": 2,
+                                  "type": "<int>"
+                                }
+                              },
+                              "type": "RFSNatureSegment"
+                            }],
+                            "flowName": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "RFSNature"
+                        }],
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "来自列车驾驶员的故障信号",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员得到信息的具体内容",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员启动紧急预案",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "紧急预案执行",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "SpecificAlternative"
+                }],
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "调度指挥",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "安排紧急预案",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车正常行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "线路出现意外情况",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "确认信息来源",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "中央控制系统收集信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "中央控制系统输出信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收到中央系统的信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员根据信息类型做出调度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员接收到信号要进行线路调度",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "根据情况指挥调度",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [{
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "联系后车驾驶员",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "rfsSentence": {
+                      "content": {
+                        "content": {
+                          "content": "RFS 3",
+                          "type": "<string>"
+                        },
+                        "natures": [{
+                          "content": {
+                            "segments": [{
+                              "content": {
+                                "toStep": {
+                                  "content": 3,
+                                  "type": "<int>"
+                                },
+                                "fromStep": {
+                                  "content": 3,
+                                  "type": "<int>"
+                                }
+                              },
+                              "type": "RFSNatureSegment"
+                            }],
+                            "flowName": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "RFSNature"
+                        }],
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员收集信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员输出信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收来自列车驾驶员的信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员根据类型做出调度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "SpecificAlternative"
+                }],
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            },
+            "include": [
+              {
+                "content": {
+                  "includingCase": "&1",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&2"
+                },
+                "type": "Include"
+              },
+              {
+                "content": {
+                  "includingCase": "&1",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&3"
+                },
+                "type": "Include"
+              }
+            ]
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "接收来自控制系统的可疑信号",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "进行调度指挥",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车正在正常行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "中央系统时刻收集系统安全信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "可疑情况发生",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "中央控制系统检测到可疑情况",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "发送可疑信号给调度员员",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员处理可疑信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员根据信息做出调度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "有可疑驾驶状况发生",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "中央控制系统发送可疑驾驶信号",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "接收来自维护员的故障信号",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "判断信号类型",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车正常运行",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员时刻收集列车的安全信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "故障发生",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员感受到故障的发生",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "发送故障信息给维护员",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员无法解决故障",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员发送故障无法解决信号情况",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收无法解决故障信号",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车驾驶员察觉有故障",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车驾驶员发送故障排查信号",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "extend": [
+              {
+                "content": {
+                  "extension": "&2",
+                  "extendedCase": "&4",
+                  "condition": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  }
+                },
+                "type": "Extend"
+              },
+              {
+                "content": {
+                  "extension": "&2",
+                  "extendedCase": "&5",
+                  "condition": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  }
+                },
+                "type": "Extend"
+              },
+              {
+                "content": {
+                  "extension": "&2",
+                  "extendedCase": "&6",
+                  "condition": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  }
+                },
+                "type": "Extend"
+              },
+              {
+                "content": {
+                  "extension": "&2",
+                  "extendedCase": "&7",
+                  "condition": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  }
+                },
+                "type": "Extend"
+              }
+            ],
+            "name": {
+              "content": "安排应急预案",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "开始执行紧急预案",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车正在正常行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车出现故障",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车维护员将故障排查信息发送",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收故障信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员判断出是故障信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员进行调度指挥",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "安排紧急预案",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车出现故障",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "处理列车故障无法解决情况",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            },
+            "include": [
+              {
+                "content": {
+                  "includingCase": "&2",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&4"
+                },
+                "type": "Include"
+              },
+              {
+                "content": {
+                  "includingCase": "&2",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&5"
+                },
+                "type": "Include"
+              },
+              {
+                "content": {
+                  "includingCase": "&2",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&6"
+                },
+                "type": "Include"
+              },
+              {
+                "content": {
+                  "includingCase": "&2",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&7"
+                },
+                "type": "Include"
+              }
+            ]
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "联系列车驾驶员",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "列车依情况运行",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "中央控制系统发现可疑驾驶情况",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "中央控制系统发送可疑驾驶信号",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员收到信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "判断出信号类型",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "进行调度指挥",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "联系后车驾驶员",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员接收调度信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员根据调度信息做出调整",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "中央控制系统发现可疑驾驶情况",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员执行联系后车驾驶员操作",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "疏散乘客",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "乘客疏散成功",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收到维护员传递的紧急预案信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员启动紧急预案",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "后续区段车辆停车",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "线路进行关停处理",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员通知驾驶员紧急疏散乘客",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员接收到疏散乘客的信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员停止故障车辆运行",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员通知故障发生点前就近站台发出一辆空车",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员在空车到达故障地点后疏散乘客登上空车",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "空车驶入下一站台",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "在站台疏散乘客",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员将线路关停",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员接收到维护员传递紧急预案信息，安排空车疏散乘客",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "线路关停",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "发生列车故障的区段线路关停",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收到维护员传递的紧急预案信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员启动紧急预案",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "后续区段车辆停车",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员给系统发送线路关停信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统接收到线路关停信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统将线路进行关停处理",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "后续车段车辆停车",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员接收到维护员传递紧急预案信息，安排线路进行关停",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "后续区段车辆停止",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "后续区段车辆停车",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收到维护员传递的紧急预案信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员启动紧急预案",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员给后续区段车辆驾驶员发送停车信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "后续车辆驾驶员接收到停车信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "后续车辆驾驶员进行列车停车操作",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员接收车辆故障信息",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员接收到维护员传递紧急预案信息，安排后续区段车辆停止",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "故障车辆入站维修",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "故障车辆就近入站维修",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员接收到维护员传递的紧急预案信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员启动紧急预案",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "后续区段车辆停车",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "线路进行关停处理",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员在站台疏散乘客",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员通知调度员乘客疏散成功",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员通知列车维修部门准备进行故障处理",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员通知司机驾驶故障车辆驶入维修部",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机驾驶车辆驶入维修部",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "乘客疏散成功",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员接收到维护员传递紧急预案信息，安排故障车辆入站维修",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "useCase": "&8",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&0"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "useCase": "&1",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&0"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "specific": "&9",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "general": "&8"
+          },
+          "type": "Generalization"
+        },
+        {
+          "content": {
+            "specific": "&10",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "general": "&8"
+          },
+          "type": "Generalization"
+        }
+      ],
+      "description": {
+        "content": "",
+        "type": "<string>"
+      },
+      "name": {
+        "content": "                                                 Use case Specified",
+        "type": "<string>"
+      },
+      "diagrams": [{
+        "content": {
+          "height": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "nodes": [
+            {
+              "content": {
+                "height": {
+                  "content": 98,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 62,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 40,
+                  "type": "<int>"
+                },
+                "actor": "&0",
+                "top": {
+                  "content": 297,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDActorNode"
+            },
+            {
+              "content": {
+                "useCase": "&8",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 119,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 217,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&1",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 122,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 321,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&9",
+                "height": {
+                  "content": 63,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 257,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 321,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 129,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&10",
+                "height": {
+                  "content": 61,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 244,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 342,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 215,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&2",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 367,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 294,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&3",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 366,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 384,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&4",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 637,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 332,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&5",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 627,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 252,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&6",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 626,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 171,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&7",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 641,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 423,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            }
+          ],
+          "width": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "name": {
+            "content": "",
+            "type": "<string>"
+          },
+          "left": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "links": [
+            {
+              "content": {},
+              "type": "UCDGeneralizationLink"
+            },
+            {
+              "content": {},
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {},
+              "type": "UCDExtendLink"
+            },
+            {
+              "content": {},
+              "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "node1": "&11",
+                "node2": "&12",
+                "include": "&13"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&11",
+                "node2": "&14",
+                "include": "&15"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "relationship": "&16",
+                "node1": "&17",
+                "node2": "&18"
+              },
+              "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "relationship": "&19",
+                "node1": "&17",
+                "node2": "&11"
+              },
+              "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "node1": "&20",
+                "generalization": "&21",
+                "node2": "&18"
+              },
+              "type": "UCDGeneralizationLink"
+            },
+            {
+              "content": {
+                "node1": "&22",
+                "generalization": "&23",
+                "node2": "&18"
+              },
+              "type": "UCDGeneralizationLink"
+            },
+            {
+              "content": {
+                "node1": "&12",
+                "node2": "&24",
+                "include": "&25"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&12",
+                "node2": "&26",
+                "include": "&27"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&12",
+                "node2": "&28",
+                "include": "&29"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&12",
+                "node2": "&30",
+                "include": "&31"
+              },
+              "type": "UCDIncludeLink"
+            }
+          ],
+          "ucModel": "&32",
+          "top": {
+            "content": 0,
+            "type": "<int>"
+          }
+        },
+        "type": "UCDiagram"
+      }]
+    },
+    "type": "UCModel"
+  },
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[2]"},
+    {"path": "<root>.modelElements[5]"},
+    {"path": "<root>.modelElements[6]"},
+    {"path": "<root>.modelElements[7]"},
+    {"path": "<root>.modelElements[8]"},
+    {"path": "<root>.modelElements[9]"},
+    {"path": "<root>.modelElements[10]"},
+    {"path": "<root>.modelElements[1]"},
+    {"path": "<root>.modelElements[3]"},
+    {"path": "<root>.modelElements[4]"},
+    {"path": "<root>.diagrams[0].nodes[2]"},
+    {"path": "<root>.diagrams[0].nodes[5]"},
+    {"path": "<root>.modelElements[2].include[0]"},
+    {"path": "<root>.diagrams[0].nodes[6]"},
+    {"path": "<root>.modelElements[2].include[1]"},
+    {"path": "<root>.modelElements[11]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>.modelElements[12]"},
+    {"path": "<root>.diagrams[0].nodes[3]"},
+    {"path": "<root>.modelElements[13]"},
+    {"path": "<root>.diagrams[0].nodes[4]"},
+    {"path": "<root>.modelElements[14]"},
+    {"path": "<root>.diagrams[0].nodes[7]"},
+    {"path": "<root>.modelElements[5].include[0]"},
+    {"path": "<root>.diagrams[0].nodes[8]"},
+    {"path": "<root>.modelElements[5].include[1]"},
+    {"path": "<root>.diagrams[0].nodes[9]"},
+    {"path": "<root>.modelElements[5].include[2]"},
+    {"path": "<root>.diagrams[0].nodes[10]"},
+    {"path": "<root>.modelElements[5].include[3]"},
+    {"path": "<root>"}
+  ]
+}

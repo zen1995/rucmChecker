@@ -11,9 +11,10 @@ if __name__ == "__main__":
     $ python3 main.py --rule=rule-template.txt --url=localhost:9000 test1.rucm
     parse args->load rule->load rucm -> foreach rule.check ->generate report
     '''
-    # construct the argument parse and parse the arguments
+    # construct the argument parse and 
+    #  the arguments
     ap = argparse.ArgumentParser(description='RUCM文件检查工具')
-    ap.add_argument("-r", "--rule", dest='rule_path',
+    ap.add_argument("-r", "--rule", dest='rule_path',default="./rule-template.txt",
                     required=False, help="path to rule.json")
     ap.add_argument("-u", "--url", dest='nlp_server', default='http://10.133.6.180:9000/',
                     required=False, help="url to nlp server")

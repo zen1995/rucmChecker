@@ -21,6 +21,9 @@
       * verb_count : 动词的数量
       * verb_tense：动词的时态
       * strs: 句子中所有的词
+      * modal_verb_count：情态动词的数量
+      * adverb_count：副词的数量
+      * pronoun_count：代词的数量
 
     * `operation`: 对检查对象的约束，取值可以是“in”,"notIn"
 

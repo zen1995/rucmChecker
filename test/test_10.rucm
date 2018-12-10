@@ -1,0 +1,4231 @@
+{
+  "root": {
+    "content": {
+      "modelElements": [
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "调度员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "列车司机",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制信号灯",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&0"],
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "信号灯按控制信号显示",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机驾驶列车驶入一个闭塞区间",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度系统接收到列车进入闭塞区间的信号",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度系统根据四显示闭塞规则，生成信号灯信号序列，发送给信号灯",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "信号灯接受到控制信号，按控制信号显示",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车驶入一个闭塞区间",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员或者列控系统通过控制信号灯，来控制列车的运行",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&1"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "列控系统",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "查看信号灯状态",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "司机获取信号灯状态",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机查看信号灯",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "IF 司机发现信号灯状态正常 THEN",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机按照规则控制列车行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ELSEIF 司机发现信号灯出现故障 THEN",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机按故障状态规则控制列车行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ENDIF",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "控制系统或调度员控制信号灯显示",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "司机查看信号灯",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "车站值班员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "调度员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "useCase": "&2",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&3"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制列车进站",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车接近车站",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "若未办理对应接车进路，熄灭对应进站信号机灯光并点亮红色灯光。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "操作员办理接车进路",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "接车进路锁闭后，进站信号机点亮相应允许灯光，对应进路出站信号机点亮红色灯光。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车接近车站并越过点亮的进站信号机，进站信号机点亮红灯，接车进路解锁后进站信号机灯光熄灭。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "若列侧需经停该站，办理股道调车作业",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车即将进入股道闭塞区间，对应调车信号机点亮白色灯光，股道顺想出站信号机点亮红色灯光",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调车车列越过调车信号机，把那个出清接近区段，调车信号机点亮蓝色灯光",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调车车列完全进入股道，对应调车进路解锁。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "轨道信号灯控制系统",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "信号灯如何控制列车接车进站流程",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "未进站",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 2",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [{
+                        "content": {
+                          "content": {
+                            "content": "若已办理对应接车、通过进路，接车进路锁闭，进站信号机点亮允许灯光，对应进路的出站信号机点亮红色灯光。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "直接通过车站",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 3",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 3,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 3,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [{
+                        "content": {
+                          "content": {
+                            "content": "若列车在本站不停车，则通过轨道正线直接驶出该站",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }]
+                    },
+                    "type": "SpecificAlternative"
+                  }
+                ],
+                "primaryActor": "&4"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制列车出站",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "列车完成出站",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统点亮出站信号灯",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "若未办理对应发车进路且出站信号机未点亮，则系统点亮出站信号机红色灯光",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "车站值班员为列车办理发车进路",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统联锁检查站间轨道空闲条件，如果满足条件则进路锁闭，则系统将出站信号机点亮绿色灯光。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车发车并越过点亮的出站信号机，系统将出站信号机点亮红色灯光",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "发车进路解锁后系统将出站信号机灯光熄灭",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车进站",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "控制列车出站",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [
+                  {
+                    "content": {
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 4",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 4,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 4,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "车站值班员为列车办理向股道调车的进路",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "系统调车进路锁闭后，系统将对应调车信号机点亮白色灯光，股道顺向出站信号机点亮红色灯光。",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "调车车列越过调车信号机，并出清接近区段，系统将调车信号机点亮蓝色灯光。",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "调车车列完全进入股道，系统将对应调车进路解锁。",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "列车出站",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 2",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [{
+                        "content": {
+                          "content": {
+                            "content": "若列车已办理发车进路，则系统检查区间是否满足空闲条件。",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }]
+                    },
+                    "type": "SpecificAlternative"
+                  }
+                ],
+                "primaryActor": "&4"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "发送行车许可",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "收到列车反馈的关于行车许可的应答信号",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 列车请求行车许可",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 没有禁止列车运行",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "获取列车位置",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "获取列车速度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "获取前方车辆闭塞信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 许可范围内有其他车辆",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "计算列车保护区长度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "设定位于保护范围的区段为保护区段",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 当前车辆没有位于保护区段内",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 前方许可路段没有岔口",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "将许可终点设为保护区段起点，并将目标速度设为限速",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 没有临时限速命令",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "整合许可区段信息，保护区段信息，许可终点位置，许可终点目标速度，临时限速命令，形成行车许可",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "将行车许可通过GSM-R网络发送给列车",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列控中心 VALIDATES THAT 列车收到行车许可后发出的应答信号",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ABORT",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "没有收到行车许可请求",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 1",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 1,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 1,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [{
+                        "content": {
+                          "content": {
+                            "content": "ABORT",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {},
+                            "type": "AbortNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "没有发送行车许可给列车",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 2",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "拒绝发送行车许可给列车",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "AbortNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "收到列车反馈的关于行车许可的应答信号",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 6",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 6,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 6,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "将整个许可区间设为许可区段",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "设定许可区段限速",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "发送行车许可",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "收到列车反馈的关于行车许可的应答信号",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 9",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 9,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 9,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "将许可终点设为前方列车占用闭塞区起点，并将目标速度设为0",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "发送行车许可",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "收到列车反馈的关于行车许可的应答信号",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 10",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 10,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 10,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "将许可终点设为岔口所在区段起点，并将目标速度设为限制速度",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "发送行车许可",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "收到列车反馈的关于行车许可的应答信号",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 12",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 12,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 12,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "设定行车区段的限制速度为临时限制速度",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "发送行车许可",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "收到列车反馈的关于行车许可的应答信号",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 15",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 15,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 15,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "重复发送行车许可",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "AbortNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "收到列车反馈的关于行车许可的应答信号",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "conditionSentence": {
+                        "content": {
+                          "content": {
+                            "content": "Guard Condiction",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "列控中心收到临时限速命令",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "存储临时限速命令信息",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "重新开始制定行车许可",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "AbortNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "GlobalAlternative"
+                  }
+                ]
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "获取列车运行信息",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "系统获取列车运行信息",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "调度员指定列车车次",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统确认车次存在",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统生成信息获取申请",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统向指定列车发送申请",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统接收到列车运行信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "系统记录当前时刻列车运行信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "系统空闲",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "调度员通过系统获取列车",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "系统没有获取列车运行信息",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 2",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 2,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [{
+                        "content": {
+                          "content": {
+                            "content": "列车车次不存在，系统提示车次不存在",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "系统没有获取列车运行信息",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 5",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 5,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 5,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [{
+                        "content": {
+                          "content": {
+                            "content": "系统没有接受到列车运行信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }]
+                    },
+                    "type": "SpecificAlternative"
+                  }
+                ],
+                "primaryActor": "&0"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "useCase": "&5",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&6"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "useCase": "&7",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&4"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "useCase": "&8",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&4"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "useCase": "&9",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&0"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "useCase": "&10",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&1"
+          },
+          "type": "Relationship"
+        }
+      ],
+      "description": {
+        "content": "",
+        "type": "<string>"
+      },
+      "name": {
+        "content": "",
+        "type": "<string>"
+      },
+      "diagrams": [
+        {
+          "content": {
+            "height": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "nodes": [
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 105,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 681,
+                    "type": "<int>"
+                  },
+                  "actor": "&0",
+                  "top": {
+                    "content": 127,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 67,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 55,
+                    "type": "<int>"
+                  },
+                  "actor": "&6",
+                  "top": {
+                    "content": 335,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 484,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 332,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 157,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 121,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 323,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 317,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 453,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 94,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 498,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 499,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 821,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 501,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              }
+            ],
+            "width": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "name": {
+              "content": "列车进出站",
+              "type": "<string>"
+            },
+            "left": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "links": [
+              {
+                "content": {
+                  "node1": "&11",
+                  "node2": "&12"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&13",
+                  "node2": "&14"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&11",
+                  "node2": "&15"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&11",
+                  "node2": "&16"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&11",
+                  "node2": "&17"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&11",
+                  "node2": "&18"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&16",
+                  "node2": "&15"
+                },
+                "type": "UCDIncludeLink"
+              },
+              {
+                "content": {
+                  "node1": "&17",
+                  "node2": "&18"
+                },
+                "type": "UCDIncludeLink"
+              },
+              {
+                "content": {
+                  "node1": "&13",
+                  "node2": "&16"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&13",
+                  "node2": "&17"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&16",
+                  "node2": "&12"
+                },
+                "type": "UCDIncludeLink"
+              },
+              {
+                "content": {
+                  "node1": "&17",
+                  "node2": "&12"
+                },
+                "type": "UCDIncludeLink"
+              }
+            ],
+            "top": {
+              "content": 0,
+              "type": "<int>"
+            }
+          },
+          "type": "UCDiagram"
+        },
+        {
+          "content": {
+            "height": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "nodes": [
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 538,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 168,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 541,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 269,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 540,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 381,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 545,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 475,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "useCase": "&2",
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 547,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 586,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 67,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 196,
+                    "type": "<int>"
+                  },
+                  "actor": "&1",
+                  "top": {
+                    "content": 524,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 67,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 161,
+                    "type": "<int>"
+                  },
+                  "actor": "&3",
+                  "top": {
+                    "content": 217,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 67,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 828,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 399,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              }
+            ],
+            "width": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "name": {
+              "content": "行车调度",
+              "type": "<string>"
+            },
+            "left": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "links": [
+              {
+                "content": {
+                  "node1": "&19",
+                  "node2": "&20"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&19",
+                  "node2": "&21"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&19",
+                  "node2": "&22"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&23",
+                  "node2": "&24"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&23",
+                  "node2": "&25"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&23",
+                  "node2": "&20"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&23",
+                  "node2": "&21"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "relationship": "&26",
+                  "node1": "&23",
+                  "node2": "&22"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&27",
+                  "node2": "&20"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&27",
+                  "node2": "&21"
+                },
+                "type": "UCDRelationshipLink"
+              }
+            ],
+            "ucModel": "&28",
+            "top": {
+              "content": 0,
+              "type": "<int>"
+            }
+          },
+          "type": "UCDiagram"
+        },
+        {
+          "content": {
+            "height": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "nodes": [
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 411,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 246,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 287,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 94,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 545,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 90,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 89,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 125,
+                    "type": "<int>"
+                  },
+                  "actor": "&4",
+                  "top": {
+                    "content": 233,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 67,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 703,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 233,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              }
+            ],
+            "width": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "name": {
+              "content": "列车进站",
+              "type": "<string>"
+            },
+            "left": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "links": [
+              {
+                "content": {
+                  "node1": "&29",
+                  "node2": "&30"
+                },
+                "type": "UCDIncludeLink"
+              },
+              {
+                "content": {
+                  "node1": "&29",
+                  "node2": "&31"
+                },
+                "type": "UCDIncludeLink"
+              },
+              {
+                "content": {
+                  "node1": "&32",
+                  "node2": "&29"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&33",
+                  "node2": "&29"
+                },
+                "type": "UCDRelationshipLink"
+              }
+            ],
+            "top": {
+              "content": 0,
+              "type": "<int>"
+            }
+          },
+          "type": "UCDiagram"
+        },
+        {
+          "content": {
+            "height": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "nodes": [
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 406,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 167,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 70,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 140,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 369,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 55,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDUseCaseNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 117,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 131,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 196,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              },
+              {
+                "content": {
+                  "height": {
+                    "content": 98,
+                    "type": "<int>"
+                  },
+                  "width": {
+                    "content": 67,
+                    "type": "<int>"
+                  },
+                  "left": {
+                    "content": 710,
+                    "type": "<int>"
+                  },
+                  "top": {
+                    "content": 190,
+                    "type": "<int>"
+                  }
+                },
+                "type": "UCDActorNode"
+              }
+            ],
+            "width": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "name": {
+              "content": "列车出站",
+              "type": "<string>"
+            },
+            "left": {
+              "content": 0,
+              "type": "<int>"
+            },
+            "links": [
+              {
+                "content": {
+                  "node1": "&34",
+                  "node2": "&35"
+                },
+                "type": "UCDIncludeLink"
+              },
+              {
+                "content": {
+                  "node1": "&36",
+                  "node2": "&34"
+                },
+                "type": "UCDRelationshipLink"
+              },
+              {
+                "content": {
+                  "node1": "&37",
+                  "node2": "&34"
+                },
+                "type": "UCDRelationshipLink"
+              }
+            ],
+            "ucModel": "&28",
+            "top": {
+              "content": 0,
+              "type": "<int>"
+            }
+          },
+          "type": "UCDiagram"
+        }
+      ]
+    },
+    "type": "UCModel"
+  },
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[3]"},
+    {"path": "<root>.modelElements[2]"},
+    {"path": "<root>.modelElements[6]"},
+    {"path": "<root>.modelElements[5]"},
+    {"path": "<root>.modelElements[4]"},
+    {"path": "<root>.modelElements[1]"},
+    {"path": "<root>.modelElements[8]"},
+    {"path": "<root>.modelElements[9]"},
+    {"path": "<root>.modelElements[11]"},
+    {"path": "<root>.modelElements[10]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.diagrams[0].nodes[2]"},
+    {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>.diagrams[0].nodes[3]"},
+    {"path": "<root>.diagrams[0].nodes[4]"},
+    {"path": "<root>.diagrams[0].nodes[5]"},
+    {"path": "<root>.diagrams[0].nodes[6]"},
+    {"path": "<root>.diagrams[0].nodes[7]"},
+    {"path": "<root>.diagrams[1].nodes[5]"},
+    {"path": "<root>.diagrams[1].nodes[2]"},
+    {"path": "<root>.diagrams[1].nodes[3]"},
+    {"path": "<root>.diagrams[1].nodes[4]"},
+    {"path": "<root>.diagrams[1].nodes[6]"},
+    {"path": "<root>.diagrams[1].nodes[0]"},
+    {"path": "<root>.diagrams[1].nodes[1]"},
+    {"path": "<root>.modelElements[7]"},
+    {"path": "<root>.diagrams[1].nodes[7]"},
+    {"path": "<root>"},
+    {"path": "<root>.diagrams[2].nodes[0]"},
+    {"path": "<root>.diagrams[2].nodes[1]"},
+    {"path": "<root>.diagrams[2].nodes[2]"},
+    {"path": "<root>.diagrams[2].nodes[3]"},
+    {"path": "<root>.diagrams[2].nodes[4]"},
+    {"path": "<root>.diagrams[3].nodes[0]"},
+    {"path": "<root>.diagrams[3].nodes[1]"},
+    {"path": "<root>.diagrams[3].nodes[2]"},
+    {"path": "<root>.diagrams[3].nodes[3]"}
+  ]
+}
