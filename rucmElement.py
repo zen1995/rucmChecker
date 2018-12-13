@@ -273,8 +273,8 @@ class Flow(RUCMBase):
                     if sentence.nature != NatureType.mean_while_:
                         sentences.append(sentence)
             # 如果有postCondition，则加上去
-            if self.postCondition.val != '':
-                sentences.append(self.postCondition)
+        if self.postCondition.val != '':
+            sentences.append(self.postCondition)
         # sentences.append(self.postCondition)
         return sentences
 
