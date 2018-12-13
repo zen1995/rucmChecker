@@ -3,7 +3,8 @@ import typing
 import json
 import re
 from enum import Enum, unique
-from nlputils import parse_sentense, parse_sentense_tense, parse_word_tense, parse_word_type, get_verbs_count_of_sentense
+import jieba
+from nlputils import parse_sentense, parse_sentense_tense, parse_word_tense, parse_word_type, get_verbs_count_of_sentense, choose_function
 import nlputils
 
 @unique
@@ -76,9 +77,9 @@ class Sentence(RUCMBase):
             )),
             parse_sentense(self.val)
         ))
-        self.tense = base.WordTense.factory(parse_sentense_tense(self.val))
+        self.tense = base.WordTense(parse_sentense_tense(self.val))
         self.words = list(map(lambda x: Word(
-            x, self.useCaseName, self), self.val.split()))
+            x, self.useCaseName, self), choose_function(self.val, jieba.cut, str.split)(self.val)))
         self.pronoun_count, self.adverb_count, self.modal_verb_count, self.participle_count = list(map(lambda x: len(x), get_verbs_count_of_sentense(self.val)))
 
     def __str__(self):
@@ -508,23 +509,23 @@ class RUCMRoot:
 
 if __name__ == "__main__":
     # test cases
-    # nlputils.url = 'http://localhost:9000'
-    # test = [
-    #     'I want a girl.',
-    #     'A girl shot an elephant.',
-    #     'You and I are a couple.',
-    #     'You and I have and see money',
-    #     'I shot an girl',
-    #     'I can do this, however you cannot.',
-    #     'Happily, I have an A finally.',
-    #     'This gril is not that girl.',
-    #     'To be or not to be, it is question.',
-    #     'I would like to swimming rather than running.',
-    #     'ATM is idle, displaying a Welcome message',
-    #     'I wanted to sleep!'
-    # ]
-    # for t in test:
-    #     print(t, Sentence(t, None, None, None))
+    nlputils.url = 'http://localhost:9000'
+    test = [
+        'I want a girl.',
+        'A girl shot an elephant.',
+        'You and I are a couple.',
+        'You and I have and see money',
+        'I shot an girl',
+        'I can do this, however you cannot.',
+        'Happily, I have an A finally.',
+        'This gril is not that girl.',
+        'To be or not to be, it is question.',
+        'I would like to swimming rather than running.',
+        'ATM is idle, displaying a Welcome message',
+        'I wanted to sleep!'
+    ]
+    for t in test:
+        print(t, Sentence(t, None, None, None))
     #########################测试用代码
     load_dict = {}
     with open(".//test//TestError_default23.rucm", 'r') as load_f:

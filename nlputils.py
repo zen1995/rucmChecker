@@ -5,8 +5,28 @@ import string
 # https://stanfordnlp.github.io/CoreNLP/corenlp-server.html
 url = 'http://10.133.6.180:9000/'
 
+def containHan(s):
+    '''包含汉字的返回TRUE'''
+    for c in s:
+        if '\u4e00' <= c <= '\u9fa5':
+            return True
+    
+    return False
+
 
 def parse_sentense(sentence):
+    return choose_function(sentence, parse_sentence_Han, parse_sentence_En)(sentence)
+
+def choose_function(sentence, func_Han, func_En):
+    if containHan(sentence):
+        return func_Han
+    else:
+        return func_En
+
+def parse_sentence_Han(sentence):
+    pass
+
+def parse_sentence_En(sentence):
     sentence = sentence.strip()
     if not sentence:
         return [], [], []
@@ -31,6 +51,12 @@ def parse_sentense(sentence):
 
 
 def get_verbs_count_of_sentense(sentence):
+    return choose_function(sentence, get_verbs_count_of_sentense_Han, get_verbs_count_of_sentense_En)(sentence)
+
+def get_verbs_count_of_sentense_Han(sentence):
+    pass
+
+def get_verbs_count_of_sentense_En(sentence):
     pronoun = []
     adverb = []
     modal_verb = []
@@ -105,6 +131,12 @@ vb_tense_map = {
 
 
 def parse_sentense_tense(sentence):
+    return choose_function(sentence, parse_sentense_tense_Han, parse_sentense_tense_En)(sentence)
+
+def parse_sentense_tense_Han(sentence):
+    pass
+
+def parse_sentense_tense_En(sentence):
     sentence = sentence.strip()
     if not sentence:
         return 'none'
@@ -131,6 +163,13 @@ def parse_sentense_tense(sentence):
 
 
 def parse_word_tense(word):
+    return choose_function(word, parse_word_tense_Han, parse_word_tense_En)(word)
+
+def parse_word_tense_Han(word):
+    pass
+
+
+def parse_word_tense_En(word):
     parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(word))
 
@@ -145,6 +184,14 @@ def parse_word_tense(word):
 
 
 def parse_word_type(word):
+    return choose_function(word, parse_word_type_Han, parse_word_type_En)(word)
+
+
+def parse_word_type_Han(word):
+    pass
+
+
+def parse_word_type_En(word):
     parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(word))
 
@@ -161,6 +208,16 @@ def parse_word_type(word):
 
 
 if __name__ == "__main__":
+    test_Han = [
+        'I want to sleep.',
+        '妈妈你睡了吗？',
+        '∂∑´® ƒß∂f I don\'t know what I write',
+        ''
+    ]
+
+    for t in test_Han:
+        print(t, containHan(t))
+
     url = 'http://localhost:9000'
     test = [
         'I want a girl.',
@@ -176,7 +233,7 @@ if __name__ == "__main__":
     ]
 
     for t in test:
-        print(t, parse_sentense(t), 'tense: %s' % parse_sentense_tense(t))
+        print(t, parse_sentense(t), 'tense: ', parse_sentense_tense(t))
 
     print('-'*80)
     test_words = functools.reduce(lambda x, y: x + y, map(lambda x: x.split(), [
