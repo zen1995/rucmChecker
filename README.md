@@ -15,8 +15,13 @@ java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -t
 ```
 
 ## ToDoList
-- [ ] 代码开发
-- [ ] Demo结果
+- [x] 代码开发
+- [x] Demo结果
 - [x] newest design of model
 - [x] OCl  
 --by shifaqiang
+- [ ] 中文RUCM文件的分词与解释，请小帅哥杨森考虑能否实现，调查现有的中文分词工具
+- [ ] 规则的再抽象与理解，实现规则的可扩展性，最帅的泽年继续设计呀
+- [ ] 输出界面的美化，请审美小公主梁保宇考虑如何构造美丽的界面
+- [ ] 运行过程全盘云端化，通过浏览器进行访问与展示，最丑陋的发强想办法
+-- 2018年12月13日20:10:32 石发强
