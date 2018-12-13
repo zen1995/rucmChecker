@@ -18,7 +18,7 @@
    ```
 (2) 我们的系统以main函数问入口，如果要测试请执行如下命令：  
    ```bash
-    python3 main.py -h
+    python3 main.py -hbushi
     # 其中-h参数用于显示帮助信息
    ```
    完整的用法示例如下：
