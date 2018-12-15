@@ -12,6 +12,11 @@ pip install -r requirements.txt
 wget https://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip
 解压后，cd到其文件夹内
 java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
+
+# 同理可到ftp://10.111.1.29/share-folder 上下载
+wget https://nlp.stanford.edu/software/stanford-chinese-corenlp-2018-10-05-models.jar
+# 启动中文server
+java -Xmx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -serverProperties StanfordCoreNLP-chinese.properties -port 9001 -timeout 15000
 ```
 
 ## ToDoList

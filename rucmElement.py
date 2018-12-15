@@ -510,6 +510,8 @@ class RUCMRoot:
 if __name__ == "__main__":
     # test cases
     nlputils.url = 'http://localhost:9000'
+    nlputils.url_En = 'http://localhost:9000'
+    nlputils.url_Han = 'http://localhost:9001'
     test = [
         'I want a girl.',
         'A girl shot an elephant.',
@@ -522,7 +524,16 @@ if __name__ == "__main__":
         'To be or not to be, it is question.',
         'I would like to swimming rather than running.',
         'ATM is idle, displaying a Welcome message',
-        'I wanted to sleep!'
+        'I wanted to sleep!',
+        '他来到了网易杭研大厦.',
+        '我是小明，她是小红.',
+        '芷若，这件事我在心中已想了很久。.',
+        '我爱你',
+        '我今天去上学',
+        '我打篮球',
+        '汽车在高速上奔驰',
+        '然而，芷若，我不能瞒你，要是我这一生再不能见到赵姑娘，我是宁可死了的好。',
+        '那日在大都，我见你到那小酒店去和她相会，便知你内心真正情爱之所系。'
     ]
     for t in test:
         print(t, Sentence(t, None, None, None))

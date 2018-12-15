@@ -1,9 +1,24 @@
 from nltk.parse.corenlp import CoreNLPParser
 import functools
 import string
+import jieba.posseg as pseg
+import jieba
+import logging
 
-# https://stanfordnlp.github.io/CoreNLP/corenlp-server.html
+jieba.setLogLevel(logging.INFO) # 关闭结巴分词的log信息
+
+'''
+中文词性对应表:
+https://gist.github.com/luw2007/6016931#ictclas-%E6%B1%89%E8%AF%AD%E8%AF%8D%E6%80%A7%E6%A0%87%E6%B3%A8%E9%9B%86
+
+Stanford parser server 相关
+https://stanfordnlp.github.io/CoreNLP/corenlp-server.html
+'''
+
 url = 'http://10.133.6.180:9000/'
+url_En = 'http://10.133.6.180:9000/'
+url_Han = 'http://10.133.6.180:9001/'
+
 
 def containHan(s):
     '''包含汉字的返回TRUE'''
@@ -18,13 +33,13 @@ def parse_sentense(sentence):
     return choose_function(sentence, parse_sentence_Han, parse_sentence_En)(sentence)
 
 def choose_function(sentence, func_Han, func_En):
+    global url
     if containHan(sentence):
+        url = url_Han
         return func_Han
     else:
+        url = url_En
         return func_En
-
-def parse_sentence_Han(sentence):
-    pass
 
 def parse_sentence_En(sentence):
     sentence = sentence.strip()
@@ -33,7 +48,12 @@ def parse_sentence_En(sentence):
 
     parser = CoreNLPParser(url=url)
     parse = next(parser.raw_parse(sentence))
-    S = parse[0]
+    
+    return parse_S_or_IP(parse[0])
+
+parse_sentence_Han = parse_sentence_En
+
+def parse_S_or_IP(S):
     subjects = []
     verbs = []
     objects = []
@@ -42,6 +62,11 @@ def parse_sentence_En(sentence):
             subjects = parse_np(i)
         if i.label() == 'VP':
             v, o = parse_vp(i)
+            verbs += v
+            objects += o
+        if i.label() in ['S', 'IP']:
+            s, v, o = parse_S_or_IP(i)
+            subjects += s
             verbs += v
             objects += o
         if i.label() in string.punctuation:
@@ -54,7 +79,27 @@ def get_verbs_count_of_sentense(sentence):
     return choose_function(sentence, get_verbs_count_of_sentense_Han, get_verbs_count_of_sentense_En)(sentence)
 
 def get_verbs_count_of_sentense_Han(sentence):
-    pass
+    sentence = sentence.strip()
+    if not sentence:
+        return [], [], [], []
+    
+    pronoun = []
+    adverb = []
+    modal_verb = []
+    participle = []
+    words = pseg.cut(sentence)
+    for word, flag in words:
+        if flag == 'r':
+            pronoun.append(word)
+        elif flag == 'd':
+            adverb.append(word)
+        elif flag == 'u':
+            modal_verb.append(word)
+        else:
+            continue
+            # 中文没有 过去分词/现在分词
+
+    return pronoun, adverb, modal_verb, participle
 
 def get_verbs_count_of_sentense_En(sentence):
     pronoun = []
@@ -91,9 +136,11 @@ def parse_np(np):
     ret = []
     last_label = ''
     for i in np:
-        if i.label() in ['PRP', 'EX', 'DT'] or i.label().startswith('NN'):
-            if i.label().startswith('NN') and (last_label == 'DT' or last_label.startswith('NN')):
+        if i.label() in ['PRP', 'EX', 'DT', 'PN', 'NR'] or i.label().startswith('NN'):
+            if i.label().startswith('NN') and (last_label in ['DT'] or last_label.startswith('NN')):
                 ret[-1] += ' ' + i[0]
+            elif (i.label().startswith('NN') or i.label() == 'NR') and last_label == 'NR':
+                ret[-1] += i[0]
             else:
                 ret.append(i[0])
         if i.label() == 'NP':
@@ -111,12 +158,16 @@ def parse_vp(vp):
             v, o = parse_vp(i)
             verbs += v
             objects += o
-        if i.label() == 'NP':
+        elif i.label() == 'NP':
             objects += parse_np(i)
-        if i.label().startswith('VB'):
+        elif i.label().startswith('VB'):
             verbs.append(i[0])
-        if i.label() in string.punctuation:
+        elif i.label().startswith('V'):
+            verbs.append(i[0])
+        elif i.label() in string.punctuation:
             break
+        else:
+            pass
     return verbs, objects
 
 
@@ -134,7 +185,10 @@ def parse_sentense_tense(sentence):
     return choose_function(sentence, parse_sentense_tense_Han, parse_sentense_tense_En)(sentence)
 
 def parse_sentense_tense_Han(sentence):
-    pass
+    '''
+    中文没时态
+    '''
+    return 'present'
 
 def parse_sentense_tense_En(sentence):
     sentence = sentence.strip()
@@ -166,7 +220,10 @@ def parse_word_tense(word):
     return choose_function(word, parse_word_tense_Han, parse_word_tense_En)(word)
 
 def parse_word_tense_Han(word):
-    pass
+    '''
+    中文没时态
+    '''
+    return 'present'
 
 
 def parse_word_tense_En(word):
@@ -188,8 +245,18 @@ def parse_word_type(word):
 
 
 def parse_word_type_Han(word):
-    pass
+    words = pseg.cut(word)
+    for _, flag in words:
+        if flag.startswith('v'):
+            return 'verb'
+        elif flag.startswith('n'):
+            return 'noun'
+        elif flag.startswith('a'):
+            return 'adj'
+        else:
+            continue
 
+    return 'none'
 
 def parse_word_type_En(word):
     parser = CoreNLPParser(url=url)
@@ -218,7 +285,8 @@ if __name__ == "__main__":
     for t in test_Han:
         print(t, containHan(t))
 
-    url = 'http://localhost:9000'
+    url_En = 'http://localhost:9000'
+    url_Han = 'http://localhost:9001'
     test = [
         'I want a girl.',
         'A girl shot an elephant.',
@@ -261,3 +329,17 @@ if __name__ == "__main__":
     ]
     for t in test_count:
         print(t, get_verbs_count_of_sentense(t))
+
+    test_Han = [
+        '他来到了网易杭研大厦.',
+        '我是小明，她是小红.',
+        '芷若，这件事我在心中已想了很久。.',
+        '我爱你',
+        '我今天去上学',
+        '我打篮球',
+        '汽车在高速上奔驰',
+        '然而，芷若，我不能瞒你，要是我这一生再不能见到赵姑娘，我是宁可死了的好。',
+        '那日在大都，我见你到那小酒店去和她相会，便知你内心真正情爱之所系。'
+    ]
+    for t in test_Han:
+        print(t, parse_sentense(t))
