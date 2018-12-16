@@ -162,8 +162,12 @@ def parse_vp(vp):
             objects += parse_np(i)
         elif i.label().startswith('VB'):
             verbs.append(i[0])
-        elif i.label().startswith('V'):
+        elif i.label() == 'VV':
             verbs.append(i[0])
+        elif i.label() == 'VRD':
+            for j in i:
+                if j.label() == 'VV':
+                    verbs.append(j[0])
         elif i.label() in string.punctuation:
             break
         else:
