@@ -44,7 +44,7 @@
         {"id":14,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"pronoun_count","operation":"in","val":[0]}
         ],"operation":"-"},
-        {"id":15,"status":true,"applyScope":"allSentence","simpleRules":[
+        {"id":15,"status":false,"applyScope":"allSentence","simpleRules":[
             {"subject":"participlePhrases_count","operation":"in","val":[0]}
         ],"operation":"-"},
         {"id":17,"status":true},

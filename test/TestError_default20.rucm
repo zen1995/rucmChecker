@@ -623,6 +623,27 @@
                       {
                         "content": {
                           "content": {
+                            "content": "ENDIF",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {},
+                            "type": "EndIfNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
                             "content": "The system displays Welcome message. ",
                             "type": "<string>"
                           },

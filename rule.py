@@ -137,6 +137,7 @@ class ComplexRule(Rule):
 
         elif self.applyScope == base.ApplyScope.allSentence:
             sentences = rucmElement.RUCMRoot.getAllSentences()
+            # print(len(sentences))
             for sentence in sentences:
                 checkResult = []
                 if sentence.nature:
