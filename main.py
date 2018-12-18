@@ -16,9 +16,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description='RUCM文件检查工具')
     ap.add_argument("-r", "--rule", dest='rule_path',default="./rule-template.txt",
                     required=False, help="path to rule.json")
-    ap.add_argument("-u", "--url_en", dest='nlp_server', default='http://10.133.6.180:9000/',
+    ap.add_argument("-u", "--url_en", dest='nlp_server', default='http://10.133.6.188:9000/',
                     required=False, help="url to nlp server")
-    ap.add_argument("-uh", "--url_han", dest='nlp_han_server', default='http://10.133.6.180:9001/',
+    ap.add_argument("-uh", "--url_han", dest='nlp_han_server', default='http://10.133.6.188:9001/',
                     required=False, help="url to nlp chinese server")
     ap.add_argument('rucm_path', nargs='?', default=None,
                     type=str, help='path to whatYouNeedToCheck.rucm')
@@ -34,6 +34,7 @@ if __name__ == "__main__":
     if args.nlp_han_server:
         nlputils.url_Han = args.nlp_han_server
 
+    rule_load = None
     # load rule
     if args.rule_path:
         print('Loading rule file: %s' % (args.rule_path))
@@ -45,6 +46,7 @@ if __name__ == "__main__":
     else:
         print('No rule file is specified. Default rules are loaded only.')
 
+    rucm_loader = None
     # load rucm
     if args.rucm_path:
         print('Checking rucm file: %s' % (args.rucm_path))
