@@ -1,0 +1,1167 @@
+{
+  "root": {
+    "content": {
+      "modelElements": [
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "Withdraw Fund",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "ATM customer funds have been withdrawn.",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "Basic Flow",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "INCLUDE USE CASE Validate PI",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {"useCaseName": {
+                              "content": "Validate PI",
+                              "type": "<string>"
+                            }},
+                            "type": "IncludeUCNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ATM customer selects Withdrawal through the system ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ATM customer enters the withdrawal amount through the system. ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "ATM customer selects the account number through the system. ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system VALIDATES THAT the account number is valid. ",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "subject": {
+                                "content": "The system",
+                                "type": "<string>"
+                              },
+                              "object": {
+                                "content": "the account number is valid",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "ValidateThatNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system VALIDATES THAT ATM customer has enough funds in the account. ",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "subject": {
+                                "content": "The system",
+                                "type": "<string>"
+                              },
+                              "object": {
+                                "content": "ATM customer has enough funds in the account",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "ValidateThatNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system VALIDATES THAT the withdrawal amount does not exceed the daily limit of the account. ",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "subject": {
+                                "content": "The system",
+                                "type": "<string>"
+                              },
+                              "object": {
+                                "content": "the withdrawal amount does not exceed the daily limit of the account",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "ValidateThatNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system VALIDATES THAT the ATM has enough funds. ",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "subject": {
+                                "content": "The system",
+                                "type": "<string>"
+                              },
+                              "object": {
+                                "content": "the ATM has enough funds",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "ValidateThatNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system dispenses the cash amount. ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system prints a receipt showing transaction number, transaction type, amount withdrawn, and account balance. ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system ejects the ATM card. ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system displays Welcome message. ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system is idle.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "The system is displaying a Welcome message.",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "ATM customer withdraws a specific amount of funds from a valid bank account.",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "ATM customer funds have not been withdrawn.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            },
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "The system is shut down.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            }
+                          ]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS Basic Flow 5-7 ",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 7,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 5,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "Basic Flow",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "The system shuts down. ",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "AbortNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "BoundedAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "ATM customer funds have not been withdrawn.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            },
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "The system is idle.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            },
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "The system is displaying a Welcome message.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            }
+                          ]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "conditionSentence": {
+                        "content": {
+                          "content": {
+                            "content": "IF ATM customer enters Cancel THEN ",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "The system cancels the transaction MEANWHILE the system ejects the ATM card. ",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system cancels the transaction",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "AbortNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ENDIF",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "EndIfNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "GlobalAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "ATM customer funds have not been withdrawn.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            },
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "The system is idle.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            },
+                            {
+                              "content": {
+                                "content": {
+                                  "content": "The system is displaying a Welcome message.",
+                                  "type": "<string>"
+                                },
+                                "description": {
+                                  "content": "",
+                                  "type": "<string>"
+                                },
+                                "name": {
+                                  "content": "",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "Sentence"
+                            }
+                          ]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS Basic Flow 8 ",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 8,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 8,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "Basic Flow",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "The system displays an apology message MEANWHILE the system ejects the ATM card. ",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {
+                                "action2": {
+                                  "content": "the system ejects the ATM card",
+                                  "type": "<string>"
+                                },
+                                "action1": {
+                                  "content": "The system displays an apology message",
+                                  "type": "<string>"
+                                }
+                              },
+                              "type": "MeanwhileNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "ABORT",
+                              "type": "<string>"
+                            },
+                            "natures": [{
+                              "content": {},
+                              "type": "AbortNature"
+                            }],
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  }
+                ]
+              },
+              "type": "UseCaseSpecification"
+            },
+            "include": [{
+              "content": {
+                "includingCase": "&0",
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "addition": "&1"
+              },
+              "type": "Include"
+            }]
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "ATM customer",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": " Validate PIN",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BasicFlow"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "useCase": "&0",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&2"
+          },
+          "type": "Relationship"
+        }
+      ],
+      "description": {
+        "content": "",
+        "type": "<string>"
+      },
+      "name": {
+        "content": "",
+        "type": "<string>"
+      },
+      "diagrams": [{
+        "content": {
+          "height": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "nodes": [
+            {
+              "content": {
+                "useCase": "&0",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 167,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 288,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "height": {
+                  "content": 90,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 135,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 373,
+                  "type": "<int>"
+                },
+                "actor": "&2",
+                "top": {
+                  "content": 139,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDActorNode"
+            },
+            {
+              "content": {
+                "useCase": "&1",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 423,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 360,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            }
+          ],
+          "width": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "name": {
+            "content": "",
+            "type": "<string>"
+          },
+          "left": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "links": [
+            {
+              "content": {
+                "node1": "&3",
+                "node2": "&4",
+                "include": "&5"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "relationship": "&6",
+                "node1": "&7",
+                "node2": "&3"
+              },
+              "type": "UCDRelationshipLink"
+            }
+          ],
+          "ucModel": "&8",
+          "top": {
+            "content": 0,
+            "type": "<int>"
+          }
+        },
+        "type": "UCDiagram"
+      }]
+    },
+    "type": "UCModel"
+  },
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[2]"},
+    {"path": "<root>.modelElements[1]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.diagrams[0].nodes[2]"},
+    {"path": "<root>.modelElements[0].include[0]"},
+    {"path": "<root>.modelElements[3]"},
+    {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>"}
+  ]
+}

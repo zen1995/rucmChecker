@@ -1,0 +1,2690 @@
+{
+  "root": {
+    "content": {
+      "modelElements": [
+        {
+          "content": {
+            "description": {
+              "content": "列车的驾驶员",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "驾驶员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制列车前后车安全距离",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&0"],
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "完成对列车安全距离的控制",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车即将进入下一个区段",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶的列车被下一个区段头结点前的缓冲区前的速度传感器A感知",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "速度传感器将经测算得到的列车时速信息以数字信号的方式发送给控制系统",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统使用前车在经过区段头结点时被缓冲区后的速度传感器B记录下的速度与时间及当前列车接触速度传感器A的时间算出列车在下一个区段应保持的安全时速",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统将经计算得出的安全时速以数字信号的形式发送给信号灯",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "位于缓冲区前的信号灯显示安全速度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员得到安全速度并在缓冲区内对速度进行调整",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驾驶员驾驶列车驶入下一区段",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统利用缓冲区后的速度传感器B得到当前车辆驶入下一区段的实际速度与时间",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车即将进入的下一个区段尾结点处不存在合并路段且下一区段尚未关闭",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车驾驶员根据信号灯所提示的信息控制列车车速从而保证列车间的距离大于安全距离",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&1"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "接受来源于传感器的信号并将经过处理的信号反馈给信号灯为驾驶员提供信息的自动化处理系统",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制系统",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "列车驾驶",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&0"],
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "驾驶员控制列车继续行驶",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员在没有得到新信息的情况下按照上一次得到的信息驾驶车辆",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车进入非缓冲区",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车行驶于非缓冲区内需按照信号灯建议的速度保持车辆的匀速行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车进入缓冲区",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车行驶于缓冲区内需按照信号灯建议的速度对车辆的时速进行控制",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车未出现异常情况",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车司机根据信号灯指示驾驶列车",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [{
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "驾驶员改变列车行驶的速度",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "conditionSentence": {
+                      "content": {
+                        "content": {
+                          "content": "驾驶员得到了新的信息",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "驾驶员按照新的信息驾驶车辆",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "GlobalAlternative"
+                }],
+                "primaryActor": "&1"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "故障排查",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&2"],
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "列车继续行驶",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员通过通讯工具联络调度员并申请故障排查",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员进行三分钟的故障排查",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员VALTDATES THAT确认列车故障排除并告知调度员故障已排除",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员VALTDATES THAT了解并告知调度员出现可疑情况的具体原因",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车车辆维护员根据专业知识判断列车出现可疑情况",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "检测列车的故障并作出处理",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "启动紧急预案",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 3",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 3,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 3,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "告知调度员未能成功排除列车故障",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "启动列车故障紧急预案",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  },
+                  {
+                    "content": {
+                      "postCondition": {
+                        "content": {
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "sentences": [{
+                            "content": {
+                              "content": {
+                                "content": "启动紧急预案",
+                                "type": "<string>"
+                              },
+                              "description": {
+                                "content": "",
+                                "type": "<string>"
+                              },
+                              "name": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "Sentence"
+                          }]
+                        },
+                        "type": "PostCondition"
+                      },
+                      "description": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "name": {
+                        "content": "",
+                        "type": "<string>"
+                      },
+                      "rfsSentence": {
+                        "content": {
+                          "content": {
+                            "content": "RFS 4",
+                            "type": "<string>"
+                          },
+                          "natures": [{
+                            "content": {
+                              "segments": [{
+                                "content": {
+                                  "toStep": {
+                                    "content": 4,
+                                    "type": "<int>"
+                                  },
+                                  "fromStep": {
+                                    "content": 4,
+                                    "type": "<int>"
+                                  }
+                                },
+                                "type": "RFSNatureSegment"
+                              }],
+                              "flowName": {
+                                "content": "",
+                                "type": "<string>"
+                              }
+                            },
+                            "type": "RFSNature"
+                          }],
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      "steps": [
+                        {
+                          "content": {
+                            "content": {
+                              "content": "维护员告知调度员未能发现可疑情况具体原因",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        },
+                        {
+                          "content": {
+                            "content": {
+                              "content": "启动列车故障紧急预案",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }
+                      ]
+                    },
+                    "type": "SpecificAlternative"
+                  }
+                ],
+                "primaryActor": "&3"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "在出现紧急情况时，系统为保障广大用户安全将使用更为高效可靠的人工处理机制来对紧急情况进行应对，调度人员负责直接与驾驶员进行联络以便第一时间获取情况并对紧急情况的处理进行安排与调度",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "调度员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "排除故障",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BasicFlow"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "紧急预案",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BasicFlow"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制列车交叉点安全距离",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&0"],
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "列车安全通过交叉点并继续前进",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车即将驶入交叉点前一区段头节点前的缓冲区",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车被缓冲区前的传感器A1感知到",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统接收到由A1发出的列车位置与时间信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统将该信息最近接触到A1的列车或接触到另一边区段头节点前缓冲区B前的传感器B1的列车的时间信息进行处理与计算",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统算出列车在进入区段时应保持的相对安全速度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统将速度信息反馈给环境中的信号灯",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员观察信号灯并根据安全时速在缓冲区对列车速度进行控制",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车保持匀速通过区段",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车即将驶入下一个缓冲区",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车即将进入的下一个区段尾结点处存在合并路段且下一区段尚未关闭",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车驾驶员根据信号灯所提示的信息在交叉点前的区段提前对速度进行控制，从而保证列车间距离的相对距离",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "primaryActor": "&1"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "负责车辆的维护与检查",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "维护员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "列车驾驶",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            },
+            "include": [
+              {
+                "content": {
+                  "includingCase": "&4",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  }
+                },
+                "type": "Include"
+              },
+              {
+                "content": {
+                  "includingCase": "&4",
+                  "description": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "name": {
+                    "content": "",
+                    "type": "<string>"
+                  },
+                  "addition": "&5"
+                },
+                "type": "Include"
+              }
+            ]
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "驾驶员",
+              "type": "<string>"
+            }
+          },
+          "type": "Actor"
+        },
+        {
+          "content": {
+            "useCase": "&4",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&6"
+          },
+          "type": "Relationship"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制列车交叉点安全距离",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [{
+                      "content": {
+                        "content": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BasicFlow"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                }
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "控制区段避免拥挤",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&0"],
+                "basicFlow": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机驾驶列车即将进入下一个区段",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机驾驶的列车被下一个区段头结点前的缓冲区前的速度传感器A感知",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "速度传感器将经测算得到的列车时速信息以数字信号的方式发送给控制系统",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统对车辆即将进入的区段的车辆数进行判断",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统VALTDATES THAT前方区段车辆数小于拥挤数值2",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统按照正常的逻辑输出计算的安全速度并发送给信号灯",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "位于缓冲区前的信号灯显示安全速度",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车司机得到安全速度并在缓冲区内对速度进行调整",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车司机驾驶列车驶入下一区段",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统利用缓冲区后的速度传感器B得到当前车辆驶入下一区段的实际速度与时间",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车前后车之间保持安全距离",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车驾驶员在满足区段列车总数不大于限定数值3的前提下驾驶列车",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [{
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "区段乃至整个路段的拥挤程度被大大减轻",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "rfsSentence": {
+                      "content": {
+                        "content": {
+                          "content": "RFS 5",
+                          "type": "<string>"
+                        },
+                        "natures": [{
+                          "content": {
+                            "segments": [{
+                              "content": {
+                                "toStep": {
+                                  "content": 5,
+                                  "type": "<int>"
+                                },
+                                "fromStep": {
+                                  "content": 5,
+                                  "type": "<int>"
+                                }
+                              },
+                              "type": "RFSNatureSegment"
+                            }],
+                            "flowName": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "RFSNature"
+                        }],
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "前方区段车辆数等于2",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "控制系统在经处理的到数值后，在原有基础上对数值进行进一步下调",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "位于缓冲区前的信号灯显示比安全速度更低的数值",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "司机所驾驶车辆与前车间的间距进一步拉大",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "连接的拥挤区段间的间距全部被拉大",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "SpecificAlternative"
+                }],
+                "primaryActor": "&1"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "紧急驾驶",
+              "type": "<string>"
+            },
+            "specification": {
+              "content": {
+                "secondaryActors": ["&3"],
+                "basicFlow": {
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "险情得以解决，车辆接受处理",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "维护员在对列车出现的隐患做出排查后仍未能消除该隐患",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员在保证车辆安全的情况下逐渐降低速度直至车辆平稳停下",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员VALTDATES THAT接受到了来自调度员关于列车乘客已全员安全撤离的信息",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员在保证自身安全的前提下，将已经没有乘客的列车以平稳的速度向下一个站点行驶",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "列车驶入下一站点",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员驾驶列车入库维修",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "BasicFlow"
+                },
+                "preCondition": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "维护员的故障排查未能排除故障",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "PreCondition"
+                },
+                "briefDescription": {
+                  "content": {
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "sentences": [{
+                      "content": {
+                        "content": {
+                          "content": "列车经维护员故障排查后仍然未能排除安全隐患，此时司机应执行紧急驾驶流程",
+                          "type": "<string>"
+                        },
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    }]
+                  },
+                  "type": "BriefDescription"
+                },
+                "description": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "name": {
+                  "content": "",
+                  "type": "<string>"
+                },
+                "alternativeFlows": [{
+                  "content": {
+                    "postCondition": {
+                      "content": {
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "sentences": [{
+                          "content": {
+                            "content": {
+                              "content": "驾驶员等待乘客全员撤离，保障乘客生命财产安全",
+                              "type": "<string>"
+                            },
+                            "description": {
+                              "content": "",
+                              "type": "<string>"
+                            },
+                            "name": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "Sentence"
+                        }]
+                      },
+                      "type": "PostCondition"
+                    },
+                    "description": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "name": {
+                      "content": "",
+                      "type": "<string>"
+                    },
+                    "rfsSentence": {
+                      "content": {
+                        "content": {
+                          "content": "RFS 3",
+                          "type": "<string>"
+                        },
+                        "natures": [{
+                          "content": {
+                            "segments": [{
+                              "content": {
+                                "toStep": {
+                                  "content": 3,
+                                  "type": "<int>"
+                                },
+                                "fromStep": {
+                                  "content": 3,
+                                  "type": "<int>"
+                                }
+                              },
+                              "type": "RFSNatureSegment"
+                            }],
+                            "flowName": {
+                              "content": "",
+                              "type": "<string>"
+                            }
+                          },
+                          "type": "RFSNature"
+                        }],
+                        "description": {
+                          "content": "",
+                          "type": "<string>"
+                        },
+                        "name": {
+                          "content": "",
+                          "type": "<string>"
+                        }
+                      },
+                      "type": "Sentence"
+                    },
+                    "steps": [
+                      {
+                        "content": {
+                          "content": {
+                            "content": "乘客仍未撤离完毕",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      },
+                      {
+                        "content": {
+                          "content": {
+                            "content": "驾驶员继续等待",
+                            "type": "<string>"
+                          },
+                          "description": {
+                            "content": "",
+                            "type": "<string>"
+                          },
+                          "name": {
+                            "content": "",
+                            "type": "<string>"
+                          }
+                        },
+                        "type": "Sentence"
+                      }
+                    ]
+                  },
+                  "type": "SpecificAlternative"
+                }],
+                "primaryActor": "&1"
+              },
+              "type": "UseCaseSpecification"
+            }
+          },
+          "type": "UseCase"
+        },
+        {
+          "content": {
+            "useCase": "&7",
+            "description": {
+              "content": "",
+              "type": "<string>"
+            },
+            "name": {
+              "content": "",
+              "type": "<string>"
+            },
+            "actor": "&6"
+          },
+          "type": "Relationship"
+        }
+      ],
+      "description": {
+        "content": "Input description for this model here.",
+        "type": "<string>"
+      },
+      "name": {
+        "content": "驾驶员",
+        "type": "<string>"
+      },
+      "diagrams": [{
+        "content": {
+          "height": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "nodes": [
+            {
+              "content": {
+                "useCase": "&4",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 184,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 148,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "height": {
+                  "content": 90,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 59,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 61,
+                  "type": "<int>"
+                },
+                "actor": "&6",
+                "top": {
+                  "content": 225,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDActorNode"
+            },
+            {
+              "content": {
+                "height": {
+                  "content": 72,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 188,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 343,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 52,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&5",
+                "height": {
+                  "content": 67,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 181,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 359,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 235,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&8",
+                "height": {
+                  "content": 65,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 176,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 495,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 152,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "useCase": "&7",
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 192,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 267,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            },
+            {
+              "content": {
+                "height": {
+                  "content": 70,
+                  "type": "<int>"
+                },
+                "width": {
+                  "content": 140,
+                  "type": "<int>"
+                },
+                "left": {
+                  "content": 189,
+                  "type": "<int>"
+                },
+                "top": {
+                  "content": 399,
+                  "type": "<int>"
+                }
+              },
+              "type": "UCDUseCaseNode"
+            }
+          ],
+          "width": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "name": {
+            "content": "",
+            "type": "<string>"
+          },
+          "left": {
+            "content": 0,
+            "type": "<int>"
+          },
+          "links": [
+            {
+              "content": {
+                "relationship": "&9",
+                "node1": "&10",
+                "node2": "&11"
+              },
+              "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "node1": "&11",
+                "node2": "&12",
+                "include": "&13"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&11",
+                "node2": "&14",
+                "include": "&15"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "node1": "&12",
+                "node2": "&16"
+              },
+              "type": "UCDIncludeLink"
+            },
+            {
+              "content": {
+                "relationship": "&17",
+                "node1": "&10",
+                "node2": "&18"
+              },
+              "type": "UCDRelationshipLink"
+            },
+            {
+              "content": {
+                "node1": "&10",
+                "node2": "&19"
+              },
+              "type": "UCDRelationshipLink"
+            }
+          ],
+          "ucModel": "&20",
+          "top": {
+            "content": 0,
+            "type": "<int>"
+          }
+        },
+        "type": "UCDiagram"
+      }]
+    },
+    "type": "UCModel"
+  },
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[2]"},
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[5]"},
+    {"path": "<root>.modelElements[9]"},
+    {"path": "<root>.modelElements[10]"},
+    {"path": "<root>.modelElements[13]"},
+    {"path": "<root>.modelElements[11]"},
+    {"path": "<root>.modelElements[15]"},
+    {"path": "<root>.modelElements[14]"},
+    {"path": "<root>.modelElements[12]"},
+    {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.diagrams[0].nodes[2]"},
+    {"path": "<root>.modelElements[10].include[0]"},
+    {"path": "<root>.diagrams[0].nodes[3]"},
+    {"path": "<root>.modelElements[10].include[1]"},
+    {"path": "<root>.diagrams[0].nodes[4]"},
+    {"path": "<root>.modelElements[16]"},
+    {"path": "<root>.diagrams[0].nodes[5]"},
+    {"path": "<root>.diagrams[0].nodes[6]"},
+    {"path": "<root>"}
+  ]
+}

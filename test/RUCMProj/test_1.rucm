@@ -1,0 +1,4529 @@
+{
+  "lmf.version": "1.1",
+  "reference": [
+    {"path": "<root>.modelElements[0]"},
+    {"path": "<root>.modelElements[5]"},
+    {"path": "<root>.modelElements[4]"},
+    {"path": "<root>.modelElements[7]"},
+    {"path": "<root>.modelElements[2]"},
+    {"path": "<root>.modelElements[1]"},
+    {"path": "<root>.modelElements[8]"},
+    {"path": "<root>.modelElements[6]"},
+    {"path": "<root>.modelElements[9]"},
+    {"path": "<root>.modelElements[16]"},
+    {"path": "<root>.diagrams[0].nodes[2]"},
+    {"path": "<root>.modelElements[3]"},
+    {"path": "<root>.diagrams[0].nodes[1]"},
+    {"path": "<root>.modelElements[2].include[0]"},
+    {"path": "<root>.diagrams[0].nodes[4]"},
+    {"path": "<root>.modelElements[2].include[1]"},
+    {"path": "<root>.diagrams[0].nodes[0]"},
+    {"path": "<root>.modelElements[2].include[2]"},
+    {"path": "<root>.diagrams[0].nodes[3]"},
+    {"path": "<root>.modelElements[0].extend[0]"},
+    {"path": "<root>.modelElements[0].extend[1]"},
+    {"path": "<root>.diagrams[0].nodes[6]"},
+    {"path": "<root>.modelElements[11]"},
+    {"path": "<root>.diagrams[0].nodes[5]"},
+    {"path": "<root>.modelElements[13]"},
+    {"path": "<root>.diagrams[0].nodes[8]"},
+    {"path": "<root>.modelElements[14]"},
+    {"path": "<root>.modelElements[15]"},
+    {"path": "<root>.diagrams[0].nodes[9]"},
+    {"path": "<root>.modelElements[17]"},
+    {"path": "<root>.diagrams[0].nodes[7]"}
+  ],
+  "root": {
+    "type": "UCModel",
+    "content": {
+      "name": {
+        "type": "<string>",
+        "content": ""
+      },
+      "modelElements": [
+        {
+          "type": "UseCase",
+          "content": {
+            "extend": [
+              {
+                "type": "Extend",
+                "content": {
+                  "extension": "&0",
+                  "condition": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "extendedCase": "&1",
+                  "name": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "description": {
+                    "type": "<string>",
+                    "content": ""
+                  }
+                }
+              },
+              {
+                "type": "Extend",
+                "content": {
+                  "extension": "&0",
+                  "condition": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "extendedCase": "&2",
+                  "name": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "description": {
+                    "type": "<string>",
+                    "content": ""
+                  }
+                }
+              }
+            ],
+            "name": {
+              "type": "<string>",
+              "content": "计费系统"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "secondaryActors": ["&3"],
+                "alternativeFlows": [{
+                  "type": "SpecificAlternative",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "紧急电话不计费"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "rfsSentence": {
+                      "type": "Sentence",
+                      "content": {
+                        "natures": [{
+                          "type": "RFSNature",
+                          "content": {
+                            "flowName": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "segments": [{
+                              "type": "RFSNatureSegment",
+                              "content": {
+                                "toStep": {
+                                  "type": "<int>",
+                                  "content": 1
+                                },
+                                "fromStep": {
+                                  "type": "<int>",
+                                  "content": 1
+                                }
+                              }
+                            }]
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "RFS 1"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统识别到紧急通话标识"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "直接转入电话交换机"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }],
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "主叫完成任意类型通话"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "计费系统正常完成计费"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "计费系统"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "通话为非紧急通话"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统VALIDATES THAT通话为非紧急通话"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统 收到 话费查询传回的 主叫账户余额信息"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统等待通话开始"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统开始对通话计时"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统等待通话结束"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统停止对通话计时"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统 根据 号码识别传回的 通话类别信息 确定相关计费标准"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统 根据 通话计时信息 确定相关计费标准"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统对主叫进行费用扣除"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统将主叫的账户信息更新到 查询话费数据库中"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "根据不同通话类别、时长完成计费"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Actor",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "主叫"
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "UseCase",
+          "content": {
+            "include": [
+              {
+                "type": "Include",
+                "content": {
+                  "name": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "description": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "includingCase": "&4",
+                  "addition": "&1"
+                }
+              },
+              {
+                "type": "Include",
+                "content": {
+                  "name": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "description": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "includingCase": "&4",
+                  "addition": "&0"
+                }
+              },
+              {
+                "type": "Include",
+                "content": {
+                  "name": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "description": {
+                    "type": "<string>",
+                    "content": ""
+                  },
+                  "includingCase": "&4",
+                  "addition": "&2"
+                }
+              }
+            ],
+            "name": {
+              "type": "<string>",
+              "content": "拨打电话"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "alternativeFlows": [
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "系统回到拨号音状态"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 5
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 5
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 5"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别主叫拨号为空号"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "端机提示主叫拨号为空"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "清空主叫拨打号码"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "释放全部占用资源，等待再次拨打"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 6
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 6
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 6"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别主叫拨号为紧急拨号"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络 收到 号码识别 提供的跳过计费系统和话费查询的 标记"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络 收到 号码识别 提供的紧急电话路由信息"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "优先级或备用/专用路由完成路由搭建"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "被叫摘机"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "紧急通话"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "主/被叫挂机"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "退出拨打状态"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 7
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 7
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 7"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "查询话费确认主叫为欠费状态"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "系统回音提示主叫已欠费"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "完成长途电话通话"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 8
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 8
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 8"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": "longdistance"
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别前两位为长途电话"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别 将被叫路由信息 传回电话交换网络"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [{
+                              "type": "ValidateThatNature",
+                              "content": {
+                                "subject": {
+                                  "type": "<string>",
+                                  "content": "电话交换网络"
+                                },
+                                "object": {
+                                  "type": "<string>",
+                                  "content": "主叫所属县级交换机空闲"
+                                }
+                              }
+                            }],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络VALIDATES THAT主叫所属县级交换机空闲"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络 根据 被叫号码路由信息 预设路由"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [{
+                              "type": "ValidateThatNature",
+                              "content": {
+                                "subject": {
+                                  "type": "<string>",
+                                  "content": "电话交换网络"
+                                },
+                                "object": {
+                                  "type": "<string>",
+                                  "content": "路由可以接通"
+                                }
+                              }
+                            }],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络VALIDATES THAT路由可以接通"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络建立路由"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "电话交换网络振铃通知被叫"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "计费系统开始计时"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "主/被叫一方挂机"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "计费系统停止计时"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "拆除路由，释放资源"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别 向计费系统 提交长途电话收费标准"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "计费系统扣除主叫费用"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "计费系统对查询话费后台数据进行更新"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "等待主叫挂机"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 3
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 3
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 3"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": "longdistance1"
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [{
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统回忙音提示主叫线路忙"
+                          }
+                        }
+                      }]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "等待主叫挂机"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 5
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 5
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 5"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": "longdistance2"
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [{
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统提示主叫被叫忙"
+                          }
+                        }
+                      }]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "等待主叫挂机"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": "1"
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 0
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 0
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 10"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [{
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统回忙音提示主叫线路忙"
+                          }
+                        }
+                      }]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "等待主叫挂机"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": "1"
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 2
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 2
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 12"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [{
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统提示主叫被叫忙"
+                          }
+                        }
+                      }]
+                    }
+                  },
+                  {
+                    "type": "GlobalAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "释放全部占用资源，等待再次拨打电话"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "conditionSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "主/被叫挂机"
+                          }
+                        }
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "用户挂机"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "natures": [{
+                              "type": "AbortNature",
+                              "content": {}
+                            }],
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "ABORT"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "primaryActor": "&5",
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "主叫摘机"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "主叫完成正常本地普通通话"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "主叫摘机"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "端机 给主叫回拨号音 提示拨号"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "主叫拨号"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统收号"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "号码识别"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "号码不是空号"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别VALIDATES THAT号码不是空号"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "号码识别"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "被叫号码不是紧急号码"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别VALIDATES THAT被叫号码不是紧急号码"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "查询话费"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "主叫不在欠费状态"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "查询话费VALIDATES THAT主叫不在欠费状态"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "号码识别前两位"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "通话类别为本地普通通话"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别前两位VALIDATES THAT通话类别为本地普通通话"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别 将被叫路由信息传回 电话交换网络"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "电话交换网络"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "主叫所属县级交换机空闲"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "电话交换网络VALIDATES THAT主叫所属县级交换机空闲"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "电话交换网络 根据 被叫号码路由信息预设路由"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "电话交换网络"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "路由可以接通"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "电话交换网络VALIDATES THAT路由可以接通"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "路由建立"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "被叫振铃"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "被叫摘机"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统开始计时"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "主/被叫一方挂机"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统停止计时"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "拆除路由，释放资源"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别 向计费系统提交 本地普通电话收费标准"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统扣除主叫费用"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "计费系统对查询话费后台数据进行更新"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "主叫完成通话（紧急/本地/长途）"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&5",
+            "useCase": "&4",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "UseCase",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "查询话费"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "alternativeFlows": [{
+                  "type": "SpecificAlternative",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "主叫欠费"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "rfsSentence": {
+                      "type": "Sentence",
+                      "content": {
+                        "natures": [{
+                          "type": "RFSNature",
+                          "content": {
+                            "flowName": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "segments": [{
+                              "type": "RFSNatureSegment",
+                              "content": {
+                                "toStep": {
+                                  "type": "<int>",
+                                  "content": 2
+                                },
+                                "fromStep": {
+                                  "type": "<int>",
+                                  "content": 2
+                                }
+                              }
+                            }]
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "RFS 2"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "查询话费，主叫欠费"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统提示主叫欠费"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }],
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "primaryActor": "&5",
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "系统验证主叫拨号非空"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "完成话费查询"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统验证主叫拨号非空、非紧急号码"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "查询话费"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "主叫未欠费"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "查询话费VALIDATES THAT主叫未欠费"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "查询话费 告知 号码识别 进行 被叫路由信息确认"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "提交用户当前费用信息给 计费系统"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "允许主叫接入交换网络正常通话"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "对主叫是否处于欠费状态予以验证"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "UseCase",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "号码识别"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "alternativeFlows": [
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "号码识别告知电话交换网络主叫拨号为空"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 2
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 2
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 2"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [{
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别主叫拨号为空号"
+                          }
+                        }
+                      }]
+                    }
+                  },
+                  {
+                    "type": "SpecificAlternative",
+                    "content": {
+                      "postCondition": {
+                        "type": "PostCondition",
+                        "content": {
+                          "sentences": [{
+                            "type": "Sentence",
+                            "content": {
+                              "name": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "description": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "content": {
+                                "type": "<string>",
+                                "content": "号码识别 将跳过计费系统标记 传回电话交换网络"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          }
+                        }
+                      },
+                      "rfsSentence": {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "RFSNature",
+                            "content": {
+                              "flowName": {
+                                "type": "<string>",
+                                "content": ""
+                              },
+                              "segments": [{
+                                "type": "RFSNatureSegment",
+                                "content": {
+                                  "toStep": {
+                                    "type": "<int>",
+                                    "content": 3
+                                  },
+                                  "fromStep": {
+                                    "type": "<int>",
+                                    "content": 3
+                                  }
+                                }
+                              }]
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "RFS 3"
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "description": {
+                        "type": "<string>",
+                        "content": ""
+                      },
+                      "steps": [
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别 被叫号码为紧急电话"
+                            }
+                          }
+                        },
+                        {
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "号码识别 给被叫号码提供跳过计费系统 标记"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "主叫摘机拨号"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "正常完成号码识别"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统完成收号"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "号码识别"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "被叫号码非空号"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别VALIDATES THAT被叫号码非空号"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "号码识别"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "被叫号码非紧急电话"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别VALIDATES THAT被叫号码非紧急电话"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "查询话费 告知 号码识别 主叫未欠费"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别 根据前两位确定通话类别"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别 将通话类别信息交给 计费系统 以确定收费标准"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别 根据被叫端机号 确定路由信息"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "号码识别 将被叫端机路由信息传给 电话交换网络"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "对号码进行识别，确定拨打电话类别"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "UseCase",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "统计话务量"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "primaryActor": "&3",
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "通话完成"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "完成话务量统计"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "通话完成，数据库存储话务信息"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统收集所有数据库话务信息"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "管理员申请查询话务信息"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统向管理员返回话务信息"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "统计话务信息，使管理人员对系统有总览"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Actor",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "管理人员"
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Actor",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "维护人员"
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "UseCase",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "更新用户数据"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "secondaryActors": ["&6"],
+                "alternativeFlows": [{
+                  "type": "SpecificAlternative",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "用户数据无更新"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "rfsSentence": {
+                      "type": "Sentence",
+                      "content": {
+                        "natures": [{
+                          "type": "RFSNature",
+                          "content": {
+                            "flowName": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "segments": [{
+                              "type": "RFSNatureSegment",
+                              "content": {
+                                "toStep": {
+                                  "type": "<int>",
+                                  "content": 1
+                                },
+                                "fromStep": {
+                                  "type": "<int>",
+                                  "content": 1
+                                }
+                              }
+                            }]
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "RFS 1"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "数据库保存用户数据无变动"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "等待管理员收到变更数据请求"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }],
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "primaryActor": "&3",
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "用户数据产生变更"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "用户数据更新"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "natures": [{
+                            "type": "ValidateThatNature",
+                            "content": {
+                              "subject": {
+                                "type": "<string>",
+                                "content": "系统"
+                              },
+                              "object": {
+                                "type": "<string>",
+                                "content": "开户/注销账号/换号用户"
+                              }
+                            }
+                          }],
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "系统VALIDATES THAT开户/注销账号/换号用户"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "管理人员收到更新数据请求"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "用户所属县级交换机数据库更新"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "用户完成开户/注销账号/换号用户"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "用户更新数据储存到数据库，等待管理员查看"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "用户数据的更新需要给管理员备份，以便管理电话交换网络"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&6",
+            "useCase": "&7",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&3",
+            "useCase": "&7",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&6",
+            "useCase": "&8",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&3",
+            "useCase": "&8",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&5",
+            "useCase": "&2",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&3",
+            "useCase": "&0",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "UseCase",
+          "content": {
+            "name": {
+              "type": "<string>",
+              "content": "备份用户和交换机数据"
+            },
+            "specification": {
+              "type": "UseCaseSpecification",
+              "content": {
+                "name": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "description": {
+                  "type": "<string>",
+                  "content": ""
+                },
+                "primaryActor": "&6",
+                "preCondition": {
+                  "type": "PreCondition",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "用户和交换机数据上传到数据库"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                },
+                "basicFlow": {
+                  "type": "BasicFlow",
+                  "content": {
+                    "postCondition": {
+                      "type": "PostCondition",
+                      "content": {
+                        "sentences": [{
+                          "type": "Sentence",
+                          "content": {
+                            "name": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "description": {
+                              "type": "<string>",
+                              "content": ""
+                            },
+                            "content": {
+                              "type": "<string>",
+                              "content": "备份用户和交换机数据"
+                            }
+                          }
+                        }],
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "steps": [
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "用户数据和交换机数据保存"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "用户数据和交换机数据上传至数据库"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Sentence",
+                        "content": {
+                          "name": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "description": {
+                            "type": "<string>",
+                            "content": ""
+                          },
+                          "content": {
+                            "type": "<string>",
+                            "content": "数据库提供备份给维护人员进行备用"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "briefDescription": {
+                  "type": "BriefDescription",
+                  "content": {
+                    "sentences": [{
+                      "type": "Sentence",
+                      "content": {
+                        "name": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "description": {
+                          "type": "<string>",
+                          "content": ""
+                        },
+                        "content": {
+                          "type": "<string>",
+                          "content": "用户和交换机数据需要进行备份，方便维护人员进行修改"
+                        }
+                      }
+                    }],
+                    "name": {
+                      "type": "<string>",
+                      "content": ""
+                    },
+                    "description": {
+                      "type": "<string>",
+                      "content": ""
+                    }
+                  }
+                }
+              }
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        },
+        {
+          "type": "Relationship",
+          "content": {
+            "actor": "&6",
+            "useCase": "&9",
+            "name": {
+              "type": "<string>",
+              "content": ""
+            },
+            "description": {
+              "type": "<string>",
+              "content": ""
+            }
+          }
+        }
+      ],
+      "description": {
+        "type": "<string>",
+        "content": ""
+      },
+      "diagrams": [{
+        "type": "UCDiagram",
+        "content": {
+          "nodes": [
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&0",
+                "top": {
+                  "type": "<int>",
+                  "content": 173
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 435
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 70
+                }
+              }
+            },
+            {
+              "type": "UCDActorNode",
+              "content": {
+                "actor": "&5",
+                "top": {
+                  "type": "<int>",
+                  "content": 178
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 50
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 67
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 98
+                }
+              }
+            },
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&4",
+                "top": {
+                  "type": "<int>",
+                  "content": 174
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 192
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 70
+                }
+              }
+            },
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&2",
+                "top": {
+                  "type": "<int>",
+                  "content": 63
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 316
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 70
+                }
+              }
+            },
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&1",
+                "top": {
+                  "type": "<int>",
+                  "content": 276
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 313
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 70
+                }
+              }
+            },
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&7",
+                "top": {
+                  "type": "<int>",
+                  "content": 451
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 256
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 70
+                }
+              }
+            },
+            {
+              "type": "UCDActorNode",
+              "content": {
+                "actor": "&3",
+                "top": {
+                  "type": "<int>",
+                  "content": 370
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 474
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 67
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 98
+                }
+              }
+            },
+            {
+              "type": "UCDActorNode",
+              "content": {
+                "actor": "&6",
+                "top": {
+                  "type": "<int>",
+                  "content": 535
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 484
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 67
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 98
+                }
+              }
+            },
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&8",
+                "top": {
+                  "type": "<int>",
+                  "content": 367
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 251
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 140
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 70
+                }
+              }
+            },
+            {
+              "type": "UCDUseCaseNode",
+              "content": {
+                "useCase": "&9",
+                "top": {
+                  "type": "<int>",
+                  "content": 532
+                },
+                "left": {
+                  "type": "<int>",
+                  "content": 225
+                },
+                "width": {
+                  "type": "<int>",
+                  "content": 172
+                },
+                "height": {
+                  "type": "<int>",
+                  "content": 68
+                }
+              }
+            }
+          ],
+          "name": {
+            "type": "<string>",
+            "content": ""
+          },
+          "links": [
+            {
+              "type": "UCDRelationshipLink",
+              "content": {
+                "node2": "&10",
+                "relationship": "&11",
+                "node1": "&12"
+              }
+            },
+            {
+              "type": "UCDIncludeLink",
+              "content": {
+                "include": "&13",
+                "node2": "&14",
+                "node1": "&10"
+              }
+            },
+            {
+              "type": "UCDIncludeLink",
+              "content": {
+                "include": "&15",
+                "node2": "&16",
+                "node1": "&10"
+              }
+            },
+            {
+              "type": "UCDIncludeLink",
+              "content": {
+                "include": "&17",
+                "node2": "&18",
+                "node1": "&10"
+              }
+            },
+            {
+              "type": "UCDExtendLink",
+              "content": {
+                "extend": "&19",
+                "node2": "&14",
+                "node1": "&16"
+              }
+            },
+            {
+              "type": "UCDExtendLink",
+              "content": {
+                "extend": "&20",
+                "node2": "&18",
+                "node1": "&16"
+              }
+            },
+            {
+              "type": "UCDRelationshipLink",
+              "content": {
+                "node2": "&21",
+                "relationship": "&22",
+                "node1": "&23"
+              }
+            },
+            {
+              "type": "UCDRelationshipLink",
+              "content": {
+                "node2": "&21",
+                "relationship": "&24",
+                "node1": "&25"
+              }
+            },
+            {
+              "type": "UCDRelationshipLink",
+              "content": {
+                "node2": "&18",
+                "relationship": "&26",
+                "node1": "&12"
+              }
+            },
+            {
+              "type": "UCDRelationshipLink",
+              "content": {
+                "node2": "&21",
+                "relationship": "&27",
+                "node1": "&16"
+              }
+            },
+            {
+              "type": "UCDRelationshipLink",
+              "content": {
+                "node2": "&28",
+                "relationship": "&29",
+                "node1": "&30"
+              }
+            }
+          ]
+        }
+      }]
+    }
+  }
+}
