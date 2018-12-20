@@ -64,25 +64,30 @@ class Ui_MainWindow(object):
         applyScopes = {"所有句子":"allSentence","动作句子":"actionStep"}
         for k,v in applyScopes.items():
             self.box_applyScope.addItem(k,v)
-        if self.retVal["applyScope"] in applyScopes.values():
-            self.box_applyScope.setCurrentIndex(list(applyScopes.values()).index(self.retVal["applyScope"]))
+
 
         applyTarget = {"主语的数量":"subject_count","主语的值":"subject_Val","宾语的值":"object_Val","宾语的数量":"object_count",
                        "动词的数量":"verb_count","动词的时态":"verb_tense","句子中所有词语":"strs","情态动词的数量":"modal_verb_count",
                        "副词的数量":"adverb_count","代词的数量":"pronoun_count"}
         for k,v in applyTarget.items():
             self.box_subject.addItem(k,v)
-        if self.retVal["simpleRules"][0]["subject"] in applyTarget.values():
-            self.box_subject.setCurrentIndex(list(applyTarget.values()).index(self.retVal["simpleRules"][0]["subject"]))
+
 
         ops = {"在":"in","不在":"notIn","大于等于":"ge","大于":"gt","小于":"lt","小于等于":"le","等于":"eq","不等于":"neq"}
         for k,v in ops.items():
             self.box_op.addItem(k,v)
-        if self.retVal["simpleRules"][0]["operation"] in ops.values():
-            self.box_op.setCurrentIndex(list(ops.values()).index(self.retVal["simpleRules"][0]["operation"]))
 
-        self.line_val.setText(str(self.retVal["simpleRules"][0]["val"])[1:-1])
-        self.box_description.setPlainText(str(self.retVal["description"]))
+        if self.retVal != {}:
+            if self.retVal["simpleRules"][0]["operation"] in ops.values():
+                self.box_op.setCurrentIndex(list(ops.values()).index(self.retVal["simpleRules"][0]["operation"]))
+            if self.retVal["simpleRules"][0]["subject"] in applyTarget.values():
+                self.box_subject.setCurrentIndex(list(applyTarget.values()).index(self.retVal["simpleRules"][0]["subject"]))
+
+
+            if self.retVal["applyScope"] in applyScopes.values():
+                self.box_applyScope.setCurrentIndex(list(applyScopes.values()).index(self.retVal["applyScope"]))
+            self.line_val.setText(str(self.retVal["simpleRules"][0]["val"])[1:-1])
+            self.box_description.setPlainText(str(self.retVal["description"]))
 
         self.buttonBox.accepted.connect(self.finishEdit)
         self.buttonBox.rejected.connect(self.cancelEdit)
@@ -116,7 +121,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     r = {'id': -1, 'status': True, 'applyScope': "actionStep",
          'simpleRules': [{'subject': 'pronoun_count', 'operation': 'ge', 'val': ["111"]}], 'operation': '-', 'description': 'ff'}
-
+    r = {}
     mainWindow = Ui_MainWindow(r)
     window = PyQt5.QtWidgets.QMainWindow()
     mainWindow.setupUi(window)
