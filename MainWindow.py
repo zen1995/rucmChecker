@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from AddRule import Ui_Add_Dialog
+# from AddRule import Ui_Add_Dialog
 from Detail import Ui_Detail_Dialog
 from Report import Ui_Report_Dialog
 import sys
@@ -20,6 +20,7 @@ import rule
 import json
 import nlputils#####
 from copy import deepcopy
+from AddRule2 import Ui_Add_Dialog
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow, ruleBase, reporter):
@@ -36,6 +37,7 @@ class Ui_MainWindow(object):
         self.userRuleNum = 0
         self.RUCMPath = ''
         self.rules = {}
+        self.max_id = 0
         self.rulepath = ''
         # 设置默认规则表
         self.defaultTableWidget = QtWidgets.QTableWidget(self.centralwidget)
@@ -325,16 +327,16 @@ class Ui_MainWindow(object):
         # only available for user rule table
         # 输入取那个规则
         input = self.rules['user-def'][id]
-        Dialog = QtWidgets.QDialog()
-        ui = Ui_Add_Dialog()
-        ui.setupUi(Dialog, None) 
+        Dialog = QtWidgets.QMainWindow# QtWidgets.QDialog()
+        ui = Ui_Add_Dialog(input)
+        ui.setupUi(Dialog)
         '''the second parameter should be a dict to wrap the rule detailes.
         It's some business related to RuleBase.'''
         Dialog.show()
         Dialog.exec_()
-        ###########$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        output = {}
-        self.rules['user-def'][id] = output
+        output = input
+        if output:
+            self.rules['user-def'][id] = output
         # 输出直接覆盖掉
         '''Consider how to save the changed rule details. 
         It's some business related to RuleBase'''
@@ -348,16 +350,19 @@ class Ui_MainWindow(object):
         It's some business related to RuleBase'''
         # 添加Ui_Add_Dialog返回值到dict
         input = {}
-        Dialog = QtWidgets.QDialog()
-        ui = Ui_Add_Dialog()
-        ui.setupUi(Dialog, None)
+        Dialog = QtWidgets.QMainWindow()
+        ui = Ui_Add_Dialog(input)
+        ui.setupUi(Dialog)
         '''the second parameter should be None'''
         Dialog.show()
         Dialog.exec_()
-        ###########$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        # output = dict
-        # 添加一个规则到界面
-        self.__add_one_rule(1, True)
+        output = input
+        if output:
+            self.rules.append(deepcopy(output))
+            output['id'] = self.max_id + 1
+            self.max_id = self.max_id + 1
+            # 添加一个规则到界面
+            self.__add_one_rule(1, True)
 
     def deleteRuleTable(self, id):
         # id: row number
@@ -461,7 +466,7 @@ class Ui_MainWindow(object):
                 self.__add_one_rule(1, self.rules['user-def'][i]['status'])
                 item = self.defaultTableWidget.item(i, 0)
                 item.setText(_translate("MainWindow", str(self.rules['user-def'][i]['id'])))
-
+            self.max_id = self.rules['user-def'][i]['id']
 
     # 启用选项框
     def checkEnable(self, id, type):
@@ -516,7 +521,7 @@ class Ui_MainWindow(object):
         else:
             print('No rucm file is given')
             return
-        # check过程
+        # check过程############################################################################
         # print('---' * 65)
         # if rucm_loader:
         #     print('--------------check processing-------------')
@@ -530,9 +535,11 @@ class Ui_MainWindow(object):
         #         i.check()
 
     def report(self):
+        # 清空error
+        Reporter.errors = []
         Dialog = QtWidgets.QDialog()
         ui = Ui_Report_Dialog()
-        ui.setupUi(Dialog, self.reporter) 
+        ui.setupUi(Dialog)
         '''the second parameter should be a dict to wrap the rule detailes.
         It's some business related to RuleBase.'''
         Dialog.show()
