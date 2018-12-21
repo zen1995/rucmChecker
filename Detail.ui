@@ -13,55 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>711</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <column>
-    <property name="text">
-     <string>规则类型</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>作用对象</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>逻辑操作</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>值</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>作用范围</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>规则描述</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>规则连接符</string>
-    </property>
-   </column>
-  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>330</x>
      <y>210</y>
      <width>75</width>
      <height>23</height>
@@ -69,6 +24,16 @@
    </property>
    <property name="text">
     <string>关闭</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>681</width>
+     <height>181</height>
+    </rect>
    </property>
   </widget>
  </widget>
