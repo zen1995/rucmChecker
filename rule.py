@@ -73,11 +73,83 @@ class SimpleRule():
             if not target:
                 return False
             return all(x in value for x in target)
-        else:
+        elif self.op == base.SimpleOp.notin_:
             if not target:
                 return False
             return all(x not in value for x in target)
-
+        elif self.op == base.SimpleOp.le:
+            if not target or not value:
+                return False
+            cck = []
+            for tg in target:
+                res = True
+                for val in value:
+                    num = float(val)
+                    if float(tg) > num:
+                        res = False
+                cck.append(res)
+            return all(cck)
+        elif self.op == base.SimpleOp.lt:
+            if not target or not value:
+                return False
+            cck = []
+            for tg in target:
+                res = True
+                for val in value:
+                    num = float(val)
+                    if float(tg) >= num:
+                        res = False
+                cck.append(res)
+            return all(cck)
+        elif self.op == base.SimpleOp.ge:
+            if not target or not value:
+                return False
+            cck = []
+            for tg in target:
+                res = True
+                for val in value:
+                    num = float(val)
+                    if float(tg) < num:
+                        res = False
+                cck.append(res)
+            return all(cck)
+        elif self.op == base.SimpleOp.gt:
+            if not target or not value:
+                return False
+            cck = []
+            for tg in target:
+                res = True
+                for val in value:
+                    num = float(val)
+                    if float(tg) <= num:
+                        res = False
+                cck.append(res)
+            return all(cck)
+        elif self.op == base.SimpleOp.eq:
+            if not target or not value:
+                return False
+            cck = []
+            for tg in target:
+                res = True
+                for val in value:
+                    num = float(val)
+                    if float(tg) != num:
+                        res = False
+                cck.append(res)
+            return all(cck)
+        elif self.op == base.SimpleOp.neq:
+            if not target or not value:
+                return False
+            cck = []
+            for tg in target:
+                res = True
+                for val in value:
+                    num = float(val)
+                    if float(tg) == num:
+                        res = False
+                cck.append(res)
+            return all(cck)
+        
     def dynamicFill(self, useCaseName: str):
         # fill list with $actor
         # checked right
