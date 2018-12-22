@@ -40,9 +40,24 @@ context: ComplexRule
 inv: self.op <> None self.op.size() >0 and self.simpleRule.size() >0
 
 context: SimpleRule
-inv: self.val <> None and self.description <> None
+inv: self.val <> None and self.description <> None and self.val.size()>0 and 
+    (if (collection(subject_count,object_count,verb_count,modal_verb_count,adverb_count,pronoun_count).include(collection(self.subject))) then self.val.forAll(x|type(x) == Integer)else true)and
+    (if collection(ge,gt,eq,neq,lt,le).include(self.op) then self.val.forAll(x|type(x) == Integer else true)
+
 context: SimpleRule::dynamicFill()
 postCondition:return=self.val.forAll(s:str|s.contain("$") = Flase)
 
 context: ErrorInfo
 inv: self.rulename <> None and self.usecasename <> None and self.sentence <> None
+
+context:Reporter
+inv:self.errors <> None
+
+context:Ui_Add_Dialog::__init__(retVal)
+preCondition: retVal = {} or (retVal.hasKey("id")and retVal.hasKey("status") and retVal.hasKey("applyScope") and retVal.hasKey("simpleRules") and retVal["simpleRules"].size() == 1
+    and retVal["simpleRules"][0].hasKey("subject") and retVal["simpleRules"][0].hasKey("operation") and retVal["simpleRules"][0].hasKey("val")
+)
+context:Ui_Add_Dialog::finishEdit():
+postCondition:self.retVal <> {}
+context:Ui_Add_Dialog::cancelEdit():
+postCondition:self.retVal = {}
