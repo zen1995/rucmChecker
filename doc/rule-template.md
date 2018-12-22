@@ -25,9 +25,9 @@
       * adverb_count：副词的数量
       * pronoun_count：代词的数量
 
-    * `operation`: 对检查对象的约束，取值可以是“in”,"notIn"
+    * `operation`: 对检查对象的约束，可以是in/notIn/le/lt/eq/neq/ge/gt,分别表示约束对象在/不在/小于等于/小于/等于/不等于/大于等于/小于
 
-    * `val`： 约束列表，可以是in/notIn/le/lt/eq/neq/ge/gt,分别表示约束对象在/不在/小于等于/小于/等于/不等于/大于等于/小于
+    * `val`： 约束列表
 
       例如`{"subject":"subject_Val","operation":"in","val":["system"]}`表示主语中不能出现system字眼
 

@@ -6,7 +6,7 @@
         {"id":3,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_Val","operation":"in","val":["$actor"]},
             {"subject":"object_Val","operation":"in","val":["$actor"]}
-        ],"operation":"!&","description":"default rule3"}
+        ],"operation":"!&","description":"default rule3"},
         {"id":4,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"verb_count","operation":"in","val":[1]}
         ],"operation":"-","description":"default rule4"},
