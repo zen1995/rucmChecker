@@ -89,7 +89,8 @@ class Ui_Add_Dialog(object):
             if self.retVal["applyScope"] in applyScopes.values():
                 self.box_applyScope.setCurrentIndex(list(applyScopes.values()).index(self.retVal["applyScope"]))
             self.line_val.setText(str(self.retVal["simpleRules"][0]["val"])[1:-1])
-            self.box_description.setPlainText(str(self.retVal["description"]))
+            if "description" in self.retVal.keys():
+                self.box_description.setPlainText(str(self.retVal["description"]))
 
         self.buttonBox.accepted.connect(self.finishEdit)
         self.buttonBox.rejected.connect(self.cancelEdit)
