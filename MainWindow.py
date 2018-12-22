@@ -525,6 +525,8 @@ class Ui_MainWindow(object):
         # 清除RuleDB的所有规则
         rule.RuleDB.defaultRules = []
         rule.RuleDB.userRules = []
+        # 清空error
+        Reporter.errors = []
         # 加载RuleDB
         if self.rules:
             rule_dicts = deepcopy(self.rules)
@@ -588,8 +590,7 @@ class Ui_MainWindow(object):
                 i.check()
 
     def report(self):
-        # 清空error
-        Reporter.errors = []
+
         Dialog = QtWidgets.QDialog()
         ui = Ui_Report_Dialog()
         ui.setupUi(Dialog)
