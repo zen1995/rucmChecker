@@ -51,6 +51,12 @@ class RuleSubject(enum.Enum):
 class SimpleOp(enum.Enum):
     in_="in"
     notin_="notin"
+    le = "le"
+    lt = "lt"
+    eq = "eq"
+    neq = "neq"
+    ge = "ge"
+    gt = "gt"
 
 class LogicOp(enum.Enum):
     skip_="skip"
