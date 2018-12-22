@@ -349,8 +349,9 @@ class Ui_MainWindow(object):
         '''Consider how to save the added rule details. 
         It's some business related to RuleBase'''
         # 添加Ui_Add_Dialog返回值到dict
+
         input = {}
-        Dialog = QtWidgets.QMainWindow()
+        Dialog = QtWidgets.QDialog()
         ui = Ui_Add_Dialog(input)
         ui.setupUi(Dialog)
         '''the second parameter should be None'''

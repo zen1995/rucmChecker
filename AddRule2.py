@@ -12,11 +12,12 @@ import PyQt5
 import sys
 from PyQt5.QtCore import QCoreApplication
 import copy
-class Ui_MainWindow(object):
+class Ui_Add_Dialog(object):
 
     def __init__(self,retVal):
         self.retVal = retVal
     def setupUi(self, MainWindow):
+        self.window = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(828, 462)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -52,14 +53,15 @@ class Ui_MainWindow(object):
         self.buttonBox.setGeometry(QtCore.QRect(470, 390, 156, 23))
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
-        MainWindow.setCentralWidget(self.centralwidget)
+        #MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        #MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.init_val()
+
     def init_val(self):
         applyScopes = {"所有句子":"allSentence","动作句子":"actionStep"}
         for k,v in applyScopes.items():
@@ -111,18 +113,19 @@ class Ui_MainWindow(object):
         }
         for k,v in data.items():
             self.retVal[k]=v
-        QCoreApplication.instance().quit()
+        print(self.retVal)
+        self.window.close()
 
 
     def cancelEdit(self):
         print("cancel!")
-        QCoreApplication.instance().quit()
+        self.window.close()
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     r = {'id': -1, 'status': True, 'applyScope': "actionStep",
          'simpleRules': [{'subject': 'pronoun_count', 'operation': 'ge', 'val': ["111"]}], 'operation': '-', 'description': 'ff'}
     r = {}
-    mainWindow = Ui_MainWindow(r)
+    mainWindow = Ui_Add_Dialog(r)
     window = PyQt5.QtWidgets.QMainWindow()
     mainWindow.setupUi(window)
 

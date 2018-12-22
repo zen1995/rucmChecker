@@ -14,6 +14,8 @@ import sys
 from PyQt5.QtCore import QCoreApplication
 class Ui_Report_Dialog(object):
     def setupUi(self, Dialog):
+        self.Dialog = Dialog
+
         Dialog.setObjectName("Dialog")
         Dialog.resize(826, 435)
         self.tableWidget = QtWidgets.QTableWidget(Dialog)
@@ -52,7 +54,7 @@ class Ui_Report_Dialog(object):
         # item = self.tableWidget.horizontalHeaderItem(4)
         # item.setText(_translate("Dialog", "规则描述"))
         self.pushButton.setText(_translate("Dialog", "关闭"))
-        self.pushButton.clicked.connect(QCoreApplication.instance().quit)
+        self.pushButton.clicked.connect(self.Dialog.close)
     def setVals(self):
         # newItem = QTableWidgetItem('张三')
         # self.tableWidget.setItem(0, 0, newItem)
