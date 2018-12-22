@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIntValidator,QDoubleValidator,QFont
 # from AddRule import Ui_Add_Dialog
 from Detail import Ui_Detail_Dialog
 from Report import Ui_Report_Dialog
@@ -21,6 +22,7 @@ import json
 import nlputils#####
 from copy import deepcopy
 from AddRule2 import Ui_Add_Dialog
+import re
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow, ruleBase, reporter):
@@ -152,6 +154,16 @@ class Ui_MainWindow(object):
         self.label_4.setWordWrap(False)
         self.label_4.setIndent(0)
         self.label_4.setObjectName("label_4")
+
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(310, 300, 131, 31))
+        self.label_5.setFont(font)
+        self.label_5.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.label_5.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.label_5.setWordWrap(False)
+        self.label_5.setIndent(0)
+        self.label_5.setObjectName("label_5")
+
         self.saveRuleButton = QtWidgets.QPushButton(self.centralwidget)
         self.saveRuleButton.setGeometry(QtCore.QRect(490, 270, 101, 41))
         self.saveRuleButton.setObjectName("saveRuleButton")
@@ -219,6 +231,7 @@ class Ui_MainWindow(object):
         self.checkRuleButton.setText(_translate("MainWindow", "规则检查"))
         self.reportButton.setText(_translate("MainWindow", "查看报告"))
         self.label_4.setText(_translate("MainWindow", "控制命令"))
+        self.label_5.setText(_translate("MainWindow", "设置ip"))
         self.saveRuleButton.setText(_translate("MainWindow", "保存规则库"))
         self.loadRuleButton.setText(_translate("MainWindow", "载入规则库"))
 
@@ -239,6 +252,25 @@ class Ui_MainWindow(object):
         self.checkRuleButton.clicked.connect(self.check)
         self.reportButton.clicked.connect(self.report)
         self.addRuleButton.clicked.connect(self.addRule)
+        self.houseNumEdit  = QtGui.QTextLine()
+
+        # 加载默认规则
+        self.loadRules('.\\rule-template.txt')
+        # ip相关
+        self.ipLineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.ipLineEdit.setGeometry(QtCore.QRect(50, 300, 251, 41))
+        self.ipLineEdit.setObjectName("RUCMLineEdit")
+        self.ipLineEdit.textChanged.connect(self.get_url)
+        self.ipLineEdit.setValidator(QIntValidator())
+        self.ipLineEdit.setInputMask('00.000.0.000:0000;_')
+        # 默认使用的是url
+        self.ipLineEdit.setText(re.findall('\d+.\d+.\d+.\d+:\d+', nlputils.url)[0])
+
+    # 获得ip
+    def get_url(self, text):
+        if len(text) >= len(r'00.000.0.000:9000'):
+            nlputils.url = 'http://' + text + '/'
+            print('更改ip为：' +  nlputils.url)
 
     # 列表内添加按钮
     def buttonForRow(self,id, type):
@@ -525,18 +557,32 @@ class Ui_MainWindow(object):
         else:
             print('No rucm file is given')
             return
+        ap = argparse.ArgumentParser(description='RUCM文件检查工具')
+        ap.add_argument("-r", "--rule", dest='rule_path', default="./rule-template.txt",
+                        required=False, help="path to rule.json")
+        ap.add_argument("-u", "--url_en", dest='nlp_server', default='http://10.133.6.188:9000/',
+                        required=False, help="url to nlp server")
+        ap.add_argument("-uh", "--url_han", dest='nlp_han_server', default='http://10.133.6.188:9001/',
+                        required=False, help="url to nlp chinese server")
+        ap.add_argument('rucm_path', nargs='?', default=None,
+                        type=str, help='path to whatYouNeedToCheck.rucm')
+        args = ap.parse_args()
+        # if args.nlp_server:
+        nlputils.url_En = args.nlp_server
+        # if args.nlp_han_server:
+        #     nlputils.url_Han = args.nlp_han_server
         # check过程############################################################################
-        # print('---' * 65)
-        # if rucm_loader:
-        #     print('--------------check processing-------------')
-        #     print(rule.RuleDB.userRules)
-        #     print(rule.RuleDB.defaultRules)
-        #     for i in rule.RuleDB.userRules:
-        #         print('---', i.check)
-        #         i.check()
-        #     for i in rule.RuleDB.defaultRules:
-        #         print('---', i.check)
-        #         i.check()
+        print('---' * 65)
+        if rucm_loader:
+            print('--------------check processing-------------')
+            print(rule.RuleDB.userRules)
+            print(rule.RuleDB.defaultRules)
+            for i in rule.RuleDB.userRules:
+                print('---', i.check)
+                i.check()
+            for i in rule.RuleDB.defaultRules:
+                print('---', i.check)
+                i.check()
 
     def report(self):
         # 清空error
