@@ -327,7 +327,8 @@ class Ui_MainWindow(object):
         # only available for user rule table
         # 输入取那个规则
         input = self.rules['user-def'][id]
-        Dialog = QtWidgets.QMainWindow# QtWidgets.QDialog()
+        Dialog = QtWidgets.QDialog()
+        print(input)
         ui = Ui_Add_Dialog(input)
         ui.setupUi(Dialog)
         '''the second parameter should be a dict to wrap the rule detailes.
@@ -336,6 +337,7 @@ class Ui_MainWindow(object):
         Dialog.exec_()
         output = input
         if output:
+            output['id'] = self.rules['user-def'][id]['id']
             self.rules['user-def'][id] = output
         # 输出直接覆盖掉
         '''Consider how to save the changed rule details. 
@@ -349,7 +351,6 @@ class Ui_MainWindow(object):
         '''Consider how to save the added rule details. 
         It's some business related to RuleBase'''
         # 添加Ui_Add_Dialog返回值到dict
-
         input = {}
         Dialog = QtWidgets.QDialog()
         ui = Ui_Add_Dialog(input)
@@ -359,8 +360,10 @@ class Ui_MainWindow(object):
         Dialog.exec_()
         output = input
         if output:
-            self.rules.append(deepcopy(output))
-            output['id'] = self.max_id + 1
+            output['id'] = self.max_id
+            if 'user-def'not in self.rules:
+                self.rules['user-def'] = []
+            self.rules['user-def'].append(deepcopy(output))
             self.max_id = self.max_id + 1
             # 添加一个规则到界面
             self.__add_one_rule(1, True)
@@ -467,7 +470,7 @@ class Ui_MainWindow(object):
                 self.__add_one_rule(1, self.rules['user-def'][i]['status'])
                 item = self.defaultTableWidget.item(i, 0)
                 item.setText(_translate("MainWindow", str(self.rules['user-def'][i]['id'])))
-            self.max_id = self.rules['user-def'][i]['id']
+            self.max_id = self.rules['user-def'][i]['id'] + 1
 
     # 启用选项框
     def checkEnable(self, id, type):

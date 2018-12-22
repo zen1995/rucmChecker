@@ -10,7 +10,10 @@ class RuleLoader(base.Loader):
         super(RuleLoader, self).__init__(filepath)
         self._json = self.dict_content
         self.__user_rule_id = []
-        self.load()
+        # self.load()
+
+    def init_from_dict(self, dict_content):
+        self._json = self.dict_content
 
     # 加载字典元素到RuleDB中去
     def load(self) -> bool:

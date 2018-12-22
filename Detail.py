@@ -14,24 +14,24 @@ from PyQt5.QtCore import QCoreApplication
 
 class Ui_Detail_Dialog(object):
     def setupUi(self, Dialog, content):
+        self.Dialog = Dialog
         self.content = content
         Dialog.setObjectName("Dialog")
         Dialog.resize(741, 245)
-        # self.pushButton = QtWidgets.QPushButton(Dialog)
-        # self.pushButton.setGeometry(QtCore.QRect(330, 210, 75, 23))
-        # self.pushButton.setObjectName("pushButton")
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(330, 210, 75, 23))
+        self.pushButton.setObjectName("pushButton")
         self.textEdit = QtWidgets.QTextEdit(Dialog)
         self.textEdit.setGeometry(QtCore.QRect(30, 20, 681, 181))
         self.textEdit.setObjectName("textEdit")
 
         self.retranslateUi(Dialog)
-        # self.pushButton.clicked.connect(Dialog.quit)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
+        self.pushButton.setText(_translate("Dialog", "关闭"))
+        self.pushButton.clicked.connect(self.Dialog.close)
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        # self.pushButton.setText(_translate("Dialog", "关闭"))
-
         self.textEdit.setPlainText(str(self.content))
 
