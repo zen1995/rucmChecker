@@ -58,6 +58,8 @@ class Ui_Report_Dialog(object):
     def setVals(self):
         # newItem = QTableWidgetItem('张三')
         # self.tableWidget.setItem(0, 0, newItem)
+        self.tableWidget.setRowCount(len(reporter.Reporter.errors))
+
         for i in range(3):
             self.tableWidget.setColumnWidth(i,250)
         for i,e in enumerate(reporter.Reporter.errors):
@@ -65,7 +67,6 @@ class Ui_Report_Dialog(object):
             self.tableWidget.setItem(i,1,QTableWidgetItem(e.usecasename))
             self.tableWidget.setItem(i,2,QTableWidgetItem(e.sentence))
 
-        self.tableWidget.setRowCount(len(reporter.Reporter.errors))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

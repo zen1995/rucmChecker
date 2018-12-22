@@ -154,7 +154,7 @@ class Ui_MainWindow(object):
         self.label_4.setWordWrap(False)
         self.label_4.setIndent(0)
         self.label_4.setObjectName("label_4")
-
+        '''
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(310, 300, 131, 31))
         self.label_5.setFont(font)
@@ -163,7 +163,7 @@ class Ui_MainWindow(object):
         self.label_5.setWordWrap(False)
         self.label_5.setIndent(0)
         self.label_5.setObjectName("label_5")
-
+        '''
         self.saveRuleButton = QtWidgets.QPushButton(self.centralwidget)
         self.saveRuleButton.setGeometry(QtCore.QRect(490, 270, 101, 41))
         self.saveRuleButton.setObjectName("saveRuleButton")
@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
         self.checkRuleButton.setText(_translate("MainWindow", "规则检查"))
         self.reportButton.setText(_translate("MainWindow", "查看报告"))
         self.label_4.setText(_translate("MainWindow", "控制命令"))
-        self.label_5.setText(_translate("MainWindow", "设置ip"))
+        '''self.label_5.setText(_translate("MainWindow", "设置ip"))'''
         self.saveRuleButton.setText(_translate("MainWindow", "保存规则库"))
         self.loadRuleButton.setText(_translate("MainWindow", "载入规则库"))
 
@@ -256,6 +256,7 @@ class Ui_MainWindow(object):
 
         # 加载默认规则
         self.loadRules('.\\rule-template.txt')
+        '''
         # ip相关
         self.ipLineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.ipLineEdit.setGeometry(QtCore.QRect(50, 300, 251, 41))
@@ -265,13 +266,15 @@ class Ui_MainWindow(object):
         self.ipLineEdit.setInputMask('00.000.0.000:0000;_')
         # 默认使用的是url
         self.ipLineEdit.setText(re.findall('\d+.\d+.\d+.\d+:\d+', nlputils.url)[0])
-
+        '''
+    '''
     # 获得ip
     def get_url(self, text):
         if len(text) >= len(r'00.000.0.000:9000'):
-            nlputils.url = 'http://' + text + '/'
-            print('更改ip为：' +  nlputils.url)
-
+            pass
+            # nlputils.url = 'http://' + text + '/'
+            # print('更改ip为：' +  nlputils.url)
+    '''
     # 列表内添加按钮
     def buttonForRow(self,id, type):
         widget=QtWidgets.QWidget()
@@ -522,6 +525,8 @@ class Ui_MainWindow(object):
         # 清除RuleDB的所有规则
         rule.RuleDB.defaultRules = []
         rule.RuleDB.userRules = []
+        # 清空error
+        Reporter.errors = []
         # 加载RuleDB
         if self.rules:
             rule_dicts = deepcopy(self.rules)
@@ -585,8 +590,7 @@ class Ui_MainWindow(object):
                 i.check()
 
     def report(self):
-        # 清空error
-        Reporter.errors = []
+
         Dialog = QtWidgets.QDialog()
         ui = Ui_Report_Dialog()
         ui.setupUi(Dialog)
