@@ -27,6 +27,7 @@ import re
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow, ruleBase, reporter):
+        self.mainWindow = MainWindow
         # RuleBase should be initialized.
         # reporter should be initialized.
         MainWindow.setObjectName("MainWindow")
@@ -488,14 +489,16 @@ class Ui_MainWindow(object):
 
     def loadRules(self, file):
         # 存储路径的同时，还要将rule存储到自身的dict中
-        self.rulePath = file
-        self.rules = json.load(open(self.rulePath, 'r'))
+        self.rulepath = file
+        self.rules = json.load(open(self.rulepath, 'r'))
         # 这里应该需要检查一下格式#
-        rule_loader = RuleLoader(self.rulePath)
+        rule_loader = RuleLoader(self.rulepath)
         if not rule_loader.checkFileFormat():
             print('Wrong Format of Rule file')
-            self.rulePath = ''
+            self.rulepath = ''
             self.rules = []
+            QMessageBox.information(self.mainWindow, "ERROR",
+                                        "规则文件格式错误")
             return
         # 删除所有规则
         self.__delete_all_rule(self.userTableWidget, 1)
@@ -541,6 +544,39 @@ class Ui_MainWindow(object):
         rule.RuleDB.userRules = []
         # 清空error
         Reporter.errors = []
+<<<<<<< HEAD
+        # 检查是否规则文件以及RUCM文件齐全
+        if self.rulepath:
+            print('Loading rule file: %s' % (self.rulepath))
+            try:
+                rule_load = RuleLoader(self.rulepath)
+                if not rule_load.checkFileFormat():
+                    QMessageBox.information(self.mainWindow, "ERROR",
+                                            "规则文件格式错误")
+                    return
+            except (FileNotFoundError, json.JSONDecodeError) as err:
+                print(err)
+                QMessageBox.information(self.mainWindow, "ERROR",
+                                        "规则文件json格式错误或者可能是其他错误")
+                return
+        else:
+            print('No rule file is specified. Default rules are loaded only.')
+            QMessageBox.information(self.mainWindow, "WARNING",
+                                    "未加载规则文件，请先加载规则文件")
+            return
+
+        rucm_loader = None
+        # load rucm
+        if not self.RUCMPath:
+            print('No rucm file is given. Check rule file only.')
+            QMessageBox.information(self.mainWindow, "WARNING",
+                                    "未加载RUCM文件，请先加载RUCM文件")
+            return
+        ################################正式开始检查
+        _translate = QtCore.QCoreApplication.translate
+        self.label_5.setText(_translate("MainWindow", "正在检查"))
+=======
+>>>>>>> origin/master
         self.thread = RunThread(Qt=self)
         self.thread.start()
         # 先把rule加载到本地的一个./rule-template-tmp.txt文件中。
