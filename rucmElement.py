@@ -335,11 +335,11 @@ class Usecase(RUCMBase):
         self.generalization = []
         if 'extend' in use_case_content:
             for i, extend in enumerate(use_case_content['extend']):
-                extend_use_case_id = int(re.findall('\d+', extend['content']['extendedCase'])[i])
+                extend_use_case_id = int(re.findall('\d+', extend['content']['extendedCase'])[0])
                 self.extend.append(extend_use_case_id)
         if 'include' in use_case_content:
             for i, include in enumerate(use_case_content['include']):
-                include_use_case_id = int(re.findall('\d+', include['content']['addition'])[i])
+                include_use_case_id = int(re.findall('\d+', include['content']['addition'])[0])
                 self.include.append(include_use_case_id)
 
     def __repr__(self):
