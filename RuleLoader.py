@@ -269,6 +269,7 @@ class RuleLoader(base.Loader):
                                                  'ge','gt','eq','neq',
                                                  'lt', 'le']):
             print('SimpleRule operation Wrong')
+            print(rule['operation'])
             return False
         else:
             if rule[ 'operation'] in ['ge','gt','eq','neq',
@@ -304,7 +305,7 @@ def getDB():
 #    defaultRules: typing.List[Rule] = []
 #    userRules: typing.List[Rule] = []
 
-
+'''
 import json
 load_dict = {}
 with open(".//rule-template.txt",'r') as load_f:
@@ -313,3 +314,4 @@ a = RuleLoader(load_dict)
 b = RuleDB.defaultRules
 c = RuleDB.userRules
 d = 0
+'''

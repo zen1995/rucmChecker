@@ -8,9 +8,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIntValidator,QDoubleValidator,QFont
-# from AddRule import Ui_Add_Dialog
-from Detail import Ui_Detail_Dialog
-#from Detail import Ui_Detail_Dialog
+from AddRule import Ui_Add_Dialog
+from UserDetail import Ui_User_Detail_Dialog
 from Report import Ui_Report_Dialog
 import sys
 from PyQt5.QtWidgets import QMessageBox
@@ -193,7 +192,7 @@ class Ui_MainWindow(object):
         item = self.defaultTableWidget.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "启用"))
         item = self.defaultTableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "操作"))
+        item.setText(_translate("MainWindow", "描述"))
         __sortingEnabled = self.defaultTableWidget.isSortingEnabled()
         self.defaultTableWidget.setSortingEnabled(False)
 
@@ -239,8 +238,8 @@ class Ui_MainWindow(object):
         # user的查看、启用、操作以及序号
         rowCount = self.defaultTableWidget.rowCount()
         for i in range(rowCount):
-            self.defaultTableWidget.setCellWidget(i, 2, self.buttonForRow(i, 0)) # 0 for default rule table
             self.defaultTableWidget.setCellWidget(i, 1, self.checkForRow(i, 0, True))
+
         rowCount = self.userTableWidget.rowCount()
         for i in range(rowCount):
             self.userTableWidget.setCellWidget(i, 2, self.buttonForRow(i, 1)) # 1 for user rule table
@@ -441,15 +440,22 @@ class Ui_MainWindow(object):
             if type == 0:
                 if 'default' in self.rules:
                     content = self.rules['default'][id]
+                    if content:
+                        Dialog = QtWidgets.QDialog()
+                        ui = Ui_Default_Detail_Dialog()
+                        ui.setupUi(Dialog, content)
+                        Dialog.show()
+                        Dialog.exec_()
             else:
                 if 'user-def' in self.rules:
                     content = self.rules['user-def'][id]
-            if content:
-                Dialog = QtWidgets.QDialog()
-                ui = Ui_Detail_Dialog()
-                ui.setupUi(Dialog, content)
-                Dialog.show()
-                Dialog.exec_()
+                    if content:
+                        Dialog = QtWidgets.QDialog()
+                        ui = Ui_User_Detail_Dialog()
+                        ui.setupUi(Dialog, content)
+                        Dialog.show()
+                        Dialog.exec_()
+            
             '''the second parameter should be a dict to wrap the rule detailes.
             It's some business related to RuleBase.'''
 
@@ -503,6 +509,8 @@ class Ui_MainWindow(object):
             self.__add_one_rule(0, self.rules['default'][i]['status'])
             item = self.defaultTableWidget.item(i, 0)
             item.setText(_translate("MainWindow", str(self.rules['default'][i]['id'])))
+            item = self.defaultTableWidget.item(i, 2)
+            item.setText(_translate("MainWindow", str(self.rules['default'][i]['description'])))
         if 'user-def' in self.rules:
             for i in range(userRuleNum):
                 self.__add_one_rule(1, self.rules['user-def'][i]['status'])
@@ -549,7 +557,7 @@ class Ui_MainWindow(object):
         # load rucm
         if self.RUCMPath:
             print('Checking rucm file: %s' % (self.RUCMPath))
-            rucm_loader = RucmLoader(self.RUCMPath)
+            #rucm_loader = RucmLoader(self.RUCMPath)
             print(f'Load successfully! Result: \n{rucm_loader}')
         else:
             print('No rucm file is given. Check rule file only.')
@@ -598,7 +606,6 @@ class Ui_MainWindow(object):
                 self.userTableWidget.setItem(i, j, item)
         # 链接函数
         if type == 0:
-            self.defaultTableWidget.setCellWidget(i, 2, self.buttonForRow(i, 0)) # 0 for default rule table
             self.defaultTableWidget.setCellWidget(i, 1, self.checkForRow(i, 0, init_status))
             self.defaultRuleNum = self.defaultRuleNum + 1
         elif type == 1:

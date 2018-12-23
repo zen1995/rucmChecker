@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-class Ui_Detail_Dialog(object):
+class User_Ui_Detail_Dialog(object):
     def setupUi(self, Dialog, RuleDetail):
         # RuleDetail should be a dict wrapping the details of a rule.
         print(RuleDetail)
@@ -56,8 +56,6 @@ class Ui_Detail_Dialog(object):
         item.setText(_translate("Dialog", "作用范围"))
         item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("Dialog", "规则描述"))
-        item = self.tableWidget.horizontalHeaderItem(6)
-        item.setText(_translate("Dialog", "规则连接符"))
         self.pushButton.setText(_translate("Dialog", "关闭"))
     
     def parseRule(self, RuleDetail):
@@ -93,13 +91,6 @@ class Ui_Detail_Dialog(object):
             self.tableWidget.setItem(i, j, item)
             j += 1
             item = QtWidgets.QTableWidgetItem(RuleDetail['description'])
-            item.setTextAlignment(QtCore.Qt.AlignCenter)
-            item.setFlags(QtCore.Qt.ItemIsEnabled)
-            self.tableWidget.setItem(i, j, item)
-            j += 1
-            if len(RuleDetail['operation']) == 1 or i == len(RuleDetail['simpleRules']) - 1:
-                continue
-            item = QtWidgets.QTableWidgetItem(RuleDetail['operation'][i+1])
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
