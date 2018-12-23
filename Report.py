@@ -65,7 +65,7 @@ class Ui_Report_Dialog(object):
         for i,e in enumerate(reporter.Reporter.errors):
             self.tableWidget.setItem(i,0,QTableWidgetItem(e.rulename))
             self.tableWidget.setItem(i,1,QTableWidgetItem(e.usecasename))
-            self.tableWidget.setItem(i,2,QTableWidgetItem(e.sentence))
+            self.tableWidget.setItem(i,2,QTableWidgetItem(e.sentence.val))
 
 
 if __name__ == "__main__":

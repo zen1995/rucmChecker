@@ -10,7 +10,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIntValidator,QDoubleValidator,QFont
 # from AddRule import Ui_Add_Dialog
 from Detail import Ui_Detail_Dialog
-#from Detail import Ui_Detail_Dialog
 from Report import Ui_Report_Dialog
 import sys
 from PyQt5.QtWidgets import QMessageBox
