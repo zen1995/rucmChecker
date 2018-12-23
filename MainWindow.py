@@ -24,6 +24,7 @@ from copy import deepcopy
 from AddRule2 import Ui_Add_Dialog
 import re
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow, ruleBase, reporter):
         # RuleBase should be initialized.
@@ -154,16 +155,18 @@ class Ui_MainWindow(object):
         self.label_4.setWordWrap(False)
         self.label_4.setIndent(0)
         self.label_4.setObjectName("label_4")
-        '''
+        label_font = QtGui.QFont()
+        label_font.setFamily("Adobe Devanagari")
+        label_font.setPointSize(10)
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(310, 300, 131, 31))
-        self.label_5.setFont(font)
+        self.label_5.setGeometry(QtCore.QRect(50, 430, 251, 41))
+        self.label_5.setFont(label_font)
         self.label_5.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.label_5.setWordWrap(False)
         self.label_5.setIndent(0)
         self.label_5.setObjectName("label_5")
-        '''
+        
         self.saveRuleButton = QtWidgets.QPushButton(self.centralwidget)
         self.saveRuleButton.setGeometry(QtCore.QRect(490, 270, 101, 41))
         self.saveRuleButton.setObjectName("saveRuleButton")
@@ -231,7 +234,7 @@ class Ui_MainWindow(object):
         self.checkRuleButton.setText(_translate("MainWindow", "规则检查"))
         self.reportButton.setText(_translate("MainWindow", "查看报告"))
         self.label_4.setText(_translate("MainWindow", "控制命令"))
-        '''self.label_5.setText(_translate("MainWindow", "设置ip"))'''
+        self.label_5.setText(_translate("MainWindow", ""))
         self.saveRuleButton.setText(_translate("MainWindow", "保存规则库"))
         self.loadRuleButton.setText(_translate("MainWindow", "载入规则库"))
 
@@ -531,48 +534,18 @@ class Ui_MainWindow(object):
     def check(self):
         # check the rucm file with rules.
         # Note there are some exceptions. For example, no rucm file or rules?
-
+        _translate = QtCore.QCoreApplication.translate
+        self.label_5.setText(_translate("MainWindow", "正在检查"))
         # 清除RuleDB的所有规则
         rule.RuleDB.defaultRules = []
         rule.RuleDB.userRules = []
         # 清空error
         Reporter.errors = []
+        self.thread = RunThread(Qt=self)
+        self.thread.start()
         # 先把rule加载到本地的一个./rule-template-tmp.txt文件中。
         # 然后把它传到saveRules
-        self.rulepath = './rule-template-tmp.txt'
-        self.saveRules(self.rulepath)
-
-        if self.rulepath:
-            print('Loading rule file: %s' % (self.rulepath))
-            try:
-                rule_load = RuleLoader(self.rulepath)
-                rule_load.load()
-                print(f'Load successfully! Result: \n{rule_load}')
-            except (FileNotFoundError, json.JSONDecodeError) as err:
-                print(err)
-        else:
-            print('No rule file is specified. Default rules are loaded only.')
-
-        rucm_loader = None
-        # load rucm
-        if self.RUCMPath:
-            print('Checking rucm file: %s' % (self.RUCMPath))
-            #rucm_loader = RucmLoader(self.RUCMPath)
-            print(f'Load successfully! Result: \n{rucm_loader}')
-        else:
-            print('No rucm file is given. Check rule file only.')
-
-        print('---' * 65)
-        if rucm_loader and rule_load:
-            print('--------------check processing-------------')
-            print(rule.RuleDB.userRules)
-            print(rule.RuleDB.defaultRules)
-            for i in rule.RuleDB.userRules:
-                print('---', i.check)
-                i.check()
-            for i in rule.RuleDB.defaultRules:
-                print('---', i.check)
-                i.check()
+        
 
     def report(self):
 
@@ -633,24 +606,71 @@ class RuleBase:
         # add a rule to the database
         pass
 
-class ComplexRule:
-    rules = []
-    _type = False  # True for user rule, False for default rule.
-    id = -1 # Rule id
-    description = '' # Rule description
-    linkSymbol = [] # The logic operation among simple rules.
-    enable = False
-    '''找泽年设计方法去'''
-
-class SimpleRule:
-    subject = '' # Rule subject. It should have an enum type to list all the subjects.
-    value = [] # Rule value.
-    op = '' # Rule operation. It should have an enum type to list all the operations.
-    '''找泽年设计方法去'''
-
 class Report:
-    '''不造啥格式 你们自己设计'''
     pass
+
+class RunThread(QtCore.QThread):
+    # python3,pyqt5与之前的版本有些不一样
+    #  通过类成员对象定义信号对象
+    # _signal = pyqtSignal(str)
+
+    #trigger = pyqtSignal()
+ 
+    def __init__(self, parent=None, Qt=None):
+        super(RunThread, self).__init__()
+        self.Qt = Qt
+
+ 
+    def __del__(self):
+        self.wait() 
+
+    def run(self):
+        # 处理你要做的业务逻辑，这里是通过一个回调来处理数据，这里的逻辑处理写自己的方法
+        # wechat.start_auto(self.callback)
+        # self._signal.emit(msg);  可以在这里写信号焕发
+        _translate = QtCore.QCoreApplication.translate
+        self.Qt.rulepath = './rule-template-tmp.txt'
+        self.Qt.saveRules(self.Qt.rulepath)
+
+        if self.Qt.rulepath:
+            print('Loading rule file: %s' % (self.Qt.rulepath))
+            try:
+                rule_load = RuleLoader(self.Qt.rulepath)
+                rule_load.load()
+                print(f'Load successfully! Result: \n{rule_load}')
+            except (FileNotFoundError, json.JSONDecodeError) as err:
+                print(err)
+        else:
+            print('No rule file is specified. Default rules are loaded only.')
+
+        rucm_loader = None
+        # load rucm
+        if self.Qt.RUCMPath:
+            print('Checking rucm file: %s' % (self.Qt.RUCMPath))
+            rucm_loader = RucmLoader(self.Qt.RUCMPath)
+            print(f'Load successfully! Result: \n{rucm_loader}')
+        else:
+            print('No rucm file is given. Check rule file only.')
+
+        print('---' * 65)
+        if rucm_loader and rule_load:
+            print('--------------check processing-------------')
+            print(rule.RuleDB.userRules)
+            print(rule.RuleDB.defaultRules)
+            for i in rule.RuleDB.userRules:
+                print('---', i.check)
+                i.check()
+            for i in rule.RuleDB.defaultRules:
+                print('---', i.check)
+                i.check()
+        self.Qt.label_5.setText(_translate("MainWindow", "检查完毕，请点击查看报告"))
+        # self.trigger.emit()
+        # self._signal.emit(msg)
+
+    def callback(self, msg):
+        # 信号焕发，我是通过我封装类的回调来发起的
+        # self._signal.emit(msg)
+        pass
 
 
 if __name__ == '__main__':
