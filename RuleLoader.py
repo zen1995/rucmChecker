@@ -3,6 +3,7 @@ import typing
 import abc
 import defaultRule
 from rule import RuleDB, ComplexRule, SimpleRule
+import re
 
 class RuleLoader(base.Loader):
 
@@ -174,13 +175,27 @@ class RuleLoader(base.Loader):
         # 设置operation
         if rule['operation'] == 'in':
             simple_rule.op = base.SimpleOp.in_
-        elif rule['operation'] == 'notIn':
+        elif rule['operation'] == 'notin':
             simple_rule.op = base.SimpleOp.notin_
+        elif rule['operation'] == 'le':
+            simple_rule.op = base.SimpleOp.le
+        elif rule['operation'] == 'lt':
+            simple_rule.op = base.SimpleOp.lt
+        elif rule['operation'] == 'eq':
+            simple_rule.op = base.SimpleOp.lt
+        elif rule['operation'] == 'neq':
+            simple_rule.op = base.SimpleOp.lt
+        elif rule['operation'] == 'ge':
+            simple_rule.op = base.SimpleOp.lt
+        elif rule['operation'] == 'gt':
+            simple_rule.op = base.SimpleOp.lt
+
         else:
             print('Simple Rule operation Error')
         simple_rule.description = f"{rule['subject']}-{rule['operation']}-{'-'.join(map(str, rule['val']))}"
         # 设置取值范围
         simple_rule.val = rule['val']
+
         return simple_rule
 
     # 检查复杂规则正确性
@@ -230,6 +245,8 @@ class RuleLoader(base.Loader):
         return True
 
     def __checkSimpleRule(self, rule: dict) -> bool:
+        # 是否要检查数字
+        check_count = False
         #判断val是否存在
         if 'val' not in rule:
             print('SimpleRule missing val attribute')
@@ -240,14 +257,30 @@ class RuleLoader(base.Loader):
                 print('SimpleRule val attribute should have at least one value')
                 return False
         # subject存在，且subject在RuleSubject规定的取值内
-        if not self.__checkAttribute(rule, 'subject', base.RuleSubject.__members__.keys()):
-            print('SimpleRule subject Wrong')
+        if 'subject' not in rule:
             return False
+        else:
+            if rule['subject'] not in base.RuleSubject.__members__.keys():
+                return False
+            if re.findall('count', rule['subject']):
+                check_count = True
         # operation存在，operation取值范围为 ['in', 'notIn']
-        if not self.__checkAttribute(rule, 'operation', ['in', 'notIn']):
+        if not self.__checkAttribute(rule, 'operation', ['in', 'notin',
+                                                 'ge','gt','eq','neq',
+                                                 'lt', 'le']):
             print('SimpleRule operation Wrong')
+            print(rule['operation'])
             return False
+        else:
+            if rule[ 'operation'] in ['ge','gt','eq','neq',
+                                                 'lt', 'le']:
+                check_count = True
+            if check_count:
+                for v in rule['val']:
+                    if not (type(v) == int or type(v) == float):
+                        return False
         return True
+
 
     # 检查属性是否存在，是否在scope中
     def __checkAttribute(self, rule, attribute: str, scope) -> bool:
@@ -272,12 +305,13 @@ def getDB():
 #    defaultRules: typing.List[Rule] = []
 #    userRules: typing.List[Rule] = []
 
-
-# import json
-# load_dict = {}
-# with open("C://Users//FS//Desktop//rule//rule-template.txt",'r') as load_f:
-#     load_dict = json.load(load_f)
-# a = RuleLoader(load_dict)
-# b = RuleDB.defaultRules
-# c = RuleDB.userRules
-# d = 0
+'''
+import json
+load_dict = {}
+with open(".//rule-template.txt",'r') as load_f:
+    load_dict = json.load(load_f)
+a = RuleLoader(load_dict)
+b = RuleDB.defaultRules
+c = RuleDB.userRules
+d = 0
+'''
