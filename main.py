@@ -40,7 +40,8 @@ if __name__ == "__main__":
         print('Loading rule file: %s' % (args.rule_path))
         try:
             rule_load = RuleLoader(args.rule_path)
-            # print(f'Load successfully! Result: \n{rule_load}')
+            rule_load.load()
+            print(f'Load successfully! Result: \n{rule_load}')
         except (FileNotFoundError, json.JSONDecodeError) as err:
             print(err)
     else:

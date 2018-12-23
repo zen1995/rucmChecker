@@ -311,8 +311,8 @@ class Usecase(RUCMBase):
         # specification'有可能不出现
         if 'specification' in use_case_content:
             specification_content = use_case_content['specification']['content']
-            self.basicFlow = Flow(
-                specification_content['basicFlow'], 0, self.name, self)
+            if 'basicFlow' in specification_content:
+                self.basicFlow = Flow(specification_content['basicFlow'], 0, self.name, self)
             if 'alternativeFlows' in specification_content:
                 alt_content = specification_content['alternativeFlows']
                 for i in range(len(alt_content)):
@@ -335,12 +335,14 @@ class Usecase(RUCMBase):
         self.generalization = []
         if 'extend' in use_case_content:
             for i, extend in enumerate(use_case_content['extend']):
-                extend_use_case_id = int(re.findall('\d+', extend['content']['extendedCase'])[i])
-                self.extend.append(extend_use_case_id)
+                if 'extendedCase' in extend['content']:
+                    extend_use_case_id = int(re.findall('\d+', extend['content']['extendedCase'])[0])
+                    self.extend.append(extend_use_case_id)
         if 'include' in use_case_content:
             for i, include in enumerate(use_case_content['include']):
-                include_use_case_id = int(re.findall('\d+', include['content']['addition'])[i])
-                self.include.append(include_use_case_id)
+                if 'addition' in include['content']:
+                    include_use_case_id = int(re.findall('\d+', include['content']['addition'])[0])
+                    self.include.append(include_use_case_id)
 
     def __repr__(self):
         return self.name
