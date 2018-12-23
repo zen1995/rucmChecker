@@ -396,13 +396,22 @@ class Ui_MainWindow(object):
         Dialog.exec_()
         output = input
         if output:
+            # id设置为已知的最大id + 1
+            self.max_id = self.max_id + 1
             output['id'] = self.max_id
+            print(output['id'])
             if 'user-def'not in self.rules:
                 self.rules['user-def'] = []
             self.rules['user-def'].append(deepcopy(output))
-            self.max_id = self.max_id + 1
             # 添加一个规则到界面
             self.__add_one_rule(1, True)
+            _translate = QtCore.QCoreApplication.translate
+            # 取出新加的规则设置
+            rowCount = self.userTableWidget.rowCount()
+            item = self.userTableWidget.item(rowCount - 1, 0)
+            # 设置序号
+            last_index = len(self.rules['user-def']) - 1
+            item.setText(_translate("MainWindow", str(self.rules['user-def'][last_index]['id'])))
 
     def deleteRuleTable(self, id):
         # id: row number
@@ -416,17 +425,10 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         self.userRuleNum = self.userRuleNum - 1
         self.userTableWidget.setRowCount(self.userRuleNum)
-        for i in range(self.userRuleNum):
-            item = self.userTableWidget.item(i, 0)
-            item.setText(_translate("MainWindow", str(i + 1)))
 
         # 在dict中将对应的规则的status设置为-1（因为如果直接删除会出错，#####可能会出错（由于-1）###########
         # 在绑定button函数的时候，id已经绑定了）。
-        # 修改dict中其他条目对应的id
         if self.rules:
-            for i in range(id + 1, len(self.rules['user-def'])):
-                print(i)
-                self.rules['user-def'][i]['id'] = i - 1
             self.rules['user-def'][id]['status'] = -1
         '''Consider how to delete the deleted rule in RuleBase. '''
 
@@ -458,7 +460,7 @@ class Ui_MainWindow(object):
 
     def saveRules(self, file):
         # 存储路径
-        self.rulePath = file
+        self.rulepath = file
         rule_dict = deepcopy(self.rules)
         # 对删除的rule进行处理（statues设置为了-1）
         if 'user-def' in self.rules:
@@ -504,9 +506,9 @@ class Ui_MainWindow(object):
         if 'user-def' in self.rules:
             for i in range(userRuleNum):
                 self.__add_one_rule(1, self.rules['user-def'][i]['status'])
-                item = self.defaultTableWidget.item(i, 0)
+                item = self.userTableWidget.item(i, 0)
                 item.setText(_translate("MainWindow", str(self.rules['user-def'][i]['id'])))
-            self.max_id = self.rules['user-def'][i]['id'] + 1
+            self.max_id = self.rules['user-def'][i]['id']
 
     # 启用选项框
     def checkEnable(self, id, type):
@@ -519,7 +521,6 @@ class Ui_MainWindow(object):
                 self.rules['user-def'][id]['status'] = not self.rules['user-def'][id]['status']
 
     def check(self):
-        pass
         # check the rucm file with rules.
         # Note there are some exceptions. For example, no rucm file or rules?
 
@@ -528,32 +529,22 @@ class Ui_MainWindow(object):
         rule.RuleDB.userRules = []
         # 清空error
         Reporter.errors = []
-        # 加载RuleDB
-        if self.rules:
-            rule_dicts = deepcopy(self.rules)
-            # 对删除的rule进行处理（statues设置为了-1）
-            if 'user-def' in self.rules:
-                l = len(rule_dicts['user-def'])
-                i = 0
-                while i < len(rule_dicts['user-def']):
-                    if rule_dicts['user-def'][i]['status'] == -1:
-                        del rule_dicts['user-def'][i]
-                        i = i - 1
-                    i = i + 1
-            print('Loading rule file: %s' % (self.rulePath))
+        # 先把rule加载到本地的一个./rule-template-tmp.txt文件中。
+        # 然后把它传到saveRules
+        self.rulepath = './rule-template-tmp.txt'
+        self.saveRules(self.rulepath)
+
+        if self.rulepath:
+            print('Loading rule file: %s' % (self.rulepath))
             try:
-                rule_loader = RuleLoader(self.rulePath)
-                rule_loader.init_from_dict(rule_dicts) #使用dict直接进行导入
-                if rule_loader.load():
-                    print(f'Load successfully!')
-                else:
-                    print(f'Load failed! Result: wrong format rule')
-                    return
+                rule_load = RuleLoader(self.rulepath)
+                rule_load.load()
+                print(f'Load successfully! Result: \n{rule_load}')
             except (FileNotFoundError, json.JSONDecodeError) as err:
                 print(err)
         else:
             print('No rule file is specified. Default rules are loaded only.')
-        # 加载RUCM
+
         rucm_loader = None
         # load rucm
         if self.RUCMPath:
@@ -561,25 +552,10 @@ class Ui_MainWindow(object):
             rucm_loader = RucmLoader(self.RUCMPath)
             print(f'Load successfully! Result: \n{rucm_loader}')
         else:
-            print('No rucm file is given')
-            return
-        ap = argparse.ArgumentParser(description='RUCM文件检查工具')
-        ap.add_argument("-r", "--rule", dest='rule_path', default="./rule-template.txt",
-                        required=False, help="path to rule.json")
-        ap.add_argument("-u", "--url_en", dest='nlp_server', default='http://10.133.6.188:9000/',
-                        required=False, help="url to nlp server")
-        ap.add_argument("-uh", "--url_han", dest='nlp_han_server', default='http://10.133.6.188:9001/',
-                        required=False, help="url to nlp chinese server")
-        ap.add_argument('rucm_path', nargs='?', default=None,
-                        type=str, help='path to whatYouNeedToCheck.rucm')
-        args = ap.parse_args()
-        # if args.nlp_server:
-        nlputils.url_En = args.nlp_server
-        # if args.nlp_han_server:
-        #     nlputils.url_Han = args.nlp_han_server
-        # check过程############################################################################
+            print('No rucm file is given. Check rule file only.')
+
         print('---' * 65)
-        if rucm_loader:
+        if rucm_loader and rule_load:
             print('--------------check processing-------------')
             print(rule.RuleDB.userRules)
             print(rule.RuleDB.defaultRules)
@@ -605,7 +581,7 @@ class Ui_MainWindow(object):
     def __add_one_rule(self, type, init_status=True):
         # 创建项
         if type == 0:
-            i = self.defaultRuleNum
+            i = self.defaultTableWidget.rowCount()
             self.defaultTableWidget.setRowCount(i + 1)
             for j in range(3):
                 item = QtWidgets.QTableWidgetItem()
@@ -613,7 +589,7 @@ class Ui_MainWindow(object):
                 item.setFlags(QtCore.Qt.ItemIsEnabled)
                 self.defaultTableWidget.setItem(i, j, item)
         else:
-            i = self.userRuleNum
+            i = self.userTableWidget.rowCount()
             self.userTableWidget.setRowCount(i + 1)
             for j in range(3):
                 item = QtWidgets.QTableWidgetItem()
