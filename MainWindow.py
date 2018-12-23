@@ -544,7 +544,6 @@ class Ui_MainWindow(object):
         rule.RuleDB.userRules = []
         # 清空error
         Reporter.errors = []
-<<<<<<< HEAD
         # 检查是否规则文件以及RUCM文件齐全
         if self.rulepath:
             print('Loading rule file: %s' % (self.rulepath))
@@ -575,8 +574,6 @@ class Ui_MainWindow(object):
         ################################正式开始检查
         _translate = QtCore.QCoreApplication.translate
         self.label_5.setText(_translate("MainWindow", "正在检查"))
-=======
->>>>>>> origin/master
         self.thread = RunThread(Qt=self)
         self.thread.start()
         # 先把rule加载到本地的一个./rule-template-tmp.txt文件中。
