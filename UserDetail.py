@@ -14,6 +14,7 @@ class Ui_User_Detail_Dialog(object):
         print(RuleDetail)
         Dialog.setObjectName("Dialog")
         Dialog.resize(741, 245)
+        self.dialog = Dialog
         self.tableWidget = QtWidgets.QTableWidget(Dialog)
         self.tableWidget.setGeometry(QtCore.QRect(20, 30, 711, 141))
         self.tableWidget.setObjectName("tableWidget")
@@ -57,6 +58,7 @@ class Ui_User_Detail_Dialog(object):
         item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("Dialog", "规则描述"))
         self.pushButton.setText(_translate("Dialog", "关闭"))
+        self.pushButton.clicked.connect(self.close)
     
     def parseRule(self, RuleDetail):
         _translate = QtCore.QCoreApplication.translate
@@ -94,7 +96,8 @@ class Ui_User_Detail_Dialog(object):
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
-
+    def close(self):
+        self.dialog.close()
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv) 
     MainWindow = QtWidgets.QMainWindow()
