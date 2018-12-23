@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QWidget, QApplication
+from PyQt5.QtWidgets import QWidget, QApplication,QMessageBox
 import PyQt5
 import sys
 from PyQt5.QtCore import QCoreApplication
@@ -23,7 +23,7 @@ class Ui_Add_Dialog(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.box_applyScope = QtWidgets.QComboBox(self.centralwidget)
-        self.box_applyScope.setGeometry(QtCore.QRect(80, 170, 69, 22))
+        self.box_applyScope.setGeometry(QtCore.QRect(80, 170, 79, 22))
         self.box_applyScope.setObjectName("box_applyScope")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(90, 140, 54, 12))
@@ -32,10 +32,10 @@ class Ui_Add_Dialog(object):
         self.label_2.setGeometry(QtCore.QRect(210, 140, 54, 12))
         self.label_2.setObjectName("label_2")
         self.box_subject = QtWidgets.QComboBox(self.centralwidget)
-        self.box_subject.setGeometry(QtCore.QRect(210, 170, 69, 22))
+        self.box_subject.setGeometry(QtCore.QRect(180, 170, 99, 22))
         self.box_subject.setObjectName("box_subject")
         self.box_op = QtWidgets.QComboBox(self.centralwidget)
-        self.box_op.setGeometry(QtCore.QRect(320, 170, 101, 22))
+        self.box_op.setGeometry(QtCore.QRect(320, 170, 111, 22))
         self.box_op.setObjectName("box_op")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(340, 140, 54, 16))
@@ -46,6 +46,10 @@ class Ui_Add_Dialog(object):
         self.line_val = QtWidgets.QLineEdit(self.centralwidget)
         self.line_val.setGeometry(QtCore.QRect(460, 170, 201, 20))
         self.line_val.setObjectName("line_val")
+
+        self.label_description = QtWidgets.QLabel(self.centralwidget)
+        self.label_description.setGeometry(QtCore.QRect(70, 180, 100, 100))
+        self.label_description.setObjectName("description")
         self.box_description = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.box_description.setGeometry(QtCore.QRect(70, 240, 591, 71))
         self.box_description.setObjectName("box_description")
@@ -79,6 +83,7 @@ class Ui_Add_Dialog(object):
         for k,v in ops.items():
             self.box_op.addItem(k,v)
 
+        self.box_description.setPlainText("这里添加规则描述")
         if self.retVal != {}:
             if self.retVal["simpleRules"][0]["operation"] in ops.values():
                 self.box_op.setCurrentIndex(list(ops.values()).index(self.retVal["simpleRules"][0]["operation"]))
@@ -102,9 +107,14 @@ class Ui_Add_Dialog(object):
         self.label_2.setText(_translate("MainWindow", "作用对象"))
         self.label_3.setText(_translate("MainWindow", "作用操作"))
         self.label_4.setText(_translate("MainWindow", "值"))
-
+        self.label_description.setText(_translate("MainWindow","规则描述"))
     def finishEdit(self):
         print("finish Edit!")
+        try:
+            eval("[" + self.line_val.text() + "]")
+        except Exception as e:
+            QMessageBox.information(self.window,"message","值编辑框格式不正确！ val的字段必须用逗号分隔，并且其中只能出现数字和字符串")
+            return
         data = {
             "id":-1,"status":True,"applyScope":self.box_applyScope.currentData(),
             "simpleRules":[{"subject":self.box_subject.currentData(),
