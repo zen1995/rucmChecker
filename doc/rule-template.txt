@@ -1,7 +1,7 @@
 {
     "default":[
         {"id":1,"status":true,"applyScope":"actionStep","simpleRules":[
-            {"subject":"subject_Val","operation":"in","val":["the system","$actor"]}
+            {"subject":"subject_Val","operation":"in","val":["the system","$actor","系统"]}
         ],"operation":"-","description":"default rule1"},
         {"id":3,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_Val","operation":"in","val":["$actor"]},

@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import *
 import PyQt5
 import sys
 from PyQt5.QtCore import QCoreApplication
+import rucmElement
 class Ui_Report_Dialog(object):
     def setupUi(self, Dialog):
         self.Dialog = Dialog
@@ -65,8 +66,10 @@ class Ui_Report_Dialog(object):
         for i,e in enumerate(reporter.Reporter.errors):
             self.tableWidget.setItem(i,0,QTableWidgetItem(e.rulename))
             self.tableWidget.setItem(i,1,QTableWidgetItem(e.usecasename))
-            self.tableWidget.setItem(i,2,QTableWidgetItem(e.sentence.val))
-
+            if isinstance(e.sentence,rucmElement.Sentence):
+                self.tableWidget.setItem(i,2,QTableWidgetItem(e.sentence.val))
+            else:
+                self.tableWidget.setItem(i, 2, QTableWidgetItem(str(e.sentence)))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
