@@ -2,54 +2,54 @@
     "default":[
         {"id":1,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_Val","operation":"in","val":["the system","$actor","系统"]}
-        ],"operation":"-","description":"default rule1"},
+        ],"operation":"-","description":"default rule1:主语必须是系统或actor"},
         {"id":3,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_Val","operation":"in","val":["$actor"]},
             {"subject":"object_Val","operation":"in","val":["$actor"]}
-        ],"operation":"!&","description":"default rule3"},
+        ],"operation":"!&","description":"default rule3：禁止用户间交互"},
         {"id":4,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"verb_count","operation":"in","val":[1]}
-        ],"operation":"-","description":"default rule4"},
+        ],"operation":"-","description":"default rule4：一句话只能表述一个动作（只有一个动词）"},
         {"id":5,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"sentence_tense","operation":"in","val":["present"]}
-        ],"operation":"-","description":"default rule5"},
+        ],"operation":"-","description":"default rule5：只能用现在时"},
         {"id":6,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"sentence_tense","operation":"notIn","val":["past"]}
-        ],"operation":"-","description":"default rule6"},
+        ],"operation":"-","description":"default rule6：不能使用被动语态"},
         {"id":7,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_count","operation":"in","val":[1]},
             {"subject":"object_count","operation":"in","val":[1]}
-        ],"operation":"-&","description":"default rule7"},
+        ],"operation":"-&","description":"default rule7：清楚地描述系统和参与者之间的交互，而不省略其发送者和接收者。"},
         {"id":8,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"strs","operation":"notIn","val":["?","!"]},
             {"subject":"subject_count","operation":"in","val":[1]}
-        ],"operation":"-&","description":"default rule8"},
+        ],"operation":"-&","description":"default rule8：不能使用感叹句，疑问句"},
         {"id":10,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"modal_verb_count","operation":"in","val":[0]}
-        ],"operation":"-","description":"default rule10"},
+        ],"operation":"-","description":"default rule10：不能使用情态动词"},
         {"id":11,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"adverb_count","operation":"in","val":[0]}
-        ],"operation":"-","description":"default rule11"},
+        ],"operation":"-","description":"default rule11：不能使用副词"},
         {"id":12,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"subject_count","operation":"in","val":[1]},
             {"subject":"object_count","operation":"in","val":[0,1]}
-        ],"operation":"-&","description":"default rule12"},
+        ],"operation":"-&","description":"default rule12：使用简单句，主语与宾语唯一"},
         {"id":14,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"pronoun_count","operation":"in","val":[0]}
-        ],"operation":"-","description":"default rule14"},
-        {"id":15,"status":false,"applyScope":"allSentence","simpleRules":[
+        ],"operation":"-","description":"default rule14：不能使用代词"},
+        {"id":15,"status":true,"applyScope":"allSentence","simpleRules":[
             {"subject":"participlePhrases_count","operation":"in","val":[0]}
-        ],"operation":"-","description":"default rule15"},
-        {"id":17,"status":true,"description":"default rule17"},
-        {"id":18,"status":true,"description":"default rule18"},
-        {"id":19,"status":true,"description":"default rule19"},
-        {"id":20,"status":true,"description":"default rule20"},
-        {"id":21,"status":true,"description":"default rule21"},
-        {"id":22,"status":true,"description":"default rule22"},
-        {"id":23,"status":true,"description":"default rule23"},
-        {"id":24,"status":true,"description":"default rule24"},
-        {"id":25,"status":true,"description":"default rule25"},
-        {"id":26,"status":true,"description":"default rule26"}
+        ],"operation":"-","description":"default rule15:不能使用分词短语"},
+        {"id":17,"status":true,"description":"default rule17：ketword-INCDLUDE USECAE"},
+        {"id":18,"status":true,"description":"default rule18：ketword-EXTENDED BY USE CASE"},
+        {"id":19,"status":true,"description":"default rule19：RFS字段有正确引用"},
+        {"id":20,"status":true,"description":"default rule20：ketword-IF ELSE"},
+        {"id":21,"status":true,"description":"default rule21：ketword-MEANWHILE"},
+        {"id":22,"status":true,"description":"default rule22：ketword-VALIDATES THAT"},
+        {"id":23,"status":true,"description":"default rule23：ketword-DO ... UNTIL"},
+        {"id":24,"status":true,"description":"default rule24：ketword-ABORT"},
+        {"id":25,"status":true,"description":"default rule25：ketword-RESUME STEP"},
+        {"id":26,"status":true,"description":"default rule26：post condition不为空"}
     ],
     "user-def":[
         {"id":0,"applyScope":"actionStep","simpleRules":[{
