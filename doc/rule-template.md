@@ -25,13 +25,15 @@
       * adverb_count：副词的数量
       * pronoun_count：代词的数量
 
-    * `operation`: 对检查对象的约束，可以是in/notIn/le/lt/eq/neq/ge/gt,分别表示约束对象在/不在/小于等于/小于/等于/不等于/大于等于/小于
+    * `operation`: 对检查对象的约束，可以是in/notin/le/lt/eq/neq/ge/gt,分别表示约束对象在/不在/小于等于/小于/等于/不等于/大于等于/小于
 
     * `val`： 约束列表
 
       例如`{"subject":"subject_Val","operation":"in","val":["system"]}`表示主语中不能出现system字眼
 
       列表中除了出现正常字符串以外，还可以出现"$actor"代表RUCM中的actor
+
+    * 注意:当subject字段为XX_count的时候，val字段中只能出现数字，当operation为除了in notin以外的字段时候，val字段中只能出现数字。
 
   * `status`：当status为false时，规则处于禁用状态
 
@@ -40,4 +42,4 @@
     * 第一个字符代表对整个检查结果的操作"-"代表无操作，"!"代表取非操作
     * 第一个字符往后分别代表对于简单规则之间的逻辑操作，"&"代表与操作，“|”代表或操作
 
-  * description:规则描述，可有可无，当没有的时候规则描述时规则id
+  * description:规则描述
