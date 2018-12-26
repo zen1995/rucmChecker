@@ -207,7 +207,10 @@ class Ui_MainWindow(object):
             item = self.defaultTableWidget.item(i, 2)
             item.setText(_translate("MainWindow", "查看"))
 
-        self.defaultTableWidget.setSortingEnabled(__sortingEnabled)
+
+        #self.defaultTableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.defaultTableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
+        self.defaultTableWidget.resizeRowsToContents()
         self.label.setText(_translate("MainWindow", "默认规则库"))
         '''
         item = self.userTableWidget.verticalHeaderItem(0)
@@ -534,7 +537,7 @@ class Ui_MainWindow(object):
                 item.setText(_translate("MainWindow", str(
                     self.rules['user-def'][i]['id'])))
             self.max_id = self.rules['user-def'][i]['id']
-
+        self.defaultTableWidget.resizeRowsToContents()
     # 启用选项框
     def checkEnable(self, id, type):
         # Once the enabled state is changed, be sure to change the corresponding rule's enable attribute.
