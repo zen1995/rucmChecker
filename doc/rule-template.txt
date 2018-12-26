@@ -14,14 +14,14 @@
             {"subject":"sentence_tense","operation":"in","val":["present"]}
         ],"operation":"-","description":"default rule5：只能用现在时"},
         {"id":6,"status":true,"applyScope":"actionStep","simpleRules":[
-            {"subject":"sentence_tense","operation":"notIn","val":["past"]}
+            {"subject":"sentence_tense","operation":"notin","val":["past"]}
         ],"operation":"-","description":"default rule6：不能使用被动语态"},
         {"id":7,"status":true,"applyScope":"actionStep","simpleRules":[
             {"subject":"subject_count","operation":"in","val":[1]},
             {"subject":"object_count","operation":"in","val":[1]}
         ],"operation":"-&","description":"default rule7：清楚地描述系统和参与者之间的交互，而不省略其发送者和接收者。"},
         {"id":8,"status":true,"applyScope":"allSentence","simpleRules":[
-            {"subject":"strs","operation":"notIn","val":["?","!"]},
+            {"subject":"strs","operation":"notin","val":["?","!"]},
             {"subject":"subject_count","operation":"in","val":[1]}
         ],"operation":"-&","description":"default rule8：不能使用感叹句，疑问句"},
         {"id":10,"status":true,"applyScope":"allSentence","simpleRules":[
