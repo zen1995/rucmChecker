@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QIntValidator,QDoubleValidator,QFont
+from PyQt5.QtGui import QIntValidator, QDoubleValidator, QFont
 from AddRule import Ui_Add_Dialog
 from UserDetail import Ui_User_Detail_Dialog
 from Report import Ui_Report_Dialog
@@ -19,7 +19,7 @@ from reporter import Reporter
 from RuleLoader import RuleLoader
 import rule
 import json
-import nlputils#####
+import nlputils
 from copy import deepcopy
 from AddRule2 import Ui_Add_Dialog
 import re
@@ -167,7 +167,7 @@ class Ui_MainWindow(object):
         self.label_5.setWordWrap(False)
         self.label_5.setIndent(0)
         self.label_5.setObjectName("label_5")
-        
+
         self.saveRuleButton = QtWidgets.QPushButton(self.centralwidget)
         self.saveRuleButton.setGeometry(QtCore.QRect(490, 270, 101, 41))
         self.saveRuleButton.setObjectName("saveRuleButton")
@@ -242,12 +242,15 @@ class Ui_MainWindow(object):
         # user的查看、启用、操作以及序号
         rowCount = self.defaultTableWidget.rowCount()
         for i in range(rowCount):
-            self.defaultTableWidget.setCellWidget(i, 1, self.checkForRow(i, 0, True))
+            self.defaultTableWidget.setCellWidget(
+                i, 1, self.checkForRow(i, 0, True))
 
         rowCount = self.userTableWidget.rowCount()
         for i in range(rowCount):
-            self.userTableWidget.setCellWidget(i, 2, self.buttonForRow(i, 1)) # 1 for user rule table
-            self.userTableWidget.setCellWidget(i, 1, self.checkForRow(i, 1, True))
+            self.userTableWidget.setCellWidget(
+                i, 2, self.buttonForRow(i, 1))  # 1 for user rule table
+            self.userTableWidget.setCellWidget(
+                i, 1, self.checkForRow(i, 1, True))
         # codes above are only used for debugging
 
         self.RUCMButton.clicked.connect(lambda: self.openfile(0))
@@ -256,7 +259,7 @@ class Ui_MainWindow(object):
         self.checkRuleButton.clicked.connect(self.check)
         self.reportButton.clicked.connect(self.report)
         self.addRuleButton.clicked.connect(self.addRule)
-        self.houseNumEdit  = QtGui.QTextLine()
+        self.houseNumEdit = QtGui.QTextLine()
 
         # 加载默认规则
         self.loadRules('.\\rule-template.txt')
@@ -280,9 +283,10 @@ class Ui_MainWindow(object):
             # print('更改ip为：' +  nlputils.url)
     '''
     # 列表内添加按钮
-    def buttonForRow(self,id, type):
-        widget=QtWidgets.QWidget()
-        
+
+    def buttonForRow(self, id, type):
+        widget = QtWidgets.QWidget()
+
         # 查看
         viewBtn = QtWidgets.QPushButton('查看')
         viewBtn.setStyleSheet(''' text-align : center;
@@ -310,21 +314,21 @@ class Ui_MainWindow(object):
                                               border-style: outset;
                                               font : 13px  ''')
 
-            updateBtn.clicked.connect(lambda:self.updateRuleTable(id))
+            updateBtn.clicked.connect(lambda: self.updateRuleTable(id))
 
         hLayout = QtWidgets.QHBoxLayout()
         hLayout.addWidget(viewBtn)
         if type:
             hLayout.addWidget(updateBtn)
             hLayout.addWidget(deleteBtn)
-        hLayout.setContentsMargins(5,2,5,2)
+        hLayout.setContentsMargins(5, 2, 5, 2)
         widget.setLayout(hLayout)
         return widget
 
     # 列表内添加选择按钮
     # initial_status = False 表示禁用， True 表示 启用
     def checkForRow(self, id, type, initial_status):
-        widget=QtWidgets.QWidget()
+        widget = QtWidgets.QWidget()
         enable = QtWidgets.QCheckBox('启用')
         enable.setStyleSheet(''' text-align : center;
                                         height : 30px;
@@ -332,33 +336,37 @@ class Ui_MainWindow(object):
                                         font : 13px; ''')
         if initial_status:
             enable.setCheckState(QtCore.Qt.Checked)
-        enable.stateChanged.connect(lambda:self.checkEnable(id, type))
+        enable.stateChanged.connect(lambda: self.checkEnable(id, type))
         hLayout = QtWidgets.QHBoxLayout()
         hLayout.addWidget(enable)
-        hLayout.setContentsMargins(5,2,5,2)
+        hLayout.setContentsMargins(5, 2, 5, 2)
         widget.setLayout(hLayout)
         return widget
 
-
-    def openfile(self, type): # 0 for rucm file, 1 for load rule, 2 for save rule
+    def openfile(self, type):  # 0 for rucm file, 1 for load rule, 2 for save rule
         _translate = QtCore.QCoreApplication.translate
-        
-        if type == 0:  #RUCM
-            openfile_name = QtWidgets.QFileDialog.getOpenFileName(self.centralwidget,'选择文件','','RUCM File(*.rucm)')
-            self.RUCMLineEdit.setText(_translate("MainWindow", openfile_name[0]))
+
+        if type == 0:  # RUCM
+            openfile_name = QtWidgets.QFileDialog.getOpenFileName(
+                self.centralwidget, '选择文件', '', 'RUCM File(*.rucm)')
+            self.RUCMLineEdit.setText(
+                _translate("MainWindow", openfile_name[0]))
             if len(openfile_name[0]) > 2:
                 self.loadRUCM(openfile_name[0])
             # 如果没有中途取消，则会返回路径，否则，则会返回''
         elif type == 1:
-            openfile_name = QtWidgets.QFileDialog.getOpenFileName(self.centralwidget,'选择文件','','Rule File(*.txt)')
+            openfile_name = QtWidgets.QFileDialog.getOpenFileName(
+                self.centralwidget, '选择文件', '', 'Rule File(*.txt)')
             if len(openfile_name[0]) > 2:
                 self.loadRules(openfile_name[0])
         else:
-            openfile_name = QtWidgets.QFileDialog.getSaveFileName(self.centralwidget,'保存文件','','Rule File(*.txt)')
+            openfile_name = QtWidgets.QFileDialog.getSaveFileName(
+                self.centralwidget, '保存文件', '', 'Rule File(*.txt)')
             if len(openfile_name[0]) > 2:
                 self.saveRules(openfile_name[0])
 
     '''TO DO LIST'''
+
     def updateRuleTable(self, id):
         # 和前面add rule的代码类似
         # id: row number
@@ -381,7 +389,6 @@ class Ui_MainWindow(object):
         # 输出直接覆盖掉
         '''Consider how to save the changed rule details. 
         It's some business related to RuleBase'''
-
 
     def addRule(self, id):
         # id: row number
@@ -414,7 +421,8 @@ class Ui_MainWindow(object):
             item = self.userTableWidget.item(rowCount - 1, 0)
             # 设置序号
             last_index = len(self.rules['user-def']) - 1
-            item.setText(_translate("MainWindow", str(self.rules['user-def'][last_index]['id'])))
+            item.setText(_translate("MainWindow", str(
+                self.rules['user-def'][last_index]['id'])))
 
     def deleteRuleTable(self, id):
         # id: row number
@@ -459,10 +467,9 @@ class Ui_MainWindow(object):
                         ui.setupUi(Dialog, content)
                         Dialog.show()
                         Dialog.exec_()
-            
+
             '''the second parameter should be a dict to wrap the rule detailes.
             It's some business related to RuleBase.'''
-
 
     def loadRUCM(self, file_path):
         # 直接将路径存储起来，等到了check的时候再一起load。
@@ -490,16 +497,16 @@ class Ui_MainWindow(object):
     def loadRules(self, file):
         # 存储路径的同时，还要将rule存储到自身的dict中
         self.rulepath = file
-        file = open(self.rulepath, 'r',encoding='utf-8')
-        self.dict_content = json.load(file)
+        file = open(self.rulepath, 'r', encoding='utf-8')
+        self.rules = json.load(file)
         # 这里应该需要检查一下格式#
         rule_loader = RuleLoader(self.rulepath)
         if not rule_loader.checkFileFormat():
             print('Wrong Format of Rule file')
             self.rulepath = ''
-            self.rules = []
+            self.rules = None
             QMessageBox.information(self.mainWindow, "ERROR",
-                                        "规则文件格式错误")
+                                    "规则文件格式错误")
             return
         # 删除所有规则
         self.__delete_all_rule(self.userTableWidget, 1)
@@ -515,14 +522,17 @@ class Ui_MainWindow(object):
         for i in range(defaultRuleNum):
             self.__add_one_rule(0, self.rules['default'][i]['status'])
             item = self.defaultTableWidget.item(i, 0)
-            item.setText(_translate("MainWindow", str(self.rules['default'][i]['id'])))
+            item.setText(_translate("MainWindow", str(
+                self.rules['default'][i]['id'])))
             item = self.defaultTableWidget.item(i, 2)
-            item.setText(_translate("MainWindow", str(self.rules['default'][i]['description'])))
+            item.setText(_translate("MainWindow", str(
+                self.rules['default'][i]['description'])))
         if 'user-def' in self.rules:
             for i in range(userRuleNum):
                 self.__add_one_rule(1, self.rules['user-def'][i]['status'])
                 item = self.userTableWidget.item(i, 0)
-                item.setText(_translate("MainWindow", str(self.rules['user-def'][i]['id'])))
+                item.setText(_translate("MainWindow", str(
+                    self.rules['user-def'][i]['id'])))
             self.max_id = self.rules['user-def'][i]['id']
 
     # 启用选项框
@@ -553,16 +563,19 @@ class Ui_MainWindow(object):
                 if not rule_load.checkFileFormat():
                     QMessageBox.information(self.mainWindow, "ERROR",
                                             "规则文件格式错误")
+                    self.label_5.setText(_translate("MainWindow", "规则文件格式错误"))
                     return
             except (FileNotFoundError, json.JSONDecodeError) as err:
                 print(err)
                 QMessageBox.information(self.mainWindow, "ERROR",
                                         "规则文件json格式错误或者可能是其他错误")
+                self.label_5.setText(_translate("MainWindow", "规则文件json格式错误或者可能是其他错误"))
                 return
         else:
             print('No rule file is specified. Default rules are loaded only.')
             QMessageBox.information(self.mainWindow, "WARNING",
                                     "未加载规则文件，请先加载规则文件")
+            self.label_5.setText(_translate("MainWindow", "未加载规则文件，请先加载规则文件"))
             return
 
         rucm_loader = None
@@ -571,15 +584,15 @@ class Ui_MainWindow(object):
             print('No rucm file is given. Check rule file only.')
             QMessageBox.information(self.mainWindow, "WARNING",
                                     "未加载RUCM文件，请先加载RUCM文件")
+            self.label_5.setText(_translate("MainWindow", "未加载RUCM文件，请先加载RUCM文件"))
             return
-        ################################正式开始检查
+        # 正式开始检查
         _translate = QtCore.QCoreApplication.translate
         self.label_5.setText(_translate("MainWindow", "正在检查"))
         self.thread = RunThread(Qt=self)
         self.thread.start()
         # 先把rule加载到本地的一个./rule-template-tmp.txt文件中。
         # 然后把它传到saveRules
-        
 
     def report(self):
 
@@ -613,11 +626,14 @@ class Ui_MainWindow(object):
                 self.userTableWidget.setItem(i, j, item)
         # 链接函数
         if type == 0:
-            self.defaultTableWidget.setCellWidget(i, 1, self.checkForRow(i, 0, init_status))
+            self.defaultTableWidget.setCellWidget(
+                i, 1, self.checkForRow(i, 0, init_status))
             self.defaultRuleNum = self.defaultRuleNum + 1
         elif type == 1:
-            self.userTableWidget.setCellWidget(i, 2, self.buttonForRow(i, 1)) # 1 for user rule table
-            self.userTableWidget.setCellWidget(i, 1, self.checkForRow(i, 1, init_status))
+            self.userTableWidget.setCellWidget(
+                i, 2, self.buttonForRow(i, 1))  # 1 for user rule table
+            self.userTableWidget.setCellWidget(
+                i, 1, self.checkForRow(i, 1, init_status))
             self.userRuleNum = self.userRuleNum + 1
 
     def __delete_all_rule(self, table, type):
@@ -633,15 +649,19 @@ class Ui_MainWindow(object):
             self.userTableWidget.setRowCount(0)
             self.userRuleNum = 0
 
+
 class RuleBase:
     # A class for wrapping the details of each rule.
     rules = []
+
     def addRule(self, rule):
         # add a rule to the database
         pass
 
+
 class Report:
     pass
+
 
 class RunThread(QtCore.QThread):
     # python3,pyqt5与之前的版本有些不一样
@@ -649,14 +669,13 @@ class RunThread(QtCore.QThread):
     # _signal = pyqtSignal(str)
 
     #trigger = pyqtSignal()
- 
+
     def __init__(self, parent=None, Qt=None):
         super(RunThread, self).__init__()
         self.Qt = Qt
 
- 
     def __del__(self):
-        self.wait() 
+        self.wait()
 
     def run(self):
         # 处理你要做的业务逻辑，这里是通过一个回调来处理数据，这里的逻辑处理写自己的方法
@@ -708,11 +727,11 @@ class RunThread(QtCore.QThread):
 
 
 if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv) 
+    app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ruleBase = RuleBase()
     report = Report()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow, ruleBase, report)
-    MainWindow.show()  
-    sys.exit(app.exec_()) 
+    MainWindow.show()
+    sys.exit(app.exec_())
