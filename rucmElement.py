@@ -1,4 +1,3 @@
-import base
 import typing
 import json
 import re
@@ -23,6 +22,8 @@ class NatureType(Enum):
     abort_ = 'ABORT'
     elseif_ = 'ELSEIF'
     else_ = "ELSE"
+    
+import base
 
 
 class RUCMBase:
