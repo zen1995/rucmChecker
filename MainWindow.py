@@ -490,7 +490,8 @@ class Ui_MainWindow(object):
     def loadRules(self, file):
         # 存储路径的同时，还要将rule存储到自身的dict中
         self.rulepath = file
-        self.rules = json.load(open(self.rulepath, 'r'))
+        file = open(self.rulepath, 'r',encoding='utf-8')
+        self.dict_content = json.load(file)
         # 这里应该需要检查一下格式#
         rule_loader = RuleLoader(self.rulepath)
         if not rule_loader.checkFileFormat():

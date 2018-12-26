@@ -11,7 +11,8 @@ class Loader():
     def __init__(self,filepath:str):
         self.filepath = filepath
         print(self.filepath)
-        self.dict_content = json.load(open(self.filepath, 'r'))
+        file = open(self.filepath, 'r',encoding='utf-8')
+        self.dict_content = json.load(file)
 
     @abstractmethod
     def load(self)->bool:
