@@ -68,7 +68,7 @@ class Ui_User_Detail_Dialog(object):
             row = self.tableWidget.rowCount()
             self.tableWidget.insertRow(row)
             item = QtWidgets.QTableWidgetItem('用户规则')
-            # item.setTextAlignment(QtCore.Qt.AlignCenter)
+            item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
@@ -77,25 +77,25 @@ class Ui_User_Detail_Dialog(object):
                        "副词的数量":"adverb_count","代词的数量":"pronoun_count"}
             applyTarget= dict(zip(applyTarget.values(), applyTarget.keys()))
             item = QtWidgets.QTableWidgetItem(applyTarget[RuleDetail['simpleRules'][i]['subject']])
-            # item.setTextAlignment(QtCore.Qt.AlignCgenter)
+            item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
             ops = {"in":"在","notIn":"不在","ge":"大于等于","gt":"大于","lt":"小于","le":"小于等于","eq":"等于","neq":"不等于"}
             item = QtWidgets.QTableWidgetItem(ops[RuleDetail['simpleRules'][i]['operation']])
-            # item.setTextAlignment(QtCore.Qt.AlignCenter)
+            item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
             item = QtWidgets.QTableWidgetItem(str(RuleDetail['simpleRules'][i]['val']))
-            # item.setTextAlignment(QtCore.Qt.AlignCenter)
+            item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
             applyScopes = {"所有句子":"allSentence","动作句子":"actionStep"}
             applyScopes= dict(zip(applyScopes.values(),applyScopes.keys()))
             item = QtWidgets.QTableWidgetItem(applyScopes[RuleDetail['applyScope']])
-            # item.setTextAlignment(QtCore.Qt.AlignCenter)
+            item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
