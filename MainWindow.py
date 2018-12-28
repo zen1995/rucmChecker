@@ -433,9 +433,15 @@ class Ui_MainWindow(object):
         # only available for user rule table
         # 确认是否删除
         # 待添加
-
         # 移走行，然后userRuleNum - 1，重设index
-        self.userTableWidget.removeRow(id)
+        row = 0
+        for i in range(self.userTableWidget.rowCount()):
+            ind = self.userTableWidget.item(i, 0).text()
+            if str(id) == ind:
+                row = i
+                break
+        self.userTableWidget.removeRow(row)
+
         _translate = QtCore.QCoreApplication.translate
         self.userRuleNum = self.userRuleNum - 1
         self.userTableWidget.setRowCount(self.userRuleNum)
