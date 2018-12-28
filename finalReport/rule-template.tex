@@ -1,0 +1,68 @@
+\chapter{rule-template(规则模板)说明}
+\begin{itemize}
+    \item
+    rule文件有一个dict组成，其中有两个字段，分别是\texttt{default}和\texttt{user-def}。分别代表默认规则列表和用户定义规则列表。
+    \item
+    default字段下的数据尽量不要改，唯一可以改的是status字段，当status为false是，规则处于禁用状态
+    \item
+    用户规则列表由用户规则聚合而成，一个用户规则下的字段包括：
+    \item
+    \texttt{id}: 用户规则id，不能重复
+    \item
+    \texttt{applyScope}:
+    规则作用域，取值包括``actionStep''(flow中的句子)，``allSentence''(RUCM中所有句子)
+    
+    \item
+    \texttt{simpleRules}:
+    一个用户规则可以被看做多个简单规则的聚合，简单规则字典信息包括：
+        \begin{itemize}
+        \item
+            \texttt{subject}: 规则要检查的对象，他的取值包括:
+        \item
+            subject\_Val: 主语的值
+        \item
+            subject\_count：主语的数量
+        \item
+            object\_Val: 宾语的值
+        \item
+            object\_count: 宾语的数量
+        \item
+            verb\_count : 动词的数量
+        \item
+            verb\_tense：动词的时态
+        \item
+            strs: 句子中所有的词
+        \item
+            modal\_verb\_count：情态动词的数量
+        \item
+            adverb\_count：副词的数量
+        \item
+            pronoun\_count：代词的数量
+            \texttt{operation}:
+            对检查对象的约束，可以是in/notin/le/lt/eq/neq/ge/gt,分别表示约束对象在/不在/小于等于/小于/等于/不等于/大于等于/小于
+        \item
+            \texttt{val}： 约束列表
+        \end{itemize}
+            例如\texttt{\{"subject":"subject\_Val","operation":"in","val":{[}"system"{]}\}}表示主语中不能出现system字眼
+            
+            列表中除了出现正常字符串以外，还可以出现``\$actor''代表RUCM中的actor
+
+        \begin{itemize}
+    \item
+    注意:当subject字段为XX\_count的时候，val字段中只能出现数字，当operation为除了innotin以外的字段时候，val字段中只能出现数字。
+    \end{itemize}
+
+    \item
+    \texttt{status}：当status为false时，规则处于禁用状态
+    \item
+    \texttt{operation}:综合简单规则的逻辑操作
+
+    \begin{itemize}
+    \item
+        第一个字符代表对整个检查结果的操作``-''代表无操作，``!''代表取非操作
+    \item
+        第一个字符往后分别代表对于简单规则之间的逻辑操作，``\&''代表与操作，``\textbar{}''代表或操作
+    \end{itemize}
+    \item
+    description:规则描述
+\end{itemize}
