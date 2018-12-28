@@ -417,15 +417,11 @@ class Ui_MainWindow(object):
                 self.rules['user-def'] = []
             self.rules['user-def'].append(deepcopy(output))
             # 添加一个规则到界面
-            self.__add_one_rule(1, True)
+            self.__add_one_rule(self.max_id, 1, True)
             _translate = QtCore.QCoreApplication.translate
             # 取出新加的规则设置
             rowCount = self.userTableWidget.rowCount()
             item = self.userTableWidget.item(rowCount - 1, 0)
-            # 设置序号
-            last_index = len(self.rules['user-def']) - 1
-            item.setText(_translate("MainWindow", str(
-                self.rules['user-def'][last_index]['id'])))
 
     def deleteRuleTable(self, id):
         # id: row number
@@ -450,6 +446,7 @@ class Ui_MainWindow(object):
         # 在绑定button函数的时候，id已经绑定了）。
         if self.rules:
             self.rules['user-def'][id]['status'] = -1
+        print('delete rule id: %d' % id)
         '''Consider how to delete the deleted rule in RuleBase. '''
 
     def viewRuleTable(self, id, type):
@@ -496,6 +493,7 @@ class Ui_MainWindow(object):
                 if rule_dict['user-def'][i]['status'] == -1:
                     del rule_dict['user-def'][i]
                     l = l - 1
+                    i = i - 1
                 i = i + 1
         # 对文件进行储存
         rule_json = json.dumps(rule_dict)
@@ -529,19 +527,17 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         # 在加载完之后，要更新显示，主要是更新启用状态
         for i in range(defaultRuleNum):
-            self.__add_one_rule(0, self.rules['default'][i]['status'])
-            item = self.defaultTableWidget.item(i, 0)
-            item.setText(_translate("MainWindow", str(
-                self.rules['default'][i]['id'])))
+            # 添加一条新规则，设置其状态和id
+            self.__add_one_rule(self.rules['default'][i]['id'],
+                                0, self.rules['default'][i]['status'])
             item = self.defaultTableWidget.item(i, 2)
             item.setText(_translate("MainWindow", str(
                 self.rules['default'][i]['description'])))
         if 'user-def' in self.rules:
             for i in range(userRuleNum):
-                self.__add_one_rule(1, self.rules['user-def'][i]['status'])
-                item = self.userTableWidget.item(i, 0)
-                item.setText(_translate("MainWindow", str(
-                    self.rules['user-def'][i]['id'])))
+                # 添加一条新规则，设置其状态和id
+                self.__add_one_rule(self.rules['user-def'][i]['id'],
+                                    1, self.rules['user-def'][i]['status'])
             self.max_id = self.rules['user-def'][i]['id']
         self.defaultTableWidget.resizeRowsToContents()
     # 启用选项框
@@ -615,34 +611,43 @@ class Ui_MainWindow(object):
 
     # 在type的table里头添加一条规则，同时增加Num
     # init_status用来设置启用禁用，True表示启用
-    def __add_one_rule(self, type, init_status=True):
+    def __add_one_rule(self, id, type, init_status=True):
+        _translate = QtCore.QCoreApplication.translate
         # 创建项
         if type == 0:
-            i = self.defaultTableWidget.rowCount()
-            self.defaultTableWidget.setRowCount(i + 1)
+            row = self.defaultTableWidget.rowCount()
+            self.defaultTableWidget.setRowCount(row + 1)
             for j in range(3):
                 item = QtWidgets.QTableWidgetItem()
                 item.setTextAlignment(QtCore.Qt.AlignCenter)
                 item.setFlags(QtCore.Qt.ItemIsEnabled)
-                self.defaultTableWidget.setItem(i, j, item)
+                self.defaultTableWidget.setItem(row, j, item)
+            # 设置序号为id
+            item = self.defaultTableWidget.item(row, 0)
+            item.setText(_translate("MainWindow", str(id)))
+
         else:
-            i = self.userTableWidget.rowCount()
-            self.userTableWidget.setRowCount(i + 1)
+            row = self.userTableWidget.rowCount()
+            self.userTableWidget.setRowCount(row + 1)
             for j in range(3):
                 item = QtWidgets.QTableWidgetItem()
                 item.setTextAlignment(QtCore.Qt.AlignCenter)
                 item.setFlags(QtCore.Qt.ItemIsEnabled)
-                self.userTableWidget.setItem(i, j, item)
+                self.userTableWidget.setItem(row, j, item)
+            # 设置序号为id
+            item = self.userTableWidget.item(row, 0)
+            item.setText(_translate("MainWindow", str(id)))
+
         # 链接函数
         if type == 0:
             self.defaultTableWidget.setCellWidget(
-                i, 1, self.checkForRow(i, 0, init_status))
+                row, 1, self.checkForRow(id, 0, init_status))
             self.defaultRuleNum = self.defaultRuleNum + 1
         elif type == 1:
             self.userTableWidget.setCellWidget(
-                i, 2, self.buttonForRow(i, 1))  # 1 for user rule table
+                row, 2, self.buttonForRow(id, 1))  # 1 for user rule table
             self.userTableWidget.setCellWidget(
-                i, 1, self.checkForRow(i, 1, init_status))
+                row, 1, self.checkForRow(id, 1, init_status))
             self.userRuleNum = self.userRuleNum + 1
 
     def __delete_all_rule(self, table, type):
