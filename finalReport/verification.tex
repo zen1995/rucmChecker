@@ -1,0 +1,19 @@
+\chapter{一致性验证}
+一致性验证的任务是检查各图之间的名称、关系的一致性以及图与代码之间的一致性检验。
+\section{代码与图之间的一致性}
+\begin{table}[htbp]
+    \begin{tabular}{|c|c|l|}
+    \hline
+    不一致的类       & 不一致情况频率 & \multicolumn{1}{c|}{类图修改方案}                 \\ \hline
+    Flow        & 6       & 删除了include、generation、extend 方法及属性，在实现中没有用到 \\ \hline
+    Step        & 1       & 添加了parse\_step私有方法                          \\ \hline
+    Sentence    & 1       & 添加了parseSentence私有方法                        \\ \hline
+    NatureYype  & 2       & 添加了else\_，删除了重复属性                           \\ \hline
+    RUCMLoade   & 5       & 修改了返回值，添加了两个私有方法                            \\ \hline
+    RuleSubject & 1       & 删除了两个属性，在实现中没有用到                            \\ \hline
+    \end{tabular}
+    \end{table}
+\section{时序图、活动图与类图之间的一致性}
+除部分名称从类图中的英文转变为时序图中的中文外，并未发现不一致性。
+\section{时序图、活动图与代码之间的一致性}
+各个图与代码之间基本符合，但是时序图相较于代码过于简略，没有很好的呈现出代码的流程。
