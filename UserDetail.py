@@ -67,17 +67,22 @@ class Ui_User_Detail_Dialog(object):
             j = 0
             row = self.tableWidget.rowCount()
             self.tableWidget.insertRow(row)
-            item = QtWidgets.QTableWidgetItem('default')
+            item = QtWidgets.QTableWidgetItem('用户规则')
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
-            item = QtWidgets.QTableWidgetItem(RuleDetail['simpleRules'][i]['subject'])
+            applyTarget = {"主语的数量":"subject_count","主语的值":"subject_Val","宾语的值":"object_Val","宾语的数量":"object_count",
+                       "动词的数量":"verb_count","动词的时态":"verb_tense","句子中所有词语":"strs","情态动词的数量":"modal_verb_count",
+                       "副词的数量":"adverb_count","代词的数量":"pronoun_count"}
+            applyTarget= dict(zip(applyTarget.values(), applyTarget.keys()))
+            item = QtWidgets.QTableWidgetItem(applyTarget[RuleDetail['simpleRules'][i]['subject']])
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
-            item = QtWidgets.QTableWidgetItem(RuleDetail['simpleRules'][i]['operation'])
+            ops = {"in":"在","notIn":"不在","ge":"大于等于","gt":"大于","lt":"小于","le":"小于等于","eq":"等于","neq":"不等于"}
+            item = QtWidgets.QTableWidgetItem(ops[RuleDetail['simpleRules'][i]['operation']])
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
@@ -87,7 +92,9 @@ class Ui_User_Detail_Dialog(object):
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
             j += 1
-            item = QtWidgets.QTableWidgetItem(RuleDetail['applyScope'])
+            applyScopes = {"所有句子":"allSentence","动作句子":"actionStep"}
+            applyScopes= dict(zip(applyScopes.values(),applyScopes.keys()))
+            item = QtWidgets.QTableWidgetItem(applyScopes[RuleDetail['applyScope']])
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(i, j, item)
