@@ -1,0 +1,26 @@
+\chapter{第二次一致性检验}
+一致性验证的任务是检查各图之间的名称、关系的一致性以及图与代码之间的一致性检验，以及需求与设计的一致性检验。
+\section{代码与图之间的一致性以及各图之间的一致性}
+\begin{table}[htbp]
+	\begin{tabular}{|c|c|l|}
+		\hline
+		检查项目       &    检查结果              \\ \hline
+		类图与代码之间的一致性        & 一致   \\ \hline
+		其余图与代码之间的一致性        &      GUI状态图与代码实现有出入，缺少状态转移，部分状态转移的事件不确切           \\ \hline
+		各图之间是否一致   &   一致                    \\ \hline                     
+	\end{tabular}
+\end{table}
+\section{设计与需求的一致性}
+\begin{table}[htbp]
+	\begin{tabular}{|c|c|l|}
+		\hline
+		需求       &    检查结果              \\ \hline
+		自动创建默认的RUCM规则        & 一致   \\ \hline
+		规则的增删改查、保存、导入        &     一致       \\ \hline
+		规则说明书   &   一致                    \\ \hline                    
+		提取输入的规则JSON文件中的字段   &   一致                    \\ \hline   
+		提供一系列规则管理的逻辑操作   &   一致                    \\ \hline   
+		规则检查   &   一致                    \\ \hline   
+		报告生成   &   一致                    \\ \hline   
+	\end{tabular}
+\end{table}
