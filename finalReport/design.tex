@@ -172,6 +172,7 @@
 	\caption{自然语言处理部分类图} 
 	\label{classDiagram_nlputils}
 	\end{figure}
+\begin{comment}
 \section{用户规则设计}
 rule文件有一个dict组成，其中有两个字段，分别是default 和user-def。分别代表默认规则列表和用户定义规则列表。\\
 default字段下的数据尽量不要改，唯一可以改的是status字段，当status为false是，规则处于禁用状态\\
@@ -204,6 +205,7 @@ default字段下的数据尽量不要改，唯一可以改的是status字段，�
 	\item	description:规则描述
 	\item	注意：通过规则模板编辑方式可以编写内含多个条件约束的规则，而通过GUI编辑方式获得的规则只能包含一个条件约束。
 \end{itemize}
+\end{comment}
 \section{运行流程说明}
 \subsection{rucm解析流程}
    	\begin{figure}
@@ -234,11 +236,11 @@ default字段下的数据尽量不要改，唯一可以改的是status字段，�
 \subsection{gui状态转移说明}
 	\begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{./src/sequence_complexCheck.jpg} 
+	\includegraphics[width=1\textwidth]{./src/stateDisgram_gui.jpg} 
 	\caption{图形界面状态转移图} 
-	\label{sequence_complexCheck}
+	\label{stateDisgram_gui}
 	\end{figure}
-	gui状态转移如图\ref{sequence_complexCheck}所示。图形界面主要状态有三个：加载规则状态，就绪-rucm文件未设置状态和就绪rucm文件设置完成状态。两个就绪状态分别可以迁移到查看规则和添加/修改规则状态。通过设置rucm文件可以将"就绪-rucm文件未设置"状态迁移到“就绪-rucm文件设置完成”状态。当检查完成后，状态机返回“就绪-rucm文件未设置”状态
+	gui状态转移如图\ref{stateDisgram_gui}所示。图形界面主要状态有三个：加载规则状态，就绪-rucm文件未设置状态和就绪rucm文件设置完成状态。两个就绪状态分别可以迁移到查看规则和添加/修改规则状态。通过设置rucm文件可以将"就绪-rucm文件未设置"状态迁移到“就绪-rucm文件设置完成”状态。当检查完成后，状态机返回“就绪-rucm文件未设置”状态
 	
 	
 	
