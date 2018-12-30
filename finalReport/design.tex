@@ -2,12 +2,10 @@
 
 \section{类图说明}
 
-
-
-	我们的设计主要分为6个部分，分别是规则解析部分，规则实体/检查部分，报告部分，RUCM解析部分自然语言处理部分以及图形界面部分。接下来分别说明每个部分重要的具体类图设计。
+	我们的设计主要分为6个部分，分别是规则解析部分，规则实体/检查部分，报告部分，RUCM解析部分自然语言处理部分以及图形界面部分，如图\ref{key}。接下来分别说明每个部分重要的具体类图设计。
 		\begin{figure}
 		\centering
-		\includegraphics[width=1\textwidth]{./src/classDiagram_overview.jpg} 
+		\includegraphics[width=1\textwidth]{src/classDiagram_overview.jpg} 
 		\caption{主体部分类图概览} 
 		\label{key}
 	\end{figure}
@@ -29,8 +27,9 @@
     	ruleDB为静态数据类，它根据两部分组成，分别是用户定义规则列表(userRules:list)和默认规则列表(userRules:list)组成\\
     	\begin{figure}
     		\centering
-    		\includegraphics[width=1\textwidth]{./src/classDiagram_rule.jpg} 
-    		\caption{规则解析与规则实体部分类图} 
+    		\includegraphics[width=1\textwidth]{src/classDiagram_rule.jpg} 
+			\caption{规则解析与规则实体部分类图} 
+			\label{classDiagram_rule}
     	\end{figure}
     \end{itemize}
 	规则解析部分ocl：\\
@@ -86,7 +85,7 @@
     	静态类，用于生成报告。
     	\begin{figure}
     		\centering
-    		\includegraphics[width=.5\textwidth]{./src/classDiagram_report.jpg} 
+    		\includegraphics[width=.5\textwidth]{src/classDiagram_report.jpg} 
     		\caption{报告部分类图} 
     	\end{figure}
     \end{itemize}
@@ -145,7 +144,7 @@
    		tense：词的时态（past/present等）
    		\begin{figure}
    			\centering
-   			\includegraphics[width=1\textwidth]{./src/classDiagram_rucmElement.jpg} 
+   			\includegraphics[width=1\textwidth]{src/classDiagram_rucmElement.jpg} 
    			\caption{报告部分类图部分类图} 
    		\end{figure}
    	\end{itemize}
@@ -168,11 +167,11 @@
 	如图\ref{classDiagram_nlputils}所示，该部分由多个方法组成，构成nulputils模块，该部分的主要功能是解析句子/词语成分，并且给予相应的自然语义标注。因为中文的语法分析与英文的语法分析有较大不同，我们设置XXX\_En和XXX\_Han对其进行分别处理。并且设置方法choose\_function对语言进行选择
     	\begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{./src/classDiagram_nlputils.jpg} 
+	\includegraphics[width=.5\textwidth]{src/classDiagram_nlputils.jpg} 
 	\caption{自然语言处理部分类图} 
 	\label{classDiagram_nlputils}
 	\end{figure}
-\begin{comment}
+
 \section{用户规则设计}
 rule文件有一个dict组成，其中有两个字段，分别是default 和user-def。分别代表默认规则列表和用户定义规则列表。\\
 default字段下的数据尽量不要改，唯一可以改的是status字段，当status为false是，规则处于禁用状态\\
@@ -205,12 +204,12 @@ default字段下的数据尽量不要改，唯一可以改的是status字段，�
 	\item	description:规则描述
 	\item	注意：通过规则模板编辑方式可以编写内含多个条件约束的规则，而通过GUI编辑方式获得的规则只能包含一个条件约束。
 \end{itemize}
-\end{comment}
+
 \section{运行流程说明}
 \subsection{rucm解析流程}
    	\begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{./src/sequence_loadRUCM.jpg} 
+	\includegraphics[width=1\textwidth]{src/sequence_loadRUCM.jpg} 
 	\caption{rucm解析流程图} 
 	\label{sequence_loadRUCM}
 	\end{figure}
@@ -219,7 +218,7 @@ default字段下的数据尽量不要改，唯一可以改的是status字段，�
 \subsection{规则解析流程}
    	\begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{./src/sequence_ruleLoad.jpg} 
+	\includegraphics[width=1\textwidth]{src/sequence_ruleLoad.jpg} 
 	\caption{规则装载流程}
 	\label{sequence_ruleLoad}
 \end{figure}
@@ -227,7 +226,7 @@ default字段下的数据尽量不要改，唯一可以改的是status字段，�
 \subsection{复杂规则检查流程}
 	\begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{./src/sequence_complexCheck.jpg} 
+	\includegraphics[width=1\textwidth]{src/sequence_complexCheck.jpg} 
 	\caption{rucm解析流程图} 
 	\label{sequence_complexCheck}
 	\end{figure}
@@ -236,12 +235,100 @@ default字段下的数据尽量不要改，唯一可以改的是status字段，�
 \subsection{gui状态转移说明}
 	\begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{./src/stateDisgram_gui.jpg} 
+	\includegraphics[width=1\textwidth]{src/stateDisgram_gui.jpg} 
 	\caption{图形界面状态转移图} 
 	\label{stateDisgram_gui}
 	\end{figure}
 	gui状态转移如图\ref{stateDisgram_gui}所示。图形界面主要状态有三个：加载规则状态，就绪-rucm文件未设置状态和就绪rucm文件设置完成状态。两个就绪状态分别可以迁移到查看规则和添加/修改规则状态。通过设置rucm文件可以将"就绪-rucm文件未设置"状态迁移到“就绪-rucm文件设置完成”状态。当检查完成后，状态机返回“就绪-rucm文件未设置”状态
 	
+\section{GUI设计说明}
+
+\subsection{设计目的}
+利用图形界面，为用户提供可视化的输入/输出与控制功能，包括RUCM规则编辑功能、规则存取功能、RUCM文件读取功能、规则检查功能和查看报告界面，方便用户理解与使用。
+\subsection{GUI展示}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=5.77222in,height=3.29306in]{src/gui-1.png}
+	\caption{RUCMChecker主界面}
+	\label{fig-gui-1}
+\end{figure}
+软件的主界面如图\ref{fig-gui-1}所示。该界面分别提供了如下功能。
+
+\begin{enumerate}
+	\item
+	默认规则库相关功能。默认规则库相关功能包括默认规则的查看、默认规则的启用与禁用设置。
+	\item
+	用户规则库相关功能。用户规则库相关功能包括从文件中载入用户规则、保存用户规则到文件、添加用户规则、查看用户规则列表、查看用户规则、修改用户规则以及删除用户规则。
+	\item
+	RUCM文件相关功能。该模块主要包括从文件系统中载入RUCM文件。
+	\item
+	控制相关功能。包括规则检查与查看规则检查报告。
+\end{enumerate}
+
+\subsection{分模块说明与调用说明}
+
+	对应主界面提供的功能，RUCM规则检查器的图形化窗口设计共包括四个模块：默认规则模块、用户规则模块、RUCM文件模块以及控制模块。
 	
+	\subsubsection{默认规则模块}
+		默认规则模块在程序运行伊始自动载入默认规则，并在主界面中``默认规则库''表格中显示系统中的默认规则。默认规则模块为用户提供了启用/禁用的控制权限，用户可以通过选择启用/禁用若干默认规则，控制在规则检查中是否使用这些默认规则进行检查。
+	\subsubsection{用户规则模块}
+		用户规则模块为用户提供了规则编辑的接口。在程序运行伊始，用户规则模块默认为空。用户可以通过点击``添加用户规则''按钮添加用户规则。添加用户规则界面如图\ref{fig-gui-2}所示。
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=5.77222in,height=3.45347in]{src/gui-2.png}
+			\caption{添加用户规则界面}
+			\label{fig-gui-2}
+		\end{figure}
+		其中，作用范围、作用对象、操作的可选项详见本文档规则设计部分。在添加一条用户规则后，主页面的用户规则库中将添加该用户规则。
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=5.77222in,height=3.29583in]{src/gui-3.png}
+			\caption{更新添加的用户规则}
+			\label{fig-gui-3}
+		\end{figure}
+		此外，用户可以通过载入规则库/保存规则库进行用户规则的载入与保存。在载入用户规则文件后，系统在主页面中的用户规则库中填入载入的规则。载入/保存界面如图\ref{fig-gui-4}所示。
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=5.77222in,height=3.25000in]{src/gui-4.png}
+			\caption{载入/保存用户规则界面}
+			\label{fig-gui-4}
+		\end{figure}
+		对于单条规则，软件的图形化界面提供了查看、修改与删除的操作。
+		\begin{itemize}
+			\item[查看规则]	
+				用于显示规则的详细信息，其界面如图\ref{fig-gui-5}所示。
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=5.77222in,height=2.15486in]{src/gui-5.png}
+					\caption{用户规则查看界面}
+					\label{fig-gui-5}
+				\end{figure}
+			\item[修改规则]
+				用于更新规则的详细信息，其界面如图\ref{fig-gui-6}所示。
+			\item[删除规则]
+				用户删除某条用户规则。
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=5.77222in,height=3.43681in]{src/gui-6.png}
+					\caption{规则修改界面}
+					\label{fig-gui-6}
+				\end{figure}
+		\end{itemize}
+
+	\subsubsection{RUCM文件模块}
+		该模块为用户提供了上传RUCM文件的接口。在用户点击选择文件后，程序调出文件上传界面，在上传界面选择文件后，主界面的RUCM输入框显示上传的RUCM文件地址，如图\ref{fig-gui-7}所示。
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=4.50000in,height=2.47792in]{src/gui-7.png}
+			\caption{RUCM文件上传界面}
+			\label{fig-gui-7}
+		\end{figure}
 	
-	
+	\subsubsection{控制模块}
+		该模块为用户提供了规则检查与查看报告的接口。在用户点击``规则检查''后，程序根据规则库的内容以及RUCM文件地址，调用后端程序进行检查，并在主界面下方显示``正在检查''的提示。为确保程序能够及时响应用户操作，在UI中采用多线程的方式调用后端程序。规则检查完毕后，主界面下方显示``检查完毕，请点击查看报告''。用户点击查看报告后，出现查看报告界面，界面内容如图\ref{fig-gui-8}所示。
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=5.77222in,height=3.26667in]{src/gui-8.png}
+			\caption{查看报告界面}
+			\label{fig-gui-8}
+		\end{figure}
