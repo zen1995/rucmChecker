@@ -46,6 +46,7 @@ The LaTeX template for thesis of BUAA]
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage{txfonts}
 
+
 % 主要字体为Times New Roman和宋体
 % 模板某些标题需要华文行楷和32号字
 \setmainfont{Times New Roman}
