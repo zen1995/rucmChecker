@@ -415,6 +415,8 @@ class RUCMRoot:
     @staticmethod
     def init(rucm_dict: dict):
         index = 0
+        RUCMRoot.actors = []
+        RUCMRoot.useCases = []
         model_elements = rucm_dict['root']['content']['modelElements']
         for me in model_elements:
             if me['type'] == 'UseCase':
