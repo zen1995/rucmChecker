@@ -15,9 +15,9 @@ Stanford parser server 相关
 https://stanfordnlp.github.io/CoreNLP/corenlp-server.html
 '''
 
-url = 'http://10.133.6.188:9000/'
-url_En = 'http://10.133.6.188:9000/'
-url_Han = 'http://10.133.6.188:9001/'
+url = 'http://10.134.171.239:9000/'
+url_En = 'http://10.134.171.239:9000/'
+url_Han = 'http://10.134.171.239:9001/'
 
 
 def containHan(s):
