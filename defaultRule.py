@@ -56,7 +56,7 @@ class DefaultRule19(rule.Rule):
             rfs = flow.RfsSentence
             res = re.search(r'(RFS )(\D+ )(\d.*)', rfs)
             if not res:
-                errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                errors.append(rule.ErrorInfo(self.description+'aaa', flow.useCaseName, rfs))
                 continue
             flowName = res.group(2).rstrip(' ')
             _str = res.group(3).replace(' ', '')
@@ -66,7 +66,7 @@ class DefaultRule19(rule.Rule):
                 resNum = re.fullmatch(r'(\d+)(-\d+)?( )?', stepNum)
                 if not resNum:
                     # �����ʽ����ȷ
-                    errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                    errors.append(rule.ErrorInfo(self.description+'bbb', flow.useCaseName, rfs))
                     continue
                 startNum = resNum.group(1)
                 endNum = resNum.group(2)
@@ -76,15 +76,16 @@ class DefaultRule19(rule.Rule):
                     startNum = int(startNum)
                     endNum = int(endNum)
                     if startNum >= endNum:
-                        errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                        errors.append(rule.ErrorInfo(self.description+'ccc', flow.useCaseName, rfs))
                         continue
                     nums += range(startNum, endNum+1)
                 else:
                     # û���
                     nums.append(int(resNum.group(1)))
             for num in nums:
-                if not flow.parent.findRFS(flowName, num):
-                    errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
+                print(flowName)
+                if not flow.parent.findRFS(flowName.replace(' ',''), num):
+                    errors.append(rule.ErrorInfo(self.description+'ddd', flow.useCaseName, rfs))
                     break                
         rule.Reporter.errors += errors
 

@@ -1,0 +1,38 @@
+﻿违规描述                	违规用例                	违规句段   
+
+default-1：主语必须是系统/The system/System。实现方式：判断主语内容      
+
+误报:2条
+default-1           	领域背景导入              	需求提出方输入领域背景信息到系统。   
+default-1           	领域背景导入              	需求提出方补充领域背景信息。     
+
+误报原因：中文分词失败，主语“需求提出方”被错分为“需求”。
+
+
+default-4：一句话一个动作。实现方式：判断动词数量为1
+
+误报情况：1条
+default-4           	领域背景导入              	系统通过领域背景信息生成领域术语关系图。
+
+误报原因：
+中文分词错误。
+
+default-11：句中不能包含副词。实现方式：判断副词数量等于0。
+中文针对副词基本无法正确识别，此条规则失效。
+
+
+default-20：关键字IF-THEN-ELSE-ENDIF。实现方式：状态机
+ 
+违规情况：1条
+default-20          	领域背景导入              	ENDIF # 缺少THEN               
+误报情况：1条
+default-20          	领域背景导入              	Global Alternative Flow
+
+误报原因：状态机运行，属正常报错。
+
+default-25：关键字RESUME STEP。实现方式：正则表达式
+
+违规情况：
+default-25          	领域背景导入              	RESUME STEP RFS Basic Flow 3
+
+# RESUME STEP 语法为RESUME STEP <basic flow step #>，如：RESUME STEP 5

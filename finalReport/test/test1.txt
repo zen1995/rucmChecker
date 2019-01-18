@@ -1,0 +1,312 @@
+﻿违规描述                	违规用例                	违规句段   
+
+default-1：主语必须是系统/The system/System。实现方式：判断主语内容
+
+default-1           	计费系统                	计费系统VALIDATES THAT通话为非紧急通话
+default-1           	计费系统                	计费系统 收到 话费查询传回的 主叫账户余额信息
+default-1           	计费系统                	计费系统等待通话开始          
+default-1           	计费系统                	计费系统开始对通话计时         
+default-1           	计费系统                	计费系统等待通话结束          
+default-1           	计费系统                	计费系统停止对通话计时         
+default-1           	计费系统                	计费系统 根据 号码识别传回的 通话类别信息 确定相关计费标准
+default-1           	计费系统                	计费系统 根据 通话计时信息 确定相关计费标准
+default-1           	计费系统                	计费系统对主叫进行费用扣除       
+default-1           	计费系统                	计费系统将主叫的账户信息更新到 查询话费数据库中
+default-1           	计费系统                	计费系统识别到紧急通话标识       
+default-1           	计费系统                	直接转入电话交换机           
+default-1           	拨打电话                	端机 给主叫回拨号音 提示拨号     
+default-1           	拨打电话                	主叫拨号                
+default-1           	拨打电话                	号码识别VALIDATES THAT号码不是空号
+default-1           	拨打电话                	号码识别VALIDATES THAT被叫号码不是紧急号码
+default-1           	拨打电话                	查询话费VALIDATES THAT主叫不在欠费状态
+default-1           	拨打电话                	号码识别前两位VALIDATES THAT通话类别为本地普通通话
+default-1           	拨打电话                	号码识别 将被叫路由信息传回 电话交换网络
+default-1           	拨打电话                	电话交换网络VALIDATES THAT主叫所属县级交换机空闲
+default-1           	拨打电话                	电话交换网络 根据 被叫号码路由信息预设路由
+default-1           	拨打电话                	电话交换网络VALIDATES THAT路由可以接通
+default-1           	拨打电话                	路由建立                
+default-1           	拨打电话                	被叫振铃                
+default-1           	拨打电话                	被叫摘机                
+default-1           	拨打电话                	计费系统开始计时            
+default-1           	拨打电话                	主/被叫一方挂机            
+default-1           	拨打电话                	计费系统停止计时            
+default-1           	拨打电话                	拆除路由，释放资源           
+default-1           	拨打电话                	号码识别 向计费系统提交 本地普通电话收费标准
+default-1           	拨打电话                	计费系统扣除主叫费用          
+default-1           	拨打电话                	计费系统对查询话费后台数据进行更新   
+default-1           	拨打电话                	号码识别主叫拨号为空号         
+default-1           	拨打电话                	端机提示主叫拨号为空          
+default-1           	拨打电话                	清空主叫拨打号码            
+default-1           	拨打电话                	号码识别主叫拨号为紧急拨号       
+default-1           	拨打电话                	电话交换网络 收到 号码识别 提供的跳过计费系统和话费查询的 标记
+default-1           	拨打电话                	电话交换网络 收到 号码识别 提供的紧急电话路由信息
+default-1           	拨打电话                	优先级或备用/专用路由完成路由搭建   
+default-1           	拨打电话                	被叫摘机                
+default-1           	拨打电话                	紧急通话                
+default-1           	拨打电话                	主/被叫挂机              
+default-1           	拨打电话                	查询话费确认主叫为欠费状态       
+default-1           	拨打电话                	系统回音提示主叫已欠费         
+default-1           	拨打电话                	号码识别前两位为长途电话        
+default-1           	拨打电话                	号码识别 将被叫路由信息 传回电话交换网络
+default-1           	拨打电话                	电话交换网络VALIDATES THAT主叫所属县级交换机空闲
+default-1           	拨打电话                	电话交换网络 根据 被叫号码路由信息 预设路由
+default-1           	拨打电话                	电话交换网络VALIDATES THAT路由可以接通
+default-1           	拨打电话                	电话交换网络建立路由          
+default-1           	拨打电话                	电话交换网络振铃通知被叫        
+default-1           	拨打电话                	计费系统开始计时            
+default-1           	拨打电话                	主/被叫一方挂机            
+default-1           	拨打电话                	计费系统停止计时            
+default-1           	拨打电话                	拆除路由，释放资源           
+default-1           	拨打电话                	号码识别 向计费系统 提交长途电话收费标准
+default-1           	拨打电话                	计费系统扣除主叫费用          
+default-1           	拨打电话                	计费系统对查询话费后台数据进行更新   
+default-1           	拨打电话                	主/被叫挂机              
+default-1           	拨打电话                	用户挂机                
+default-1           	查询话费                	查询话费VALIDATES THAT主叫未欠费
+default-1           	查询话费                	查询话费 告知 号码识别 进行 被叫路由信息确认
+default-1           	查询话费                	提交用户当前费用信息给 计费系统    
+default-1           	查询话费                	允许主叫接入交换网络正常通话      
+default-1           	查询话费                	查询话费，主叫欠费           
+default-1           	号码识别                	号码识别VALIDATES THAT被叫号码非空号
+default-1           	号码识别                	号码识别VALIDATES THAT被叫号码非紧急电话
+default-1           	号码识别                	查询话费 告知 号码识别 主叫未欠费  
+default-1           	号码识别                	号码识别 根据前两位确定通话类别    
+default-1           	号码识别                	号码识别 将通话类别信息交给 计费系统 以确定收费标准
+default-1           	号码识别                	号码识别 根据被叫端机号 确定路由信息 
+default-1           	号码识别                	号码识别 将被叫端机路由信息传给 电话交换网络
+default-1           	号码识别                	号码识别主叫拨号为空号         
+default-1           	号码识别                	号码识别 被叫号码为紧急电话      
+default-1           	号码识别                	号码识别 给被叫号码提供跳过计费系统 标记
+default-1           	统计话务量               	通话完成，数据库存储话务信息      
+default-1           	统计话务量               	管理员申请查询话务信息         
+default-1           	更新用户数据              	系统VALIDATES THAT开户/注销账号/换号用户
+default-1           	更新用户数据              	管理人员收到更新数据请求        
+default-1           	更新用户数据              	用户所属县级交换机数据库更新      
+default-1           	更新用户数据              	用户完成开户/注销账号/换号用户    
+default-1           	更新用户数据              	用户更新数据储存到数据库，等待管理员查看
+default-1           	更新用户数据              	数据库保存用户数据无变动        
+default-1           	更新用户数据              	等待管理员收到变更数据请求       
+default-1           	备份用户和交换机数据          	用户数据和交换机数据保存        
+default-1           	备份用户和交换机数据          	用户数据和交换机数据上传至数据库    
+default-1           	备份用户和交换机数据          	数据库提供备份给维护人员进行备用    
+
+
+违规情况：违规句段86条，违规内容为主语不为“系统”、“System”、“The System”
+
+误报:1条，系统VALIDATES THAT开户/注销账号/换号用户 
+
+误报原因：中英文混杂导致分词失败
+
+
+default-4：一句话一个动作。实现方式：判断动词数量为1
+
+违规情况：9条
+default-4           	计费系统                	计费系统对主叫进行费用扣除   动词：进行，扣除
+default-4           	拨打电话                	端机 给主叫回拨号音 提示拨号  动词：回、提示
+default-4           	拨打电话                	拆除路由，释放资源   
+default-4           	拨打电话                	拆除路由，释放资源  
+default-4           	拨打电话                	系统回忙音提示主叫线路忙        
+default-4           	拨打电话                	系统回忙音提示主叫线路忙   
+default-4           	更新用户数据              	用户完成开户/注销账号/换号用户    
+default-4           	更新用户数据              	用户更新数据储存到数据库，等待管理员查看
+default-4           	更新用户数据              	等待管理员收到变更数据请求
+
+误报情况：34条
+default-4           	计费系统                	计费系统VALIDATES THAT通话为非紧急通话
+default-4           	计费系统                	计费系统 根据 通话计时信息 确定相关计费标准
+default-4           	计费系统                	计费系统将主叫的账户信息更新到 查询话费数据库中
+default-4           	计费系统                	计费系统识别到紧急通话标识       
+default-4           	拨打电话                	主叫拨号                
+default-4           	拨打电话                	号码识别VALIDATES THAT号码不是空号
+default-4           	拨打电话                	号码识别VALIDATES THAT被叫号码不是紧急号码
+default-4           	拨打电话                	号码识别前两位VALIDATES THAT通话类别为本地普通通话
+default-4           	拨打电话                	号码识别 将被叫路由信息传回 电话交换网络
+default-4           	拨打电话                	电话交换网络VALIDATES THAT路由可以接通
+default-4           	拨打电话                	计费系统开始计时                    
+default-4           	拨打电话                	号码识别主叫拨号为空号         
+default-4           	拨打电话                	号码识别主叫拨号为紧急拨号       
+default-4           	拨打电话                	优先级或备用/专用路由完成路由搭建   
+default-4           	拨打电话                	系统回音提示主叫已欠费         
+default-4           	拨打电话                	号码识别前两位为长途电话        
+default-4           	拨打电话                	号码识别 将被叫路由信息 传回电话交换网络
+default-4           	拨打电话                	电话交换网络VALIDATES THAT路由可以接通
+default-4           	拨打电话                	电话交换网络建立路由          
+default-4           	拨打电话                	计费系统开始计时                          
+default-4           	查询话费                	允许主叫接入交换网络正常通话      
+default-4           	号码识别                	号码识别VALIDATES THAT被叫号码非空号
+default-4           	号码识别                	号码识别VALIDATES THAT被叫号码非紧急电话
+default-4           	号码识别                	号码识别 根据前两位确定通话类别    
+default-4           	号码识别                	号码识别 将通话类别信息交给 计费系统 以确定收费标准
+default-4           	号码识别                	号码识别 根据被叫端机号 确定路由信息 
+default-4           	号码识别                	号码识别 将被叫端机路由信息传给 电话交换网络
+default-4           	号码识别                	号码识别主叫拨号为空号         
+default-4           	号码识别                	号码识别 给被叫号码提供跳过计费系统 标记
+default-4           	更新用户数据              	系统VALIDATES THAT开户/注销账号/换号用户
+default-4           	更新用户数据              	管理人员收到更新数据请求        
+default-4           	更新用户数据              	用户所属县级交换机数据库更新      
+default-4           	备份用户和交换机数据          	用户数据和交换机数据上传至数据库    
+default-4           	备份用户和交换机数据          	数据库提供备份给维护人员进行备用 
+
+
+误报原因：
+中文分词错误。如“清空主叫拨打号码”中的动词会分出来“清空、拨打”两个；“优先级或备用/专用路由完成路由搭建”会分出来“完成”、“搭建”等。其他各类因专业术语、中英文混杂导致的分词问题类似。
+
+
+default-8：必须使用陈述句。实现方式：判断句中是否存在"?"、"!"，句中主语数量必须为1（针对祈使句、倒装句等）。
+
+违规情况：25条
+default-8           	计费系统                	直接转入电话交换机    
+default-8           	拨打电话                	拆除路由，释放资源   
+default-8           	拨打电话                	清空主叫拨打号码   
+default-8           	拨打电话                	紧急通话  
+default-8           	拨打电话                	释放全部占用资源，等待再次拨打     
+default-8           	拨打电话                	查询话费确认主叫为欠费状态       
+default-8           	拨打电话                	退出拨打状态     
+default-8           	拨打电话                	拆除路由，释放资源           
+default-8           	拨打电话                	完成长途电话通话            
+default-8           	拨打电话                	等待主叫挂机              
+default-8           	拨打电话                	等待主叫挂机              
+default-8           	拨打电话                	等待主叫挂机              
+default-8           	拨打电话                	等待主叫挂机  
+default-8           	拨打电话                	释放全部占用资源，等待再次拨打电话   
+default-8           	查询话费                	允许主叫接入交换网络正常通话      
+default-8           	查询话费                	完成话费查询              
+default-8           	统计话务量               	完成话务量统计             
+default-8           	更新用户数据              	用户数据更新              
+default-8           	更新用户数据              	等待管理员收到变更数据请求       
+default-8           	备份用户和交换机数据          	用户数据和交换机数据保存        
+default-8           	备份用户和交换机数据          	用户数据和交换机数据上传至数据库    
+default-8           	备份用户和交换机数据          	备份用户和交换机数据          
+default-8           	备份用户和交换机数据          	用户和交换机数据上传到数据库  
+default-8           	号码识别                	正常完成号码识别  
+default-8           	查询话费                	提交用户当前费用信息给 计费系统    
+
+误判情况：18条
+default-8           	计费系统                	计费系统VALIDATES THAT通话为非紧急通话  
+default-8           	拨打电话                	主叫拨号                
+default-8           	拨打电话                	号码识别VALIDATES THAT号码不是空号
+default-8           	拨打电话                	号码识别VALIDATES THAT被叫号码不是紧急号码
+default-8           	拨打电话                	查询话费VALIDATES THAT主叫不在欠费状态
+default-8           	拨打电话                	号码识别前两位VALIDATES THAT通话类别为本地普通通话
+default-8           	拨打电话                	被叫振铃                
+default-8           	拨打电话                	被叫摘机                
+default-8           	拨打电话                	主/被叫一方挂机                    
+default-8           	拨打电话                	被叫摘机                
+default-8           	拨打电话                	主/被叫挂机              
+default-8           	拨打电话                	主/被叫一方挂机            
+default-8           	拨打电话                	主/被叫挂机              
+default-8           	查询话费                	查询话费VALIDATES THAT主叫未欠费
+default-8           	查询话费                	查询话费 告知 号码识别 进行 被叫路由信息确认
+default-8           	查询话费                	主叫欠费                
+default-8           	号码识别                	号码识别VALIDATES THAT被叫号码非紧急电话
+default-8           	号码识别                	查询话费 告知 号码识别 主叫未欠费  
+
+
+误报原因：
+分词错误：无法针对特定名词正确划分主语。如“被叫摘机”，分词只能够分出来一个动词“叫”。
+
+default-11：句中不能包含副词。实现方式：判断副词数量等于0。
+中文针对副词基本无法正确识别，此条规则失效。
+
+default-12：只使用简单句。一个简单句包括一个主语和一个谓语。实现方式：判断主语数量和动词数量等于1。
+
+违规情况：35条
+default-12          	计费系统                	直接转入电话交换机    
+default-12          	拨打电话                	拆除路由，释放资源           
+default-12          	拨打电话                	清空主叫拨打号码    
+default-12          	拨打电话                	优先级或备用/专用路由完成路由搭建   
+default-12          	拨打电话                	紧急通话   
+default-12          	拨打电话                	释放全部占用资源，等待再次拨打   
+default-12          	拨打电话                	退出拨打状态   
+default-12          	拨打电话                	拆除路由，释放资源    
+default-12          	拨打电话                	完成长途电话通话            
+default-12          	拨打电话                	系统回忙音提示主叫线路忙        
+default-12          	拨打电话                	等待主叫挂机              
+default-12          	拨打电话                	等待主叫挂机   
+default-12          	拨打电话                	系统回忙音提示主叫线路忙        
+default-12          	拨打电话                	等待主叫挂机              
+default-12          	拨打电话                	等待主叫挂机              
+default-12          	拨打电话                	主/被叫挂机      
+default-12          	拨打电话                	主/被叫一方挂机      
+default-12          	拨打电话                	主/被叫挂机     
+default-12          	拨打电话                	主/被叫一方挂机    
+default-12          	拨打电话                	释放全部占用资源，等待再次拨打电话   
+default-12          	查询话费                	提交用户当前费用信息给 计费系统    
+default-12          	查询话费                	允许主叫接入交换网络正常通话      
+default-12          	查询话费                	完成话费查询    
+default-12          	号码识别                	正常完成号码识别            
+default-12          	统计话务量               	完成话务量统计             
+default-12          	更新用户数据              	等待管理员收到变更数据请求       
+default-12          	备份用户和交换机数据          	备份用户和交换机数据          
+default-12          	备份用户和交换机数据          	用户和交换机数据上传到数据库    
+default-12          	备份用户和交换机数据          	数据库提供备份给维护人员进行备用    
+default-12          	备份用户和交换机数据          	用户数据和交换机数据保存        
+default-12          	备份用户和交换机数据          	用户数据和交换机数据上传至数据库    
+default-12          	更新用户数据              	用户完成开户/注销账号/换号用户    
+default-12          	更新用户数据              	用户更新数据储存到数据库，等待管理员查看
+default-12          	拨打电话                	系统回音提示主叫已欠费  
+default-12          	拨打电话                	端机 给主叫回拨号音 提示拨号  
+
+误报情况：31条
+default-12          	计费系统                	计费系统VALIDATES THAT通话为非紧急通话
+default-12          	计费系统                	计费系统对主叫进行费用扣除       
+default-12          	计费系统                	计费系统将主叫的账户信息更新到 查询话费数据库中
+default-12          	计费系统                	计费系统识别到紧急通话标识          
+default-12          	拨打电话                	主叫拨号                
+default-12          	拨打电话                	号码识别VALIDATES THAT号码不是空号
+default-12          	拨打电话                	号码识别VALIDATES THAT被叫号码不是紧急号码
+default-12          	拨打电话                	查询话费VALIDATES THAT主叫不在欠费状态
+default-12          	拨打电话                	号码识别前两位VALIDATES THAT通话类别为本地普通通话
+default-12          	拨打电话                	号码识别 将被叫路由信息传回 电话交换网络
+default-12          	拨打电话                	电话交换网络VALIDATES THAT路由可以接通
+default-12          	拨打电话                	被叫振铃                
+default-12          	拨打电话                	被叫摘机                
+default-12          	拨打电话                	计费系统开始计时            
+default-12          	拨打电话                	被叫摘机                
+default-12          	拨打电话                	查询话费确认主叫为欠费状态                      
+default-12          	拨打电话                	号码识别 将被叫路由信息 传回电话交换网络
+default-12          	拨打电话                	电话交换网络VALIDATES THAT路由可以接通
+default-12          	拨打电话                	电话交换网络建立路由          
+default-12          	拨打电话                	计费系统开始计时            
+default-12          	查询话费                	查询话费VALIDATES THAT主叫未欠费
+default-12          	查询话费                	查询话费 告知 号码识别 进行 被叫路由信息确认 
+default-12          	查询话费                	主叫欠费                
+default-12          	号码识别                	号码识别VALIDATES THAT被叫号码非紧急电话
+default-12          	号码识别                	查询话费 告知 号码识别 主叫未欠费  
+default-12          	号码识别                	号码识别 将通话类别信息交给 计费系统 以确定收费标准
+default-12          	号码识别                	号码识别 将被叫端机路由信息传给 电话交换网络
+default-12          	号码识别                	号码识别 给被叫号码提供跳过计费系统 标记
+default-12          	更新用户数据              	系统VALIDATES THAT开户/注销账号/换号用户
+default-12          	更新用户数据              	管理人员收到更新数据请求        
+default-12          	更新用户数据              	用户数据更新           
+
+误报原因：同default-8和default-4.
+
+default-14：不能使用代词。实现方式：判断代词数量等于0。
+
+中文针对代词基本无法正确识别，此条规则失效。
+
+default-19：RFS关键字。实现方式：正则匹配。
+
+违规情况：13条。
+
+RFS的正确格式为：
+RFS <reference flow step #> (specific alternative flow)
+RFS <reference flow step numbers> (bounded alternative flow)
+如：
+RFS Basic Flow 5
+RFS Basic Flow 5-7, 10, 14
+
+default-19       	计费系统                	RFS 1               
+default-19       	拨打电话                	RFS 5               
+default-19       	拨打电话                	RFS 6               
+default-19       	拨打电话                	RFS 7               
+default-19       	拨打电话                	RFS 8               
+default-19       	拨打电话                	RFS 3               
+default-19       	拨打电话                	RFS 5               
+default-19       	拨打电话                	RFS 10              
+default-19       	拨打电话                	RFS 12              
+default-19       	查询话费                	RFS 2               
+default-19       	号码识别                	RFS 2               
+default-19       	号码识别                	RFS 3               
+default-19       	更新用户数据              	RFS 1    
