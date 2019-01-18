@@ -11,12 +11,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 import PyQt5
 import sys
+import copy
 from PyQt5.QtCore import QCoreApplication
 import rucmElement
 class Ui_Report_Dialog(object):
     def setupUi(self, Dialog):
         self.Dialog = Dialog
-
         Dialog.setObjectName("Dialog")
         Dialog.resize(826, 435)
         self.tableWidget = QtWidgets.QTableWidget(Dialog)
@@ -38,6 +38,10 @@ class Ui_Report_Dialog(object):
         self.pushButton.setGeometry(QtCore.QRect(730, 390, 75, 23))
         self.pushButton.setObjectName("pushButton")
 
+        self.export_txt = QtWidgets.QPushButton(Dialog)
+        self.export_txt.setGeometry(QtCore.QRect(630, 390, 75, 23))
+        self.export_txt.setObjectName("export_txt")
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
         self.setVals()
@@ -56,9 +60,29 @@ class Ui_Report_Dialog(object):
         # item.setText(_translate("Dialog", "规则描述"))
         self.pushButton.setText(_translate("Dialog", "关闭"))
         self.pushButton.clicked.connect(self.Dialog.close)
+
+        self.export_txt.setText("导出txt报告")
+        self.export_txt.clicked.connect(self.export_txt_)
+    def export_txt_(self):
+        export_path = "./out.txt"
+
+        export_path=QtWidgets.QFileDialog.getSaveFileName(self.Dialog,"输出路径",".")[0]
+        if export_path == None or export_path == "":return
+        colWidth=20
+        f = open(export_path,'w',encoding="utf-8")
+        ls = []
+        ls.append("%s\t%s\t%s\r\n"%("违规描述".ljust(colWidth),"违规用例".ljust(colWidth),"违规句段".ljust(colWidth)))
+        for e in self.data:
+            ls.append("%s\t%s\t%s\r\n"%((e.rulename if e.rulename != None else "-").ljust(colWidth),e.usecasename.ljust(colWidth)
+                                    ,(e.sentence.val if isinstance(e.sentence,rucmElement.Sentence) else str(e.sentence)).ljust(colWidth)))
+        f.writelines(ls)
+        f.close()
+        QMessageBox.information(self.Dialog, "message", "导出报告到%s"%(export_path))
+
     def setVals(self):
         # newItem = QTableWidgetItem('张三')
         # self.tableWidget.setItem(0, 0, newItem)
+        self.data = copy.deepcopy(reporter.Reporter.errors)
         self.tableWidget.setRowCount(len(reporter.Reporter.errors))
 
         for i in range(3):
