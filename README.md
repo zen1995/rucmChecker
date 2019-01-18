@@ -1,7 +1,7 @@
 ```bash
 python3 main.py --help
 ```
-## nlp setup
+## dependency setup
 ```bash
 pip install -r requirements.txt
 ```
@@ -18,6 +18,11 @@ wget https://nlp.stanford.edu/software/stanford-chinese-corenlp-2018-10-05-model
 # 启动中文server
 java -Xmx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -serverProperties StanfordCoreNLP-chinese.properties -port 9001 -timeout 15000
 ```
+
+## pdf generator install
+
+Download the tool from [wkhtmltopdf](https://wkhtmltopdf.org/downloads.html).
+Add the binary executable to environment varible `PATH`.
 
 ## ToDoList
 - [x] 代码开发

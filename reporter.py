@@ -1,7 +1,8 @@
 import sys
 import typing
 import jinja2
-import pdfkit 
+# https://wkhtmltopdf.org/downloads.html
+import pdfkit
 
 
 class ErrorInfo:
