@@ -46,7 +46,7 @@ class Reporter():
 
         result = template.render(items=items)
 
-        with open(destination_file, "w") as text_file:
+        with open(destination_file, "w",encoding='utf-8') as text_file:
             print(result, file=text_file)
 
         return result

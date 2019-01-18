@@ -42,6 +42,14 @@ class Ui_Report_Dialog(object):
         self.export_txt.setGeometry(QtCore.QRect(630, 390, 75, 23))
         self.export_txt.setObjectName("export_txt")
 
+        self.export_html = QtWidgets.QPushButton(Dialog)
+        self.export_html.setGeometry(QtCore.QRect(530, 390, 75, 23))
+        self.export_html.setObjectName("export_html")
+
+        self.export_pdf = QtWidgets.QPushButton(Dialog)
+        self.export_pdf.setGeometry(QtCore.QRect(430, 390, 75, 23))
+        self.export_pdf.setObjectName("export_pdf")
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
         self.setVals()
@@ -63,6 +71,18 @@ class Ui_Report_Dialog(object):
 
         self.export_txt.setText("导出txt报告")
         self.export_txt.clicked.connect(self.export_txt_)
+        self.export_html.setText("导出html报告")
+        self.export_html.clicked.connect(lambda : (reporter.Reporter.to_html(QtWidgets.QFileDialog.getSaveFileName(self.Dialog,"输出路径",".")[0]),
+        QMessageBox.information(self.Dialog, "message", "导出报告到完成")
+
+                                                   ))
+        self.export_pdf.setText("导出pdf报告")
+        self.export_pdf.clicked.connect(lambda :( reporter.Reporter.to_pdf(QtWidgets.QFileDialog.getSaveFileName(self.Dialog,"输出路径",".")[0])
+
+                                                  ,QMessageBox.information(self.Dialog, "message", "导出报告到完成")))
+
+
+
     def export_txt_(self):
         export_path = "./out.txt"
 
@@ -80,6 +100,8 @@ class Ui_Report_Dialog(object):
         QMessageBox.information(self.Dialog, "message", "导出报告到%s"%(export_path))
 
     def setVals(self):
+        import os
+        print(os.environ.get("Path"))
         # newItem = QTableWidgetItem('张三')
         # self.tableWidget.setItem(0, 0, newItem)
         self.data = copy.deepcopy(reporter.Reporter.errors)
