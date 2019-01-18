@@ -7,7 +7,7 @@ class DefaultRule17(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            # µÃµ½INCLUDE USE CASEµÄindex
+            # ï¿½Ãµï¿½INCLUDE USE CASEï¿½ï¿½index
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
@@ -15,7 +15,7 @@ class DefaultRule17(rule.Rule):
                     break
             if i == len(step.sentences):
                 continue
-            # ±ØÐë¿ªÍ·£¬ºóÓÐÇÒ½öÓÐÒ»¸öUSE CASE
+            # ï¿½ï¿½ï¿½ë¿ªÍ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½USE CASE
             if i != 0 or len(step.sentences) != 2:
                 errors.append(rule.ErrorInfo(self.description+'AAA', step.useCaseName, step.val))
                 continue
@@ -29,7 +29,7 @@ class DefaultRule18(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            # µÃµ½EXTENDED USE CASEµÄindex
+            # ï¿½Ãµï¿½EXTENDED USE CASEï¿½ï¿½index
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
@@ -37,7 +37,7 @@ class DefaultRule18(rule.Rule):
                     break
             if i == len(step.sentences):
                 continue
-            # ±ØÐë¿ªÍ·£¬ºóÓÐÇÒ½öÓÐÒ»¸öUSE CASE
+            # ï¿½ï¿½ï¿½ë¿ªÍ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½USE CASE
             if i != 0 or len(step.sentences) != 2:
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                 continue
@@ -56,7 +56,7 @@ class DefaultRule19(rule.Rule):
             rfs = flow.RfsSentence
             res = re.search(r'(RFS )(\D+ )(\d.*)', rfs)
             if not res:
-                errors.append(rule.ErrorInfo(self.description+'aaa', flow.useCaseName, rfs))
+                errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                 continue
             flowName = res.group(2).rstrip(' ')
             _str = res.group(3).replace(' ', '')
@@ -65,26 +65,26 @@ class DefaultRule19(rule.Rule):
             for stepNum in stepNums:
                 resNum = re.fullmatch(r'(\d+)(-\d+)?( )?', stepNum)
                 if not resNum:
-                    # ¹æÔò¸ñÊ½²»ÕýÈ·
-                    errors.append(rule.ErrorInfo(self.description+'bbb', flow.useCaseName, rfs))
+                    # ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·
+                    errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                     continue
                 startNum = resNum.group(1)
                 endNum = resNum.group(2)
                 if endNum:
-                    # ÓÐºá¸Ü
+                    # ï¿½Ðºï¿½ï¿½
                     endNum = endNum[1:]
                     startNum = int(startNum)
                     endNum = int(endNum)
                     if startNum >= endNum:
-                        errors.append(rule.ErrorInfo(self.description+'ccc', flow.useCaseName, rfs))
+                        errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                         continue
                     nums += range(startNum, endNum+1)
                 else:
-                    # Ã»ºá¸Ü
+                    # Ã»ï¿½ï¿½ï¿½
                     nums.append(int(resNum.group(1)))
             for num in nums:
                 if not flow.parent.findRFS(flowName, num):
-                    errors.append(rule.ErrorInfo(self.description+'ddd', flow.useCaseName, rfs))
+                    errors.append(rule.ErrorInfo(self.description, flow.useCaseName, rfs))
                     break                
         rule.Reporter.errors += errors
 
@@ -95,7 +95,7 @@ class DefaultRule20(rule.Rule):
         valid_pre = []
         valid = []
         for flow in flows:
-            # ÔÚÃ¿¸öflow·¶Î§ÄÚ½øÐÐ¹æÔò¼ì²â
+            # ï¿½ï¿½Ã¿ï¿½ï¿½flowï¿½ï¿½Î§ï¿½Ú½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½
             for step in flow.steps:
                 natureI = {}
                 natureI['if'] = -1
@@ -105,16 +105,16 @@ class DefaultRule20(rule.Rule):
                 natureI['endif'] = -1
                 for i in range(len(step.sentences)):
                     if step.sentences[i].nature == base.NatureType.if_:
-                        # Ïò×´Ì¬×ªÒÆÕ»Ìí¼ÓÒ»¸öÔªËØ
-                        # ×´Ì¬×ªÒÆ£º½ÓÊÜTHEN
+                        # ï¿½ï¿½×´Ì¬×ªï¿½ï¿½Õ»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
+                        # ×´Ì¬×ªï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½THEN
                         natureI['if'] = i
                         #stackIfNum += 1
                         #stackThenNum += 1
                         valid_pre.append(['IF'])
                         valid.append(['THEN'])
                     elif step.sentences[i].nature == base.NatureType.else_:
-                        # ×´Ì¬×ªÒÆ£º½ÓÊÜEND IF
-                        # Ã»½øÈë×´Ì¬
+                        # ×´Ì¬×ªï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½END IF
+                        # Ã»ï¿½ï¿½ï¿½ï¿½×´Ì¬
 
                         if not valid:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
@@ -127,9 +127,9 @@ class DefaultRule20(rule.Rule):
                         valid_pre.append(valid.pop())
                         valid.append(['END IF'])
                     elif step.sentences[i].nature == base.NatureType.elseif_:
-                        # ×´Ì¬×ªÒÆ£º½ÓÊÜTHEN
+                        # ×´Ì¬×ªï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½THEN
                         natureI['elseif'] = i
-                        # Ã»½øÈë×´Ì¬
+                        # Ã»ï¿½ï¿½ï¿½ï¿½×´Ì¬
                         if not valid:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
@@ -140,11 +140,11 @@ class DefaultRule20(rule.Rule):
                         valid_pre.append(valid.pop())
                         valid.append(['THEN'])
                     elif step.sentences[i].nature == base.NatureType.then_:
-                        # ×´Ì¬×ªÒÆ£ºÈç¹ûTHEN¶ÔÓ¦IF£¬½ÓÊÜELSE/ELSE IF/END IF
-                        # Èç¹ûTHEN¶ÔÓ¦ELSE IF£¬½ÓÊÜEND IF
-                        # ·ñÔò¡­¡­ÃÛÖ­×ªÒÆ³ö´í£¿
+                        # ×´Ì¬×ªï¿½Æ£ï¿½ï¿½ï¿½ï¿½THENï¿½ï¿½Ó¦IFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ELSE/ELSE IF/END IF
+                        # ï¿½ï¿½ï¿½THENï¿½ï¿½Ó¦ELSE IFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½END IF
+                        # ï¿½ï¿½ï¿½ò¡­¡ï¿½ï¿½ï¿½Ö­×ªï¿½Æ³ï¿½ï¿½ï¿½
                         natureI['then'] = i
-                        # Ã»½øÈë×´Ì¬
+                        # Ã»ï¿½ï¿½ï¿½ï¿½×´Ì¬
                         if not valid:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
@@ -163,8 +163,8 @@ class DefaultRule20(rule.Rule):
                             continue
                         
                     elif step.sentences[i].nature == base.NatureType.endif_:
-                        # ÎÞ×´Ì¬×ªÒÆ£¬´Ó×´Ì¬×ªÒÆÕ»ÒÆ³ýÒ»¸öÔªËØ
-                        # Ã»½øÈë×´Ì¬
+                        # ï¿½ï¿½×´Ì¬×ªï¿½Æ£ï¿½ï¿½ï¿½×´Ì¬×ªï¿½ï¿½Õ»ï¿½Æ³ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
+                        # Ã»ï¿½ï¿½ï¿½ï¿½×´Ì¬
                         if not valid:
                             errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                             continue
@@ -175,20 +175,20 @@ class DefaultRule20(rule.Rule):
                         valid_pre.pop()
                         valid.pop()
                         
-                    # IF±ØÐë¿ªÍ·
+                    # IFï¿½ï¿½ï¿½ë¿ªÍ·
                     if natureI['if'] > 0 or natureI['elseif'] > 0 or natureI['else'] > 0:
                         errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                         continue
-                    # THEN±ØÐë½áÎ²
+                    # THENï¿½ï¿½ï¿½ï¿½ï¿½Î²
                     if natureI['then'] >= 0 and natureI['then'] != len(step.sentences)-1:
                         errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                         continue
                     if natureI['endif'] >= 0 and len(step.sentences) != 1:
-                        # ¶ÀÕ¼Ò»ÐÐ
+                        # ï¿½ï¿½Õ¼Ò»ï¿½ï¿½
                         errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                         continue
                 
-            # Õý³£µÄ»°£¬validÎª¿Õ
+            # ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½validÎªï¿½ï¿½
         if len(valid):
             errors.append(rule.ErrorInfo(self.description, flow.useCaseName, flow.title))
         rule.Reporter.errors += errors
@@ -199,7 +199,7 @@ class DefaultRule21(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            # µÃµ½MEANWHILEµÄindex
+            # ï¿½Ãµï¿½MEANWHILEï¿½ï¿½index
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
@@ -207,7 +207,7 @@ class DefaultRule21(rule.Rule):
                     break
             if i == len(step.sentences):
                 continue
-            # Ç°ºó±ØÐëÓÐ¶«Î÷
+            # Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
             if i == 0 or i == len(step.sentences)-1:
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
@@ -217,17 +217,17 @@ class DefaultRule22(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            # µÃµ½VALIDATES THATµÄindex
+            # ï¿½Ãµï¿½VALIDATES THATï¿½ï¿½index
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
                 if step.sentences[i].nature == base.NatureType.validates_that_:
                     break
             if i == len(step.sentences):
-                # Ã»ÓÐ
+                # Ã»ï¿½ï¿½
                 continue
             if i == 0 or i == len(step.sentences)-1:
-                # Ç°ºó±ØÐëÓÐ¶«Î÷
+                # Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
@@ -236,10 +236,10 @@ class DefaultRule23(rule.Rule):
         flows = rucmElement.RUCMRoot.getAllFlows()
         errors = []
         for flow in flows:
-            # doNum:Î¬»¤µÄÕ»µÄÊýÁ¿£¬Óöµ½do++,Óöµ½until--
+            # doNum:Î¬ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½do++,ï¿½ï¿½ï¿½ï¿½until--
             doNum = 0
             for stepInd, step in enumerate(flow.steps):
-                # ÕÒdo
+                # ï¿½ï¿½do
                 doI = -1
                 untilI = -1
                 for i in range(len(step.sentences)):
@@ -247,22 +247,22 @@ class DefaultRule23(rule.Rule):
                         doI = i
                     if step.sentences[i].nature == base.NatureType.until_:
                         untilI = i
-                # ÕÒµ½do
+                # ï¿½Òµï¿½do
                 if doI >= 0:
-                    # doÕ¼Ò»¸östep
+                    # doÕ¼Ò»ï¿½ï¿½step
                     doNum+=1
                     if len(step.sentences) != 1:
                         errors.append(rule.ErrorInfo(self.description, flow.useCaseName, step.val))
                         continue
                     
                 if untilI >= 0:
-                    # until±ØÐëÔÚ¿ªÍ·£¬untilºóÃæ±ØÐëÓÐ¶«Î÷, untilÇ°±ØÐëÒÑ´¥·¢do
+                    # untilï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½Í·ï¿½ï¿½untilï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½, untilÇ°ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½do
                     if untilI != 0 or len(step.sentences) == 1 or doNum == 0:
                         errors.append(rule.ErrorInfo(self.description, flow.useCaseName, step.val))
                         continue
                     doNum -= 1
             if doNum != 0:
-                # doºÍuntilµÄÊýÁ¿²»Æ¥Åä
+                # doï¿½ï¿½untilï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
                 errors.append(rule.ErrorInfo(self.description, flow.useCaseName, step.val))
         rule.Reporter.errors += errors
    
@@ -272,17 +272,17 @@ class DefaultRule24(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            # µÃµ½ABORTµÄindex
+            # ï¿½Ãµï¿½ABORTï¿½ï¿½index
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
                 if step.sentences[i].nature == base.NatureType.abort_:
                     break
             if i == len(step.sentences):
-                # Ã»ÓÐ
+                # Ã»ï¿½ï¿½
                 continue
             if len(step.sentences) != 1:
-                # ¶ÀÕ¼Ò»ÐÐ
+                # ï¿½ï¿½Õ¼Ò»ï¿½ï¿½
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val)) 
         rule.Reporter.errors += errors 
 
@@ -291,21 +291,21 @@ class DefaultRule25(rule.Rule):
         steps = rucmElement.RUCMRoot.getAllSteps()
         errors = []
         for step in steps:
-            # µÃµ½RESUMEµÄindex
+            # ï¿½Ãµï¿½RESUMEï¿½ï¿½index
             for i in range(len(step.sentences)+1):
                 if i == len(step.sentences):
                     break
                 if step.sentences[i].nature == base.NatureType.resume_step_:
                     break
             if i == len(step.sentences):
-                # Ã»ÓÐ
+                # Ã»ï¿½ï¿½
                 continue
             if len(step.sentences) != 2 or i != 0:
-                # ÕÒµ½ÁË£¬ÅÐ¶ÏRESUMEÔÚ²»ÔÚ¿ªÍ·£¬ºóÃæÊÇ²»ÊÇÖ»¸úÁËÒ»¸öÐòºÅ
+                # ï¿½Òµï¿½ï¿½Ë£ï¿½ï¿½Ð¶ï¿½RESUMEï¿½Ú²ï¿½ï¿½Ú¿ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
                 continue
             try:
-                # ÅÐ¶ÏµÚ¶þ¸öÊýÊÇ²»ÊÇÐòºÅ
+                # ï¿½Ð¶ÏµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 num = int(step.sentences[1].val)
             except Exception as e:
                 print(e)
@@ -313,7 +313,7 @@ class DefaultRule25(rule.Rule):
                 continue
             if not step.parent.type == 'Specific Flow' or \
             not rucmElement.RUCMRoot.getUseCase(step.useCaseName).findRFS(rucmElement.RUCMRoot.getUseCase(step.useCaseName).basicFlow.title, num):
-                # ¶ÔÓ¦µÄflowÊÇ²»ÊÇalternative£¬¶ÔÓ¦µÄstepÔÚ²»ÔÚbasic flowÖÐ
+                # ï¿½ï¿½Ó¦ï¿½ï¿½flowï¿½Ç²ï¿½ï¿½ï¿½alternativeï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½stepï¿½Ú²ï¿½ï¿½ï¿½basic flowï¿½ï¿½
                 errors.append(rule.ErrorInfo(self.description, step.useCaseName, step.val))
         rule.Reporter.errors += errors 
 class DefaultRule26(rule.Rule):
