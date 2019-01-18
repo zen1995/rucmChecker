@@ -1,2 +1,4 @@
 nltk==3.3
 jieba==0.39
+Jinjia2==2.10
+pdfkit==0.6.1
