@@ -39,7 +39,7 @@ class Reporter():
         items = []
         for e in Reporter.errors:
             items.append({
-                'description': e.rulename,
+                'description': e.rulename if e.rulename != None else "-",
                 'usecasename': e.usecasename,
                 'sentence': e.sentence
             })
