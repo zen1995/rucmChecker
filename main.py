@@ -16,9 +16,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description='RUCM文件检查工具')
     ap.add_argument("-r", "--rule", dest='rule_path',default="./rule-template.txt",
                     required=False, help="path to rule.json")
-    ap.add_argument("-u", "--url_en", dest='nlp_server', default='http://10.133.6.188:9000/',
+    ap.add_argument("-u", "--url_en", dest='nlp_server', default=nlputils.url_En,
                     required=False, help="url to nlp server")
-    ap.add_argument("-uh", "--url_han", dest='nlp_han_server', default='http://10.133.6.188:9001/',
+    ap.add_argument("-uh", "--url_han", dest='nlp_han_server', default=nlputils.url_Han,
                     required=False, help="url to nlp chinese server")
     ap.add_argument('rucm_path', nargs='?', default=None,
                     type=str, help='path to whatYouNeedToCheck.rucm')
@@ -70,4 +70,6 @@ if __name__ == "__main__":
             print('---', i.check)
             i.check()
 
+    print('-' * 20, 'report', '-' * 20)
     Reporter.report()
+    Reporter.to_pdf('result.pdf')
