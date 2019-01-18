@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>Report</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>违规描述</th>
+            <th>违规用例</th>
+            <th>违规句段</th>
+        </tr>
+        {% for item in items %}
+        <TR>
+            <TD><SPAN>{{item.description}}</SPAN></TD>
+            <TD><SPAN>{{item.usecasename}}</SPAN></TD>
+            <TD><SPAN>{{item.sentence}}</SPAN></TD>
+        </TR>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
