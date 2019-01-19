@@ -1,0 +1,165 @@
+违规描述                	违规用例                	违规句段   
+
+default-1：主语必须是系统/The system/System。实现方式：判断主语内容
+
+违规情况：违规句段21条，
+default-1           	拨打电话                	INCLUDE USE CASE寻路  
+default-1           	拨打电话                	系统VALIDATES THAT对方端机被接起        
+default-1           	计费                  		计费系统VALIDATES THAT被叫用户接起电话         
+default-1           	内线寻路                	系统VALIDATES THAT内部交换机空闲
+default-1           	内线寻路                	系统VALIDATES THAT目的端机存在
+default-1           	内线寻路                	系统VALIDATES THAT目的端机空闲
+default-1           	内线寻路                	目的端机不存在             
+default-1           	内线寻路                	目的端机繁忙              
+default-1           	内线寻路                	拨号方挂断               
+default-1           	非内线寻路               	DO系统将此信号传递给上一层交换机UNTIL信号到达核心交换机
+default-1           	非内线寻路               	系统VALIDATES THAT交换机空闲
+default-1           	非内线寻路               	UNTIL核心交换机收到信号      
+default-1           	非内线寻路               	系统VALIDATES THAT核心交换机空闲
+default-1           	非内线寻路               	DO系统找到下一级交换机UNTIL换机空闲
+default-1           	非内线寻路               	系统VALIDATES THAT交换机空闲
+default-1           	非内线寻路               	UNTIL系统找到目的端机所在交换机  
+default-1           	非内线寻路               	系统VALIDATES THAT目的端机存在
+default-1           	非内线寻路               	系统VALIDATES THAT目的端机空闲
+default-1           	非内线寻路               	拨号方挂断              
+default-1           	设置电脑话务              	系统VALIDATES THAT账号密码正确
+default-1           	设置电脑话务              	系统VALIDATES THAT设置的电脑话务合法
+
+违规内容为主语不是系统或者是出现过的Actor。
+另一个不符合规范的地方是关键字如UNTIL、VALIDATES THAT和中文文字之间没有空格，导致我们的程序将step视为一个整体来进行分词。例如：
+“系统VALIDATES THAT目的端机存在”，正确使用时，“系统”与“VALIDATES THAT”应有空格，系统便会将VALIDATES THAT视为一个关键字，当没有空格时，
+该句子将视为一个整体，放入我们的程序将导致分词错误，会使得主语为“系统”和“VALIDATES”，进而引发违规。
+
+误报:5条
+default-1           	拨打电话                	用户拨号                
+default-1           	拨打电话                	用户通话      
+default-1           	计费                  		计费系统结束计时            
+default-1           	计费                  		计费系统结算费用   
+default-1           	计费                  		计费系统监测链路状态  
+
+误报原因：中英文混杂导致分词失败，产生了多个主语或者是没有划分出来主语。
+
+
+default-4：一句话一个动作。实现方式：判断动词数量为1
+
+违规情况：10条
+default-4           	拨打电话                	INCLUDE USE CASE寻路  
+default-4           	内线寻路                	系统VALIDATES THAT内部交换机空闲
+default-4           	非内线寻路               	DO系统将此信号传递给上一层交换机UNTIL信号到达核心交换机
+default-4           	非内线寻路               	系统VALIDATES THAT交换机空闲
+default-4           	非内线寻路               	系统VALIDATES THAT核心交换机空闲
+default-4           	非内线寻路               	DO系统找到下一级交换机UNTIL换机空闲
+default-4           	非内线寻路               	系统VALIDATES THAT交换机空闲
+default-4           	非内线寻路               	UNTIL系统找到目的端机所在交换机    
+default-4           	设置电脑话务              	系统VALIDATES THAT账号密码正确
+default-4           	设置电脑话务              	系统VALIDATES THAT设置的电脑话务合法
+
+理由同default-1，关键词INCLUDE USE CASE等应该与描述之间有空格。
+
+误报情况：12条
+default-4           	拨打电话                	用户拨号                
+default-4           	拨打电话                	用户通话     
+default-4           	拨打电话                	系统返回提示音             
+default-4           	拨打电话                	系统返回提示音             
+default-4           	计费                  		计费系统监测链路状态          
+default-4           	计费                  		计费系统结算费用   
+default-4           	非内线寻路               	系统返回提示音，提示交换机忙碌     
+default-4           	非内线寻路               	系统返回提示音，提示目的端机繁忙  
+default-4           	设置电脑话务              	系统提示电脑话务设置成功        
+default-4           	设置电脑话务              	系统设置电脑话务提示电脑话务设置成功  
+default-4           	设置电脑话务              	管理员提交设置             
+default-4           	内线寻路                	目的端机繁忙              
+
+误报原因：
+中文分词错误。如“系统返回提示音 ”中的动词会分出来“提示、返回”两个。
+
+default-8：必须使用陈述句。实现方式：判断句中是否存在"?"、"!"，句中主语数量必须为1（针对祈使句、倒装句等）。
+
+违规情况：10条
+default-8           	拨打电话                	系统VALIDATES THAT对方端机被接起
+default-8           	拨打电话                	系统工作正常MEANWHILE拨号端机空闲
+default-8           	计费                  		系统工作正常MEANWHILE通路建立成功
+default-8           	内线寻路                	系统VALIDATES THAT目的端机存在
+default-8           	内线寻路                	系统VALIDATES THAT目的端机空闲
+default-8           	非内线寻路               	UNTIL核心交换机收到信号      
+default-8           	非内线寻路               	UNTIL系统找到目的端机所在交换机  
+default-8           	非内线寻路               	系统VALIDATES THAT目的端机存在
+default-8           	非内线寻路               	系统VALIDATES THAT目的端机空闲
+default-8           	设置电脑话务              	系统VALIDATES THAT账号密码正确
+
+理由同default-1，关键词INCLUDE USE CASE等应该与描述之间有空格。
+
+误判情况：4条
+default-8           	计费                  		计费系统结算费用            
+default-8           	计费                  		计费系统记录日志 
+default-8           	拨打电话                	用户通话                
+default-8           	拨打电话                	用户拨号                
+ 
+由于我们使用的实现方式是判断句子中的主语数量是否严格为1，中文分词可能会分出多个主语，导致错误。
+
+default-11：句中不能包含副词。实现方式：判断副词数量等于0。
+中文针对副词基本无法正确识别，此条规则失效，我们的程序出现大量误判。
+
+default-12：只使用简单句。一个简单句包括一个主语和一个谓语。实现方式：判断主语数量和动词数量等于1。
+
+违规情况：11条
+default-12          	拨打电话                	系统VALIDATES THAT对方端机被接起
+default-12          	拨打电话                	系统工作正常MEANWHILE拨号端机空闲       
+default-12          	计费                  		系统工作正常MEANWHILE通路建立成功
+default-12          	内线寻路                	系统VALIDATES THAT目的端机存在
+default-12          	内线寻路                	系统VALIDATES THAT目的端机空闲
+default-12          	非内线寻路               	UNTIL核心交换机收到信号      
+default-12          	非内线寻路               	DO系统找到下一级交换机UNTIL换机空闲
+default-12          	非内线寻路               	UNTIL系统找到目的端机所在交换机  
+default-12          	非内线寻路               	系统VALIDATES THAT目的端机存在
+default-12          	非内线寻路               	系统VALIDATES THAT目的端机空闲
+default-12          	设置电脑话务              	系统VALIDATES THAT账号密码正确
+
+理由同default-1，关键词INCLUDE USE CASE等应该与描述之间有空格。
+
+误报情况：8条
+default-12          	设置电脑话务              	系统设置电脑话务提示电脑话务设置成功  
+default-12          	设置电脑话务              	系统返回管理员登录界面 
+default-12          	计费                  		计费系统结算费用           
+default-12          	计费                  		计费系统记录日志     
+default-12          	拨打电话                	用户通话                
+default-12          	拨打电话                	用户拨号    
+default-12          	内线寻路                	系统提示拨打的号码为空号        
+default-12          	设置电脑话务              	管理员输入账号、密码          
+
+误报原因：同上，是分词导致的错误。
+
+default-14：不能使用代词。实现方式：判断代词数量等于0。
+
+中文针对代词基本无法正确识别，此条规则失效。
+
+
+default-19：RFS关键字。实现方式：正则匹配。
+
+违规情况：12条
+default-19       	拨打电话                	RFS 3               
+default-19       	拨打电话                	RFS 5               
+default-19       	计费                  		RFS 2               
+default-19       	内线寻路                	RFS 2               
+default-19      	内线寻路                	RFS 3               
+default-19       	内线寻路                	RFS 4               
+default-19       	非内线寻路               	RFS 3 5 8           
+default-19      	非内线寻路               	RFS 6               
+default-19      	非内线寻路               	RFS 10              
+default-19       	非内线寻路               	RFS 11              
+default-19      	设置电脑话务              	RFS 3               
+default-19       	设置电脑话务              	RFS 6               
+
+说明：
+RFS的正确格式为：
+RFS <reference flow step #> (specific alternative flow)
+RFS <reference flow step numbers> (bounded alternative flow)
+如：
+RFS Basic Flow 5
+RFS Basic Flow 5-7, 10, 14
+其中Basic Flow为默认名字，可以对Flow取别名，使用时改为如下形式：
+RFS MYFLOWNAME Flow 2
+
+default-19：DO UNTIL关键字
+default-23          	计费                  	DO 计费系统计时 UNTIL拨号方或者接听方挂断电话
+理由同default-1，关键词UNTIL应该与描述之间有空格。
